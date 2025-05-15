@@ -9,34 +9,57 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Theme Variables */
         :root {
-            --primary: #4CAF50; /* Diplomatic green */
-            --secondary: #FFC107; /* Gold accent */
-            --accent: #2196F3; /* Blue accent */
-            --dark: #121212; /* Deep dark background */
-            --dark-secondary: #1E1E1E; /* Slightly lighter dark */
-            --light: #E0E0E0; /* Light text */
-            --light-secondary: #A0A0A0; /* Secondary text */
+            /* Dark theme defaults */
+            --primary: #1a4b8c;
+            --secondary: #f0b72f;
+            --accent: #2e7dcc;
+            --background: #121212;
+            --background-secondary: #1E1E1E;
+            --text: #E0E0E0;
+            --text-secondary: #A0A0A0;
+            --card-bg: #1e2a3a;
+            --header-bg: rgba(30, 30, 30, 0.95);
+            --border-color: rgba(255,255,255,0.05);
+            --logo-filter: brightness(0) invert(1);
+        }
+
+        [data-theme="light"] {
+            /* Light theme variables */
+            --primary: #0A2463;
+            --secondary: #FF8C00;
+            --accent: #3E92CC;
+            --background: #ffffff;
+            --background-secondary: #f5f5f5;
+            --text: #333333;
+            --text-secondary: #666666;
+            --card-bg: #ffffff;
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --border-color: rgba(0,0,0,0.1);
+            --logo-filter: none;
         }
         
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            color: var(--light);
-            background-color: var(--dark);
+            color: var(--text);
+            background-color: var(--background);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         
         header {
-            background: rgba(30, 30, 30, 0.95);
+            background: var(--header-bg);
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
             position: sticky;
             top: 0;
             z-index: 100;
             backdrop-filter: blur(8px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         
         .header-container {
@@ -56,21 +79,24 @@
         
         .logo img {
             height: 50px;
-            filter: brightness(0) invert(1);
+            filter: var(--logo-filter);
+            transition: filter 0.3s ease;
         }
         
         .logo-text h1 {
             font-size: 1.5rem;
             margin: 0;
-            color: white;
+            color: var(--text);
             font-weight: 600;
+            transition: color 0.3s ease;
         }
         
         .logo-text p {
             font-size: 0.8rem;
             margin: 0;
-            color: var(--light-secondary);
+            color: var(--text-secondary);
             font-weight: 400;
+            transition: color 0.3s ease;
         }
         
         nav ul {
@@ -83,7 +109,7 @@
         
         nav a {
             text-decoration: none;
-            color: var(--light);
+            color: var(--text);
             font-weight: 500;
             transition: all 0.3s;
             position: relative;
@@ -91,11 +117,11 @@
         }
         
         nav a:hover {
-            color: var(--primary);
+            color: var(--secondary);
         }
         
         nav a.active {
-            color: var(--primary);
+            color: var(--secondary);
             font-weight: 600;
         }
         
@@ -106,7 +132,7 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background: var(--primary);
+            background: var(--secondary);
         }
         
         main {
@@ -132,7 +158,7 @@
             font-size: 1.1rem;
             max-width: 700px;
             margin: 0 auto;
-            color: var(--light-secondary);
+            color: var(--text-secondary);
             font-weight: 300;
         }
         
@@ -144,18 +170,18 @@
         }
         
         .publication-card {
-            background: var(--dark-secondary);
+            background: var(--card-bg);
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
         }
         
         .publication-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            border-color: rgba(76, 175, 80, 0.3);
+            border-color: var(--accent);
         }
         
         .card-image {
@@ -182,7 +208,7 @@
         .pub-type {
             display: inline-block;
             background: var(--accent);
-            color: var(--dark);
+            color: var(--background);
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.8rem;
@@ -193,20 +219,20 @@
         .card-content h3 {
             margin: 0 0 1rem 0;
             font-size: 1.3rem;
-            color: white;
+            color: var(--text);
             font-weight: 600;
         }
         
         .pub-meta {
             display: flex;
             justify-content: space-between;
-            color: var(--light-secondary);
+            color: var(--text-secondary);
             font-size: 0.9rem;
             margin-bottom: 1.5rem;
         }
         
         .card-content p {
-            color: var(--light-secondary);
+            color: var(--text-secondary);
             margin-bottom: 1.5rem;
             font-weight: 300;
         }
@@ -225,20 +251,20 @@
         }
         
         .download-btn:hover {
-            background: #3d8b40;
+            background: var(--accent);
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
         }
         
         .filter-bar {
-            background: var(--dark-secondary);
+            background: var(--background-secondary);
             padding: 1.5rem;
             border-radius: 8px;
             margin-bottom: 2rem;
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
         }
         
         .filter-group {
@@ -249,7 +275,7 @@
         .filter-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: var(--light);
+            color: var(--text);
             font-weight: 500;
         }
         
@@ -257,9 +283,9 @@
             width: 100%;
             padding: 0.5rem;
             background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid var(--border-color);
             border-radius: 4px;
-            color: white;
+            color: var(--text);
             font-family: 'Inter', sans-serif;
         }
         
@@ -269,11 +295,11 @@
         }
         
         footer {
-            background: var(--dark-secondary);
-            color: white;
+            background: var(--background-secondary);
+            color: var(--text);
             padding: 3rem 0;
             margin-top: 3rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid var(--border-color);
         }
         
         .footer-container {
@@ -287,11 +313,12 @@
         
         .footer-logo {
             max-width: 180px;
-            filter: brightness(0) invert(1);
+            filter: var(--logo-filter);
+            transition: filter 0.3s ease;
         }
         
         .footer-about p {
-            color: var(--light-secondary);
+            color: var(--text-secondary);
             font-weight: 300;
             margin-top: 0.5rem;
         }
@@ -314,30 +341,30 @@
         }
         
         .footer-links a {
-            color: var(--light-secondary);
+            color: var(--text-secondary);
             text-decoration: none;
             transition: color 0.3s;
             font-weight: 300;
         }
         
         .footer-links a:hover {
-            color: white;
+            color: var(--text);
         }
         
         .footer-links i {
             margin-right: 0.5rem;
             width: 16px;
             text-align: center;
-            color: var(--light-secondary);
+            color: var(--text-secondary);
         }
         
         .copyright {
             text-align: center;
             padding-top: 2rem;
             margin-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid var(--border-color);
             font-size: 0.9rem;
-            color: var(--light-secondary);
+            color: var(--text-secondary);
             font-weight: 300;
         }
         
@@ -348,15 +375,26 @@
             right: 2rem;
             width: 50px;
             height: 50px;
-            background: var(--dark-secondary);
+            background: var(--background-secondary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
             z-index: 99;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .dark-mode-toggle i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
         }
         
         @media (max-width: 768px) {
@@ -537,15 +575,54 @@
         </div>
     </footer>
 
-    <div class="dark-mode-toggle" id="darkModeToggle">
-        <i class="fas fa-moon"></i>
-    </div>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon" id="themeIcon"></i>
+    </button>
 
     <script>
-        // This would normally toggle between light/dark mode
-        // But since we're implementing dark mode by default, this is just a placeholder
-        document.getElementById('darkModeToggle').addEventListener('click', function() {
-            alert('Dark mode is currently the default theme. Light mode could be implemented with additional JavaScript.');
+        // Theme toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('darkModeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const body = document.body;
+            
+            // Check for saved theme preference or use system preference
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            // Set initial theme
+            if (savedTheme) {
+                body.setAttribute('data-theme', savedTheme);
+            } else {
+                body.setAttribute('data-theme', systemPrefersDark ? 'dark' : 'light');
+            }
+            
+            // Update icon based on current theme
+            function updateIcon() {
+                const currentTheme = body.getAttribute('data-theme');
+                themeIcon.className = currentTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+            }
+            
+            // Initialize icon
+            updateIcon();
+            
+            // Toggle theme when button is clicked
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateIcon();
+            });
+            
+            // Watch for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                if (!localStorage.getItem('theme')) {
+                    body.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+                    updateIcon();
+                }
+            });
         });
     </script>
 </body>

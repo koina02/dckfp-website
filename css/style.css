@@ -153,3 +153,54 @@ footer {
 .animated {
     animation: fadeIn 0.6s ease-out forwards;
 }
+
+/* Theme Variables */
+:root {
+    /* Dark theme defaults */
+    --primary: #1a4b8c;
+    --secondary: #f0b72f;
+    --accent: #2e7dcc;
+    --background: #121212;
+    --background-secondary: #1E1E1E;
+    --text: #E0E0E0;
+    --text-secondary: #A0A0A0;
+    --card-bg: #1e2a3a;
+    --header-bg: rgba(30, 30, 30, 0.95);
+    --border-color: rgba(255,255,255,0.05);
+}
+
+[data-theme="light"] {
+    /* Light theme variables */
+    --primary: #0A2463;
+    --secondary: #FF8C00; /* Slightly darker orange for better contrast */
+    --accent: #3E92CC;
+    --background: #ffffff;
+    --background-secondary: #f5f5f5;
+    --text: #333333;
+    --text-secondary: #666666;
+    --card-bg: #ffffff;
+    --header-bg: rgba(255, 255, 255, 0.95);
+    --border-color: rgba(0,0,0,0.1);
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header {
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Update all other elements to use these variables */
+.post-card, .feature-card, .newsletter {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+/* Update logo filter for light mode */
+[data-theme="light"] .logo img {
+    filter: brightness(0) invert(0);
+}
