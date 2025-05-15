@@ -98,6 +98,16 @@
             font-weight: 400;
             transition: color 0.3s ease;
         }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
         
         nav ul {
             display: flex;
@@ -105,8 +115,80 @@
             gap: 1.5rem;
             margin: 0;
             padding: 0;
+            transition: all 0.3s ease;
         }
-        
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--dark-secondary);
+                backdrop-filter: blur(10px);
+                padding: 2rem;
+                transition: all 0.3s ease;
+                z-index: 1000;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+            }
+
+            nav.active {
+                right: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                height: 100%;
+                padding-top: 4rem;
+            }
+
+            nav a {
+                font-size: 1.1rem;
+                padding: 1rem 0;
+                display: block;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .menu-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                backdrop-filter: blur(5px);
+                z-index: 999;
+                display: none;
+            }
+
+            .menu-overlay.active {
+                display: block;
+            }
+
+            .header-container {
+                position: relative;
+                z-index: 1001;
+            }
+        }
+
+        /* Update existing mobile styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 1rem;
+            }
+
+            .logo-text h1 {
+                font-size: 1.2rem;
+            }
+        }
+
         nav a {
             text-decoration: none;
             color: var(--light);
@@ -400,7 +482,7 @@
             font-weight: 300;
         }
         
-        /* Dark mode toggle */
+        /* Updated Theme Toggle Styles */
         .dark-mode-toggle {
             position: fixed;
             bottom: 2rem;
@@ -414,41 +496,104 @@
             justify-content: center;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            border: 1px solid var(--border-color);
+            border: 2px solid var(--secondary);
             z-index: 99;
             transition: all 0.3s ease;
         }
 
         .dark-mode-toggle:hover {
             transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
 
         .dark-mode-toggle i {
             color: var(--secondary);
-            font-size: 1.2rem;
-            transition: color 0.3s ease;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
         }
-        
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                padding: 1rem;
-            }
-            
-            nav ul {
-                margin-top: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-            
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .page-header h2 {
-                font-size: 2rem;
-            }
+
+        /* Ensure visibility in both themes */
+        [data-theme="light"] .dark-mode-toggle {
+            border-color: var(--primary);
+        }
+
+        [data-theme="light"] .dark-mode-toggle i {
+            color: var(--primary);
+        }
+
+        /* Improved contrast for light theme */
+        [data-theme="light"] {
+            --primary: #0A2463;
+            --secondary: #D4AF37; /* More visible gold */
+            --accent: #3E92CC;
+            --background: #f8f9fa;
+            --background-secondary: #ffffff;
+            --text: #212529;
+            --text-secondary: #495057;
+            --card-bg: #ffffff;
+            --header-bg: rgba(255, 255, 255, 0.98);
+            --border-color: rgba(0,0,0,0.1);
+            --logo-filter: none;
+        }
+
+        /* Ensure form inputs are visible in both themes */
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            background: rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text);
+        }
+
+        [data-theme="dark"] .form-group input,
+        [data-theme="dark"] .form-group textarea,
+        [data-theme="dark"] .form-group select {
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* Make sure all text is readable */
+        body {
+            color: var(--text);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text);
+        }
+
+        /* Ensure cards have proper contrast */
+        .contact-info,
+        .contact-form,
+        .office-hours {
+            background: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Table styling for both themes */
+        .hours-table th {
+            color: var(--text);
+        }
+
+        .hours-table td {
+            color: var(--text-secondary);
+        }
+
+        /* Footer contrast */
+        footer {
+            background: var(--background-secondary);
+            color: var(--text);
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
         }
     </style>
 </head>
@@ -645,7 +790,7 @@
     </button>
 
     <script>
-        // Theme toggle functionality
+        // Enhanced Theme Toggle Functionality
         document.addEventListener('DOMContentLoaded', function() {
             const themeToggle = document.getElementById('darkModeToggle');
             const themeIcon = document.getElementById('themeIcon');
@@ -665,7 +810,13 @@
             // Update icon based on current theme
             function updateIcon() {
                 const currentTheme = body.getAttribute('data-theme');
-                themeIcon.className = currentTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+                if (currentTheme === 'dark') {
+                    themeIcon.className = 'fas fa-sun';
+                    themeIcon.style.color = '#f0b72f'; // Gold color for dark mode
+                } else {
+                    themeIcon.className = 'fas fa-moon';
+                    themeIcon.style.color = '#0A2463'; // Dark blue for light mode
+                }
             }
             
             // Initialize icon
@@ -679,13 +830,28 @@
                 body.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
                 updateIcon();
+                
+                // Update toggle button border color
+                if (newTheme === 'dark') {
+                    themeToggle.style.borderColor = '#f0b72f';
+                } else {
+                    themeToggle.style.borderColor = '#0A2463';
+                }
             });
             
             // Watch for system theme changes
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
                 if (!localStorage.getItem('theme')) {
-                    body.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+                    const newTheme = e.matches ? 'dark' : 'light';
+                    body.setAttribute('data-theme', newTheme);
                     updateIcon();
+                    
+                    // Update toggle button border color
+                    if (newTheme === 'dark') {
+                        themeToggle.style.borderColor = '#f0b72f';
+                    } else {
+                        themeToggle.style.borderColor = '#0A2463';
+                    }
                 }
             });
         });
