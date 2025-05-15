@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact | Diplomatic College of Kenyan Foreign Policy</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <style>
+            :root {
+                --primary: #4CAF50; /* Diplomatic green */
+                --secondary: #FFC107; /* Gold accent */
+                --accent: #2196F3; /* Blue accent */
+                --dark: #121212; /* Deep dark background */
+                --dark-secondary: #1E1E1E; /* Slightly lighter dark */
+                --light: #E0E0E0; /* Light text */
+                --light-secondary: #A0A0A0; /* Secondary text */
+            }
+            
+            body {
+                font-family: 'Inter', sans-serif;
+                margin: 0;
+                padding: 0;
+                color: var(--light);
+                background-color: var(--dark);
+                line-height: 1.6;
+                -webkit-font-smoothing: antialiased;
+            }
+            
+            header {
+                background: rgba(30, 30, 30, 0.95);
+                box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+                position: sticky;
+                top: 0;
+                z-index: 100;
+                backdrop-filter: blur(8px);
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }
+            
+            .header-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 1rem 2rem;
+            }
+            
+            .logo {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .logo img {
+                height: 50px;
+                filter: brightness(0) invert(1);
+            }
+            
+            .logo-text h1 {
+                font-size: 1.5rem;
+                margin: 0;
+                color: white;
+                font-weight: 600;
+            }
+            
+            .logo-text p {
+                font-size: 0.8rem;
+                margin: 0;
+                color: var(--light-secondary);
+                font-weight: 400;
+            }
+            
+            nav ul {
+                display: flex;
+                list-style: none;
+                gap: 1.5rem;
+                margin: 0;
+                padding: 0;
+            }
+            
+            nav a {
+                text-decoration: none;
+                color: var(--light);
+                font-weight: 500;
+                transition: all 0.3s;
+                position: relative;
+                padding: 0.5rem 0;
+            }
+            
+            nav a:hover {
+                color: var(--primary);
+            }
+            
+            nav a.active {
+                color: var(--primary);
+                font-weight: 600;
+            }
+            
+            nav a.active:after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background: var(--primary);
+            }
+            
+            main {
+                max-width: 1200px;
+                margin: 3rem auto;
+                padding: 0 2rem;
+            }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .page-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .page-header p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--light);
+            opacity: 0.9;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .about-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .about-text h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .about-text p {
+            color: var(--light);
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+        
+        .about-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            height: fit-content;
+            border: 1px solid var(--medium);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .mission-vision {
+            background: var(--darker);
+            padding: 3rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            border: 1px solid var(--medium);
+        }
+        
+        .mv-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .mv-item {
+            background: var(--medium);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .mv-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .mv-item h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .mv-item h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .mv-item p {
+            color: var(--light);
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+        
+        .leadership {
+            margin-top: 5rem;
+        }
+        
+        .leadership h3 {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background: var(--darker);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            border: 1px solid var(--medium);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            border-color: var(--primary);
+        }
+        
+        .member-image {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .member-image:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+        }
+        
+        .member-info {
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .member-info h4 {
+            margin: 0 0 0.3rem 0;
+            color: var(--lighter);
+            font-size: 1.3rem;
+        }
+        
+        .member-info p {
+            color: var(--light);
+            margin: 0;
+            opacity: 0.9;
+        }
+        
+        .member-position {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+        
+        .partners {
+            margin-top: 5rem;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--medium) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 12px;
+            border: 1px solid var(--medium);
+        }
+        
+        .partners h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--lighter);
+        }
+        
+        .partner-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .partner-logo {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            opacity: 0.8;
+            transition: all 0.3s;
+        }
+        
+        .partner-logo:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        footer {
+            background: var(--dark-secondary);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            max-width: 180px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .footer-about p {
+            color: var(--light-secondary);
+            font-weight: 300;
+            margin-top: 0.5rem;
+        }
+        
+        .footer-links h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: var(--light-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 300;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-links i {
+            margin-right: 0.5rem;
+            width: 16px;
+            text-align: center;
+            color: var(--light-secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--medium);
+            color: var(--light);
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+            
+            nav ul {
+                margin-top: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .mv-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .partner-logos {
+                gap: 2rem;
+            }
+            
+            .partner-logo {
+                height: 60px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-header h2 {
+                font-size: 2rem;
+            }
+            
+            .leadership h3, .partners h3 {
+                font-size: 1.5rem;
+            }
+            
+            .member-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-text">
+                    <h1>Diplomatic College</h1>
+                    <p>of Kenyan Foreign Policy</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h2>About DCKFP</h2>
+            <p>Shaping Kenya's global diplomatic strategy through research, training, and policy engagement</p>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <div>
+                    <h3>Our Institution</h3>
+                    <p>The Diplomatic College of Kenyan Foreign Policy (DCKFP) is Nairobi's premier institution dedicated to advancing Kenya's global diplomatic strategy. Established in 2024, we serve as a bridge between academic research and practical foreign policy implementation.</p>
+                    <p>Our work focuses on strengthening Kenya's position in regional and international affairs while developing the next generation of diplomatic leaders.</p>
+                </div>
+                
+                <div>
+                    <h3>Our History</h3>
+                    <p>Founded through a partnership between the Kenyan Ministry of Foreign Affairs and leading academic institutions, DCKFP builds on Kenya's rich diplomatic tradition dating back to the early years of independence.</p>
+                    <p>Over the years, we have grown to become a recognized center of excellence in African diplomacy and foreign policy analysis.</p>
+                </div>
+            </div>
+            
+            <div class="about-image">
+                <img src="https://sirfrancismarketingltd.co.ke/wp-content/uploads/2023/06/354039607_643804947786570_7675749680744266194_n.jpg" alt="Modern Office Building">
+            </div>
+        </div>
+        
+        <div class="mission-vision">
+            <div class="mv-container">
+                <div class="mv-item">
+                    <h3>Our Mission</h3>
+                    <p>To train Kenya's future diplomats and shape evidence-based foreign policy for Africa's geopolitical landscape through rigorous research, innovative training programs, and strategic policy engagement.</p>
+                </div>
+                
+                <div class="mv-item">
+                    <h3>Our Vision</h3>
+                    <p>To be Africa's leading institution for diplomatic excellence, recognized for developing transformative foreign policy solutions and producing world-class diplomatic professionals.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="leadership">
+            <h3>Our Leadership</h3>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image" style="background-image: url('https://media.gettyimages.com/id/1227664687/photo/kenyas-former-wto-general-council-chair-amina-mohamed-attends-a-press-conference-following.jpg?s=612x612&w=0&k=20&c=m1g2KT0kfYr8DunaHVP0mxpa-MnH8R-SWTQdn3TAKpY=')"></div>
+                    <div class="member-info">
+                        <h4> Amb. Amina Mohamed</h4>
+                        <p class="member-position">Director General</p>
+                        <p>Former Cabinet Secretary </p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image" style="background-image: url('https://media.gettyimages.com/id/1157206619/photo/kenyas-elgeyo-marakwet-county-senator-kipchumba-murkomen-addresses-the-media-outside-the.jpg?s=612x612&w=0&k=20&c=HqttixNXP6IcymUjaSQp9WELK0SbCB1DPBx1kZHJbQA=')"></div>
+                    <div class="member-info">
+                        <h4>Dr. Kipchumba Murkomen</h4>
+                        <p class="member-position">Head of Research</p>
+                        <p>Expert in African Geopolitics</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image" style="background-image: url('https://www.chr.up.ac.za/images/about/staff/nkatha-murungi-1.jpg')"></div>
+                    <div class="member-info">
+                        <h4>Prof. Nkatha Muthomi</h4>
+                        <p class="member-position">Director of Training</p>
+                        <p>International Relations Scholar</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVV0BUzlMuchm7Foksjdvr9h2dMEnsorbjkA&s')"></div>
+                    <div class="member-info">
+                        <h4>Amb. John Mwangi</h4>
+                        <p class="member-position">Advisory Board Chair</p>
+                        <p>Former AU Representative</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="partners">
+            <h3>Our Partners</h3>
+            <div class="partner-logos">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/African_Union_%28AU%29_logo.svg/1200px-African_Union_%28AU%29_logo.svg.png" alt="African Union" class="partner-logo">
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <p>Advancing Kenya's global diplomatic excellence through research, training, and policy engagement.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="research.html"><i class="fas fa-chevron-right"></i> Publications</a></li>
+                    <li><a href="events.html"><i class="fas fa-chevron-right"></i> Events Calendar</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Research Papers</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Diplomatic Training</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> WestLands, Nairobi</li>
+                    <li><i class="fas fa-phone"></i> +2547 9132 5409</li>
+                    <li><i class="fas fa-envelope"></i> info@dckfp.org</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 Diplomatic College of Kenyan Foreign Policy. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

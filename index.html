@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Diplomatic College of Kenyan Foreign Policy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4b8c; /* Diplomatic blue */
+            --secondary: #f0b72f; /* Gold accent */
+            --accent: #2e7dcc; /* Light blue accent */
+            --dark: #121212; /* Deep dark background */
+            --dark-secondary: #1E1E1E; /* Slightly lighter dark */
+            --light: #E0E0E0; /* Light text */
+            --light-secondary: #A0A0A0; /* Secondary text */
+            --card-bg: #1e2a3a; /* Card background */
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--light);
+            background-color: var(--dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        header {
+            background: rgba(30, 30, 30, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo img {
+            height: 50px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .logo-text h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .logo-text p {
+            font-size: 0.8rem;
+            margin: 0;
+            color: var(--light-secondary);
+            font-weight: 400;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--light);
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+        }
+        
+        nav a.active {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        nav a.active:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 5rem 2rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--light-secondary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            margin-left: 1rem;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(240, 183, 47, 0.1);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--light-secondary);
+            font-weight: 300;
+        }
+        
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .post-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border-color: var(--accent);
+        }
+        
+        .post-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .post-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+        }
+        
+        .post-content {
+            padding: 1.5rem;
+        }
+        
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--light-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .post-meta .category {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        
+        .post-content h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.3rem;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .post-excerpt {
+            margin-bottom: 1.5rem;
+            color: var(--light-secondary);
+            font-weight: 300;
+        }
+        
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .read-more:hover {
+            color: white;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border-color: var(--accent);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            margin: 0 0 1rem 0;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .feature-card p {
+            color: var(--light-secondary);
+            font-size: 0.95rem;
+        }
+        
+        .newsletter {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 4rem;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .newsletter h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter p {
+            color: var(--light-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px 0 0 4px;
+            background: rgba(255,255,255,0.05);
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .newsletter-form input::placeholder {
+            color: var(--light-secondary);
+        }
+        
+        .newsletter-form button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+        
+        .newsletter-form button:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            background: var(--dark-secondary);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            max-width: 180px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .footer-about p {
+            color: var(--light-secondary);
+            font-weight: 300;
+            margin-top: 0.5rem;
+        }
+        
+        .footer-links h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: var(--light-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 300;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-links i {
+            margin-right: 0.5rem;
+            width: 16px;
+            text-align: center;
+            color: var(--light-secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem;
+            color: var(--light-secondary);
+            font-weight: 300;
+        }
+        
+        /* Dark mode toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--dark-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            z-index: 99;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .hero {
+                padding: 3rem 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 4px;
+                margin-bottom: 0.5rem;
+            }
+            
+            .newsletter-form button {
+                border-radius: 4px;
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-text">
+                    <h1>Diplomatic College</h1>
+                    <p>of Kenyan Foreign Policy</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Advancing Kenya's Global Diplomatic Excellence</h1>
+            <p>Research, training, and policy engagement for a stronger Kenya in the international arena</p>
+            <div>
+                <a href="about.html" class="btn">Learn More</a>
+                <a href="events.html" class="btn btn-secondary">Upcoming Events</a>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section>
+            <div class="section-title">
+                <h2>Our Core Functions</h2>
+                <p>Driving Kenya's foreign policy through cutting-edge research, capacity building, and strategic engagement</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Policy Research</h3>
+                    <p>In-depth analysis and recommendations to shape Kenya's foreign policy priorities and positions.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Diplomatic Training</h3>
+                    <p>Professional development programs for current and aspiring Kenyan diplomats and international relations practitioners.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Strategic Engagement</h3>
+                    <p>Convening platforms for dialogue between government, academia, and civil society on foreign policy issues.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Posts Section -->
+        <section>
+            <div class="section-title">
+                <h2>Latest News & Publications</h2>
+                <p>Stay updated with our recent research outputs, news coverage, and institutional updates</p>
+            </div>
+            
+            <div class="posts-grid">
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar-alt"></i> 10 May 2024</span>
+                            <span class="category">Research</span>
+                        </div>
+                        <h3>Kenya's Climate Diplomacy Strategy in the Horn of Africa</h3>
+                        <p class="post-excerpt">New research paper analyzes Kenya's leadership role in regional climate adaptation initiatives and proposes policy recommendations.</p>
+                        <a href="#" class="read-more">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar-alt"></i> 5 May 2024</span>
+                            <span class="category">News</span>
+                        </div>
+                        <h3>DCKFP Director Addresses AU Summit on Regional Security</h3>
+                        <p class="post-excerpt">Director General Dr. Wanjiku Mboya presented Kenya's vision for enhanced conflict resolution mechanisms in the Horn of Africa.</p>
+                        <a href="#" class="read-more">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="post-card">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar-alt"></i> 28 April 2024</span>
+                            <span class="category">Publication</span>
+                        </div>
+                        <h3>Policy Brief: Kenya-EU Economic Partnership Agreement Review</h3>
+                        <p class="post-excerpt">Our latest policy brief examines the implementation challenges and opportunities of the Kenya-EU EPA since its ratification.</p>
+                        <a href="#" class="read-more">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter">
+            <h2>Subscribe to Our Newsletter</h2>
+            <p>Receive monthly updates on our research publications, upcoming events, and Kenya's foreign policy developments.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address">
+                <button type="submit">Subscribe</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <p>Advancing Kenya's global diplomatic excellence through research, training, and policy engagement.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="research.html"><i class="fas fa-chevron-right"></i> Publications</a></li>
+                    <li><a href="events.html"><i class="fas fa-chevron-right"></i> Events Calendar</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Research Papers</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Diplomatic Training</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> WestLands, Nairobi</li>
+                    <li><i class="fas fa-phone"></i> +2547 9132 5409</li>
+                    <li><i class="fas fa-envelope"></i> info@dckfp.org</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 Diplomatic College of Kenyan Foreign Policy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <script>
+        // This would normally toggle between light/dark mode
+        // But since we're implementing dark mode by default, this is just a placeholder
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            alert('Dark mode is currently the default theme. Light mode could be implemented with additional JavaScript.');
+        });
+    </script>
+</body>
+</html>

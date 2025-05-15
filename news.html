@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News | Diplomatic College of Kenyan Foreign Policy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4CAF50; /* Diplomatic green */
+            --secondary: #FFC107; /* Gold accent */
+            --accent: #2196F3; /* Blue accent */
+            --dark: #121212; /* Deep dark background */
+            --dark-secondary: #1E1E1E; /* Slightly lighter dark */
+            --light: #E0E0E0; /* Light text */
+            --light-secondary: #A0A0A0; /* Secondary text */
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--light);
+            background-color: var(--dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        header {
+            background: rgba(30, 30, 30, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo img {
+            height: 50px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .logo-text h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .logo-text p {
+            font-size: 0.8rem;
+            margin: 0;
+            color: var(--light-secondary);
+            font-weight: 400;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--light);
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        nav a.active:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .page-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .page-header p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--light-secondary);
+            font-weight: 300;
+        }
+        
+        .news-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .featured-news {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .news-card {
+            background: var(--dark-secondary);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border-color: rgba(76, 175, 80, 0.3);
+        }
+        
+        .news-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .news-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+        }
+        
+        .news-content {
+            padding: 1.5rem;
+        }
+        
+        .news-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--light-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .news-meta .source {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .news-content h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.5rem;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .news-excerpt {
+            margin-bottom: 1.5rem;
+            color: var(--light-secondary);
+            font-weight: 300;
+        }
+        
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .read-more:hover {
+            color: var(--secondary);
+        }
+        
+        .sidebar {
+            background: var(--dark-secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            height: fit-content;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .sidebar h3 {
+            color: white;
+            margin-top: 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+            font-weight: 600;
+        }
+        
+        .sidebar-news {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .sidebar-item {
+            display: flex;
+            gap: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s;
+        }
+        
+        .sidebar-item:hover {
+            border-bottom-color: var(--primary);
+        }
+        
+        .sidebar-item:last-child {
+            border-bottom: none;
+        }
+        
+        .sidebar-item img {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        
+        .sidebar-content h4 {
+            margin: 0 0 0.3rem 0;
+            font-size: 1rem;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .sidebar-meta {
+            font-size: 0.8rem;
+            color: var(--light-secondary);
+        }
+        
+        .news-categories {
+            margin-top: 2rem;
+        }
+        
+        .category-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 0 0;
+        }
+        
+        .category-list li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .category-list a {
+            display: block;
+            padding: 0.5rem;
+            color: var(--light-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+            border-radius: 4px;
+            font-weight: 300;
+        }
+        
+        .category-list a:hover {
+            background: rgba(76, 175, 80, 0.1);
+            color: var(--primary);
+            padding-left: 1rem;
+        }
+        
+        .newsletter-signup {
+            margin-top: 2rem;
+        }
+        
+        .newsletter-signup h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .newsletter-signup p {
+            color: var(--light-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter-signup form {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .newsletter-signup input {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            background: rgba(255,255,255,0.05);
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .newsletter-signup input::placeholder {
+            color: var(--light-secondary);
+        }
+        
+        .newsletter-signup button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+        
+        .newsletter-signup button:hover {
+            background: #3d8b40;
+        }
+        
+        footer {
+            background: var(--dark-secondary);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            max-width: 180px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .footer-about p {
+            color: var(--light-secondary);
+            font-weight: 300;
+            margin-top: 0.5rem;
+        }
+        
+        .footer-links h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: var(--light-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 300;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-links i {
+            margin-right: 0.5rem;
+            width: 16px;
+            text-align: center;
+            color: var(--light-secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem;
+            color: var(--light-secondary);
+            font-weight: 300;
+        }
+        
+        /* Dark mode toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--dark-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            z-index: 99;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .news-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-image {
+                height: 200px;
+            }
+            
+            .page-header h2 {
+                font-size: 2rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-text">
+                    <h1>Diplomatic College</h1>
+                    <p>of Kenyan Foreign Policy</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="news.html" class="active">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h2>News & Commentary</h2>
+            <p>Latest updates, media coverage, and expert analysis on Kenya's foreign policy and diplomatic engagements</p>
+        </div>
+        
+        <div class="news-container">
+            <div class="featured-news">
+                <div class="news-card">
+                    <div class="news-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0mExrTgzD-VnJ1m9k-2UVKQhqOmr5BJlSvODMvhXhNbXPUq_4ZpKZXbL8PIr0VJ3Lz-g&usqp=CAU')"></div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar-alt"></i> 10 May 2024</span>
+                            <span class="source">Daily Nation</span>
+                        </div>
+                        <h3>DCOKFP Director Addresses AU Summit on Regional Security</h3>
+                        <p class="news-excerpt">Director General Dr. Wanjiku Mboya presented Kenya's vision for enhanced conflict resolution mechanisms in the Horn of Africa during the 37th Ordinary Session of the AU Assembly in Addis Ababa.</p>
+                        <a href="#" class="read-more">
+                            Read Full Story <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image" style="background-image: url('data:image/jpeg;base64,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')"></div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar-alt"></i> 5 May 2024</span>
+                            <span class="source">The EastAfrican</span>
+                        </div>
+                        <h3>Op-Ed: Leveraging Kenya's Soft Power in African Diplomacy</h3>
+                        <p class="news-excerpt">Senior Fellow Dr. Kipchumba Murkomen analyzes how Kenya's cultural exports, peacekeeping record, and economic partnerships can strengthen its continental leadership position.</p>
+                        <a href="#" class="read-more">
+                            Read Full Story <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image" style="background-image: url('data:image/jpeg;base64,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')"></div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar-alt"></i> 28 April 2024</span>
+                            <span class="source">UN News</span>
+                        </div>
+                        <h3>Kenya's Permanent Representative Advocates for Climate Finance Reform at UN</h3>
+                        <p class="news-excerpt">Ambassador Martin Kimani calls for equitable access to climate funding for African nations during high-level UN General Assembly debate on sustainable development.</p>
+                        <a href="#" class="read-more">
+                            Read Full Story <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <h3>Latest Updates</h3>
+                <div class="sidebar-news">
+                    <div class="sidebar-item">
+                        <img src="images/training-workshop.jpg" alt="Training Workshop">
+                        <div class="sidebar-content">
+                            <h4>Diplomatic Training Program Graduation</h4>
+                            <div class="sidebar-meta">
+                                <span><i class="far fa-calendar-alt"></i> 3 May 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-item">
+                        <img src="images/book-launch.jpg" alt="Book Launch">
+                        <div class="sidebar-content">
+                            <h4>New Publication: Kenya-EU Relations</h4>
+                            <div class="sidebar-meta">
+                                <span><i class="far fa-calendar-alt"></i> 25 April 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-item">
+                        <img src="images/igad-meeting.jpg" alt="IGAD Meeting">
+                        <div class="sidebar-content">
+                            <h4>DCKFP Experts Contribute to IGAD Policy Review</h4>
+                            <div class="sidebar-meta">
+                                <span><i class="far fa-calendar-alt"></i> 18 April 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-categories">
+                    <h3>News Categories</h3>
+                    <ul class="category-list">
+                        <li><a href="#">Press Releases</a></li>
+                        <li><a href="#">Expert Commentary</a></li>
+                        <li><a href="#">Media Coverage</a></li>
+                        <li><a href="#">Institutional News</a></li>
+                        <li><a href="#">Event Recaps</a></li>
+                    </ul>
+                </div>
+                
+                <div class="newsletter-signup">
+                    <h3>Stay Updated</h3>
+                    <p>Subscribe to our newsletter for weekly foreign policy updates</p>
+                    <form>
+                        <input type="email" placeholder="Your email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <p>Advancing Kenya's global diplomatic excellence through research, training, and policy engagement.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="research.html"><i class="fas fa-chevron-right"></i> Publications</a></li>
+                    <li><a href="events.html"><i class="fas fa-chevron-right"></i> Events Calendar</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Research Papers</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Diplomatic Training</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> WestLands, Nairobi</li>
+                    <li><i class="fas fa-phone"></i> +2547 9132 5409</li>
+                    <li><i class="fas fa-envelope"></i> info@dckfp.org</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 Diplomatic College of Kenyan Foreign Policy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <script>
+        // This would normally toggle between light/dark mode
+        // But since we're implementing dark mode by default, this is just a placeholder
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            alert('Dark mode is currently the default theme. Light mode could be implemented with additional JavaScript.');
+        });
+    </script>
+</body>
+</html>

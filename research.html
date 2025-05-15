@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research | Diplomatic College of Kenyan Foreign Policy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4CAF50; /* Diplomatic green */
+            --secondary: #FFC107; /* Gold accent */
+            --accent: #2196F3; /* Blue accent */
+            --dark: #121212; /* Deep dark background */
+            --dark-secondary: #1E1E1E; /* Slightly lighter dark */
+            --light: #E0E0E0; /* Light text */
+            --light-secondary: #A0A0A0; /* Secondary text */
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--light);
+            background-color: var(--dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        header {
+            background: rgba(30, 30, 30, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo img {
+            height: 50px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .logo-text h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .logo-text p {
+            font-size: 0.8rem;
+            margin: 0;
+            color: var(--light-secondary);
+            font-weight: 400;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--light);
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        nav a.active:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .page-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .page-header p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--light-secondary);
+            font-weight: 300;
+        }
+        
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .publication-card {
+            background: var(--dark-secondary);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .publication-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border-color: rgba(76, 175, 80, 0.3);
+        }
+        
+        .card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .card-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .pub-type {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        
+        .card-content h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.3rem;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .pub-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--light-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-content p {
+            color: var(--light-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .download-btn:hover {
+            background: #3d8b40;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+        }
+        
+        .filter-bar {
+            background: var(--dark-secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+            font-weight: 500;
+        }
+        
+        .filter-group select, .filter-group input {
+            width: 100%;
+            padding: 0.5rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .filter-group select:focus, .filter-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        footer {
+            background: var(--dark-secondary);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            max-width: 180px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .footer-about p {
+            color: var(--light-secondary);
+            font-weight: 300;
+            margin-top: 0.5rem;
+        }
+        
+        .footer-links h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: var(--light-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 300;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-links i {
+            margin-right: 0.5rem;
+            width: 16px;
+            text-align: center;
+            color: var(--light-secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem;
+            color: var(--light-secondary);
+            font-weight: 300;
+        }
+        
+        /* Dark mode toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--dark-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            z-index: 99;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-header h2 {
+                font-size: 2rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+            
+            .filter-bar {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-text">
+                    <h1>Diplomatic College</h1>
+                    <p>of Kenyan Foreign Policy</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="research.html" class="active">Research</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h2>Research & Publications</h2>
+            <p>Evidence-based policy analysis shaping Kenya's foreign relations and diplomatic strategy</p>
+        </div>
+        
+        <div class="filter-bar">
+            <div class="filter-group">
+                <label for="pub-type">Publication Type</label>
+                <select id="pub-type">
+                    <option value="all">All Types</option>
+                    <option value="policy-brief">Policy Brief</option>
+                    <option value="research-report">Research Report</option>
+                    <option value="working-paper">Working Paper</option>
+                    <option value="journal-article">Journal Article</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="pub-year">Year</label>
+                <select id="pub-year">
+                    <option value="all">All Years</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="search">Search</label>
+                <input type="text" id="search" placeholder="Keywords...">
+            </div>
+        </div>
+        
+        <div class="research-grid">
+            <div class="publication-card">
+                <div class="card-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy-1iXeGOzFdII467PaB8ajdhBeJuQj77L0RZnjEUqA1VQS48PsZd0XZaB0OVt1U5pAfw&usqp=CAU')"></div>
+                <div class="card-content">
+                    <span class="pub-type">Policy Brief</span>
+                    <h3>Kenya's Economic Diplomacy in the EAC</h3>
+                    <div class="pub-meta">
+                        <span><i class="fas fa-calendar-alt"></i> March 2024</span>
+                        <span><i class="fas fa-file-pdf"></i> 12 pages</span>
+                    </div>
+                    <p>An analysis of Kenya's trade and investment strategies within the East African Community and their geopolitical implications.</p>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+            
+            <div class="publication-card">
+                <div class="card-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8iAWyDdaIYZywJtFVCpMZgjjdbpQsk6agWQ&s')"></div>
+                <div class="card-content">
+                    <span class="pub-type">Research Report</span>
+                    <h3>Climate Security in the Horn of Africa</h3>
+                    <div class="pub-meta">
+                        <span><i class="fas fa-calendar-alt"></i> February 2024</span>
+                        <span><i class="fas fa-file-pdf"></i> 28 pages</span>
+                    </div>
+                    <p>Examining the intersection of climate change and regional stability, with policy recommendations for Kenyan diplomacy.</p>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+            
+            <div class="publication-card">
+                <div class="card-image" style="background-image: url('https://www.passblue.com/wp-content/uploads/2022/10/2022-10-26_UNSC_Ukraine_Article-100_0378.jpg')"></div>
+                <div class="card-content">
+                    <span class="pub-type">Working Paper</span>
+                    <h3>Kenya's UNSC Priorities: A Retrospective</h3>
+                    <div class="pub-meta">
+                        <span><i class="fas fa-calendar-alt"></i> January 2024</span>
+                        <span><i class="fas fa-file-pdf"></i> 18 pages</span>
+                    </div>
+                    <p>Evaluation of Kenya's 2021-2022 term on the UN Security Council and lessons for future multilateral engagement.</p>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <p>Advancing Kenya's global diplomatic excellence through research, training, and policy engagement.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="research.html"><i class="fas fa-chevron-right"></i> Publications</a></li>
+                    <li><a href="events.html"><i class="fas fa-chevron-right"></i> Events Calendar</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Research Papers</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Diplomatic Training</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> WestLands, Nairobi</li>
+                    <li><i class="fas fa-phone"></i> +2547 9132 5409</li>
+                    <li><i class="fas fa-envelope"></i> info@dckfp.org</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 Diplomatic College of Kenyan Foreign Policy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <script>
+        // This would normally toggle between light/dark mode
+        // But since we're implementing dark mode by default, this is just a placeholder
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            alert('Dark mode is currently the default theme. Light mode could be implemented with additional JavaScript.');
+        });
+    </script>
+</body>
+</html>
