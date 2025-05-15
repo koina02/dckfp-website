@@ -9,35 +9,57 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Theme Variables */
         :root {
-            --primary: #1a4b8c; /* Diplomatic blue */
-            --secondary: #f0b72f; /* Gold accent */
-            --accent: #2e7dcc; /* Light blue accent */
-            --dark: #121212; /* Deep dark background */
-            --dark-secondary: #1E1E1E; /* Slightly lighter dark */
-            --light: #E0E0E0; /* Light text */
-            --light-secondary: #A0A0A0; /* Secondary text */
-            --card-bg: #1e2a3a; /* Card background */
+            /* Dark theme defaults */
+            --primary: #1a4b8c;
+            --secondary: #f0b72f;
+            --accent: #2e7dcc;
+            --background: #121212;
+            --background-secondary: #1E1E1E;
+            --text: #E0E0E0;
+            --text-secondary: #A0A0A0;
+            --card-bg: #1e2a3a;
+            --header-bg: rgba(30, 30, 30, 0.95);
+            --border-color: rgba(255,255,255,0.05);
+            --logo-filter: brightness(0) invert(1);
+        }
+
+        [data-theme="light"] {
+            /* Light theme variables */
+            --primary: #0A2463;
+            --secondary: #FF8C00;
+            --accent: #3E92CC;
+            --background: #ffffff;
+            --background-secondary: #f5f5f5;
+            --text: #333333;
+            --text-secondary: #666666;
+            --card-bg: #ffffff;
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --border-color: rgba(0,0,0,0.1);
+            --logo-filter: none;
         }
         
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            color: var(--light);
-            background-color: var(--dark);
+            color: var(--text);
+            background-color: var(--background);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         
         header {
-            background: rgba(30, 30, 30, 0.95);
+            background: var(--header-bg);
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
             position: sticky;
             top: 0;
             z-index: 100;
             backdrop-filter: blur(8px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         
         .header-container {
@@ -57,21 +79,24 @@
         
         .logo img {
             height: 50px;
-            filter: brightness(0) invert(1);
+            filter: var(--logo-filter);
+            transition: filter 0.3s ease;
         }
         
         .logo-text h1 {
             font-size: 1.5rem;
             margin: 0;
-            color: white;
+            color: var(--text);
             font-weight: 600;
+            transition: color 0.3s ease;
         }
         
         .logo-text p {
             font-size: 0.8rem;
             margin: 0;
-            color: var(--light-secondary);
+            color: var(--text-secondary);
             font-weight: 400;
+            transition: color 0.3s ease;
         }
         
         nav ul {
