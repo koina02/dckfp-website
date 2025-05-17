@@ -3,43 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research | Diplomatic College of Kenyan Foreign Policy</title>
+    <title>Diplomatic College of Kenyan Foreign Policy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Theme Variables */
         :root {
-            /* Dark theme defaults */
             --primary: #1a4b8c;
             --secondary: #f0b72f;
             --accent: #2e7dcc;
-            --background: #121212;
-            --background-secondary: #1E1E1E;
-            --text: #E0E0E0;
-            --text-secondary: #A0A0A0;
-            --card-bg: #1e2a3a;
-            --header-bg: rgba(30, 30, 30, 0.95);
-            --border-color: rgba(255,255,255,0.05);
-            --logo-filter: brightness(0) invert(1);
-        }
-
-        [data-theme="light"] {
-            /* Light theme variables */
-            --primary: #0A2463;
-            --secondary: #FF8C00;
-            --accent: #3E92CC;
             --background: #ffffff;
-            --background-secondary: #f5f5f5;
             --text: #333333;
             --text-secondary: #666666;
-            --card-bg: #ffffff;
-            --header-bg: rgba(255, 255, 255, 0.95);
+            --card-bg: #f8f9fa;
             --border-color: rgba(0,0,0,0.1);
-            --logo-filter: none;
         }
-        
+
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
@@ -48,20 +32,16 @@
             background-color: var(--background);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-            transition: background-color 0.3s ease, color 0.3s ease;
         }
-        
+
         header {
-            background: var(--header-bg);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--border-color);
-            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
-        
+
         .header-container {
             display: flex;
             justify-content: space-between;
@@ -70,35 +50,31 @@
             margin: 0 auto;
             padding: 1rem 2rem;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
-        
+
         .logo img {
             height: 50px;
-            filter: var(--logo-filter);
-            transition: filter 0.3s ease;
         }
-        
+
         .logo-text h1 {
             font-size: 1.5rem;
             margin: 0;
-            color: var(--text);
+            color: var(--primary);
             font-weight: 600;
-            transition: color 0.3s ease;
         }
-        
+
         .logo-text p {
             font-size: 0.8rem;
             margin: 0;
             color: var(--text-secondary);
             font-weight: 400;
-            transition: color 0.3s ease;
         }
-        
+
         nav ul {
             display: flex;
             list-style: none;
@@ -106,7 +82,7 @@
             margin: 0;
             padding: 0;
         }
-        
+
         nav a {
             text-decoration: none;
             color: var(--text);
@@ -134,95 +110,83 @@
             height: 2px;
             background: var(--secondary);
         }
-        
+
         main {
             max-width: 1200px;
-            margin: 3rem auto;
+            margin: 2rem auto;
             padding: 0 2rem;
         }
-        
+
         .page-header {
             text-align: center;
             margin-bottom: 3rem;
-            position: relative;
+            padding: 3rem 0;
         }
-        
+
         .page-header h2 {
             font-size: 2.5rem;
             color: var(--secondary);
             margin-bottom: 1rem;
             font-weight: 700;
         }
-        
+
         .page-header p {
             font-size: 1.1rem;
             max-width: 700px;
             margin: 0 auto;
-            color: var(--light);
-            opacity: 0.9;
+            color: var(--text-secondary);
         }
-        
+
         .research-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
-        
+
         .publication-card {
-            background: var(--card-bg);
+            background: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
             border: 1px solid var(--border-color);
         }
-        
+
         .publication-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            border-color: var(--accent);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-        
+
         .card-image {
             height: 200px;
             background-size: cover;
             background-position: center;
             position: relative;
         }
-        
-        .card-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
-        }
-        
+
         .card-content {
             padding: 1.5rem;
         }
-        
+
         .pub-type {
             display: inline-block;
             background: var(--accent);
-            color: var(--background);
+            color: white;
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
             margin-bottom: 0.8rem;
         }
-        
+
         .card-content h3 {
             margin: 0 0 1rem 0;
             font-size: 1.3rem;
             color: var(--text);
             font-weight: 600;
         }
-        
+
         .pub-meta {
             display: flex;
             justify-content: space-between;
@@ -230,13 +194,13 @@
             font-size: 0.9rem;
             margin-bottom: 1.5rem;
         }
-        
+
         .card-content p {
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
-            font-weight: 300;
+            line-height: 1.6;
         }
-        
+
         .download-btn {
             display: inline-flex;
             align-items: center;
@@ -249,15 +213,14 @@
             font-weight: 500;
             transition: all 0.3s;
         }
-        
+
         .download-btn:hover {
             background: var(--accent);
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
         }
-        
+
         .filter-bar {
-            background: var(--background-secondary);
+            background: white;
             padding: 1.5rem;
             border-radius: 8px;
             margin-bottom: 2rem;
@@ -266,42 +229,37 @@
             gap: 1rem;
             border: 1px solid var(--border-color);
         }
-        
+
         .filter-group {
             flex: 1;
             min-width: 200px;
         }
-        
+
         .filter-group label {
             display: block;
             margin-bottom: 0.5rem;
             color: var(--text);
             font-weight: 500;
         }
-        
+
         .filter-group select, .filter-group input {
             width: 100%;
             padding: 0.5rem;
-            background: rgba(255,255,255,0.05);
+            background: white;
             border: 1px solid var(--border-color);
             border-radius: 4px;
             color: var(--text);
             font-family: 'Inter', sans-serif;
         }
-        
-        .filter-group select:focus, .filter-group input:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-        
+
         footer {
-            background: var(--background-secondary);
+            background: var(--card-bg);
             color: var(--text);
             padding: 3rem 0;
             margin-top: 3rem;
             border-top: 1px solid var(--border-color);
         }
-        
+
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -310,93 +268,41 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
         }
-        
-        .footer-logo {
-            max-width: 180px;
-            filter: var(--logo-filter);
-            transition: filter 0.3s ease;
-        }
-        
+
         .footer-about p {
             color: var(--text-secondary);
             font-weight: 300;
             margin-top: 0.5rem;
         }
-        
+
         .footer-links h3 {
-            color: var(--primary);
+            color: var(--secondary);
             margin-bottom: 1rem;
             font-size: 1.1rem;
             font-weight: 600;
         }
-        
+
         .footer-links ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-        
+
         .footer-links li {
             margin-bottom: 0.5rem;
         }
-        
+
         .footer-links a {
             color: var(--text-secondary);
             text-decoration: none;
             transition: color 0.3s;
             font-weight: 300;
         }
-        
+
         .footer-links a:hover {
-            color: var(--text);
-        }
-        
-        .footer-links i {
-            margin-right: 0.5rem;
-            width: 16px;
-            text-align: center;
-            color: var(--text-secondary);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            margin-top: 2rem;
-            border-top: 1px solid var(--border-color);
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            font-weight: 300;
-        }
-        
-        /* Dark mode toggle */
-        .dark-mode-toggle {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--background-secondary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            border: 1px solid var(--border-color);
-            z-index: 99;
-            transition: all 0.3s ease;
+            color: var(--primary);
         }
 
-        .dark-mode-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .dark-mode-toggle i {
-            color: var(--secondary);
-            font-size: 1.2rem;
-            transition: color 0.3s ease;
-        }
-        
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
@@ -418,10 +324,6 @@
                 font-size: 2rem;
             }
             
-            .page-header p {
-                font-size: 1rem;
-            }
-            
             .filter-bar {
                 flex-direction: column;
                 gap: 1.5rem;
@@ -433,11 +335,9 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <div class="logo-text">
-                    <h1>Diplomatic College</h1>
-                    <p>of Kenyan Foreign Policy</p>
-                </div>
+                <img src="images/logo.jpg">
             </div>
+            
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -575,55 +475,44 @@
         </div>
     </footer>
 
-    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-        <i class="fas fa-moon" id="themeIcon"></i>
-    </button>
-
     <script>
-        // Theme toggle functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById('darkModeToggle');
-            const themeIcon = document.getElementById('themeIcon');
-            const body = document.body;
+        // Header Scroll Behavior
+        let lastScroll = 0;
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
             
-            // Check for saved theme preference or use system preference
-            const savedTheme = localStorage.getItem('theme');
-            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            
-            // Set initial theme
-            if (savedTheme) {
-                body.setAttribute('data-theme', savedTheme);
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                header.classList.add('header-hidden');
             } else {
-                body.setAttribute('data-theme', systemPrefersDark ? 'dark' : 'light');
+                header.classList.remove('header-hidden');
             }
-            
-            // Update icon based on current theme
-            function updateIcon() {
-                const currentTheme = body.getAttribute('data-theme');
-                themeIcon.className = currentTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-            }
-            
-            // Initialize icon
-            updateIcon();
-            
-            // Toggle theme when button is clicked
-            themeToggle.addEventListener('click', function() {
-                const currentTheme = body.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                
-                body.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                updateIcon();
-            });
-            
-            // Watch for system theme changes
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-                if (!localStorage.getItem('theme')) {
-                    body.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-                    updateIcon();
-                }
-            });
+            lastScroll = currentScroll;
         });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navUl = document.querySelector('nav ul');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navUl.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav') && !e.target.closest('.mobile-menu-btn')) {
+                navUl.classList.remove('active');
+            }
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('whiteModeToggle');
+        const body = document.body;
+
+        const savedTheme = localStorage.getItem('theme') || 'white';
+        body.setAttribute('data-theme', savedTheme);
+
     </script>
 </body>
 </html>
