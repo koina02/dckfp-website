@@ -13,30 +13,15 @@
             --primary: #1a4b8c;
             --secondary: #f0b72f;
             --accent: #2e7dcc;
-            --background: #121212;
-            --background-secondary: #1E1E1E;
-            --text: #E0E0E0;
-            --text-secondary: #A0A0A0;
-            --card-bg: #1e2a3a;
-            --border-color: rgba(255,255,255,0.05);
-            --logo-filter: brightness(0) invert(1);
-        }
-
-        [data-theme="light"] {
-            --primary: #0A2463;
-            --secondary: #FF8C00;
-            --accent: #3E92CC;
             --background: #ffffff;
-            --background-secondary: #f5f5f5;
             --text: #333333;
             --text-secondary: #666666;
-            --card-bg: #ffffff;
+            --card-bg: #f8f9fa;
             --border-color: rgba(0,0,0,0.1);
-            --logo-filter: none;
         }
 
         * {
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         body {
@@ -47,24 +32,14 @@
             background-color: var(--background);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-    
         }
 
         header {
-            position: fixed;
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
             top: 0;
-            width: 100%;
-            background: rgba(30, 30, 30, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-            transform: translateY(0);
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        [data-theme="light"] header {
-            background: rgba(255, 255, 255, 0.95);
+            z-index: 100;
         }
 
         .header-container {
@@ -74,9 +49,8 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 1rem 2rem;
-            position: relative;
         }
-
+        
         .logo {
             display: flex;
             align-items: center;
