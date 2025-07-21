@@ -623,7 +623,7 @@
                     <li><a href="research.html">Research</a></li>
                     <li><a href="events.html">Events</a></li>
                     <li><a href="news.html">News</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -793,69 +793,72 @@
     </footer>
 
     <script>
-    // Header scroll behavior: hide on scroll down, show on scroll up
-    let lastScroll = 0;
-    const header = document.querySelector('header');
+    document.addEventListener('DOMContentLoaded', () => {
+        // Header scroll behavior
+        let lastScroll = 0;
+        const header = document.querySelector('header');
 
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        if (currentScroll > lastScroll && currentScroll > 100) {
-            header.classList.add('header-hidden');
-        } else {
-            header.classList.remove('header-hidden');
-        }
-        lastScroll = currentScroll;
-    });
-
-    const menuBtn = document.getElementById('menu-btn');
-    const nav = document.querySelector('nav');
-    const overlay = document.querySelector('.menu-overlay');
-
-    menuBtn.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        overlay.classList.toggle('active');
-    });
-
-    overlay.addEventListener('click', () => {
-        nav.classList.remove('active');
-        overlay.classList.remove('active');
-    });
-
-    // Close menu when a nav link is clicked
-    nav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            nav.classList.remove('active');
-            overlay.classList.remove('active');
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                header.classList.add('header-hidden');
+            } else {
+                header.classList.remove('header-hidden');
+            }
+            lastScroll = currentScroll;
         });
-    });
 
-    // Close menu when clicking outside of nav or menu button
-    document.addEventListener('click', (e) => {
-        if (
-            nav.classList.contains('active') &&
-            !e.target.closest('nav') &&
-            !e.target.closest('#menu-btn')
-        ) {
-            nav.classList.remove('active');
-            overlay.classList.remove('active');
+        const menuBtn = document.getElementById('menu-btn');
+        const nav = document.querySelector('nav');
+        const overlay = document.querySelector('.menu-overlay');
+
+        if (menuBtn && nav && overlay) {
+            menuBtn.addEventListener('click', () => {
+                nav.classList.toggle('active');
+                overlay.classList.toggle('active');
+            });
+
+            overlay.addEventListener('click', () => {
+                nav.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+
+            // Close when link is clicked
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('active');
+                    overlay.classList.remove('active');
+                });
+            });
+
+            // Close if clicking outside
+            document.addEventListener('click', (e) => {
+                if (
+                    nav.classList.contains('active') &&
+                    !e.target.closest('nav') &&
+                    !e.target.closest('#menu-btn')
+                ) {
+                    nav.classList.remove('active');
+                    overlay.classList.remove('active');
+                }
+            });
+        }
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('whiteModeToggle');
+        const body = document.body;
+        const savedTheme = localStorage.getItem('theme') || 'white';
+        body.setAttribute('data-theme', savedTheme);
+
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'white' : 'dark';
+                body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
         }
     });
-
-    // Theme Toggle (Dark / Light Mode Persistence)
-    const themeToggle = document.getElementById('whiteModeToggle');
-    const body = document.body;
-
-    const savedTheme = localStorage.getItem('theme') || 'white';
-    body.setAttribute('data-theme', savedTheme);
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'white' : 'dark';
-            body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
-    }
 </script>
 </body>
 </html>
