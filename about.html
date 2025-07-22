@@ -58,10 +58,14 @@ header {
     display: flex;
     align-items: center;
     gap: 1rem;
+    z-index: 1001;
 }
 
 .logo img {
     height: 50px;
+    filter: var(--logo-filter);
+    transition: filter 0.3s ease;
+    max-width: 100%;
 }
 
 .logo-text h1 {
@@ -150,38 +154,6 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
-    margin-top: 2rem;
-}
-
-.about-text {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.about-text h3 {
-    color: var(--secondary);
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.about-text p {
-    color: var(--text-secondary);
-    line-height: 1.7;
-}
-
-.about-image {
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    height: fit-content;
-}
-
-.about-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.5s;
 }
 
 .about-image:hover img {
@@ -211,6 +183,7 @@ main {
     border-radius: 8px;
     transition: transform 0.3s;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
 }
 
 .mv-item:hover {
@@ -341,6 +314,37 @@ main {
     transform: scale(1.1);
 }
 
+/* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
 /* ===== FOOTER ===== */
 footer {
     background: var(--card-bg);
@@ -434,7 +438,7 @@ footer {
             pointer-events: all;
         }
 
-        /* --- RESPONSIVE: Medium Screens --- */
+/* --- RESPONSIVE: Medium Screens --- */
 @media (max-width: 1024px) {
     .contact-container {
         gap: 1.5rem;
@@ -589,10 +593,14 @@ footer {
     <header>
         <div class="header-container">
             <div class="logo">
-                <img src="images/logo.jpg">
+                <img src="images/logo.jpg" alt="Diplomatic College of Kenyan Foreign Policy Logo">
+                <div class="logo-text">
+                    <h1>Diplomatic College</h1>
+                    <p>of Kenyan Foreign Policy</p>
+                </div>
             </div>
-            
-            <button id="menu-btn" class="mobile-menu-btn">
+
+            <button id="menu-btn" class="mobile-menu-btn" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
 
@@ -601,15 +609,17 @@ footer {
             <nav id="mainNav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
                     <li><a href="research.html">Research</a></li>
                     <li><a href="events.html">Events</a></li>
                     <li><a href="news.html">News</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+
+    <div class="menu-overlay" id="menuOverlay"></div>
 
     <main>
         <div class="page-header">
@@ -696,8 +706,16 @@ footer {
             <h3>Our Partners</h3>
             <div class="partner-logos">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/African_Union_%28AU%29_logo.svg/1200px-African_Union_%28AU%29_logo.svg.png" alt="African Union" class="partner-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/United_Nations_blue_berets_peacekeepers.jpg/1200px-United_Nations_blue_berets_peacekeepers.jpg" alt="United Nations" class="partner-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/European_Commission.svg/1200px-European_Commission.svg.png" alt="European Commission" class="partner-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/University_of_Nairobi_logo.svg/1200px-University_of_Nairobi_logo.svg.png" alt="University of Nairobi" class="partner-logo">
+            </div>
         </div>
     </main>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
     <footer>
         <div class="footer-container">
@@ -733,7 +751,7 @@ footer {
         </div>
         
         <div class="copyright">
-            <p>&copy; 2025 Ushauri Bora Policy Consultants. All rights reserved.</p>
+            <p>&copy; 2025 Diplomatic College of Kenyan Foreign Policy. All rights reserved.</p>
         </div>
     </footer>
 

@@ -363,7 +363,7 @@
             pointer-events: all;
         }
 
-        /* --- RESPONSIVE: Medium Screens --- */
+/* --- RESPONSIVE: Medium Screens --- */
 @media (max-width: 1024px) {
     .contact-container {
         gap: 1.5rem;
@@ -518,10 +518,14 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <img src="images/logo.jpg">
+                <img src="images/logo.jpg" alt="Diplomatic College of Kenyan Foreign Policy Logo">
+                <div class="logo-text">
+                    <h1>Diplomatic College</h1>
+                    <p>of Kenyan Foreign Policy</p>
+                </div>
             </div>
-            
-            <button id="menu-btn" class="mobile-menu-btn">
+
+            <button id="menu-btn" class="mobile-menu-btn" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
 
@@ -530,11 +534,11 @@
             <nav id="mainNav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
                     <li><a href="research.html">Research</a></li>
                     <li><a href="events.html">Events</a></li>
                     <li><a href="news.html">News</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -657,7 +661,7 @@
         </div>
         
         <div class="copyright">
-            <p>&copy; 2025 Ushauri Bora Policy Consultants. All rights reserved.</p>
+            <p>&copy; 2025 Diplomatic College of Kenyan Foreign Policy. All rights reserved.</p>
         </div>
     </footer>
 

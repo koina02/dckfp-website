@@ -59,6 +59,9 @@
 
         .logo img {
             height: 50px;
+            filter: var(--logo-filter);
+            transition: filter 0.3s ease;
+            max-width: 100%;
         }
 
         .logo-text h1 {
@@ -451,7 +454,7 @@
             pointer-events: all;
         }
 
-        /* --- RESPONSIVE: Medium Screens --- */
+/* --- RESPONSIVE: Medium Screens --- */
 @media (max-width: 1024px) {
     .contact-container {
         gap: 1.5rem;
@@ -479,7 +482,7 @@
         padding: 2rem 1.5rem;
         transform: translateX(100%);
         transition: transform 0.4s ease;
-        z-index: 1100; 
+        z-index: 1100; /* On top of overlay */
         overflow-y: auto;
         box-shadow: -5px 0 15px rgba(0,0,0,0.1);
     }
@@ -606,10 +609,14 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <img src="images/logo.jpg">
+                <img src="images/logo.jpg" alt="Diplomatic College of Kenyan Foreign Policy Logo">
+                <div class="logo-text">
+                    <h1>Diplomatic College</h1>
+                    <p>of Kenyan Foreign Policy</p>
+                </div>
             </div>
-            
-            <button id="menu-btn" class="mobile-menu-btn">
+
+            <button id="menu-btn" class="mobile-menu-btn" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
 
@@ -618,7 +625,7 @@
             <nav id="mainNav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
                     <li><a href="research.html">Research</a></li>
                     <li><a href="events.html">Events</a></li>
                     <li><a href="news.html">News</a></li>
@@ -787,77 +794,74 @@
         </div>
         
         <div class="copyright">
-            <p>&copy; 2025 Ushauri Bora Policy Consultants. All rights reserved.</p>
+            <p>&copy; 2025 Diplomatic College of Kenyan Foreign Policy. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Header scroll behavior
-        let lastScroll = 0;
-        const header = document.querySelector('header');
+    // Header scroll behavior: hide on scroll down, show on scroll up
+    let lastScroll = 0;
+    const header = document.querySelector('header');
 
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            if (currentScroll > lastScroll && currentScroll > 100) {
-                header.classList.add('header-hidden');
-            } else {
-                header.classList.remove('header-hidden');
-            }
-            lastScroll = currentScroll;
-        });
-
-        const menuBtn = document.getElementById('menu-btn');
-        const nav = document.querySelector('nav');
-        const overlay = document.querySelector('.menu-overlay');
-
-        if (menuBtn && nav && overlay) {
-            menuBtn.addEventListener('click', () => {
-                nav.classList.toggle('active');
-                overlay.classList.toggle('active');
-            });
-
-            overlay.addEventListener('click', () => {
-                nav.classList.remove('active');
-                overlay.classList.remove('active');
-            });
-
-            // Close when link is clicked
-            nav.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    nav.classList.remove('active');
-                    overlay.classList.remove('active');
-                });
-            });
-
-            // Close if clicking outside
-            document.addEventListener('click', (e) => {
-                if (
-                    nav.classList.contains('active') &&
-                    !e.target.closest('nav') &&
-                    !e.target.closest('#menu-btn')
-                ) {
-                    nav.classList.remove('active');
-                    overlay.classList.remove('active');
-                }
-            });
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            header.classList.add('header-hidden');
+        } else {
+            header.classList.remove('header-hidden');
         }
+        lastScroll = currentScroll;
+    });
 
-        // Theme Toggle
-        const themeToggle = document.getElementById('whiteModeToggle');
-        const body = document.body;
-        const savedTheme = localStorage.getItem('theme') || 'white';
-        body.setAttribute('data-theme', savedTheme);
+    const menuBtn = document.getElementById('menu-btn');
+    const nav = document.querySelector('nav');
+    const overlay = document.querySelector('.menu-overlay');
 
-        if (themeToggle) {
-            themeToggle.addEventListener('click', () => {
-                const currentTheme = body.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'white' : 'dark';
-                body.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-            });
+    menuBtn.addEventListener('click', () => {
+        nav.classList.toggle('active');
+        overlay.classList.toggle('active');
+    });
+
+    overlay.addEventListener('click', () => {
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+
+    // Close menu when a nav link is clicked
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    });
+
+    // Close menu when clicking outside of nav or menu button
+    document.addEventListener('click', (e) => {
+        if (
+            nav.classList.contains('active') &&
+            !e.target.closest('nav') &&
+            !e.target.closest('#menu-btn')
+        ) {
+            nav.classList.remove('active');
+            overlay.classList.remove('active');
         }
     });
+
+    // Theme Toggle (Dark / Light Mode Persistence)
+    const themeToggle = document.getElementById('whiteModeToggle');
+    const body = document.body;
+
+    const savedTheme = localStorage.getItem('theme') || 'white';
+    body.setAttribute('data-theme', savedTheme);
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'white' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    }
 </script>
 </body>
 </html>
