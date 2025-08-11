@@ -3,321 +3,624 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diplomatic College of Kenyan Foreign Policy</title>
+    <title>About - Diplomatic College of Kenyan Foreign Policy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-    --primary: #1a4b8c;
-    --secondary: #f0b72f;
-    --accent: #2e7dcc;
-    --background: #ffffff;
-    --text: #333333;
-    --text-secondary: #666666;
-    --card-bg: #f8f9fa;
-    --border-color: rgba(0,0,0,0.1);
-}
+            --primary: #1a4b8c;
+            --primary-light: #3a6cb0;
+            --secondary: #f0b72f;
+            --secondary-light: #f8d67a;
+            --accent: #2e7dcc;
+            --background: #ffffff;
+            --text: #333333;
+            --text-secondary: #666666;
+            --card-bg: #f8f9fa;
+            --border-color: rgba(0,0,0,0.1);
+            --background-secondary: #f5f7fa;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --box-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
 
-* {
-    transition: background-color 0.3s ease, color 0.3s ease;
-    box-sizing: border-box;
-}
+        /* Dark Mode Variables */
+        [data-theme="dark"] {
+            --primary: #3a6cb0;
+            --secondary: #f8d67a;
+            --accent: #4a90e2;
+            --background: #121212;
+            --text: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --card-bg: #1e1e1e;
+            --border-color: rgba(255,255,255,0.1);
+            --background-secondary: #2d2d2d;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --box-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.4);
+        }
 
-body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: var(--text);
-    background-color: var(--background);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-}
+        * {
+            transition: var(--transition);
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-/* ===== HEADER ===== */
-header {
-    background: var(--background);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 1px solid var(--border-color);
-}
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
 
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 2rem;
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text);
+            background-color: var(--background);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    z-index: 1001;
-}
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
 
-.logo img {
-    height: 50px;
-    filter: var(--logo-filter);
-    transition: filter 0.3s ease;
-    max-width: 100%;
-}
+        /* Header Styles */
+        header {
+            background: var(--background);
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
 
-.logo-text h1 {
-    font-size: 1.5rem;
-    margin: 0;
-    color: var(--primary);
-    font-weight: 600;
-}
+        .header-hidden {
+            transform: translateY(-100%);
+        }
 
-.logo-text p {
-    font-size: 0.8rem;
-    margin: 0;
-    color: var(--text-secondary);
-}
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 1001;
+        }
 
-/* ===== NAVIGATION ===== */
-nav {
-    z-index: 1100;
-}
+        .logo img {
+            height: 60px;
+            filter: var(--logo-filter);
+            transition: filter 0.3s ease;
+            max-width: 100%;
+        }
 
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 1.5rem;
-    margin: 0;
-    padding: 0;
-}
+        .logo-text h1 {
+            font-size: 1.7rem;
+            margin: 0;
+            color: var(--primary);
+            font-weight: 700;
+            line-height: 1.2;
+        }
 
-nav a {
-    text-decoration: none;
-    color: var(--text);
-    font-weight: 500;
-    transition: all 0.3s;
-    position: relative;
-    padding: 0.5rem 0;
-}
+        .logo-text p {
+            font-size: 0.9rem;
+            margin: 0;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
 
-nav a:hover {
-    color: var(--secondary);
-}
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
 
-nav a.active {
-    color: var(--secondary);
-    font-weight: 600;
-}
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+            font-size: 1.05rem;
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+        }
+        
+        nav a.active {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        nav a.active:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--secondary);
+        }
 
-nav a.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--secondary);
-}
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%), 
+                        url('https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
 
-/* ===== MAIN LAYOUT ===== */
-main {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 2rem;
-}
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
 
-.page-header {
-    text-align: center;
-    margin-bottom: 3rem;
-    padding: 3rem 0;
-}
+        .hero h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
 
-.page-header h2 {
-    font-size: 2.5rem;
-    color: var(--secondary);
-    margin-bottom: 1rem;
-    font-weight: 700;
-}
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: rgba(255,255,255,0.9);
+            position: relative;
+            z-index: 2;
+        }
 
-.page-header p {
-    font-size: 1.1rem;
-    max-width: 700px;
-    margin: 0 auto;
-    color: var(--text-secondary);
-}
+        /* Section Styling */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
-/* ===== ABOUT CONTENT ===== */
-.about-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-}
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
 
-.about-image:hover img {
-    transform: scale(1.03);
-}
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
 
-/* ===== MISSION / VISION ===== */
-.mission-vision {
-    background: var(--card-bg);
-    padding: 3rem;
-    border-radius: 12px;
-    margin-top: 3rem;
-    border: 1px solid var(--border-color);
-}
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+        }
 
-.mv-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    max-width: 1000px;
-    margin: 0 auto;
-}
+        .section-title p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
 
-.mv-item {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    transition: transform 0.3s;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    border: 1px solid var(--border-color);
-}
+        /* About Content */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
 
-.mv-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
+        .about-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
 
-.mv-item h3 {
-    color: var(--secondary);
-    margin-bottom: 1.5rem;
-    position: relative;
-    padding-bottom: 1rem;
-    font-size: 1.4rem;
-}
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
 
-.mv-item h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 50px;
-    height: 3px;
-    background: var(--secondary);
-}
+        .about-text p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
 
-.mv-item p {
-    color: var(--text-secondary);
-    line-height: 1.7;
-}
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            height: fit-content;
+        }
 
-/* ===== LEADERSHIP ===== */
-.leadership {
-    margin-top: 5rem;
-}
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
 
-.leadership h3 {
-    text-align: center;
-    font-size: 2rem;
-    color: var(--secondary);
-    margin-bottom: 3rem;
-    font-weight: 700;
-}
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
 
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 2rem;
-}
+        /* Mission/Vision Section */
+        .mission-vision {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 12px;
+            margin: 4rem 0;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--box-shadow);
+        }
 
-.team-member {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    transition: all 0.3s;
-    border: 1px solid var(--border-color);
-}
+        .mv-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-.team-member:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-}
+        .mv-item {
+            background: var(--background);
+            padding: 2.5rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+            border: 1px solid var(--border-color);
+        }
 
-.member-image {
-    height: 300px;
-    background-size: cover;
-    background-position: center;
-}
+        .mv-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-hover);
+            border-color: var(--accent);
+        }
 
-.member-info {
-    padding: 1.5rem;
-    text-align: center;
-}
+        .mv-item h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+            font-size: 1.4rem;
+        }
 
-.member-info h4 {
-    margin: 0 0 0.3rem 0;
-    color: var(--primary);
-    font-size: 1.3rem;
-}
+        .mv-item h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+        }
 
-.member-info p {
-    color: var(--text-secondary);
-    margin: 0;
-}
+        .mv-item p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
 
-.member-position {
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--accent);
-}
+        /* Leadership Section */
+        .leadership {
+            margin-top: 5rem;
+        }
 
-/* ===== PARTNERS ===== */
-.partners {
-    margin-top: 5rem;
-    background: var(--card-bg);
-    padding: 4rem 2rem;
-    text-align: center;
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-}
+        .leadership h3 {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
 
-.partners h3 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: var(--secondary);
-}
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
 
-.partner-logos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-    max-width: 1000px;
-    margin: 0 auto;
-}
+        .team-member {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
 
-.partner-logo {
-    height: 80px;
-    width: auto;
-    object-fit: contain;
-    opacity: 0.8;
-    transition: all 0.3s;
-}
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-hover);
+            border-color: var(--accent);
+        }
 
-.partner-logo:hover {
-    opacity: 1;
-    transform: scale(1.1);
-}
+        .member-image {
+            height: 350px;
+            background-size: cover;
+            background-position: center;
+            transition: all 0.5s ease;
+        }
 
-/* Back to Top Button */
-        .back-to-top {
+        .team-member:hover .member-image {
+            transform: scale(1.05);
+        }
+
+        .member-info {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .member-info h4 {
+            margin: 0 0 0.5rem 0;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .member-info p {
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .member-position {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        /* Partners Section */
+        .partners {
+            margin-top: 5rem;
+            background: var(--card-bg);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--box-shadow);
+        }
+
+        .partners h3 {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--secondary);
+        }
+
+        .partner-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .partner-logo {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+            opacity: 0.8;
+            transition: var(--transition);
+            filter: var(--logo-filter);
+        }
+
+        .partner-logo:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--background-secondary);
+            color: var(--text);
+            padding: 5rem 0 0;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-about {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+            filter: var(--logo-filter);
+            transition: filter 0.3s ease;
+        }
+
+        .footer-about p {
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            color: var(--text);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+        
+        .footer-links i {
+            width: 16px;
+            text-align: center;
+            color: var(--secondary);
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info i {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-top: 2px;
+        }
+
+        .contact-info div {
+            flex: 1;
+        }
+
+        .contact-info p {
+            margin: 0;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
             position: fixed;
             bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--box-shadow);
+            border: 2px solid var(--secondary);
+            z-index: 99;
+            transition: var(--transition);
+        }
+
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .dark-mode-toggle i {
+            font-size: 1.3rem;
+            color: var(--secondary);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 7rem;
             right: 2rem;
             width: 50px;
             height: 50px;
@@ -328,16 +631,11 @@ main {
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: var(--box-shadow);
             z-index: 99;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s;
-        }
-
-        .back-to-top:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
+            transition: var(--transition);
         }
 
         .back-to-top.visible {
@@ -345,69 +643,13 @@ main {
             visibility: visible;
         }
 
-/* ===== FOOTER ===== */
-footer {
-    background: var(--card-bg);
-    color: var(--text);
-    padding: 3rem 0;
-    margin-top: 3rem;
-    border-top: 1px solid var(--border-color);
-}
+        .back-to-top:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow-hover);
+        }
 
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-}
-
-.footer-about p {
-    color: var(--text-secondary);
-    font-weight: 300;
-    margin-top: 0.5rem;
-}
-
-.footer-links h3 {
-    color: var(--secondary);
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.footer-links ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-links li {
-    margin-bottom: 0.5rem;
-}
-
-.footer-links a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color 0.3s;
-    font-weight: 300;
-}
-
-.footer-links a:hover {
-    color: var(--primary);
-}
-
-.copyright {
-    text-align: center;
-    padding-top: 2rem;
-    margin-top: 2rem;
-    border-top: 1px solid var(--border-color);
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    font-weight: 300;
-}
-
-/* Mobile Menu */
+        /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -438,156 +680,161 @@ footer {
             pointer-events: all;
         }
 
-/* --- RESPONSIVE: Medium Screens --- */
-@media (max-width: 1024px) {
-    .contact-container {
-        gap: 1.5rem;
-    }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .contact-info, .contact-form {
-        padding: 1.5rem;
-    }
-}
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
 
-/* --- RESPONSIVE: Tablets & Mobiles --- */
-@media (max-width: 768px) {
-    .mobile-menu-btn {
-        display: block;
-    }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
 
-    nav {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 80%;
-        max-width: 320px;
-        height: 100vh;
-        background: var(--background);
-        padding: 2rem 1.5rem;
-        transform: translateX(100%);
-        transition: transform 0.4s ease;
-        z-index: 1100; /* On top of overlay */
-        overflow-y: auto;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-    }
+        /* --- RESPONSIVE: Medium Screens --- */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .about-content {
+                gap: 2rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
 
-    nav.active {
-        transform: translateX(0%);
-    }
+        /* --- RESPONSIVE: Tablets & Mobiles --- */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 1rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
 
-    nav ul {
-        flex-direction: column;
-        padding-top: 4rem;
-        gap: 0;
-    }
+            nav {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 80%;
+                max-width: 320px;
+                height: 100vh;
+                background: var(--background);
+                padding: 5rem 2rem 2rem;
+                transform: translateX(100%);
+                transition: transform 0.4s ease;
+                z-index: 1100;
+                overflow-y: auto;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
 
-    nav a {
-        font-size: 1.1rem;
-        padding: 1rem 0;
-        display: block;
-        border-bottom: 1px solid var(--border-color);
-        color: var(--text);
-    }
+            nav.active {
+                transform: translateX(0%);
+            }
 
-    .page-header h2 {
-        font-size: 2rem;
-    }
+            nav ul {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
 
-    .contact-container {
-        grid-template-columns: 1fr;
-        padding: 0 1rem;
-    }
+            nav a {
+                font-size: 1.1rem;
+                padding: 0.5rem 0;
+                display: block;
+                border-bottom: 1px solid var(--border-color);
+                color: var(--text);
+            }
 
-    .info-item {
-        gap: 1rem;
-    }
+            .hero {
+                min-height: 50vh;
+                padding: 3rem 1.5rem;
+                background-attachment: scroll;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .mv-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .mission-vision {
+                padding: 2rem;
+            }
+            
+            .mv-item {
+                padding: 2rem;
+            }
+        }
 
-    .map-container iframe {
-        height: 300px;
-    }
+        /* --- RESPONSIVE: Phones --- */
+        @media (max-width: 480px) {
+            .header-container {
+                padding: 0.75rem 1rem;
+            }
 
-    .hours-table th,
-    .hours-table td {
-        padding: 0.75rem;
-        font-size: 0.9rem;
-    }
-}
+            .logo-text h1 {
+                font-size: 1.3rem;
+            }
 
-/* --- RESPONSIVE: Phones --- */
-@media (max-width: 480px) {
-    .header-container {
-        padding: 0.75rem 1rem;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.75rem;
-    }
-
-    .logo-text h1 {
-        font-size: 1.1rem;
-        line-height: 1.2;
-    }
-
-    .logo-text p {
-        font-size: 0.65rem;
-        line-height: 1;
-    }
-
-    .page-header h2 {
-        font-size: 1.6rem;
-        line-height: 1.3;
-    }
-
-    .page-header p {
-        font-size: 0.95rem;
-        line-height: 1.5;
-        padding: 0 0.5rem;
-    }
-
-    .contact-info,
-    .contact-form {
-        padding: 1.2rem 1rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .info-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.6rem;
-    }
-
-    .info-icon {
-        margin-top: 0;
-        font-size: 1rem;
-    }
-
-    .map-container iframe {
-        height: 260px;
-    }
-
-    .hours-table {
-        display: block;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .hours-table th,
-    .hours-table td {
-        padding: 0.6rem 0.75rem;
-        font-size: 0.85rem;
-        white-space: nowrap;
-    }
-
-    .submit-btn {
-        font-size: 0.95rem;
-        padding: 0.6rem 1rem;
-    }
-
-    .mobile-menu-btn {
-        font-size: 1.8rem;
-        padding: 0.4rem;
-    }
-}
-</style>
+            .logo-text p {
+                font-size: 0.7rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .partner-logos {
+                gap: 2rem;
+            }
+            
+            .partner-logo {
+                height: 60px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -611,7 +858,6 @@ footer {
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html" class="active">About</a></li>
                     <li><a href="research.html">Research</a></li>
-                    <li><a href="events.html">Events</a></li>
                     <li><a href="news.html">News</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
@@ -622,111 +868,130 @@ footer {
     <div class="menu-overlay" id="menuOverlay"></div>
 
     <main>
-        <div class="page-header">
-            <h2>About DCKFP</h2>
-            <p>Shaping Kenya's global diplomatic strategy through research, training, and policy engagement</p>
-        </div>
-        
-        <div class="about-content">
-            <div class="about-text">
-                <div>
-                    <h3>Our Institution</h3>
-                    <p>The Diplomatic College of Kenyan Foreign Policy (DCKFP) is Nairobi's premier institution dedicated to advancing Kenya's global diplomatic strategy. Established in 2024, we serve as a bridge between academic research and practical foreign policy implementation.</p>
-                    <p>Our work focuses on strengthening Kenya's position in regional and international affairs while developing the next generation of diplomatic leaders.</p>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content fade-in">
+                <h1>About DCKFP</h1>
+                <p>Shaping Kenya's global diplomatic strategy through research, training, and policy engagement</p>
+            </div>
+        </section>
+
+        <!-- About Content Section -->
+        <section class="section">
+            <div class="about-content fade-in">
+                <div class="about-text">
+                    <div>
+                        <h3>Our Institution</h3>
+                        <p>The Diplomatic College of Kenyan Foreign Policy (DCKFP) is Nairobi's premier institution dedicated to advancing Kenya's global diplomatic strategy. Established in 2024, we serve as a bridge between academic research and practical foreign policy implementation.</p>
+                        <p>Our work focuses on strengthening Kenya's position in regional and international affairs while developing the next generation of diplomatic leaders through innovative training programs and strategic policy engagement.</p>
+                    </div>
+                    
+                    <div>
+                        <h3>Our History</h3>
+                        <p>Founded through a partnership between the Kenyan Ministry of Foreign Affairs and leading academic institutions, DCKFP builds on Kenya's rich diplomatic tradition dating back to the early years of independence.</p>
+                        <p>Over the years, we have grown to become a recognized center of excellence in African diplomacy and foreign policy analysis, contributing to Kenya's growing influence on the continental and global stage.</p>
+                    </div>
                 </div>
                 
-                <div>
-                    <h3>Our History</h3>
-                    <p>Founded through a partnership between the Kenyan Ministry of Foreign Affairs and leading academic institutions, DCKFP builds on Kenya's rich diplomatic tradition dating back to the early years of independence.</p>
-                    <p>Over the years, we have grown to become a recognized center of excellence in African diplomacy and foreign policy analysis.</p>
+                <div class="about-image">
+                    <img src="https://images.pexels.com/photos/15496542/pexels-photo-15496542.jpeg" alt="Diplomatic College building">
                 </div>
             </div>
             
-            <div class="about-image">
-                <img src="data:image/jpeg;base64,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">
-            </div>
-        </div>
-        
-        <div class="mission-vision">
-            <div class="mv-container">
-                <div class="mv-item">
-                    <h3>Our Mission</h3>
-                    <p>To train Kenya's future diplomats and shape evidence-based foreign policy for Africa's geopolitical landscape through rigorous research, innovative training programs, and strategic policy engagement.</p>
-                </div>
-                
-                <div class="mv-item">
-                    <h3>Our Vision</h3>
-                    <p>To be Africa's leading institution for diplomatic excellence, recognized for developing transformative foreign policy solutions and producing world-class diplomatic professionals.</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="leadership">
-            <h3>Our Leadership</h3>
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="member-image" style="background-image: url('https://media.gettyimages.com/id/1227664687/photo/kenyas-former-wto-general-council-chair-amina-mohamed-attends-a-press-conference-following.jpg?s=612x612&w=0&k=20&c=m1g2KT0kfYr8DunaHVP0mxpa-MnH8R-SWTQdn3TAKpY=')"></div>
-                    <div class="member-info">
-                        <h4> Amb. Amina Mohamed</h4>
-                        <p class="member-position">Director General</p>
-                        <p>Former Cabinet Secretary </p>
+            <div class="mission-vision fade-in delay-1">
+                <div class="mv-container">
+                    <div class="mv-item">
+                        <h3>Our Mission</h3>
+                        <p>To train Kenya's future diplomats and shape evidence-based foreign policy for Africa's geopolitical landscape through rigorous research, innovative training programs, and strategic policy engagement with government and international partners.</p>
                     </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="member-image" style="background-image: url('https://media.gettyimages.com/id/1157206619/photo/kenyas-elgeyo-marakwet-county-senator-kipchumba-murkomen-addresses-the-media-outside-the.jpg?s=612x612&w=0&k=20&c=HqttixNXP6IcymUjaSQp9WELK0SbCB1DPBx1kZHJbQA=')"></div>
-                    <div class="member-info">
-                        <h4>Dr. Kipchumba Murkomen</h4>
-                        <p class="member-position">Head of Research</p>
-                        <p>Expert in African Geopolitics</p>
-                    </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="member-image" style="background-image: url('https://www.chr.up.ac.za/images/about/staff/nkatha-murungi-1.jpg')"></div>
-                    <div class="member-info">
-                        <h4>Prof. Nkatha Muthomi</h4>
-                        <p class="member-position">Director of Training</p>
-                        <p>International Relations Scholar</p>
-                    </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="member-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVV0BUzlMuchm7Foksjdvr9h2dMEnsorbjkA&s')"></div>
-                    <div class="member-info">
-                        <h4>Amb. John Mwangi</h4>
-                        <p class="member-position">Advisory Board Chair</p>
-                        <p>Former AU Representative</p>
+                    
+                    <div class="mv-item">
+                        <h3>Our Vision</h3>
+                        <p>To be Africa's leading institution for diplomatic excellence, recognized for developing transformative foreign policy solutions and producing world-class diplomatic professionals who advance Kenya's interests and contribute to global peace and development.</p>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="partners">
-            <h3>Our Partners</h3>
-            <div class="partner-logos">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/African_Union_%28AU%29_logo.svg/1200px-African_Union_%28AU%29_logo.svg.png" alt="African Union" class="partner-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/United_Nations_blue_berets_peacekeepers.jpg/1200px-United_Nations_blue_berets_peacekeepers.jpg" alt="United Nations" class="partner-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/European_Commission.svg/1200px-European_Commission.svg.png" alt="European Commission" class="partner-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/University_of_Nairobi_logo.svg/1200px-University_of_Nairobi_logo.svg.png" alt="University of Nairobi" class="partner-logo">
-            </div>
-        </div>
-    </main>
+        </section>
 
-    <a href="#" class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </a>
+        <!-- Leadership Section -->
+        <section class="section" style="background: var(--background-secondary);">
+            <div class="leadership fade-in delay-2">
+                <h3>Our Leadership</h3>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-image" style="background-image: url('https://media.gettyimages.com/id/1227664687/photo/kenyas-former-wto-general-council-chair-amina-mohamed-attends-a-press-conference-following.jpg?s=612x612&w=0&k=20&c=m1g2KT0kfYr8DunaHVP0mxpa-MnH8R-SWTQdn3TAKpY=')"></div>
+                        <div class="member-info">
+                            <h4>Amb. Amina Mohamed</h4>
+                            <p class="member-position">Director General</p>
+                            <p>Former Cabinet Secretary for Foreign Affairs with extensive experience in international diplomacy and trade negotiations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-image" style="background-image: url('https://media.gettyimages.com/id/1157206619/photo/kenyas-elgeyo-marakwet-county-senator-kipchumba-murkomen-addresses-the-media-outside-the.jpg?s=612x612&w=0&k=20&c=HqttixNXP6IcymUjaSQp9WELK0SbCB1DPBx1kZHJbQA=')"></div>
+                        <div class="member-info">
+                            <h4>Dr. Kipchumba Murkomen</h4>
+                            <p class="member-position">Head of Research</p>
+                            <p>Expert in African geopolitics with a PhD in International Relations from Oxford University.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-image" style="background-image: url('https://www.chr.up.ac.za/images/about/staff/nkatha-murungi-1.jpg')"></div>
+                        <div class="member-info">
+                            <h4>Prof. Nkatha Muthomi</h4>
+                            <p class="member-position">Director of Training</p>
+                            <p>International Relations scholar specializing in diplomatic protocol and conflict resolution.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-image" style="background-image: url('images/iankoina.jpg')"></div>
+                        <div class="member-info">
+                            <h4>Sir Ian Koina</h4>
+                            <p class="member-position">Secretary, Diplomatic College of Kenyan Foreign Policy</p>
+                            <p>Experienced in shaping policy frameworks and guiding strategic initiatives in international relations. Acting Secretary of the Diplomatic College of Kenyan Foreign Policy, with a strong track record in research, diplomacy, and cross-border collaboration on issues impacting Africa's political and economic landscape.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partners Section -->
+        <section class="section">
+            <div class="partners fade-in delay-3">
+                <h3>Our Partners</h3>
+                <div class="partner-logos">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/African_Union_%28AU%29_logo.svg/1200px-African_Union_%28AU%29_logo.svg.png" alt="African Union" class="partner-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/United_Nations_blue_berets_peacekeepers.jpg/1200px-United_Nations_blue_berets_peacekeepers.jpg" alt="United Nations" class="partner-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/European_Commission.svg/1200px-European_Commission.svg.png" alt="European Commission" class="partner-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/University_of_Nairobi_logo.svg/1200px-University_of_Nairobi_logo.svg.png" alt="University of Nairobi" class="partner-logo">
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="footer-container">
+            <div class="footer-about">
+                <img src="images/logo.jpg" alt="Diplomatic College Logo" class="footer-logo">
+                <p>The Diplomatic College of Kenyan Foreign Policy is a premier institution dedicated to advancing Kenya's global diplomatic engagement through research, training, and policy analysis.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
             
             <div class="footer-links">
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
                     <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                    <li><a href="research.html"><i class="fas fa-chevron-right"></i> Publications</a></li>
-                    <li><a href="events.html"><i class="fas fa-chevron-right"></i> Events Calendar</a></li>
+                    <li><a href="research.html"><i class="fas fa-chevron-right"></i> Research</a></li>
+                    <li><a href="news.html"><i class="fas fa-chevron-right"></i> News</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
                 </ul>
             </div>
             
@@ -735,17 +1000,37 @@ footer {
                 <ul>
                     <li><a href="#"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li>
                     <li><a href="#"><i class="fas fa-chevron-right"></i> Research Papers</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Diplomatic Training</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Training Programs</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Annual Reports</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Publications</a></li>
                     <li><a href="#"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li>
                 </ul>
             </div>
             
             <div class="footer-links">
-                <h3>Contact</h3>
-                <ul>
-                    <li><i class="fas fa-map-marker-alt"></i> WestLands, Nairobi</li>
-                    <li><i class="fas fa-phone"></i> +2547 9132 5409</li>
-                    <li><i class="fas fa-envelope"></i> info@dckfp.org</li>
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p>Diplomatic College of Kenyan Foreign Policy</p>
+                            <p>Westlands Office Park, Nairobi, Kenya</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <p>+254 20 123 4567</p>
+                            <p>+254 712 345 678</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p>info@dckfp.org</p>
+                            <p>research@dckfp.org</p>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -755,6 +1040,16 @@ footer {
         </div>
     </footer>
 
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <script>
     // Header scroll behavior: hide on scroll down, show on scroll up
     let lastScroll = 0;
@@ -762,14 +1057,25 @@ footer {
 
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
+        
+        // Header hide/show on scroll
         if (currentScroll > lastScroll && currentScroll > 100) {
             header.classList.add('header-hidden');
         } else {
             header.classList.remove('header-hidden');
         }
         lastScroll = currentScroll;
+        
+        // Back to top button visibility
+        const backToTop = document.getElementById('backToTop');
+        if (currentScroll > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
     });
 
+    // Mobile menu toggle
     const menuBtn = document.getElementById('menu-btn');
     const nav = document.querySelector('nav');
     const overlay = document.querySelector('.menu-overlay');
@@ -777,11 +1083,13 @@ footer {
     menuBtn.addEventListener('click', () => {
         nav.classList.toggle('active');
         overlay.classList.toggle('active');
+        document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
     });
 
     overlay.addEventListener('click', () => {
         nav.classList.remove('active');
         overlay.classList.remove('active');
+        document.body.style.overflow = '';
     });
 
     // Close menu when a nav link is clicked
@@ -789,6 +1097,7 @@ footer {
         link.addEventListener('click', () => {
             nav.classList.remove('active');
             overlay.classList.remove('active');
+            document.body.style.overflow = '';
         });
     });
 
@@ -801,24 +1110,81 @@ footer {
         ) {
             nav.classList.remove('active');
             overlay.classList.remove('active');
+            document.body.style.overflow = '';
         }
     });
 
     // Theme Toggle (Dark / Light Mode Persistence)
-    const themeToggle = document.getElementById('whiteModeToggle');
+    const themeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
 
-    const savedTheme = localStorage.getItem('theme') || 'white';
+    const savedTheme = localStorage.getItem('theme') || 'light';
     body.setAttribute('data-theme', savedTheme);
+    updateToggleIcon(savedTheme);
 
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
             const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'white' : 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             body.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
+            updateToggleIcon(newTheme);
         });
     }
-</script>
+
+    function updateToggleIcon(theme) {
+        const icon = themeToggle.querySelector('i');
+        if (theme === 'dark') {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+    }
+
+    // Back to top functionality
+    const backToTop = document.getElementById('backToTop');
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Intersection Observer for animations
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    fadeElements.forEach(element => {
+        element.style.opacity = 0;
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(element);
+    });
+
+    // Form submission handling
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterForm.querySelector('input').value;
+            // Here you would typically send the email to your server
+            alert(`Thank you for subscribing with ${email}!`);
+            newsletterForm.reset();
+        });
+    }
+    </script>
 </body>
 </html>

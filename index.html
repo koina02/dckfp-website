@@ -7,11 +7,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #1a4b8c;
+            --primary-light: #3a6cb0;
             --secondary: #f0b72f;
+            --secondary-light: #f8d67a;
             --accent: #2e7dcc;
             --background: #ffffff;
             --text: #333333;
@@ -19,15 +21,36 @@
             --card-bg: #f8f9fa;
             --border-color: rgba(0,0,0,0.1);
             --background-secondary: #f5f7fa;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --box-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Dark Mode Variables */
+        [data-theme="dark"] {
+            --primary: #3a6cb0;
+            --secondary: #f8d67a;
+            --accent: #4a90e2;
+            --background: #121212;
+            --text: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --card-bg: #1e1e1e;
+            --border-color: rgba(255,255,255,0.1);
+            --background-secondary: #2d2d2d;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --box-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.4);
         }
 
         * {
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: var(--transition);
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         html {
             font-size: 16px;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -40,12 +63,18 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        /* Header Styles */
         header {
-            background: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: var(--background);
+            box-shadow: var(--box-shadow);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
             transition: transform 0.3s ease;
         }
 
@@ -57,7 +86,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 1rem 2rem;
         }
@@ -70,99 +99,32 @@
         }
 
         .logo img {
-            height: 50px;
+            height: 60px;
             filter: var(--logo-filter);
             transition: filter 0.3s ease;
             max-width: 100%;
         }
 
         .logo-text h1 {
-            font-size: 1.5rem;
+            font-size: 1.7rem;
             margin: 0;
             color: var(--primary);
-            font-weight: 600;
+            font-weight: 700;
+            line-height: 1.2;
         }
 
         .logo-text p {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             margin: 0;
             color: var(--text-secondary);
             font-weight: 400;
         }
 
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://theforeignpolicyanalyst.files.wordpress.com/2013/06/cropped-nationalflags-e1319487660528.jpg');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            backdrop-filter: blur(5px);
-            z-index: 1;
-        }
-
-        .search-container {
-            flex: 0 1 400px;
-            margin: 0 2rem;
-            position: relative;
-        }
-
-        .search-form {
-            display: flex;
-            align-items: center;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 25px;
-            background: rgba(255,255,255,0.1);
-            color: var(--text);
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-        }
-
-        .search-input:focus {
-            outline: none;
-            background: rgba(255,255,255,0.2);
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-        }
-
-        .search-button {
-            position: absolute;
-            right: 10px;
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text);
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            z-index: 1001;
-        }
-
+        /* Navigation */
         nav ul {
             display: flex;
             list-style: none;
-            gap: 1.5rem;
+            gap: 2rem;
             margin: 0;
             padding: 0;
         }
@@ -171,9 +133,10 @@
             text-decoration: none;
             color: var(--text);
             font-weight: 500;
-            transition: all 0.3s;
+            transition: var(--transition);
             position: relative;
             padding: 0.5rem 0;
+            font-size: 1.05rem;
         }
         
         nav a:hover {
@@ -195,104 +158,132 @@
             background: var(--secondary);
         }
 
-        main {
-            max-width: 1200px;
-            margin: 100px auto 2rem;
-            padding: 0 2rem;
-        }
-
+        /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%), 
+                        url('https://images.unsplash.com/photo-1604881991720-f91add269bed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
-            padding: 5rem 2rem;
-            border-radius: 8px;
-            margin-bottom: 3rem;
-            text-align: center;
+            background-attachment: fixed;
             position: relative;
             overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            backdrop-filter: blur(2px);
-            z-index: 1;
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             color: white;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: rgba(255,255,255,0.9);
             position: relative;
             z-index: 2;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            color: rgba(255,255,255,0.8);
-            position: relative;
-            z-index: 2;
+        .btn-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .btn {
             display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 0.8rem 1.5rem;
+            background: var(--secondary);
+            color: var(--text);
+            padding: 1rem 2rem;
             border-radius: 4px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: var(--transition);
             position: relative;
             z-index: 2;
-            min-width: 120px;
+            min-width: 160px;
+            text-align: center;
+            border: 2px solid transparent;
+            box-shadow: var(--box-shadow);
         }
 
         .btn:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
+            background: var(--secondary-light);
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow-hover);
         }
 
         .btn-secondary {
             background: transparent;
-            border: 1px solid var(--secondary);
-            color: var(--secondary);
-            margin-left: 1rem;
+            border: 2px solid white;
+            color: white;
         }
 
         .btn-secondary:hover {
-            background: rgba(240, 183, 47, 0.1);
+            background: rgba(255,255,255,0.1);
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .section-title h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--secondary);
-            margin-bottom: 1rem;
-            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
         }
 
         .section-title p {
             color: var(--text-secondary);
             max-width: 700px;
             margin: 0 auto;
+            font-size: 1.1rem;
         }
 
+        /* Cards Grid */
         .posts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
             margin-bottom: 4rem;
         }
 
@@ -300,24 +291,47 @@
             background: var(--card-bg);
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: var(--box-shadow);
             border: 1px solid var(--border-color);
-            transition: transform 0.3s ease;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
 
         .post-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-hover);
         }
 
         .post-image {
-            height: 200px;
+            height: 220px;
             background-size: cover;
             background-position: center;
             position: relative;
+            overflow: hidden;
+        }
+
+        .post-image:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .post-card:hover .post-image:after {
+            opacity: 1;
         }
 
         .post-content {
-            padding: 1.5rem;
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .post-meta {
@@ -331,24 +345,29 @@
 
         .post-meta .category {
             background: var(--accent);
-            color: var(--background);
-            padding: 0.3rem 0.8rem;
+            color: white;
+            padding: 0.3rem 1rem;
             border-radius: 20px;
             font-weight: 600;
             font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .post-content h3 {
-            margin: 0 0 1rem 0;
-            font-size: 1.3rem;
+            margin: 0 0 1.5rem 0;
+            font-size: 1.5rem;
             color: var(--text);
             font-weight: 600;
+            line-height: 1.3;
         }
         
         .post-excerpt {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             color: var(--text-secondary);
-            font-weight: 300;
+            font-weight: 400;
+            line-height: 1.6;
+            flex-grow: 1;
         }
 
         .read-more {
@@ -358,87 +377,102 @@
             color: var(--secondary);
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: var(--transition);
             padding: 0.5rem 0;
+            align-self: flex-start;
         }
         
         .read-more:hover {
-            color: var(--text);
+            color: var(--accent);
+            transform: translateX(5px);
         }
-        
+
+        /* Features Section */
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
             margin-bottom: 4rem;
         }
         
         .feature-card {
             background: var(--card-bg);
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 8px;
             text-align: center;
-            transition: all 0.3s;
+            transition: var(--transition);
             border: 1px solid var(--border-color);
+            box-shadow: var(--box-shadow);
         }
         
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-hover);
             border-color: var(--accent);
         }
         
         .feature-icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--secondary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
         
         .feature-card h3 {
-            margin: 0 0 1rem 0;
+            margin: 0 0 1.5rem 0;
             color: var(--text);
             font-weight: 600;
+            font-size: 1.4rem;
         }
         
         .feature-card p {
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 1rem;
+            line-height: 1.6;
         }
-        
+
+        /* Newsletter */
         .newsletter {
             background: var(--card-bg);
-            padding: 3rem;
+            padding: 4rem;
             border-radius: 8px;
             text-align: center;
             margin-bottom: 4rem;
             border: 1px solid var(--border-color);
+            box-shadow: var(--box-shadow);
+            max-width: 900px;
+            margin: 0 auto;
         }
         
         .newsletter h2 {
             color: var(--text);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
         }
         
         .newsletter p {
             color: var(--text-secondary);
             max-width: 600px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
         }
         
         .newsletter-form {
             display: flex;
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto;
+            box-shadow: var(--box-shadow);
+            border-radius: 4px;
+            overflow: hidden;
         }
         
         .newsletter-form input {
             flex: 1;
-            padding: 0.8rem;
-            border: 1px solid var(--border-color);
-            border-radius: 4px 0 0 4px;
-            background: rgba(255,255,255,0.05);
+            padding: 1rem 1.5rem;
+            border: none;
+            background: var(--background);
             color: var(--text);
             font-family: 'Inter', sans-serif;
+            font-size: 1rem;
         }
         
         .newsletter-form input::placeholder {
@@ -449,52 +483,94 @@
             background: var(--primary);
             color: white;
             border: none;
-            padding: 0 1.5rem;
-            border-radius: 0 4px 4px 0;
+            padding: 0 2rem;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: var(--transition);
             font-family: 'Inter', sans-serif;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 1rem;
         }
         
         .newsletter-form button:hover {
-            background: var(--accent);
+            background: var(--primary-light);
         }
-        
+
+        /* Footer */
         footer {
             background: var(--background-secondary);
             color: var(--text);
-            padding: 3rem 0;
+            padding: 5rem 0 0;
             margin-top: 3rem;
             border-top: 1px solid var(--border-color);
         }
         
         .footer-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
         }
-        
+
+        .footer-about {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
         .footer-logo {
-            max-width: 180px;
+            max-width: 200px;
             filter: var(--logo-filter);
             transition: filter 0.3s ease;
         }
-        
+
         .footer-about p {
             color: var(--text-secondary);
             font-weight: 300;
-            margin-top: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            color: var(--text);
+            transform: translateY(-3px);
         }
         
         .footer-links h3 {
             color: var(--secondary);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 600;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
         }
         
         .footer-links ul {
@@ -504,52 +580,85 @@
         }
         
         .footer-links li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
         
         .footer-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.3s;
-            font-weight: 300;
+            transition: var(--transition);
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         .footer-links a:hover {
-            color: var(--text);
+            color: var(--secondary);
+            transform: translateX(5px);
         }
         
         .footer-links i {
-            margin-right: 0.5rem;
             width: 16px;
             text-align: center;
+            color: var(--secondary);
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info i {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-top: 2px;
+        }
+
+        .contact-info div {
+            flex: 1;
+        }
+
+        .contact-info p {
+            margin: 0;
             color: var(--text-secondary);
+            line-height: 1.6;
         }
         
         .copyright {
             text-align: center;
-            padding-top: 2rem;
-            margin-top: 2rem;
+            padding: 2rem 0;
+            margin-top: 3rem;
             border-top: 1px solid var(--border-color);
             font-size: 0.9rem;
             color: var(--text-secondary);
             font-weight: 300;
         }
 
+        /* Dark Mode Toggle */
         .dark-mode-toggle {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
             width: 50px;
             height: 50px;
-            background: var(--background-secondary);
+            background: var(--card-bg);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: var(--box-shadow);
             border: 2px solid var(--secondary);
             z-index: 99;
+            transition: var(--transition);
+        }
+
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: var(--box-shadow-hover);
         }
 
         .dark-mode-toggle i {
@@ -557,45 +666,39 @@
             color: var(--secondary);
         }
 
-        [data-theme="light"] .dark-mode-toggle {
-            border-color: var(--primary);
-        }
-
-        [data-theme="light"] .dark-mode-toggle i {
-            color: var(--primary);
-        }
-
-        /* Add these additions to existing styles */
-        
-        .articles-section {
-            margin: 4rem 0;
-            padding: 3rem 0;
-            background: var(--background-secondary);
-        }
-
-        .article-highlight {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 7rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
             align-items: center;
-            margin-bottom: 4rem;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--box-shadow);
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
         }
 
-        .article-content {
-            padding: 2rem;
-            background: var(--card-bg);
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
         }
 
-        .article-image {
-            height: 400px;
-            border-radius: 8px;
-            background-size: cover;
-            background-position: center;
+        .back-to-top:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow-hover);
         }
 
-/* Mobile Menu */
+        /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -626,156 +729,168 @@
             pointer-events: all;
         }
 
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+
         /* --- RESPONSIVE: Medium Screens --- */
-@media (max-width: 1024px) {
-    .contact-container {
-        gap: 1.5rem;
-    }
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .posts-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
 
-    .contact-info, .contact-form {
-        padding: 1.5rem;
-    }
-}
+        /* --- RESPONSIVE: Tablets & Mobiles --- */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 1rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
 
-/* --- RESPONSIVE: Tablets & Mobiles --- */
-@media (max-width: 768px) {
-    .mobile-menu-btn {
-        display: block;
-    }
+            nav {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 80%;
+                max-width: 320px;
+                height: 100vh;
+                background: var(--background);
+                padding: 5rem 2rem 2rem;
+                transform: translateX(100%);
+                transition: transform 0.4s ease;
+                z-index: 1100;
+                overflow-y: auto;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
 
-    nav {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 80%;
-        max-width: 320px;
-        height: 100vh;
-        background: var(--background);
-        padding: 2rem 1.5rem;
-        transform: translateX(100%);
-        transition: transform 0.4s ease;
-        z-index: 1100; /* On top of overlay */
-        overflow-y: auto;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-    }
+            nav.active {
+                transform: translateX(0%);
+            }
 
-    nav.active {
-        transform: translateX(0%);
-    }
+            nav ul {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
 
-    nav ul {
-        flex-direction: column;
-        padding-top: 4rem;
-        gap: 0;
-    }
+            nav a {
+                font-size: 1.1rem;
+                padding: 0.5rem 0;
+                display: block;
+                border-bottom: 1px solid var(--border-color);
+                color: var(--text);
+            }
 
-    nav a {
-        font-size: 1.1rem;
-        padding: 1rem 0;
-        display: block;
-        border-bottom: 1px solid var(--border-color);
-        color: var(--text);
-    }
+            .hero {
+                min-height: 70vh;
+                padding: 3rem 1.5rem;
+                background-attachment: scroll;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .newsletter {
+                padding: 3rem 1.5rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+                padding: 1rem;
+            }
+            
+            .newsletter-form button {
+                margin-top: 0.5rem;
+                border-radius: 4px;
+            }
+        }
 
-    .page-header h2 {
-        font-size: 2rem;
-    }
+        /* --- RESPONSIVE: Phones --- */
+        @media (max-width: 480px) {
+            .header-container {
+                padding: 0.75rem 1rem;
+            }
 
-    .contact-container {
-        grid-template-columns: 1fr;
-        padding: 0 1rem;
-    }
+            .logo-text h1 {
+                font-size: 1.3rem;
+            }
 
-    .info-item {
-        gap: 1rem;
-    }
-
-    .map-container iframe {
-        height: 300px;
-    }
-
-    .hours-table th,
-    .hours-table td {
-        padding: 0.75rem;
-        font-size: 0.9rem;
-    }
-}
-
-/* --- RESPONSIVE: Phones --- */
-@media (max-width: 480px) {
-    .header-container {
-        padding: 0.75rem 1rem;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.75rem;
-    }
-
-    .logo-text h1 {
-        font-size: 1.1rem;
-        line-height: 1.2;
-    }
-
-    .logo-text p {
-        font-size: 0.65rem;
-        line-height: 1;
-    }
-
-    .page-header h2 {
-        font-size: 1.6rem;
-        line-height: 1.3;
-    }
-
-    .page-header p {
-        font-size: 0.95rem;
-        line-height: 1.5;
-        padding: 0 0.5rem;
-    }
-
-    .contact-info,
-    .contact-form {
-        padding: 1.2rem 1rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .info-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.6rem;
-    }
-
-    .info-icon {
-        margin-top: 0;
-        font-size: 1rem;
-    }
-
-    .map-container iframe {
-        height: 260px;
-    }
-
-    .hours-table {
-        display: block;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .hours-table th,
-    .hours-table td {
-        padding: 0.6rem 0.75rem;
-        font-size: 0.85rem;
-        white-space: nowrap;
-    }
-
-    .submit-btn {
-        font-size: 0.95rem;
-        padding: 0.6rem 1rem;
-    }
-
-    .mobile-menu-btn {
-        font-size: 1.8rem;
-        padding: 0.4rem;
-    }
-}
-</style>
+            .logo-text p {
+                font-size: 0.7rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -799,7 +914,6 @@
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="research.html">Research</a></li>
-                    <li><a href="events.html">Events</a></li>
                     <li><a href="news.html">News</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
@@ -810,29 +924,60 @@
     <div class="menu-overlay" id="menuOverlay"></div>
 
     <main>
-        <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1604881991720-f91add269bed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
-            <h1>Advancing Kenya's Global Diplomatic Excellence</h1>
-            <p>Research, training, and policy engagement for a stronger Kenya in the international arena</p>
-            <div>
-                <a href="about.html" class="btn">Learn More</a>
-                <a href="events.html" class="btn btn-secondary">Upcoming Events</a>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content fade-in">
+                <h1>Advancing Kenya's Global Diplomatic Excellence</h1>
+                <p>Research, training, and policy engagement for a stronger Kenya in the international arena</p>
+                <div class="btn-group">
+                    <a href="about.html" class="btn">Learn More</a>
+                </div>
             </div>
         </section>
 
-        <section>
-            <div class="section-title">
+        <!-- About Section -->
+        <section class="section">
+            <div class="section-title fade-in">
                 <h2>Our Core Functions</h2>
                 <p>Driving Kenya's foreign policy through cutting-edge research and strategic engagement</p>
             </div>
 
-        <section class="articles-section">
-            <div class="section-title">
+            <div class="features">
+                <div class="feature-card fade-in delay-1">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <h3>Policy Research</h3>
+                    <p>Conducting in-depth analysis of global trends to inform Kenya's foreign policy decisions and international engagements.</p>
+                </div>
+                
+                <div class="feature-card fade-in delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Diplomatic Training</h3>
+                    <p>Developing world-class training programs to enhance the skills of Kenyan diplomats and international relations professionals.</p>
+                </div>
+                
+                <div class="feature-card fade-in delay-3">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>International Cooperation</h3>
+                    <p>Facilitating partnerships and collaborations with global institutions to advance Kenya's strategic interests.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section class="section" style="background: var(--background-secondary);">
+            <div class="section-title fade-in">
                 <h2>Latest Publications</h2>
                 <p>Recent research and policy analysis from our experts</p>
             </div>
             
             <div class="posts-grid">
-                <div class="post-card">
+                <div class="post-card fade-in delay-1">
                     <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80')"></div>
                     <div class="post-content">
                         <div class="post-meta">
@@ -840,14 +985,14 @@
                             <span class="category">Research</span>
                         </div>
                         <h3>Climate Diplomacy Strategy</h3>
-                        <p class="post-excerpt">New research paper analyzing Kenya's leadership in regional climate initiatives.</p>
+                        <p class="post-excerpt">New research paper analyzing Kenya's leadership in regional climate initiatives and recommendations for future policy directions.</p>
                         <a href="#" class="read-more">
                             Read More <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
                 
-                <div class="post-card">
+                <div class="post-card fade-in delay-2">
                     <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1364&q=80')"></div>
                     <div class="post-content">
                         <div class="post-meta">
@@ -855,14 +1000,14 @@
                             <span class="category">News</span>
                         </div>
                         <h3>AU Summit Address</h3>
-                        <p class="post-excerpt">Director General presents Kenya's vision for conflict resolution mechanisms.</p>
+                        <p class="post-excerpt">Director General presents Kenya's vision for conflict resolution mechanisms in the Horn of Africa region.</p>
                         <a href="#" class="read-more">
                             Read More <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
                 
-                <div class="post-card">
+                <div class="post-card fade-in delay-3">
                     <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80')"></div>
                     <div class="post-content">
                         <div class="post-meta">
@@ -870,83 +1015,111 @@
                             <span class="category">Publication</span>
                         </div>
                         <h3>EU Partnership Review</h3>
-                        <p class="post-excerpt">Examining implementation challenges of Kenya-EU EPA agreement.</p>
+                        <p class="post-excerpt">Examining implementation challenges of Kenya-EU EPA agreement and pathways for enhanced economic cooperation.</p>
                         <a href="#" class="read-more">
                             Read More <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
             </div>
+            
+            <div class="text-center fade-in delay-4" style="margin-top: 3rem;">
+                <a href="research.html" class="btn">View All Publications</a>
+            </div>
         </section>
 
+        <!-- Events Section -->
+        <section class="section">
+            <div class="section-title fade-in">
+                <h2>Upcoming Events</h2>
+                <p>Join our conferences, workshops, and diplomatic forums</p>
+            </div>
+            
             <div class="posts-grid">
-                <div class="post-card">
-                    <div class="post-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrCU6sOB4YE3Vuvl74XK44jTGlV_sI5eAicg&s')"></div>
+                <div class="post-card fade-in delay-1">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1431540015161-0bf868a2d407?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="far fa-calendar-alt"></i> 12 June 2024</span>
-                            <span class="category">Blog Post</span>
+                            <span><i class="far fa-calendar-alt"></i> 15 June 2024</span>
+                            <span class="category">Conference</span>
                         </div>
-                        <h3>Digital Diplomacy in Modern Statecraft</h3>
-                        <p class="post-excerpt">Exploring Kenya's digital transformation of diplomatic services and international engagement strategies.</p>
+                        <h3>Digital Diplomacy Forum</h3>
+                        <p class="post-excerpt">Exploring the transformation of diplomatic services through digital technologies and international best practices.</p>
                         <a href="#" class="read-more">
                             Read More <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
 
-                <div class="post-card">
-                    <div class="post-image" style="background-image: url('data:image/jpeg;base64,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')"></div>
+                <div class="post-card fade-in delay-2">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="far fa-calendar-alt"></i> 10 June 2024</span>
-                            <span class="category">News Analysis</span>
+                            <span><i class="far fa-calendar-alt"></i> 22 June 2024</span>
+                            <span class="category">Workshop</span>
                         </div>
-                        <h3>Kenya-EU Trade Relations Update</h3>
-                        <p class="post-excerpt">Detailed breakdown of the new economic partnership agreement and its implications for local industries.</p>
+                        <h3>Trade Negotiations Training</h3>
+                        <p class="post-excerpt">Practical training program for diplomats and trade officials on effective international trade negotiations.</p>
                         <a href="#" class="read-more">
                             Read More <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
 
-                <div class="post-card">
-                    <div class="post-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbBMtXfiNGXmNT_YR-lw607W1ZR5ZmN1q6vA&s')"></div>
+                <div class="post-card fade-in delay-3">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="far fa-calendar-alt"></i> 8 June 2024</span>
-                            <span class="category">Research Paper</span>
+                            <span><i class="far fa-calendar-alt"></i> 5 July 2024</span>
+                            <span class="category">Seminar</span>
                         </div>
-                        <h3>Sustainable Development Goals Progress</h3>
-                        <p class="post-excerpt">Assessing Kenya's implementation of UN Sustainable Development Goals in foreign policy.</p>
+                        <h3>Regional Security Symposium</h3>
+                        <p class="post-excerpt">Expert discussions on emerging security challenges in East Africa and collaborative solutions.</p>
                         <a href="#" class="read-more">
                             Read More <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
             </div>
+            
+            <div class="text-center fade-in delay-4" style="margin-top: 3rem;">
+                <a href="events.html" class="btn">View All Events</a>
+            </div>
         </section>
 
-        <section class="newsletter">
-            <h2>Subscribe to Our Newsletter</h2>
-            <p>Receive updates on research publications and policy developments.</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Your email address">
-                <button type="submit">Subscribe</button>
-            </form>
+        <!-- Newsletter Section -->
+        <section class="section">
+            <div class="newsletter fade-in">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Receive updates on research publications, policy developments, and upcoming events directly to your inbox.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
         </section>
     </main>
-
-    <footer>
+<footer>
         <div class="footer-container">
+            <div class="footer-about">
+                <img src="images/logo.jpg" alt="Diplomatic College Logo" class="footer-logo">
+                <p>The Diplomatic College of Kenyan Foreign Policy is a premier institution dedicated to advancing Kenya's global diplomatic engagement through research, training, and policy analysis.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
             
             <div class="footer-links">
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
                     <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                    <li><a href="research.html"><i class="fas fa-chevron-right"></i> Publications</a></li>
-                    <li><a href="events.html"><i class="fas fa-chevron-right"></i> Events Calendar</a></li>
+                    <li><a href="research.html"><i class="fas fa-chevron-right"></i> Research</a></li>
+                    <li><a href="news.html"><i class="fas fa-chevron-right"></i> News</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
                 </ul>
             </div>
             
@@ -955,17 +1128,37 @@
                 <ul>
                     <li><a href="#"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li>
                     <li><a href="#"><i class="fas fa-chevron-right"></i> Research Papers</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Diplomatic Training</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Training Programs</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Annual Reports</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Publications</a></li>
                     <li><a href="#"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li>
                 </ul>
             </div>
             
             <div class="footer-links">
-                <h3>Contact</h3>
-                <ul>
-                    <li><i class="fas fa-map-marker-alt"></i> WestLands, Nairobi</li>
-                    <li><i class="fas fa-phone"></i> +2547 9132 5409</li>
-                    <li><i class="fas fa-envelope"></i> info@dckfp.org</li>
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p>Diplomatic College of Kenyan Foreign Policy</p>
+                            <p>Westlands Office Park, Nairobi, Kenya</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <p>+254 20 123 4567</p>
+                            <p>+254 712 345 678</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p>info@dckfp.org</p>
+                            <p>research@dckfp.org</p>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -975,6 +1168,16 @@
         </div>
     </footer>
 
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <script>
     // Header scroll behavior: hide on scroll down, show on scroll up
     let lastScroll = 0;
@@ -982,14 +1185,25 @@
 
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
+        
+        // Header hide/show on scroll
         if (currentScroll > lastScroll && currentScroll > 100) {
             header.classList.add('header-hidden');
         } else {
             header.classList.remove('header-hidden');
         }
         lastScroll = currentScroll;
+        
+        // Back to top button visibility
+        const backToTop = document.getElementById('backToTop');
+        if (currentScroll > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
     });
 
+    // Mobile menu toggle
     const menuBtn = document.getElementById('menu-btn');
     const nav = document.querySelector('nav');
     const overlay = document.querySelector('.menu-overlay');
@@ -997,11 +1211,13 @@
     menuBtn.addEventListener('click', () => {
         nav.classList.toggle('active');
         overlay.classList.toggle('active');
+        document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
     });
 
     overlay.addEventListener('click', () => {
         nav.classList.remove('active');
         overlay.classList.remove('active');
+        document.body.style.overflow = '';
     });
 
     // Close menu when a nav link is clicked
@@ -1009,6 +1225,7 @@
         link.addEventListener('click', () => {
             nav.classList.remove('active');
             overlay.classList.remove('active');
+            document.body.style.overflow = '';
         });
     });
 
@@ -1021,24 +1238,82 @@
         ) {
             nav.classList.remove('active');
             overlay.classList.remove('active');
+            document.body.style.overflow = '';
         }
     });
 
     // Theme Toggle (Dark / Light Mode Persistence)
-    const themeToggle = document.getElementById('whiteModeToggle');
+    const themeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
 
-    const savedTheme = localStorage.getItem('theme') || 'white';
+    const savedTheme = localStorage.getItem('theme') || 'light';
     body.setAttribute('data-theme', savedTheme);
+    updateToggleIcon(savedTheme);
 
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
             const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'white' : 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             body.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
+            updateToggleIcon(newTheme);
         });
     }
-</script>
+
+    function updateToggleIcon(theme) {
+        const icon = themeToggle.querySelector('i');
+        if (theme === 'dark') {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+    }
+
+    // Back to top functionality
+    const backToTop = document.getElementById('backToTop');
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Intersection Observer for animations
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    fadeElements.forEach(element => {
+        element.style.opacity = 0;
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(element);
+    });
+
+    // Form submission handling
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterForm.querySelector('input').value;
+            // Here you would typically send the email to your server
+            alert(`Thank you for subscribing with ${email}!`);
+            newsletterForm.reset();
+        });
+    }
+    </script>
 </body>
 </html>
+    

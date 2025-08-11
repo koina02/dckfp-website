@@ -3,450 +3,778 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diplomatic College of Kenyan Foreign Policy</title>
+    <title>News & Media | Diplomatic College of Kenyan Foreign Policy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-    --primary: #1a4b8c;
-    --secondary: #f0b72f;
-    --accent: #2e7dcc;
-    --background: #ffffff;
-    --header-bg: #ffffff;
-    --background-secondary: #f5f5f5;
-    --text: #333333;
-    --text-secondary: #666666;
-    --card-bg: #f8f9fa;
-    --border-color: rgba(0,0,0,0.1);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    color: var(--text);
-    background-color: var(--background);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-}
-
-header {
-    background: var(--header-bg);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 2rem;
-    flex-wrap: wrap;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.logo img {
-    height: 50px;
-}
-
-.logo-text h1 {
-    font-size: 1.5rem;
-    color: var(--primary);
-    font-weight: 600;
-}
-
-.logo-text p {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    font-weight: 400;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 1.5rem;
-}
-
-nav a {
-    text-decoration: none;
-    color: var(--text);
-    font-weight: 500;
-    position: relative;
-    padding: 0.5rem 0;
-    transition: all 0.3s ease;
-}
-
-nav a:hover,
-nav a.active {
-    color: var(--secondary);
-    font-weight: 600;
-}
-
-nav a.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--secondary);
-}
-
-main {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 2rem;
-}
-
-.page-header {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.page-header h2 {
-    font-size: 2.5rem;
-    color: var(--secondary);
-    font-weight: 700;
-}
-
-.page-header p {
-    font-size: 1.1rem;
-    max-width: 700px;
-    margin: 0 auto;
-    color: var(--text-secondary);
-}
-
-.news-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 3rem;
-}
-
-.featured-news {
-    display: grid;
-    gap: 2rem;
-}
-
-.news-card {
-    background: var(--card-bg);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-    transition: all 0.3s ease;
-    border: 1px solid var(--border-color);
-}
-
-.news-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-    border-color: var(--accent);
-}
-
-.news-image {
-    height: 250px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
-
-.news-image::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
-}
-
-.news-content {
-    padding: 1.5rem;
-}
-
-.news-meta {
-    display: flex;
-    gap: 1rem;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
-}
-
-.news-meta .source {
-    background: var(--accent);
-    color: #fff;
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-.news-content h3 {
-    font-size: 1.5rem;
-    color: var(--text);
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.news-excerpt {
-    color: var(--text-secondary);
-    font-weight: 300;
-    margin-bottom: 1.5rem;
-}
-
-.read-more {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--primary);
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.read-more:hover {
-    color: var(--secondary);
-}
-
-.sidebar {
-    background: var(--card-bg);
-    padding: 1.5rem;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-}
-
-.sidebar h3 {
-    color: var(--text);
-    border-bottom: 2px solid var(--primary);
-    margin-bottom: 1rem;
-    font-weight: 600;
-}
-
-.sidebar-news {
-    display: grid;
-    gap: 1.5rem;
-}
-
-.sidebar-item {
-    display: flex;
-    gap: 1rem;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 1rem;
-}
-
-.sidebar-item:last-child {
-    border-bottom: none;
-}
-
-.sidebar-item:hover {
-    border-bottom-color: var(--primary);
-}
-
-.sidebar-item img {
-    width: 80px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 4px;
-}
-
-.sidebar-content h4 {
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--text);
-}
-
-.sidebar-meta {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-}
-
-.news-categories,
-.newsletter-signup {
-    margin-top: 2rem;
-}
-
-.category-list {
-    list-style: none;
-    padding: 0;
-}
-
-.category-list a {
-    display: block;
-    padding: 0.5rem;
-    color: var(--text-secondary);
-    text-decoration: none;
-    border-radius: 4px;
-    transition: all 0.3s;
-}
-
-.category-list a:hover {
-    background: var(--primary);
-    color: #fff;
-    padding-left: 1rem;
-}
-
-.newsletter-signup h3 {
-    color: var(--text);
-}
-
-.newsletter-signup p {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-}
-
-.newsletter-signup form {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.newsletter-signup input {
-    flex: 1;
-    padding: 0.5rem;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    background: var(--background);
-    color: var(--text);
-}
-
-.newsletter-signup button {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 0 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 500;
-}
-
-.newsletter-signup button:hover {
-    background: var(--accent);
-}
-
-/* Live News */
-.live-news {
-    margin-top: 4rem;
-    padding: 2rem;
-    background: var(--card-bg);
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-}
-
-.live-news h3 {
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text);
-}
-
-.live-news .live-badge {
-    background: red;
-    color: white;
-    padding: 0.2rem 0.5rem;
-    font-size: 0.8rem;
-    border-radius: 4px;
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
-}
-
-.live-news-item {
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.live-news-item:last-child {
-    border-bottom: none;
-}
-
-.live-news-item h4 {
-    color: var(--text);
-    margin-bottom: 0.5rem;
-}
-
-.live-news-item p {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-}
-
-.live-news-item .time {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--secondary);
-}
-
-/* Footer */
-footer {
-    background: var(--background-secondary);
-    color: var(--text);
-    padding: 3rem 0;
-    margin-top: 3rem;
-    border-top: 1px solid var(--border-color);
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-}
-
-.footer-about p {
-    font-weight: 300;
-    color: var(--text-secondary);
-}
-
-.footer-links h3 {
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: var(--secondary);
-}
-
-.footer-links ul {
-    list-style: none;
-}
-
-.footer-links a {
-    text-decoration: none;
-    color: var(--text-secondary);
-    font-weight: 300;
-    transition: 0.3s ease;
-}
-
-.footer-links a:hover {
-    color: var(--primary);
-}
-
-.footer-links i {
-    margin-right: 0.5rem;
-}
-
-.copyright {
-    text-align: center;
-    padding-top: 2rem;
-    font-size: 0.9rem;
-    font-weight: 300;
-    color: var(--text-secondary);
-}
-
-/* Mobile Menu */
+            --primary: #1a4b8c;
+            --primary-light: #3a6cb0;
+            --secondary: #f0b72f;
+            --secondary-light: #f8d67a;
+            --accent: #2e7dcc;
+            --background: #ffffff;
+            --text: #333333;
+            --text-secondary: #666666;
+            --card-bg: #f8f9fa;
+            --border-color: rgba(0,0,0,0.1);
+            --background-secondary: #f5f7fa;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --box-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Dark Mode Variables */
+        [data-theme="dark"] {
+            --primary: #3a6cb0;
+            --secondary: #f8d67a;
+            --accent: #4a90e2;
+            --background: #121212;
+            --text: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --card-bg: #1e1e1e;
+            --border-color: rgba(255,255,255,0.1);
+            --background-secondary: #2d2d2d;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --box-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            transition: var(--transition);
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text);
+            background-color: var(--background);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--background);
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .header-hidden {
+            transform: translateY(-100%);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 1001;
+        }
+
+        .logo img {
+            height: 60px;
+            filter: var(--logo-filter);
+            transition: filter 0.3s ease;
+            max-width: 100%;
+        }
+
+        .logo-text h1 {
+            font-size: 1.7rem;
+            margin: 0;
+            color: var(--primary);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            margin: 0;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+            font-size: 1.05rem;
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+        }
+        
+        nav a.active {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        nav a.active:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--secondary);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 3rem 0;
+        }
+
+        .page-header h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+        }
+
+        /* News Layout */
+        .news-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        /* Featured News */
+        .featured-news {
+            display: grid;
+            gap: 2.5rem;
+        }
+
+        .news-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-hover);
+            border-color: var(--accent);
+        }
+
+        .news-image {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .news-image:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .news-card:hover .news-image:after {
+            opacity: 1;
+        }
+
+        .news-content {
+            padding: 2rem;
+        }
+
+        .news-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .news-meta .date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .news-meta .source {
+            background: var(--accent);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .news-content h3 {
+            font-size: 1.5rem;
+            margin: 0 0 1.5rem 0;
+            color: var(--text);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .news-excerpt {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .read-more:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--box-shadow);
+        }
+
+        .sidebar h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .sidebar h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+
+        .sidebar-news {
+            display: grid;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-item {
+            display: flex;
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .sidebar-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .sidebar-item:hover {
+            border-bottom-color: var(--primary);
+        }
+
+        .sidebar-item img {
+            width: 100px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .sidebar-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .sidebar-content {
+            flex: 1;
+        }
+
+        .sidebar-content h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .sidebar-meta {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Categories */
+        .news-categories {
+            margin: 2rem 0;
+        }
+
+        .category-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .category-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .category-list a {
+            display: block;
+            padding: 0.7rem 1rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: var(--transition);
+            background: var(--background);
+            border: 1px solid var(--border-color);
+        }
+
+        .category-list a:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        /* Newsletter */
+        .newsletter-signup {
+            margin-top: 2rem;
+        }
+
+        .newsletter-signup p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .newsletter-form input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background: var(--background);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(46, 125, 204, 0.2);
+        }
+
+        .newsletter-form button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        /* Live News */
+        .live-news {
+            margin-top: 4rem;
+            padding: 2.5rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--box-shadow);
+        }
+
+        .live-news h3 {
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .live-badge {
+            background: #e74c3c;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            font-weight: 600;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .live-news-items {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .live-news-item {
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .live-news-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .live-news-item h4 {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            font-size: 1.1rem;
+        }
+
+        .live-news-item .time {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--secondary);
+            white-space: nowrap;
+        }
+
+        .live-news-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+            padding-bottom: 2rem;
+        }
+
+        .pagination a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            background: var(--card-bg);
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .pagination a:hover,
+        .pagination a.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--background-secondary);
+            color: var(--text);
+            padding: 5rem 0 0;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-about {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+            filter: var(--logo-filter);
+            transition: filter 0.3s ease;
+        }
+
+        .footer-about p {
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            color: var(--text);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+        
+        .footer-links i {
+            width: 16px;
+            text-align: center;
+            color: var(--secondary);
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info i {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-top: 2px;
+        }
+
+        .contact-info div {
+            flex: 1;
+        }
+
+        .contact-info p {
+            margin: 0;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--box-shadow);
+            border: 2px solid var(--secondary);
+            z-index: 99;
+            transition: var(--transition);
+        }
+
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .dark-mode-toggle i {
+            font-size: 1.3rem;
+            color: var(--secondary);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 7rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--box-shadow);
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -477,156 +805,129 @@ footer {
             pointer-events: all;
         }
 
-/* --- RESPONSIVE: Medium Screens --- */
-@media (max-width: 1024px) {
-    .contact-container {
-        gap: 1.5rem;
-    }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .contact-info, .contact-form {
-        padding: 1.5rem;
-    }
-}
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
 
-/* --- RESPONSIVE: Tablets & Mobiles --- */
-@media (max-width: 768px) {
-    .mobile-menu-btn {
-        display: block;
-    }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
 
-    nav {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 80%;
-        max-width: 320px;
-        height: 100vh;
-        background: var(--background);
-        padding: 2rem 1.5rem;
-        transform: translateX(100%);
-        transition: transform 0.4s ease;
-        z-index: 1100; /* On top of overlay */
-        overflow-y: auto;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-    }
+        /* --- RESPONSIVE: Medium Screens --- */
+        @media (max-width: 1024px) {
+            .news-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: -1;
+            }
+        }
 
-    nav.active {
-        transform: translateX(0%);
-    }
+        /* --- RESPONSIVE: Tablets & Mobiles --- */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 1rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
 
-    nav ul {
-        flex-direction: column;
-        padding-top: 4rem;
-        gap: 0;
-    }
+            nav {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 80%;
+                max-width: 320px;
+                height: 100vh;
+                background: var(--background);
+                padding: 5rem 2rem 2rem;
+                transform: translateX(100%);
+                transition: transform 0.4s ease;
+                z-index: 1100;
+                overflow-y: auto;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
 
-    nav a {
-        font-size: 1.1rem;
-        padding: 1rem 0;
-        display: block;
-        border-bottom: 1px solid var(--border-color);
-        color: var(--text);
-    }
+            nav.active {
+                transform: translateX(0%);
+            }
 
-    .page-header h2 {
-        font-size: 2rem;
-    }
+            nav ul {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
 
-    .contact-container {
-        grid-template-columns: 1fr;
-        padding: 0 1rem;
-    }
+            nav a {
+                font-size: 1.1rem;
+                padding: 0.5rem 0;
+                display: block;
+                border-bottom: 1px solid var(--border-color);
+                color: var(--text);
+            }
 
-    .info-item {
-        gap: 1rem;
-    }
+            .page-header {
+                padding: 2rem 0;
+            }
+            
+            .page-header h2 {
+                font-size: 2rem;
+            }
+            
+            .news-image {
+                height: 250px;
+            }
+            
+            .live-news {
+                padding: 1.5rem;
+            }
+        }
 
-    .map-container iframe {
-        height: 300px;
-    }
+        /* --- RESPONSIVE: Phones --- */
+        @media (max-width: 480px) {
+            .header-container {
+                padding: 0.75rem 1rem;
+            }
 
-    .hours-table th,
-    .hours-table td {
-        padding: 0.75rem;
-        font-size: 0.9rem;
-    }
-}
+            .logo-text h1 {
+                font-size: 1.3rem;
+            }
 
-/* --- RESPONSIVE: Phones --- */
-@media (max-width: 480px) {
-    .header-container {
-        padding: 0.75rem 1rem;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.75rem;
-    }
-
-    .logo-text h1 {
-        font-size: 1.1rem;
-        line-height: 1.2;
-    }
-
-    .logo-text p {
-        font-size: 0.65rem;
-        line-height: 1;
-    }
-
-    .page-header h2 {
-        font-size: 1.6rem;
-        line-height: 1.3;
-    }
-
-    .page-header p {
-        font-size: 0.95rem;
-        line-height: 1.5;
-        padding: 0 0.5rem;
-    }
-
-    .contact-info,
-    .contact-form {
-        padding: 1.2rem 1rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .info-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.6rem;
-    }
-
-    .info-icon {
-        margin-top: 0;
-        font-size: 1rem;
-    }
-
-    .map-container iframe {
-        height: 260px;
-    }
-
-    .hours-table {
-        display: block;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .hours-table th,
-    .hours-table td {
-        padding: 0.6rem 0.75rem;
-        font-size: 0.85rem;
-        white-space: nowrap;
-    }
-
-    .submit-btn {
-        font-size: 0.95rem;
-        padding: 0.6rem 1rem;
-    }
-
-    .mobile-menu-btn {
-        font-size: 1.8rem;
-        padding: 0.4rem;
-    }
-}
-</style>
+            .logo-text p {
+                font-size: 0.7rem;
+            }
+            
+            .page-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .news-image {
+                height: 200px;
+            }
+            
+            .sidebar-item {
+                flex-direction: column;
+            }
+            
+            .sidebar-item img {
+                width: 100%;
+                height: 120px;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -648,10 +949,9 @@ footer {
             <nav id="mainNav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="about.html">About</a></li>
                     <li><a href="research.html">Research</a></li>
-                    <li><a href="events.html">Events</a></li>
-                    <li><a href="news.html">News</a></li>
+                    <li><a href="news.html" class="active">News</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -659,18 +959,18 @@ footer {
     </header>
 
     <main>
-        <div class="page-header">
-            <h2>News & Commentary</h2>
+        <div class="page-header fade-in">
+            <h2>News & Media</h2>
             <p>Latest updates, media coverage, and expert analysis on Kenya's foreign policy and diplomatic engagements</p>
         </div>
         
         <div class="news-container">
             <div class="featured-news">
-                <div class="news-card">
+                <div class="news-card fade-in delay-1">
                     <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
                     <div class="news-content">
                         <div class="news-meta">
-                            <span><i class="far fa-calendar-alt"></i> 15 June 2023</span>
+                            <span class="date"><i class="far fa-calendar-alt"></i> 15 June 2023</span>
                             <span class="source">Daily Nation</span>
                         </div>
                         <h3>Kenya Hosts Inaugural Africa Climate Summit 2023</h3>
@@ -681,11 +981,11 @@ footer {
                     </div>
                 </div>
                 
-                <div class="news-card">
+                <div class="news-card fade-in delay-2">
                     <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
                     <div class="news-content">
                         <div class="news-meta">
-                            <span><i class="far fa-calendar-alt"></i> 10 June 2023</span>
+                            <span class="date"><i class="far fa-calendar-alt"></i> 10 June 2023</span>
                             <span class="source">The EastAfrican</span>
                         </div>
                         <h3>Kenya-EU Trade Agreement Enters Final Negotiation Phase</h3>
@@ -696,15 +996,30 @@ footer {
                     </div>
                 </div>
                 
-                <div class="news-card">
+                <div class="news-card fade-in delay-3">
                     <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
                     <div class="news-content">
                         <div class="news-meta">
-                            <span><i class="far fa-calendar-alt"></i> 5 June 2023</span>
+                            <span class="date"><i class="far fa-calendar-alt"></i> 5 June 2023</span>
                             <span class="source">UN News</span>
                         </div>
                         <h3>Kenya Appointed to Lead UN Security Council Counterterrorism Committee</h3>
                         <p class="news-excerpt">In recognition of its regional peacekeeping efforts, Kenya will chair the influential committee for the 2023-2024 term. DCKFP's counterterrorism experts to provide technical support.</p>
+                        <a href="#" class="read-more">
+                            Read Full Story <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="news-card fade-in delay-4">
+                    <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span class="date"><i class="far fa-calendar-alt"></i> 3 June 2023</span>
+                            <span class="source">DCKFP Press</span>
+                        </div>
+                        <h3>Diplomatic Training Program Graduates 35 Foreign Service Officers</h3>
+                        <p class="news-excerpt">The intensive 6-month program equips officers with cutting-edge negotiation and policy analysis skills. Foreign Affairs CS officiates the graduation ceremony at DCKFP headquarters.</p>
                         <a href="#" class="read-more">
                             Read Full Story <i class="fas fa-arrow-right"></i>
                         </a>
@@ -715,7 +1030,7 @@ footer {
             <div class="sidebar">
                 <h3>Latest Updates</h3>
                 <div class="sidebar-news">
-                    <div class="sidebar-item">
+                    <div class="sidebar-item fade-in delay-1">
                         <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Training Workshop">
                         <div class="sidebar-content">
                             <h4>Diplomatic Training Program Graduation</h4>
@@ -725,7 +1040,7 @@ footer {
                         </div>
                     </div>
                     
-                    <div class="sidebar-item">
+                    <div class="sidebar-item fade-in delay-2">
                         <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Book Launch">
                         <div class="sidebar-content">
                             <h4>New Publication: Kenya-EU Relations in the Digital Age</h4>
@@ -735,12 +1050,22 @@ footer {
                         </div>
                     </div>
                     
-                    <div class="sidebar-item">
+                    <div class="sidebar-item fade-in delay-3">
                         <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1484&q=80" alt="IGAD Meeting">
                         <div class="sidebar-content">
                             <h4>DCKFP Experts Contribute to IGAD Policy Review</h4>
                             <div class="sidebar-meta">
                                 <span><i class="far fa-calendar-alt"></i> 22 May 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-item fade-in delay-4">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Trade Negotiations">
+                        <div class="sidebar-content">
+                            <h4>Kenya-UK Trade Talks Enter Final Round</h4>
+                            <div class="sidebar-meta">
+                                <span><i class="far fa-calendar-alt"></i> 18 May 2023</span>
                             </div>
                         </div>
                     </div>
@@ -759,9 +1084,9 @@ footer {
                 
                 <div class="newsletter-signup">
                     <h3>Stay Updated</h3>
-                    <p>Subscribe to our newsletter for weekly foreign policy updates</p>
-                    <form>
-                        <input type="email" placeholder="Your email">
+                    <p>Subscribe to our newsletter for weekly foreign policy updates and analysis from our experts.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
                         <button type="submit">Subscribe</button>
                     </form>
                 </div>
@@ -769,41 +1094,62 @@ footer {
         </div>
 
         <!-- Live News Section -->
-        <div class="live-news">
+        <div class="live-news fade-in delay-4">
             <h3><span class="live-badge">LIVE</span> Breaking Diplomatic News</h3>
             
-            <div class="live-news-item">
-                <h4><span class="time">15:30 EAT</span> Kenya and Somalia agree to resume direct flights after 3-year hiatus</h4>
-                <p>Foreign ministers sign agreement in Nairobi, marking significant thaw in bilateral relations.</p>
+            <div class="live-news-items">
+                <div class="live-news-item">
+                    <h4><span class="time">15:30 EAT</span> Kenya and Somalia agree to resume direct flights after 3-year hiatus</h4>
+                    <p>Foreign ministers sign agreement in Nairobi, marking significant thaw in bilateral relations. DCKFP analysts note this as a positive step in regional integration.</p>
+                </div>
+                
+                <div class="live-news-item">
+                    <h4><span class="time">14:45 EAT</span> President Ruto departs for G7 summit in Japan</h4>
+                    <p>Kenyan leader to participate in outreach session focused on African development partnerships. Expected to advocate for climate finance and technology transfer.</p>
+                </div>
+                
+                <div class="live-news-item">
+                    <h4><span class="time">13:20 EAT</span> DCKFP delegation arrives in Addis for AU security conference</h4>
+                    <p>Team led by Dr. Amina Mohamed to present research on counterterrorism strategies in the Horn of Africa. Research funded by EU Peace and Security Programme.</p>
+                </div>
+                
+                <div class="live-news-item">
+                    <h4><span class="time">11:05 EAT</span> Kenya secures UN Security Council seat for 2024-2025 term</h4>
+                    <p>Unanimous African Union endorsement paves way for Kenya's return to the powerful UN body. DCKFP to provide policy support during the term.</p>
+                </div>
             </div>
-            
-            <div class="live-news-item">
-                <h4><span class="time">14:45 EAT</span> President Ruto departs for G7 summit in Japan</h4>
-                <p>Kenyan leader to participate in outreach session focused on African development partnerships.</p>
-            </div>
-            
-            <div class="live-news-item">
-                <h4><span class="time">13:20 EAT</span> DCKFP delegation arrives in Addis for AU security conference</h4>
-                <p>Team led by Dr. Amina Mohamed to present research on counterterrorism strategies in the Horn of Africa.</p>
-            </div>
-            
-            <div class="live-news-item">
-                <h4><span class="time">11:05 EAT</span> Kenya secures UN Security Council seat for 2024-2025 term</h4>
-                <p>Unanimous African Union endorsement paves way for Kenya's return to the powerful UN body.</p>
-            </div>
+        </div>
+        
+        <div class="pagination fade-in delay-4">
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#"><i class="fas fa-chevron-right"></i></a>
         </div>
     </main>
 
     <footer>
         <div class="footer-container">
+            <div class="footer-about">
+                <img src="images/logo.jpg" alt="Diplomatic College Logo" class="footer-logo">
+                <p>The Diplomatic College of Kenyan Foreign Policy is a premier institution dedicated to advancing Kenya's global diplomatic engagement through research, training, and policy analysis.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
             
             <div class="footer-links">
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
                     <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                    <li><a href="research.html"><i class="fas fa-chevron-right"></i> Publications</a></li>
-                    <li><a href="events.html"><i class="fas fa-chevron-right"></i> Events Calendar</a></li>
+                    <li><a href="research.html"><i class="fas fa-chevron-right"></i> Research</a></li>
+                    <li><a href="news.html"><i class="fas fa-chevron-right"></i> News</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
                 </ul>
             </div>
             
@@ -812,17 +1158,37 @@ footer {
                 <ul>
                     <li><a href="#"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li>
                     <li><a href="#"><i class="fas fa-chevron-right"></i> Research Papers</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Diplomatic Training</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Training Programs</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Annual Reports</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Publications</a></li>
                     <li><a href="#"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li>
                 </ul>
             </div>
             
             <div class="footer-links">
-                <h3>Contact</h3>
-                <ul>
-                    <li><i class="fas fa-map-marker-alt"></i> WestLands, Nairobi</li>
-                    <li><i class="fas fa-phone"></i> +2547 9132 5409</li>
-                    <li><i class="fas fa-envelope"></i> info@dckfp.org</li>
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p>Diplomatic College of Kenyan Foreign Policy</p>
+                            <p>Westlands Office Park, Nairobi, Kenya</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <p>+254 20 123 4567</p>
+                            <p>+254 712 345 678</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p>info@dckfp.org</p>
+                            <p>research@dckfp.org</p>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -832,6 +1198,16 @@ footer {
         </div>
     </footer>
 
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <script>
     // Header scroll behavior: hide on scroll down, show on scroll up
     let lastScroll = 0;
@@ -839,14 +1215,25 @@ footer {
 
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
+        
+        // Header hide/show on scroll
         if (currentScroll > lastScroll && currentScroll > 100) {
             header.classList.add('header-hidden');
         } else {
             header.classList.remove('header-hidden');
         }
         lastScroll = currentScroll;
+        
+        // Back to top button visibility
+        const backToTop = document.getElementById('backToTop');
+        if (currentScroll > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
     });
 
+    // Mobile menu toggle
     const menuBtn = document.getElementById('menu-btn');
     const nav = document.querySelector('nav');
     const overlay = document.querySelector('.menu-overlay');
@@ -854,11 +1241,13 @@ footer {
     menuBtn.addEventListener('click', () => {
         nav.classList.toggle('active');
         overlay.classList.toggle('active');
+        document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
     });
 
     overlay.addEventListener('click', () => {
         nav.classList.remove('active');
         overlay.classList.remove('active');
+        document.body.style.overflow = '';
     });
 
     // Close menu when a nav link is clicked
@@ -866,6 +1255,7 @@ footer {
         link.addEventListener('click', () => {
             nav.classList.remove('active');
             overlay.classList.remove('active');
+            document.body.style.overflow = '';
         });
     });
 
@@ -878,24 +1268,81 @@ footer {
         ) {
             nav.classList.remove('active');
             overlay.classList.remove('active');
+            document.body.style.overflow = '';
         }
     });
 
     // Theme Toggle (Dark / Light Mode Persistence)
-    const themeToggle = document.getElementById('whiteModeToggle');
+    const themeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
 
-    const savedTheme = localStorage.getItem('theme') || 'white';
+    const savedTheme = localStorage.getItem('theme') || 'light';
     body.setAttribute('data-theme', savedTheme);
+    updateToggleIcon(savedTheme);
 
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
             const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'white' : 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             body.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
+            updateToggleIcon(newTheme);
         });
     }
-</script>
+
+    function updateToggleIcon(theme) {
+        const icon = themeToggle.querySelector('i');
+        if (theme === 'dark') {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+    }
+
+    // Back to top functionality
+    const backToTop = document.getElementById('backToTop');
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Intersection Observer for animations
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    fadeElements.forEach(element => {
+        element.style.opacity = 0;
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(element);
+    });
+
+    // Form submission handling
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterForm.querySelector('input').value;
+            // Here you would typically send the email to your server
+            alert(`Thank you for subscribing with ${email}!`);
+            newsletterForm.reset();
+        });
+    }
+    </script>
 </body>
 </html>
