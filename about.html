@@ -405,46 +405,117 @@
             color: var(--accent);
         }
 
-        /* Partners Section */
-        .partners {
-            margin-top: 5rem;
-            background: var(--card-bg);
-            padding: 5rem 2rem;
-            text-align: center;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--box-shadow);
-        }
+        /* Countries Section Styles */
+.countries-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        .partners h3 {
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            color: var(--secondary);
-        }
+.region {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
 
-        .partner-logos {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 4rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+.region:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-hover);
+}
 
-        .partner-logo {
-            height: 80px;
-            width: auto;
-            object-fit: contain;
-            opacity: 0.8;
-            transition: var(--transition);
-            filter: var(--logo-filter);
-        }
+.region-title {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
 
-        .partner-logo:hover {
-            opacity: 1;
-            transform: scale(1.1);
-        }
+.region-title i {
+    color: var(--secondary);
+    font-size: 1.3rem;
+}
+
+.country-logos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1.5rem;
+}
+
+.country-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    transition: var(--transition);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.country-item:hover {
+    background: rgba(0,0,0,0.05);
+    transform: translateY(-3px);
+}
+
+.country-logo {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.country-item:hover .country-logo {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.country-name {
+    color: var(--text);
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .country-logos {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 1rem;
+    }
+    
+    .country-logo {
+        width: 70px;
+        height: 50px;
+    }
+    
+    .region {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .country-logos {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    }
+    
+    .country-logo {
+        width: 60px;
+        height: 40px;
+    }
+    
+    .country-name {
+        font-size: 0.8rem;
+    }
+}
 
         /* Footer */
         footer {
@@ -882,7 +953,7 @@
                 <div class="about-text">
                     <div>
                         <h3>Our Institution</h3>
-                        <p>The Diplomatic College of Kenyan Foreign Policy (DCKFP) is Nairobi's premier institution dedicated to advancing Kenya's global diplomatic strategy. Established in 2024, we serve as a bridge between academic research and practical foreign policy implementation.</p>
+                        <p>The Diplomatic College of Kenyan Foreign Policy (DCKFP) is Nairobi's premier institution dedicated to advancing Kenya's global diplomatic strategy. Established in 2025, we serve as a bridge between academic research and practical foreign policy implementation.</p>
                         <p>Our work focuses on strengthening Kenya's position in regional and international affairs while developing the next generation of diplomatic leaders through innovative training programs and strategic policy engagement.</p>
                     </div>
                     
@@ -957,18 +1028,122 @@
             </div>
         </section>
 
-        <!-- Partners Section -->
-        <section class="section">
-            <div class="partners fade-in delay-3">
-                <h3>Our Partners</h3>
-                <div class="partner-logos">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/African_Union_%28AU%29_logo.svg/1200px-African_Union_%28AU%29_logo.svg.png" alt="African Union" class="partner-logo">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/United_Nations_blue_berets_peacekeepers.jpg/1200px-United_Nations_blue_berets_peacekeepers.jpg" alt="United Nations" class="partner-logo">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/European_Commission.svg/1200px-European_Commission.svg.png" alt="European Commission" class="partner-logo">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/University_of_Nairobi_logo.svg/1200px-University_of_Nairobi_logo.svg.png" alt="University of Nairobi" class="partner-logo">
+        <!-- Updated Countries Section -->
+<section class="section">
+    <div class="section-title fade-in">
+        <h2>Our Global Partnerships</h2>
+        <p>We collaborate with nations across the world to strengthen Kenya's diplomatic relations</p>
+    </div>
+
+    <div class="countries-container fade-in delay-1">
+        <!-- Africa -->
+        <div class="region">
+            <h3 class="region-title"><i class="fas fa-globe-africa"></i> Africa</h3>
+            <div class="country-logos">
+                <div class="country-item">
+                    <img src="https://flagcdn.com/w80/ke.png" alt="Kenya" class="country-logo">
+                    <span class="country-name">Kenya</span>
+                </div>
+                <div class="country-item">
+                    <img src="https://flagcdn.com/w80/za.png" alt="South Africa" class="country-logo">
+                    <span class="country-name">South Africa</span>
+                </div>
+                <div class="country-item">
+                    <img src="https://flagcdn.com/w80/ng.png" alt="Nigeria" class="country-logo">
+                    <span class="country-name">Nigeria</span>
+                </div>
+                <div class="country-item">
+                    <img src="https://flagcdn.com/w80/eg.png" alt="Egypt" class="country-logo">
+                    <span class="country-name">Egypt</span>
+                </div>
+                <div class="country-item">
+                    <img src="https://flagcdn.com/w80/et.png" alt="Ethiopia" class="country-logo">
+                    <span class="country-name">Ethiopia</span>
                 </div>
             </div>
-        </section>
+        </div>
+
+        <!-- Americas -->
+        <div class="region">
+            <h3 class="region-title"><i class="fas fa-globe-americas"></i> Americas</h3>
+            <div class="country-logos">
+                <div class="country-item">
+                    <img src="https://flagcdn.com/w80/us.png" alt="United States" class="country-logo">
+                    <span class="country-name">United States</span>
+                </div>
+                <div class="country-item">
+                    <img src="https://flagcdn.com/w80/ca.png" alt="Canada" class="country-logo">
+                    <span class="country-name">Canada</span>
+                </div>
+                <div class="country-item">
+                    <img src="https://flagcdn.com/w80/br.png" alt="Brazil" class="country-logo">
+                    <span class="country-name">Brazil</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Europe -->
+        <div class="region">
+            <h3 class="region-title"><i class="fas fa-globe-europe"></i> Europe</h3>
+            <div class="country-logos">
+                <div class="country-item">
+                    <img src="https://flagcdn.com/w80/gb.png" alt="United Kingdom" class="country-logo">
+                    <span class="country-name">United Kingdom</span>
+                </div>
+                <div class="country-item">
+                    <img src="https://flagcdn.com/w80/fr.png" alt="France" class="country-logo">
+                    <span class="country-name">France</span>
+                </div>
+                <div class="country-item">
+                    <img src="https://flagcdn.com/w80/de.png" alt="Germany" class="country-logo">
+                    <span class="country-name">Germany</span>
+                </div>
+                <div class="country-item">
+                    <img src="https://flagcdn.com/w80/eu.png" alt="European Union" class="country-logo">
+                    <span class="country-name">European Union</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Asia -->
+        <div class="region">
+            <h3 class="region-title"><i class="fas fa-globe-asia"></i> Asia</h3>
+            <div class="country-logos">
+                <div class="country-item">
+                    <img src="https://flagcdn.com/w80/cn.png" alt="China" class="country-logo">
+                    <span class="country-name">China</span>
+                </div>
+                <div class="country-item">
+                    <img src="https://flagcdn.com/w80/jp.png" alt="Japan" class="country-logo">
+                    <span class="country-name">Japan</span>
+                </div>
+                <div class="country-item">
+                    <img src="https://flagcdn.com/w80/in.png" alt="India" class="country-logo">
+                    <span class="country-name">India</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Middle East -->
+        <div class="region">
+            <h3 class="region-title"><i class="fas fa-mosque"></i> Middle East</h3>
+            <div class="country-logos">
+                <div class="country-item">
+                    <img src="https://flagcdn.com/w80/ae.png" alt="United Arab Emirates" class="country-logo">
+                    <span class="country-name">UAE</span>
+                </div>
+                <div class="country-item">
+                    <img src="https://flagcdn.com/w80/sa.png" alt="Saudi Arabia" class="country-logo">
+                    <span class="country-name">Saudi Arabia</span>
+                </div>
+                <div class="country-item">
+                    <img src="https://flagcdn.com/w80/qa.png" alt="Qatar" class="country-logo">
+                    <span class="country-name">Qatar</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
     </main>
 
     <footer>

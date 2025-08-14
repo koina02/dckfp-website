@@ -127,6 +127,7 @@
             gap: 2rem;
             margin: 0;
             padding: 0;
+            align-items: center;
         }
 
         nav a {
@@ -156,6 +157,36 @@
             width: 100%;
             height: 2px;
             background: var(--secondary);
+        }
+
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            padding: 0.5rem 1rem 0.5rem 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            width: 200px;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            width: 250px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            color: var(--text-secondary);
         }
 
         /* Hero Section */
@@ -385,6 +416,70 @@
         .read-more:hover {
             color: var(--accent);
             transform: translateX(5px);
+        }
+
+        /* Africa Program Schedule */
+        .program-schedule {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--box-shadow);
+        }
+
+        .schedule-title {
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .schedule-item {
+            background: var(--background);
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 4px solid var(--secondary);
+            box-shadow: var(--box-shadow);
+        }
+
+        .schedule-date {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .schedule-event {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .schedule-location {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .mission-alignment {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(240, 183, 47, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .mission-alignment h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .mission-alignment p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
         }
 
         /* Features Section */
@@ -729,6 +824,14 @@
             pointer-events: all;
         }
 
+        /* Mobile Search */
+        .mobile-search-container {
+            display: none;
+            padding: 1rem;
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+        }
+
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -802,6 +905,14 @@
                 color: var(--text);
             }
 
+            .search-container {
+                display: none;
+            }
+
+            .mobile-search-container {
+                display: block;
+            }
+
             .hero {
                 min-height: 70vh;
                 padding: 3rem 1.5rem;
@@ -852,6 +963,14 @@
             .newsletter-form button {
                 margin-top: 0.5rem;
                 border-radius: 4px;
+            }
+
+            .program-schedule {
+                padding: 1.5rem;
+            }
+
+            .schedule-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -916,6 +1035,10 @@
                     <li><a href="research.html">Research</a></li>
                     <li><a href="news.html">News</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    <li class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="search-input" placeholder="Search...">
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -1022,68 +1145,45 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Africa Program Schedule -->
+            <div class="program-schedule fade-in delay-4">
+                <h3 class="schedule-title">Africa Program Schedule 2024</h3>
+                <div class="schedule-grid">
+                    <div class="schedule-item">
+                        <div class="schedule-date">June 15-18, 2024</div>
+                        <div class="schedule-event">East Africa Regional Diplomacy Forum</div>
+                        <div class="schedule-location">Nairobi, Kenya</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-date">July 5-8, 2024</div>
+                        <div class="schedule-event">Horn of Africa Security Symposium</div>
+                        <div class="schedule-location">Addis Ababa, Ethiopia</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-date">August 12-15, 2024</div>
+                        <div class="schedule-event">Great Lakes Economic Integration Workshop</div>
+                        <div class="schedule-location">Kigali, Rwanda</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-date">September 3-6, 2024</div>
+                        <div class="schedule-event">African Union Policy Dialogue</div>
+                        <div class="schedule-location">Johannesburg, South Africa</div>
+                    </div>
+                </div>
+
+                <div class="mission-alignment">
+                    <h3>How DCKFP's Mission Aligns with the Africa Program</h3>
+                    <p>The Diplomatic College of Kenyan Foreign Policy is committed to strengthening Kenya's position as a leader in African diplomacy. Our Africa Program directly supports our mission through:</p>
+                    <p>1. <strong>Capacity Building:</strong> Training programs for diplomats across East Africa to enhance regional cooperation and conflict resolution skills.</p>
+                    <p>2. <strong>Policy Research:</strong> Producing evidence-based analysis to inform Kenya's engagement with regional bodies like the AU and EAC.</p>
+                    <p>3. <strong>Strategic Partnerships:</strong> Facilitating collaborations between Kenyan institutions and their counterparts across the continent.</p>
+                    <p>4. <strong>Economic Diplomacy:</strong> Supporting Kenya's trade and investment objectives through targeted diplomatic initiatives.</p>
+                </div>
+            </div>
             
             <div class="text-center fade-in delay-4" style="margin-top: 3rem;">
                 <a href="research.html" class="btn">View All Publications</a>
-            </div>
-        </section>
-
-        <!-- Events Section -->
-        <section class="section">
-            <div class="section-title fade-in">
-                <h2>Upcoming Events</h2>
-                <p>Join our conferences, workshops, and diplomatic forums</p>
-            </div>
-            
-            <div class="posts-grid">
-                <div class="post-card fade-in delay-1">
-                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1431540015161-0bf868a2d407?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
-                    <div class="post-content">
-                        <div class="post-meta">
-                            <span><i class="far fa-calendar-alt"></i> 15 June 2024</span>
-                            <span class="category">Conference</span>
-                        </div>
-                        <h3>Digital Diplomacy Forum</h3>
-                        <p class="post-excerpt">Exploring the transformation of diplomatic services through digital technologies and international best practices.</p>
-                        <a href="#" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="post-card fade-in delay-2">
-                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
-                    <div class="post-content">
-                        <div class="post-meta">
-                            <span><i class="far fa-calendar-alt"></i> 22 June 2024</span>
-                            <span class="category">Workshop</span>
-                        </div>
-                        <h3>Trade Negotiations Training</h3>
-                        <p class="post-excerpt">Practical training program for diplomats and trade officials on effective international trade negotiations.</p>
-                        <a href="#" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="post-card fade-in delay-3">
-                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
-                    <div class="post-content">
-                        <div class="post-meta">
-                            <span><i class="far fa-calendar-alt"></i> 5 July 2024</span>
-                            <span class="category">Seminar</span>
-                        </div>
-                        <h3>Regional Security Symposium</h3>
-                        <p class="post-excerpt">Expert discussions on emerging security challenges in East Africa and collaborative solutions.</p>
-                        <a href="#" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center fade-in delay-4" style="margin-top: 3rem;">
-                <a href="events.html" class="btn">View All Events</a>
             </div>
         </section>
 
@@ -1099,7 +1199,8 @@
             </div>
         </section>
     </main>
-<footer>
+
+    <footer>
         <div class="footer-container">
             <div class="footer-about">
                 <img src="images/logo.jpg" alt="Diplomatic College Logo" class="footer-logo">
@@ -1313,7 +1414,21 @@
             newsletterForm.reset();
         });
     }
+
+    // Search functionality
+    const searchInput = document.querySelector('.search-input');
+    if (searchInput) {
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const query = searchInput.value.trim();
+                if (query) {
+                    // Here you would implement search functionality
+                    alert(`Searching for: ${query}`);
+                    searchInput.value = '';
+                }
+            }
+        });
+    }
     </script>
 </body>
 </html>
-    
