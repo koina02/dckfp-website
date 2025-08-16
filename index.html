@@ -525,69 +525,88 @@
             line-height: 1.6;
         }
 
-        /* Newsletter */
-        .newsletter {
-            background: var(--card-bg);
-            padding: 4rem;
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 4rem 2rem;
             border-radius: 8px;
+            margin: 4rem 0;
+            color: white;
             text-align: center;
-            margin-bottom: 4rem;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--box-shadow);
-            max-width: 900px;
-            margin: 0 auto;
         }
-        
-        .newsletter h2 {
-            color: var(--text);
-            margin-bottom: 1.5rem;
+
+        .newsletter-section h3 {
             font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: white;
         }
-        
-        .newsletter p {
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
-            font-size: 1.1rem;
+
+        .newsletter-section p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: rgba(255,255,255,0.9);
         }
-        
+
         .newsletter-form {
             display: flex;
             max-width: 600px;
             margin: 0 auto;
-            box-shadow: var(--box-shadow);
-            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-radius: 50px;
             overflow: hidden;
         }
-        
+
         .newsletter-form input {
             flex: 1;
             padding: 1rem 1.5rem;
             border: none;
-            background: var(--background);
+            background: white;
             color: var(--text);
             font-family: 'Inter', sans-serif;
             font-size: 1rem;
         }
-        
+
         .newsletter-form input::placeholder {
             color: var(--text-secondary);
         }
-        
+
         .newsletter-form button {
-            background: var(--primary);
-            color: white;
+            background: var(--secondary);
+            color: var(--text);
             border: none;
-            padding: 0 2rem;
+            padding: 0 2.5rem;
             cursor: pointer;
             transition: var(--transition);
             font-family: 'Inter', sans-serif;
             font-weight: 600;
             font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        
+
         .newsletter-form button:hover {
-            background: var(--primary-light);
+            background: var(--secondary-light);
+        }
+
+        .newsletter-benefits {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .newsletter-benefit {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .newsletter-benefit i {
+            color: var(--secondary);
         }
 
         /* Footer */
@@ -1034,6 +1053,7 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="research.html">Research</a></li>
                     <li><a href="news.html">News</a></li>
+                    <li><a href="program-schedule.html" class="active">Program</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li class="search-container">
                         <i class="fas fa-search search-icon"></i>
@@ -1145,42 +1165,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Africa Program Schedule -->
-            <div class="program-schedule fade-in delay-4">
-                <h3 class="schedule-title">Africa Program Schedule 2024</h3>
-                <div class="schedule-grid">
-                    <div class="schedule-item">
-                        <div class="schedule-date">June 15-18, 2024</div>
-                        <div class="schedule-event">East Africa Regional Diplomacy Forum</div>
-                        <div class="schedule-location">Nairobi, Kenya</div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-date">July 5-8, 2024</div>
-                        <div class="schedule-event">Horn of Africa Security Symposium</div>
-                        <div class="schedule-location">Addis Ababa, Ethiopia</div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-date">August 12-15, 2024</div>
-                        <div class="schedule-event">Great Lakes Economic Integration Workshop</div>
-                        <div class="schedule-location">Kigali, Rwanda</div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-date">September 3-6, 2024</div>
-                        <div class="schedule-event">African Union Policy Dialogue</div>
-                        <div class="schedule-location">Johannesburg, South Africa</div>
-                    </div>
-                </div>
-
-                <div class="mission-alignment">
-                    <h3>How DCKFP's Mission Aligns with the Africa Program</h3>
-                    <p>The Diplomatic College of Kenyan Foreign Policy is committed to strengthening Kenya's position as a leader in African diplomacy. Our Africa Program directly supports our mission through:</p>
-                    <p>1. <strong>Capacity Building:</strong> Training programs for diplomats across East Africa to enhance regional cooperation and conflict resolution skills.</p>
-                    <p>2. <strong>Policy Research:</strong> Producing evidence-based analysis to inform Kenya's engagement with regional bodies like the AU and EAC.</p>
-                    <p>3. <strong>Strategic Partnerships:</strong> Facilitating collaborations between Kenyan institutions and their counterparts across the continent.</p>
-                    <p>4. <strong>Economic Diplomacy:</strong> Supporting Kenya's trade and investment objectives through targeted diplomatic initiatives.</p>
-                </div>
-            </div>
             
             <div class="text-center fade-in delay-4" style="margin-top: 3rem;">
                 <a href="research.html" class="btn">View All Publications</a>
@@ -1188,14 +1172,30 @@
         </section>
 
         <!-- Newsletter Section -->
-        <section class="section">
-            <div class="newsletter fade-in">
-                <h2>Subscribe to Our Newsletter</h2>
-                <p>Receive updates on research publications, policy developments, and upcoming events directly to your inbox.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Your email address" required>
-                    <button type="submit">Subscribe</button>
-                </form>
+        <section class="newsletter-section fade-in delay-2">
+            <h3>Stay Updated with Daily Diplomatic Highlights</h3>
+            <p>Subscribe to our newsletter and receive daily updates on Kenya's diplomatic engagements, policy briefs, and event invitations directly to your inbox.</p>
+            
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">
+                    <i class="fas fa-paper-plane"></i> Subscribe
+                </button>
+            </form>
+            
+            <div class="newsletter-benefits">
+                <div class="newsletter-benefit">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Daily diplomatic briefs</span>
+                </div>
+                <div class="newsletter-benefit">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Event invitations</span>
+                </div>
+                <div class="newsletter-benefit">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Exclusive research previews</span>
+                </div>
             </div>
         </section>
     </main>
@@ -1227,12 +1227,10 @@
             <div class="footer-links">
                 <h3>Resources</h3>
                 <ul>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Research Papers</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Training Programs</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Annual Reports</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Publications</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li>
+                    <li><a href="https://www.un.org/sites/un2.un.org/files/our-common-agenda-summit-of-the-future-what-would-it-deliver.pdf"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li>
+                    <li><a href="program-schedule.html"><i class="fas fa-chevron-right"></i> Program Schedule</a></li>
+                    <li><a href="research.html"><i class="fas fa-chevron-right"></i> Publications</a></li>
+                    <li><a href="https://www.kenyaembassy.org.tr/uploads/Kenya_Foreign_Policy.pdf"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li>
                 </ul>
             </div>
             
@@ -1403,29 +1401,24 @@
         observer.observe(element);
     });
 
-    // Form submission handling
+    // Newsletter form submission
     const newsletterForm = document.querySelector('.newsletter-form');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const email = newsletterForm.querySelector('input').value;
-            // Here you would typically send the email to your server
-            alert(`Thank you for subscribing with ${email}!`);
-            newsletterForm.reset();
-        });
-    }
-
-    // Search functionality
-    const searchInput = document.querySelector('.search-input');
-    if (searchInput) {
-        searchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                const query = searchInput.value.trim();
-                if (query) {
-                    // Here you would implement search functionality
-                    alert(`Searching for: ${query}`);
-                    searchInput.value = '';
-                }
+            const emailInput = newsletterForm.querySelector('input');
+            const email = emailInput.value.trim();
+            
+            if (email) {
+                // Here you would typically send the email to your server
+                // For demonstration, we'll show a confirmation message
+                const originalButtonText = newsletterForm.querySelector('button').innerHTML;
+                newsletterForm.querySelector('button').innerHTML = '<i class="fas fa-check"></i> Subscribed!';
+                
+                setTimeout(() => {
+                    newsletterForm.querySelector('button').innerHTML = originalButtonText;
+                    emailInput.value = '';
+                }, 2000);
             }
         });
     }

@@ -619,6 +619,14 @@
             pointer-events: all;
         }
 
+        /* Mobile Search */
+        .mobile-search-container {
+            display: none;
+            padding: 1rem;
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+        }
+
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -636,7 +644,15 @@
 
         /* --- RESPONSIVE: Medium Screens --- */
         @media (max-width: 1024px) {
-            .research-grid {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .posts-grid {
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
         }
@@ -684,18 +700,72 @@
                 color: var(--text);
             }
 
-            .page-header {
-                padding: 2rem 0;
+            .search-container {
+                display: none;
+            }
+
+            .mobile-search-container {
+                display: block;
+            }
+
+            .hero {
+                min-height: 70vh;
+                padding: 3rem 1.5rem;
+                background-attachment: scroll;
             }
             
-            .page-header h2 {
+            .hero h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .section-title h2 {
                 font-size: 2rem;
             }
             
-            .filter-bar {
+            .newsletter {
+                padding: 3rem 1.5rem;
+            }
+            
+            .newsletter-form {
                 flex-direction: column;
-                gap: 1.5rem;
+            }
+            
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+                padding: 1rem;
+            }
+            
+            .newsletter-form button {
+                margin-top: 0.5rem;
+                border-radius: 4px;
+            }
+
+            .program-schedule {
                 padding: 1.5rem;
+            }
+
+            .schedule-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -713,11 +783,19 @@
                 font-size: 0.7rem;
             }
             
-            .page-header h2 {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
                 font-size: 1.8rem;
             }
             
-            .research-grid {
+            .posts-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -747,10 +825,11 @@
 
             <nav id="mainNav">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="research.html" class="active">Research</a></li>
+                    <li><a href="research.html">Research</a></li>
                     <li><a href="news.html">News</a></li>
+                    <li><a href="program-schedule.html" class="active">Program</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -888,16 +967,7 @@
             </div>
         </div>
 
-        <div class="pagination fade-in delay-4">
-            <a href="#" class="active">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#"><i class="fas fa-chevron-right"></i></a>
-        </div>
-    </main>
-
-    <footer>
+        <footer>
         <div class="footer-container">
             <div class="footer-about">
                 <img src="images/logo.jpg" alt="Diplomatic College Logo" class="footer-logo">
@@ -924,12 +994,10 @@
             <div class="footer-links">
                 <h3>Resources</h3>
                 <ul>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Research Papers</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Training Programs</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Annual Reports</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Publications</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li>
+                    <li><a href="https://www.un.org/sites/un2.un.org/files/our-common-agenda-summit-of-the-future-what-would-it-deliver.pdf"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li>
+                    <li><a href="program-schedule.html"><i class="fas fa-chevron-right"></i> Program Schedule</a></li>
+                    <li><a href="research.html"><i class="fas fa-chevron-right"></i> Publications</a></li>
+                    <li><a href="https://www.kenyaembassy.org.tr/uploads/Kenya_Foreign_Policy.pdf"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li>
                 </ul>
             </div>
             
