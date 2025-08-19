@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diplomatic College of Kenyan Foreign Policy</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1053,7 +1053,6 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="research.html">Research</a></li>
                     <li><a href="news.html">News</a></li>
-                    <li><a href="program-schedule.html" class="active">Program</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li class="search-container">
                         <i class="fas fa-search search-icon"></i>
@@ -1206,7 +1205,7 @@
                 <img src="images/logo.jpg" alt="Diplomatic College Logo" class="footer-logo">
                 <p>The Diplomatic College of Kenyan Foreign Policy is a premier institution dedicated to advancing Kenya's global diplomatic engagement through research, training, and policy analysis.</p>
                 <div class="social-links">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                     <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
@@ -1401,27 +1400,18 @@
         observer.observe(element);
     });
 
-    // Newsletter form submission
+    // Form submission handling
     const newsletterForm = document.querySelector('.newsletter-form');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const emailInput = newsletterForm.querySelector('input');
-            const email = emailInput.value.trim();
-            
-            if (email) {
-                // Here you would typically send the email to your server
-                // For demonstration, we'll show a confirmation message
-                const originalButtonText = newsletterForm.querySelector('button').innerHTML;
-                newsletterForm.querySelector('button').innerHTML = '<i class="fas fa-check"></i> Subscribed!';
-                
-                setTimeout(() => {
-                    newsletterForm.querySelector('button').innerHTML = originalButtonText;
-                    emailInput.value = '';
-                }, 2000);
-            }
+            const email = newsletterForm.querySelector('input').value;
+            // Here you would typically send the email to your server
+            alert(`Thank you for subscribing with ${email}!`);
+            newsletterForm.reset();
         });
     }
     </script>
+    <script src="theme.js" defer></script>
 </body>
 </html>
