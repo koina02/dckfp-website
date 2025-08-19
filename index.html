@@ -326,14 +326,14 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: var(--card-bg);
-            color: var(--text);
+            background: #1D2955;
+            color: black;
             padding: 1.5rem;
             box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
             z-index: 9999;
             transform: translateY(100%);
-            transition: transform 0.3s ease;
-            display: flex;
+            transition: transform 0.3s ease, color 0.3s ease;
+            display: none;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
@@ -348,6 +348,7 @@
             margin: 0;
             flex: 1;
             min-width: 250px;
+            color: black;
         }
 
         .cookie-consent-buttons {
@@ -361,19 +362,24 @@
             border-radius: 4px;
             cursor: pointer;
             font-weight: 500;
-            transition: var(--transition);
+            transition: 0.3s ease, color 0.3s ease;
         }
 
         .cookie-btn.accept {
             background: var(--secondary);
-            color: var(--text);
+            color: black;
             border: none;
         }
 
         .cookie-btn.decline {
             background: transparent;
             border: 1px solid var(--border-color);
-            color: var(--text);
+            color: black;
+        }
+
+        .cookie-btn:active,
+        .cookie-btn:hover {
+            color: yellow;
         }
 
         /* WhatsApp Button */
@@ -1291,6 +1297,15 @@
             </button>
         </div>
 
+        <div class="loading-screen" id="loadingScreen">
+         <div class="loading-bar">
+              <div class="loading-progress" id="loadingProgress"></div>
+         </div>
+       </div>
+
+    <!-- Page Transition Overlay -->
+    <div class="page-transition" id="pageTransition"></div>
+
         <!-- Primary Navigation -->
         <nav class="main-nav">
             <div class="nav-container">
@@ -1606,7 +1621,14 @@
         </div>
         
         <div class="copyright">
-            <p>&copy; 2025 Diplomatic College of Kenyan Foreign Policy. All rights reserved.</p>
+        <p>&copy; 2025 Diplomatic College of Kenyan Foreign Policy. All rights reserved.
+        </p>
+            <a href="privacy-policy.html">Privacy Policy</a> | 
+            <a href="terms.html">Terms & Conditions</a> | 
+            <a href="cookie-policy.html">Cookie Policy</a>
+        <p class="compliance">
+            Compliant with the <strong>Kenya Data Protection Act, 2019 (enforced 2021)</strong>.
+        </p>
         </div>
     </footer>
 
@@ -1817,6 +1839,84 @@
     declineCookies.addEventListener('click', () => {
         localStorage.setItem('cookieConsent', 'declined');
         cookieConsent.classList.remove('active');
+    });
+
+    // Enhanced Loading System
+    document.addEventListener('DOMContentLoaded', function() {
+        const loadingScreen = document.getElementById('loadingScreen');
+        const loadingProgress = document.getElementById('loadingProgress');
+        const pageTransition = document.getElementById('pageTransition');
+        
+        // Simulate loading progress (in a real site, you'd track actual resources)
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += Math.random() * 10;
+            if (progress > 100) progress = 100;
+            loadingProgress.style.width = progress + '%';
+            
+            if (progress >= 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    loadingScreen.classList.add('hidden');
+                    
+                    // Enable smooth page transitions after initial load
+                    setTimeout(() => {
+                        setupPageTransitions();
+                    }, 500);
+                }, 500);
+            }
+        }, 200);
+        
+        // Setup smooth page transitions for navigation
+        function setupPageTransitions() {
+            // Get all links that should trigger page transitions
+            const links = document.querySelectorAll('a[href]:not([href^="#"]):not([target="_blank"]):not([href^="mailto:"]):not([href^="tel:"])');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Don't intercept if it's a hash link or external
+                    if (this.href.indexOf(window.location.host) === -1) return;
+                    if (this.href === window.location.href) return;
+                    
+                    e.preventDefault();
+                    const href = this.href;
+                    
+                    // Start transition out
+                    pageTransition.style.transform = 'scaleY(1)';
+                    pageTransition.style.transformOrigin = 'top';
+                    
+                    // After transition completes, navigate
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 600);
+                });
+            });
+            
+            // When page loads, transition in
+            pageTransition.style.transform = 'scaleY(1)';
+            pageTransition.style.transformOrigin = 'top';
+            setTimeout(() => {
+                pageTransition.style.transform = 'scaleY(0)';
+                pageTransition.style.transformOrigin = 'bottom';
+            }, 50);
+        }
+        
+        // Preload important images
+        function preloadImages() {
+            const images = [
+                'images/logo.jpg',
+                'https://images.pexels.com/photos/15483543/pexels-photo-15483543.jpeg',
+                'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80',
+                'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1364&q=80',
+                'https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80'
+            ];
+            
+            images.forEach(img => {
+                new Image().src = img;
+            });
+        }
+        
+        preloadImages();
     });
     </script>
 </body>
