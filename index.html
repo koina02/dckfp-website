@@ -120,43 +120,132 @@
             font-weight: 400;
         }
 
-        /* Navigation */
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
-            align-items: center;
+        /* Main Navigation */
+        .main-nav {
+            background: var(--primary);
+            color: white;
         }
 
-        nav a {
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .primary-nav {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .primary-nav > li {
+            position: relative;
+        }
+
+        .primary-nav > li > a {
+            color: white;
             text-decoration: none;
-            color: var(--text);
+            padding: 1rem 1.5rem;
+            display: block;
             font-weight: 500;
             transition: var(--transition);
             position: relative;
-            padding: 0.5rem 0;
-            font-size: 1.05rem;
         }
-        
-        nav a:hover {
-            color: var(--secondary);
+
+        .primary-nav > li > a:hover {
+            background: rgba(255,255,255,0.1);
         }
-        
-        nav a.active {
-            color: var(--secondary);
-            font-weight: 600;
-        }
-        
-        nav a.active:after {
+
+        .primary-nav > li > a:after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
             background: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .primary-nav > li:hover > a:after {
+            width: 100%;
+        }
+
+        /* Dropdown Menus */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 250px;
+            box-shadow: var(--box-shadow);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 1000;
+            border-top: 3px solid var(--secondary);
+        }
+
+        .primary-nav > li:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li a {
+            color: var(--text);
+            padding: 0.8rem 1.5rem;
+            display: block;
+            text-decoration: none;
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .dropdown-menu li a:hover {
+            background: var(--background-secondary);
+            color: var(--primary);
+            padding-left: 2rem;
+        }
+
+        .dropdown-menu li:last-child a {
+            border-bottom: none;
+        }
+
+        /* Mega Menu for Regions */
+        .mega-menu {
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            width: 100vw;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .mega-menu:hover {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .mega-menu-column h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .mega-menu-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mega-menu-column li a {
+            border-bottom: none;
+            padding: 0.5rem 0;
         }
 
         /* Search Bar */
@@ -187,6 +276,35 @@
             position: absolute;
             left: 1rem;
             color: var(--text-secondary);
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 1rem;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            pointer-events: all;
         }
 
         /* Hero Section */
@@ -812,45 +930,6 @@
             box-shadow: var(--box-shadow-hover);
         }
 
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text);
-            font-size: 1.8rem;
-            cursor: pointer;
-            z-index: 1101; 
-            position: relative;
-            padding: 0.4rem;
-        }
-
-        .menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0,0,0,0.5);
-            z-index: 1099;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .menu-overlay.active {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        /* Mobile Search */
-        .mobile-search-container {
-            display: none;
-            padding: 1rem;
-            background: var(--card-bg);
-            border-bottom: 1px solid var(--border-color);
-        }
-
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -891,45 +970,67 @@
                 display: block;
             }
 
-            nav {
+            .main-nav {
                 position: fixed;
                 top: 0;
                 right: 0;
                 width: 80%;
                 max-width: 320px;
                 height: 100vh;
-                background: var(--background);
+                background: var(--primary);
                 padding: 5rem 2rem 2rem;
                 transform: translateX(100%);
                 transition: transform 0.4s ease;
                 z-index: 1100;
                 overflow-y: auto;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
             }
 
-            nav.active {
+            .main-nav.active {
                 transform: translateX(0%);
             }
 
-            nav ul {
+            .primary-nav {
                 flex-direction: column;
-                gap: 1.5rem;
+                gap: 0;
             }
 
-            nav a {
-                font-size: 1.1rem;
-                padding: 0.5rem 0;
+            .primary-nav > li {
+                width: 100%;
+            }
+
+            .primary-nav > li > a {
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: rgba(0,0,0,0.1);
+                display: none;
+                margin-left: 1rem;
+                border-top: none;
+                width: calc(100% - 2rem);
+            }
+
+            .primary-nav > li:hover .dropdown-menu {
                 display: block;
-                border-bottom: 1px solid var(--border-color);
-                color: var(--text);
+            }
+
+            .mega-menu {
+                width: 100%;
+                max-width: 100%;
+                position: static;
+                transform: none;
+                display: none;
+                padding: 1rem;
             }
 
             .search-container {
                 display: none;
-            }
-
-            .mobile-search-container {
-                display: block;
             }
 
             .hero {
@@ -965,7 +1066,7 @@
                 font-size: 2rem;
             }
             
-            .newsletter {
+            .newsletter-section {
                 padding: 3rem 1.5rem;
             }
             
@@ -1033,6 +1134,7 @@
 <body>
     <header>
         <div class="header-container">
+            <!-- Logo Section -->
             <div class="logo">
                 <img src="images/logo.jpg" alt="Diplomatic College of Kenyan Foreign Policy Logo">
                 <div class="logo-text">
@@ -1041,26 +1143,134 @@
                 </div>
             </div>
 
+            <!-- Search and Dark Mode Toggle -->
+            <div class="header-actions">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search...">
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
             <button id="menu-btn" class="mobile-menu-btn" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
+        </div>
 
-            <div class="menu-overlay"></div>
+        <!-- Primary Navigation -->
+        <nav class="main-nav">
+            <div class="nav-container">
+                <ul class="primary-nav" id="primaryNav">
+                    <!-- Regions Mega Menu -->
+                    <li>
+                        <a href="#">Regions <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu mega-menu">
+                            <div class="mega-menu-column">
+                                <h4>Africa</h4>
+                                <ul>
+                                    <li><a href="#">East Africa</a></li>
+                                    <li><a href="#">West Africa</a></li>
+                                    <li><a href="#">Southern Africa</a></li>
+                                    <li><a href="#">North Africa</a></li>
+                                    <li><a href="#">Central Africa</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h4>Europe</h4>
+                                <ul>
+                                    <li><a href="#">European Union</a></li>
+                                    <li><a href="#">United Kingdom</a></li>
+                                    <li><a href="#">Eastern Europe</a></li>
+                                    <li><a href="#">Nordic Countries</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h4>Asia</h4>
+                                <ul>
+                                    <li><a href="#">China</a></li>
+                                    <li><a href="#">India</a></li>
+                                    <li><a href="#">Japan</a></li>
+                                    <li><a href="#">Southeast Asia</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h4>Americas</h4>
+                                <ul>
+                                    <li><a href="#">United States</a></li>
+                                    <li><a href="#">Canada</a></li>
+                                    <li><a href="#">Latin America</a></li>
+                                    <li><a href="#">Caribbean</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h4>Middle East</h4>
+                                <ul>
+                                    <li><a href="#">Gulf States</a></li>
+                                    <li><a href="#">Levant</a></li>
+                                    <li><a href="#">North Africa</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
 
-            <nav id="mainNav">
-                <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="research.html">Research</a></li>
-                    <li><a href="news.html">News</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li class="search-container">
-                        <i class="fas fa-search search-icon"></i>
-                        <input type="text" class="search-input" placeholder="Search...">
+                    <!-- Topics Dropdown -->
+                    <li>
+                        <a href="#">Topics <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Diplomacy & Foreign Policy</a></li>
+                            <li><a href="#">Global Security</a></li>
+                            <li><a href="#">Climate & Environment</a></li>
+                            <li><a href="#">Economy & Trade</a></li>
+                            <li><a href="#">Technology & Innovation</a></li>
+                            <li><a href="#">Human Rights</a></li>
+                            <li><a href="#">International Law</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Publications Dropdown -->
+                    <li>
+                        <a href="#">Publications <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Research Papers</a></li>
+                            <li><a href="#">Policy Briefs</a></li>
+                            <li><a href="#">Reports</a></li>
+                            <li><a href="#">Books</a></li>
+                            <li><a href="#">Commentary</a></li>
+                            <li><a href="#">Newsletters</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Events -->
+                    <li><a href="events.html">Events</a></li>
+
+                    <!-- Membership Dropdown -->
+                    <li>
+                        <a href="#">Membership <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Become a Member</a></li>
+                            <li><a href="#">Member Benefits</a></li>
+                            <li><a href="#">Corporate Membership</a></li>
+                            <li><a href="#">Student Membership</a></li>
+                            <li><a href="#">Member Events</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- About Dropdown -->
+                    <li>
+                        <a href="#">About Us <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Our Mission</a></li>
+                            <li><a href="#">History</a></li>
+                            <li><a href="#">Leadership</a></li>
+                            <li><a href="#">Experts</a></li>
+                            <li><a href="#">Partners</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
                     </li>
                 </ul>
-            </nav>
-        </div>
+            </div>
+        </nav>
     </header>
 
     <div class="menu-overlay" id="menuOverlay"></div>
@@ -1303,42 +1513,55 @@
 
     // Mobile menu toggle
     const menuBtn = document.getElementById('menu-btn');
-    const nav = document.querySelector('nav');
-    const overlay = document.querySelector('.menu-overlay');
+    const mainNav = document.querySelector('.main-nav');
+    const overlay = document.getElementById('menuOverlay');
 
     menuBtn.addEventListener('click', () => {
-        nav.classList.toggle('active');
+        mainNav.classList.toggle('active');
         overlay.classList.toggle('active');
-        document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+        document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
     });
 
     overlay.addEventListener('click', () => {
-        nav.classList.remove('active');
+        mainNav.classList.remove('active');
         overlay.classList.remove('active');
         document.body.style.overflow = '';
     });
 
     // Close menu when a nav link is clicked
-    nav.querySelectorAll('a').forEach(link => {
+    document.querySelectorAll('.primary-nav a').forEach(link => {
         link.addEventListener('click', () => {
-            nav.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
+            if (window.innerWidth <= 768) {
+                if (link.parentElement.querySelector('.dropdown-menu')) {
+                    return; // Don't close if clicking a dropdown parent on mobile
+                }
+                mainNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
     });
 
-    // Close menu when clicking outside of nav or menu button
-    document.addEventListener('click', (e) => {
-        if (
-            nav.classList.contains('active') &&
-            !e.target.closest('nav') &&
-            !e.target.closest('#menu-btn')
-        ) {
-            nav.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    });
+    // Handle dropdowns on mobile
+    if (window.innerWidth <= 768) {
+        document.querySelectorAll('.primary-nav > li > a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.parentElement.querySelector('.dropdown-menu')) {
+                    e.preventDefault();
+                    const dropdown = this.parentElement.querySelector('.dropdown-menu');
+                    const isOpen = dropdown.style.display === 'block';
+                    
+                    // Close all other dropdowns
+                    document.querySelectorAll('.dropdown-menu').forEach(d => {
+                        if (d !== dropdown) d.style.display = 'none';
+                    });
+                    
+                    // Toggle current dropdown
+                    dropdown.style.display = isOpen ? 'none' : 'block';
+                }
+            });
+        });
+    }
 
     // Theme Toggle (Dark / Light Mode Persistence)
     const themeToggle = document.getElementById('darkModeToggle');
@@ -1412,6 +1635,5 @@
         });
     }
     </script>
-    <script src="theme.js" defer></script>
 </body>
 </html>
