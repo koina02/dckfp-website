@@ -4,11 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diplomatic College of Kenyan Foreign Policy</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Load Font Awesome with performance optimization -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+    
+    <!-- Load Google Fonts with performance optimization -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    
+    <!-- Inline critical CSS -->
     <style>
+        /* Critical CSS - Above the fold styles */
         :root {
             --primary: #1a4b8c;
             --primary-light: #3a6cb0;
@@ -63,12 +73,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-        }
-
-        /* Header Styles */
+        /* Header Styles - Critical for initial render */
         header {
             background: var(--background);
             box-shadow: var(--box-shadow);
@@ -101,9 +106,8 @@
 
         .logo img {
             height: 60px;
-            filter: var(--logo-filter);
-            transition: filter 0.3s ease;
             max-width: 100%;
+            transition: filter 0.3s ease;
         }
 
         .logo-text h1 {
@@ -121,16 +125,16 @@
             font-weight: 400;
         }
 
-        /* Main Navigation */
+        /* Main Navigation - Improved visibility */
         .main-nav {
             background: var(--primary);
             color: white;
             position: fixed;
-            top: 80px; /* Adjust based on your header height */
+            top: 80px;
             width: 100%;
             transform: translateY(-100%);
             opacity: 0;
-            transition: all 0.3s ease;
+            transition: all 0.5s ease;
             z-index: 999;
         }
 
@@ -186,7 +190,7 @@
             width: 100%;
         }
 
-        /* Dropdown Menus */
+        /* Dropdown Menus - Improved contrast */
         .dropdown-menu {
             position: absolute;
             top: 100%;
@@ -296,7 +300,7 @@
             display: none;
             background: none;
             border: none;
-            color: white;
+            color: var(--primary);
             font-size: 1.5rem;
             cursor: pointer;
             padding: 1rem;
@@ -320,103 +324,55 @@
             pointer-events: all;
         }
 
-        /* Cookie Consent Banner */
-        .cookie-consent {
+        /* Loading Screen */
+        .loading-screen {
             position: fixed;
-            bottom: 0;
+            top: 0;
             left: 0;
-            right: 0;
-            background: #1D2955;
-            color: black;
-            padding: 1.5rem;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-            z-index: 9999;
-            transform: translateY(100%);
-            transition: transform 0.3s ease, color 0.3s ease;
-            display: none;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .cookie-consent.active {
-            transform: translateY(0);
-        }
-
-        .cookie-consent p {
-            margin: 0;
-            flex: 1;
-            min-width: 250px;
-            color: black;
-        }
-
-        .cookie-consent-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .cookie-btn {
-            padding: 0.5rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: 0.3s ease, color 0.3s ease;
-        }
-
-        .cookie-btn.accept {
-            background: var(--secondary);
-            color: black;
-            border: none;
-        }
-
-        .cookie-btn.decline {
-            background: transparent;
-            border: 1px solid var(--border-color);
-            color: black;
-        }
-
-        .cookie-btn:active,
-        .cookie-btn:hover {
-            color: yellow;
-        }
-
-        /* WhatsApp Button */
-        .whatsapp-button {
-            position: fixed;
-            bottom: 6rem;
-            right: 2rem;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            color: white;
-            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            background: var(--background);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            z-index: 99;
-            transition: var(--transition);
-            text-decoration: none;
+            z-index: 9999;
+            transition: opacity 0.2s ease;
         }
 
-        .whatsapp-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        .loading-bar {
+            width: 80%;
+            max-width: 300px;
+            height: 4px;
+            background: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
         }
 
-        .whatsapp-button i {
-            font-size: 1.8rem;
+        .loading-progress {
+            height: 100%;
+            width: 0%;
+            background: var(--secondary);
+            transition: width 0.2s ease;
         }
 
-        /* Hero Section */
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            z-index: 9998;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        /* Hero Section - Critical for initial view */
         .hero {
-            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%), 
-                        url('https://images.pexels.com/photos/15483543/pexels-photo-15483543.jpeg');
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
             position: relative;
             overflow: hidden;
             min-height: 80vh;
@@ -425,7 +381,7 @@
             justify-content: center;
             text-align: center;
             padding: 4rem 2rem;
-            margin-top: 80px; /* To account for fixed header */
+            margin-top: 80px;
         }
 
         .hero-content {
@@ -436,11 +392,13 @@
         }
 
         .hero h1 {
+            font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
             color: white;
             margin-bottom: 1.5rem;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
             line-height: 1.2;
+            font-weight: 600;
         }
 
         .hero p {
@@ -462,7 +420,7 @@
         .btn {
             display: inline-block;
             background: var(--secondary);
-            color: var(--text);
+            color: #333;
             padding: 1rem 2rem;
             border-radius: 4px;
             text-decoration: none;
@@ -494,6 +452,1005 @@
             color: var(--secondary);
         }
 
+        /* Cookie Consent Banner */
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #f8f9fa;
+            color: #333;
+            padding: 1.5rem;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 9999;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            display: none;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            border-top: 3px solid var(--secondary);
+        }
+
+        .cookie-consent.active {
+            transform: translateY(0);
+        }
+
+        .cookie-consent p {
+            margin: 0;
+            flex: 1;
+            min-width: 250px;
+            color: #333;
+        }
+
+        .cookie-consent-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        .cookie-btn.accept {
+            background: var(--secondary);
+            color: #333;
+            border: none;
+        }
+
+        .cookie-btn.decline {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: #333;
+        }
+
+        .cookie-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 6rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 99;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        .whatsapp-button i {
+            font-size: 1.8rem;
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--box-shadow);
+            border: 2px solid var(--secondary);
+            z-index: 99;
+            transition: var(--transition);
+        }
+
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .dark-mode-toggle i {
+            font-size: 1.3rem;
+            color: var(--secondary);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 9rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--box-shadow);
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+
+        /* --- RESPONSIVE: Medium Screens --- */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* --- RESPONSIVE: Tablets & Mobiles --- */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 1rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .main-nav {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 80%;
+                max-width: 320px;
+                height: 100vh;
+                background: var(--primary);
+                padding: 5rem 2rem 2rem;
+                transform: translateX(100%);
+                transition: transform 0.4s ease;
+                z-index: 1100;
+                overflow-y: auto;
+            }
+
+            .main-nav.active {
+                transform: translateX(0%);
+            }
+
+            .primary-nav {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .primary-nav > li {
+                width: 100%;
+            }
+
+            .primary-nav > li > a {
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: rgba(0,0,0,0.1);
+                display: none;
+                margin-left: 1rem;
+                border-top: none;
+                width: calc(100% - 2rem);
+            }
+
+            .primary-nav > li:hover .dropdown-menu {
+                display: block;
+            }
+
+            .mega-menu {
+                width: 100%;
+                max-width: 100%;
+                position: static;
+                transform: none;
+                display: none;
+                padding: 1rem;
+            }
+
+            .search-container {
+                display: none;
+            }
+
+            .hero {
+                min-height: 70vh;
+                padding: 3rem 1.5rem;
+                margin-top: 60px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+
+            .whatsapp-button {
+                bottom: 5rem;
+                right: 1rem;
+                width: 50px;
+                height: 50px;
+            }
+
+            .back-to-top {
+                bottom: 11rem;
+                right: 1rem;
+            }
+        }
+
+        /* --- RESPONSIVE: Phones --- */
+        @media (max-width: 480px) {
+            .header-container {
+                padding: 0.75rem 1rem;
+            }
+
+            .logo-text h1 {
+                font-size: 1.3rem;
+            }
+
+            .logo-text p {
+                font-size: 0.7rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    
+    <!-- Defer non-critical CSS -->
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    </noscript>
+</head>
+<body>
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-consent" id="cookieConsent">
+        <p>We use cookies to enhance your experience on our website. By continuing to browse, you agree to our use of cookies.</p>
+        <div class="cookie-consent-buttons">
+            <button class="cookie-btn accept" id="acceptCookies">Accept</button>
+            <button class="cookie-btn decline" id="declineCookies">Decline</button>
+        </div>
+    </div>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/254791325409" class="whatsapp-button" aria-label="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header>
+        <div class="header-container">
+            <!-- Logo Section -->
+            <div class="logo">
+                <img src="images/logo.jpg" alt="Diplomatic College of Kenyan Foreign Policy Logo" width="60" height="60">
+                <div class="logo-text">
+                    <h1>Diplomatic College</h1>
+                    <p>of Kenyan Foreign Policy</p>
+                </div>
+            </div>
+
+            <!-- Search and Dark Mode Toggle -->
+            <div class="header-actions">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search...">
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="mobile-menu-btn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div class="loading-screen" id="loadingScreen">
+            <div class="loading-bar">
+                <div class="loading-progress" id="loadingProgress"></div>
+            </div>
+        </div>
+
+        <!-- Page Transition Overlay -->
+        <div class="page-transition" id="pageTransition"></div>
+
+        <!-- Primary Navigation -->
+        <nav class="main-nav">
+            <div class="nav-container">
+                <ul class="primary-nav" id="primaryNav">
+                    <!-- Regions Mega Menu -->
+                    <li>
+                        <a href="#">Regions <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu mega-menu">
+                            <div class="mega-menu-column">
+                                <h4>Africa</h4>
+                                <ul>
+                                    <li><a href="#">East Africa</a></li>
+                                    <li><a href="#">West Africa</a></li>
+                                    <li><a href="#">Southern Africa</a></li>
+                                    <li><a href="#">North Africa</a></li>
+                                    <li><a href="#">Central Africa</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h4>Europe</h4>
+                                <ul>
+                                    <li><a href="#">European Union</a></li>
+                                    <li><a href="#">United Kingdom</a></li>
+                                    <li><a href="#">Eastern Europe</a></li>
+                                    <li><a href="#">Nordic Countries</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h4>Asia</h4>
+                                <ul>
+                                    <li><a href="#">China</a></li>
+                                    <li><a href="#">India</a></li>
+                                    <li><a href="#">Japan</a></li>
+                                    <li><a href="#">Southeast Asia</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h4>Americas</h4>
+                                <ul>
+                                    <li><a href="#">United States</a></li>
+                                    <li><a href="#">Canada</a></li>
+                                    <li><a href="#">Latin America</a></li>
+                                    <li><a href="#">Caribbean</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h4>Middle East</h4>
+                                <ul>
+                                    <li><a href="#">Gulf States</a></li>
+                                    <li><a href="#">Levant</a></li>
+                                    <li><a href="#">North Africa</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Topics Dropdown -->
+                    <li>
+                        <a href="#">Topics <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Diplomacy & Foreign Policy</a></li>
+                            <li><a href="#">Global Security</a></li>
+                            <li><a href="#">Climate & Environment</a></li>
+                            <li><a href="#">Economy & Trade</a></li>
+                            <li><a href="#">Technology & Innovation</a></li>
+                            <li><a href="#">Human Rights</a></li>
+                            <li><a href="#">International Law</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Publications Dropdown -->
+                    <li>
+                        <a href="#">Publications <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Research Papers</a></li>
+                            <li><a href="#">Policy Briefs</a></li>
+                            <li><a href="#">Reports</a></li>
+                            <li><a href="#">Books</a></li>
+                            <li><a href="#">Commentary</a></li>
+                            <li><a href="#">Newsletters</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Events -->
+                    <li><a href="events.html">Events</a></li>
+
+                    <!-- Membership Dropdown -->
+                    <li>
+                        <a href="#">Membership <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Become a Member</a></li>
+                            <li><a href="#">Member Benefits</a></li>
+                            <li><a href="#">Corporate Membership</a></li>
+                            <li><a href="#">Student Membership</a></li>
+                            <li><a href="#">Member Events</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- About Dropdown -->
+                    <li>
+                        <a href="#">About Us <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Our Mission</a></li>
+                            <li><a href="#">History</a></li>
+                            <li><a href="#">Leadership</a></li>
+                            <li><a href="#">Experts</a></li>
+                            <li><a href="#">Partners</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content fade-in">
+                <h1>Advancing Kenya's Global Diplomatic Excellence</h1>
+                <p>Research, training, and policy engagement for a stronger Kenya in the international arena</p>
+                <div class="btn-group">
+                    <a href="about.html" class="btn">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section">
+            <div class="section-title fade-in">
+                <h2>Our Core Functions</h2>
+                <p>Driving Kenya's foreign policy through cutting-edge research and strategic engagement</p>
+            </div>
+
+            <div class="features">
+                <div class="feature-card fade-in delay-1">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <h3>Policy Research</h3>
+                    <p>Conducting in-depth analysis of global trends to inform Kenya's foreign policy decisions and international engagements.</p>
+                </div>
+                
+                <div class="feature-card fade-in delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Diplomatic Training</h3>
+                    <p>Developing world-class training programs to enhance the skills of Kenyan diplomats and international relations professionals.</p>
+                </div>
+                
+                <div class="feature-card fade-in delay-3">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>International Cooperation</h3>
+                    <p>Facilitating partnerships and collaborations with global institutions to advance Kenya's strategic interests.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section class="section" style="background: var(--background-secondary);">
+            <div class="section-title fade-in">
+                <h2>Latest Publications</h2>
+                <p>Recent research and policy analysis from our experts</p>
+            </div>
+            
+            <div class="posts-grid">
+                <div class="post-card fade-in delay-1">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80')"></div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar-alt"></i> 10 May 2024</span>
+                            <span class="category">Research</span>
+                        </div>
+                        <h3>Climate Diplomacy Strategy</h3>
+                        <p class="post-excerpt">New research paper analyzing Kenya's leadership in regional climate initiatives and recommendations for future policy directions.</p>
+                        <a href="#" class="read-more">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="post-card fade-in delay-2">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1364&q=80')"></div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar-alt"></i> 5 May 2024</span>
+                            <span class="category">News</span>
+                        </div>
+                        <h3>AU Summit Address</h3>
+                        <p class="post-excerpt">Director General presents Kenya's vision for conflict resolution mechanisms in the Horn of Africa region.</p>
+                        <a href="#" class="read-more">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="post-card fade-in delay-3">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80')"></div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar-alt"></i> 28 April 2024</span>
+                            <span class="category">Publication</span>
+                        </div>
+                        <h3>EU Partnership Review</h3>
+                        <p class="post-excerpt">Examining implementation challenges of Kenya-EU EPA agreement and pathways for enhanced economic cooperation.</p>
+                        <a href="#" class="read-more">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center fade-in delay-4" style="margin-top: 3rem;">
+                <a href="research.html" class="btn">View All Publications</a>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section fade-in delay-2">
+            <h3>Stay Updated with Daily Diplomatic Highlights</h3>
+            <p>Subscribe to our newsletter and receive daily updates on Kenya's diplomatic engagements, policy briefs, and event invitations directly to your inbox.</p>
+            
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">
+                    <i class="fas fa-paper-plane"></i> Subscribe
+                </button>
+            </form>
+            
+            <div class="newsletter-benefits">
+                <div class="newsletter-benefit">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Daily diplomatic briefs</span>
+                </div>
+                <div class="newsletter-benefit">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Event invitations</span>
+                </div>
+                <div class="newsletter-benefit">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Exclusive research previews</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <img src="images/logo.jpg" alt="Diplomatic College Logo" class="footer-logo" width="150" height="150">
+                <p>The Diplomatic College of Kenyan Foreign Policy is a premier institution dedicated to advancing Kenya's global diplomatic engagement through research, training, and policy analysis.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="research.html"><i class="fas fa-chevron-right"></i> Research</a></li>
+                    <li><a href="news.html"><i class="fas fa-chevron-right"></i> News</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="https://www.un.org/sites/un2.un.org/files/our-common-agenda-summit-of-the-future-what-would-it-deliver.pdf"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li>
+                    <li><a href="program-schedule.html"><i class="fas fa-chevron-right"></i> Program Schedule</a></li>
+                    <li><a href="research.html"><i class="fas fa-chevron-right"></i> Publications</a></li>
+                    <li><a href="https://www.kenyaembassy.org.tr/uploads/Kenya_Foreign_Policy.pdf"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p>Diplomatic College of Kenyan Foreign Policy</p>
+                            <p>Westlands Office Park, Nairobi, Kenya</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <p>+254 20 123 4567</p>
+                            <p>+254 712 345 678</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p>info@dckfp.org</p>
+                            <p>research@dckfp.org</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 Diplomatic College of Kenyan Foreign Policy. All rights reserved.</p>
+            <a href="privacy-policy.html">Privacy Policy</a> | 
+            <a href="terms.html">Terms & Conditions</a> | 
+            <a href="cookie-policy.html">Cookie Policy</a>
+            <p class="compliance">
+                Compliant with the <strong>Kenya Data Protection Act, 2019 (enforced 2021)</strong>.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Defer non-critical JavaScript -->
+    <script>
+    // Header scroll behavior: hide on scroll down, show on scroll up
+    let lastScroll = 0;
+    const header = document.querySelector('header');
+    const mainNav = document.querySelector('.main-nav');
+    let isHovering = false;
+
+    // Show/hide main nav on hover near top of page
+    document.addEventListener('mousemove', (e) => {
+        if (e.clientY < 100) { // If mouse is near top of screen
+            if (!isHovering) {
+                mainNav.classList.add('visible');
+                isHovering = true;
+            }
+        } else {
+            if (isHovering) {
+                mainNav.classList.remove('visible');
+                isHovering = false;
+            }
+        }
+    });
+
+    // Keep nav visible when hovering over it
+    mainNav.addEventListener('mouseenter', () => {
+        isHovering = true;
+        mainNav.classList.add('visible');
+    });
+
+    mainNav.addEventListener('mouseleave', () => {
+        isHovering = false;
+        mainNav.classList.remove('visible');
+    });
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        // Header hide/show on scroll
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            header.classList.add('header-hidden');
+            mainNav.classList.remove('visible');
+        } else {
+            header.classList.remove('header-hidden');
+        }
+        lastScroll = currentScroll;
+        
+        // Back to top button visibility
+        const backToTop = document.getElementById('backToTop');
+        if (currentScroll > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const overlay = document.getElementById('menuOverlay');
+
+    menuBtn.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+    });
+
+    overlay.addEventListener('click', () => {
+        mainNav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // Close menu when a nav link is clicked
+    document.querySelectorAll('.primary-nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                if (link.parentElement.querySelector('.dropdown-menu')) {
+                    return; // Don't close if clicking a dropdown parent on mobile
+                }
+                mainNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Handle dropdowns on mobile
+    if (window.innerWidth <= 768) {
+        document.querySelectorAll('.primary-nav > li > a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.parentElement.querySelector('.dropdown-menu')) {
+                    e.preventDefault();
+                    const dropdown = this.parentElement.querySelector('.dropdown-menu');
+                    const isOpen = dropdown.style.display === 'block';
+                    
+                    // Close all other dropdowns
+                    document.querySelectorAll('.dropdown-menu').forEach(d => {
+                        if (d !== dropdown) d.style.display = 'none';
+                    });
+                    
+                    // Toggle current dropdown
+                    dropdown.style.display = isOpen ? 'none' : 'block';
+                }
+            });
+        });
+    }
+
+    // Theme Toggle (Dark / Light Mode Persistence)
+    const themeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    body.setAttribute('data-theme', savedTheme);
+    updateToggleIcon(savedTheme);
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateToggleIcon(newTheme);
+        });
+    }
+
+    function updateToggleIcon(theme) {
+        const icon = themeToggle.querySelector('i');
+        if (theme === 'dark') {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+    }
+
+    // Back to top functionality
+    const backToTop = document.getElementById('backToTop');
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Intersection Observer for animations
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    fadeElements.forEach(element => {
+        element.style.opacity = 0;
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(element);
+    });
+
+    // Form submission handling
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterForm.querySelector('input').value;
+            // Here you would typically send the email to your server
+            alert(`Thank you for subscribing with ${email}!`);
+            newsletterForm.reset();
+        });
+    }
+
+    // Cookie Consent
+    const cookieConsent = document.getElementById('cookieConsent');
+    const acceptCookies = document.getElementById('acceptCookies');
+    const declineCookies = document.getElementById('declineCookies');
+
+    // Check if user has already made a choice
+    if (!localStorage.getItem('cookieConsent')) {
+        setTimeout(() => {
+            cookieConsent.style.display = 'flex';
+            setTimeout(() => {
+                cookieConsent.classList.add('active');
+            }, 10);
+        }, 1000);
+    }
+
+    acceptCookies.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'accepted');
+        cookieConsent.classList.remove('active');
+        setTimeout(() => {
+            cookieConsent.style.display = 'none';
+        }, 300);
+    });
+
+    declineCookies.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'declined');
+        cookieConsent.classList.remove('active');
+        setTimeout(() => {
+            cookieConsent.style.display = 'none';
+        }, 300);
+    });
+
+    // Enhanced Loading System
+    document.addEventListener('DOMContentLoaded', function() {
+        const loadingScreen = document.getElementById('loadingScreen');
+        const loadingProgress = document.getElementById('loadingProgress');
+        const pageTransition = document.getElementById('pageTransition');
+        
+        // Simulate loading progress (in a real site, you'd track actual resources)
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += Math.random() * 10;
+            if (progress > 100) progress = 100;
+            loadingProgress.style.width = progress + '%';
+            
+            if (progress >= 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    loadingScreen.style.opacity = '0';
+                    
+                    // Enable smooth page transitions after initial load
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                        setupPageTransitions();
+                    }, 500);
+                }, 500);
+            }
+        }, 200);
+        
+        // Setup smooth page transitions for navigation
+        function setupPageTransitions() {
+            // Get all links that should trigger page transitions
+            const links = document.querySelectorAll('a[href]:not([href^="#"]):not([target="_blank"]):not([href^="mailto:"]):not([href^="tel:"])');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Don't intercept if it's a hash link or external
+                    if (this.href.indexOf(window.location.host) === -1) return;
+                    if (this.href === window.location.href) return;
+                    
+                    e.preventDefault();
+                    const href = this.href;
+                    
+                    // Start transition out
+                    pageTransition.style.transform = 'scaleY(1)';
+                    pageTransition.style.transformOrigin = 'top';
+                    
+                    // After transition completes, navigate
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 600);
+                });
+            });
+            
+            // When page loads, transition in
+            pageTransition.style.transform = 'scaleY(1)';
+            pageTransition.style.transformOrigin = 'top';
+            setTimeout(() => {
+                pageTransition.style.transform = 'scaleY(0)';
+                pageTransition.style.transformOrigin = 'bottom';
+            }, 50);
+        }
+        
+        // Preload important images
+        function preloadImages() {
+            const images = [
+                'images/logo.jpg',
+                'https://images.pexels.com/photos/15483543/pexels-photo-15483543.jpeg',
+                'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80',
+                'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1364&q=80',
+                'https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80'
+            ];
+            
+            images.forEach(img => {
+                new Image().src = img;
+            });
+        }
+        
+        preloadImages();
+    });
+    </script>
+
+    <!-- Non-critical CSS (loaded after page content) -->
+    <style>
+        /* Non-critical CSS (loaded after page content) */
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
         /* Section Styling */
         .section {
             padding: 5rem 2rem;
@@ -857,7 +1814,6 @@
 
         .footer-logo {
             max-width: 200px;
-            filter: var(--logo-filter);
             transition: filter 0.3s ease;
         }
 
@@ -973,196 +1929,13 @@
             font-weight: 300;
         }
 
-        /* Dark Mode Toggle */
-        .dark-mode-toggle {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--card-bg);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--box-shadow);
-            border: 2px solid var(--secondary);
-            z-index: 99;
-            transition: var(--transition);
-        }
-
-        .dark-mode-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: var(--box-shadow-hover);
-        }
-
-        .dark-mode-toggle i {
-            font-size: 1.3rem;
-            color: var(--secondary);
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 9rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--box-shadow);
-            z-index: 99;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            background: var(--primary-light);
-            transform: translateY(-3px);
-            box-shadow: var(--box-shadow-hover);
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.6s ease forwards;
-        }
-
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
-
-        /* --- RESPONSIVE: Medium Screens --- */
         @media (max-width: 1024px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
             .posts-grid {
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
         }
 
-        /* --- RESPONSIVE: Tablets & Mobiles --- */
         @media (max-width: 768px) {
-            .header-container {
-                padding: 1rem;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .main-nav {
-                position: fixed;
-                top: 0;
-                right: 0;
-                width: 80%;
-                max-width: 320px;
-                height: 100vh;
-                background: var(--primary);
-                padding: 5rem 2rem 2rem;
-                transform: translateX(100%);
-                transition: transform 0.4s ease;
-                z-index: 1100;
-                overflow-y: auto;
-            }
-
-            .main-nav.active {
-                transform: translateX(0%);
-            }
-
-            .primary-nav {
-                flex-direction: column;
-                gap: 0;
-            }
-
-            .primary-nav > li {
-                width: 100%;
-            }
-
-            .primary-nav > li > a {
-                padding: 1rem 0;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-
-            .dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                background: rgba(0,0,0,0.1);
-                display: none;
-                margin-left: 1rem;
-                border-top: none;
-                width: calc(100% - 2rem);
-            }
-
-            .primary-nav > li:hover .dropdown-menu {
-                display: block;
-            }
-
-            .mega-menu {
-                width: 100%;
-                max-width: 100%;
-                position: static;
-                transform: none;
-                display: none;
-                padding: 1rem;
-            }
-
-            .search-container {
-                display: none;
-            }
-
-            .hero {
-                min-height: 70vh;
-                padding: 3rem 1.5rem;
-                background-attachment: scroll;
-                margin-top: 60px;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-                margin-bottom: 1.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-                margin-bottom: 2rem;
-            }
-            
-            .btn-group {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .btn {
-                width: 100%;
-            }
-            
             .section {
                 padding: 4rem 1.5rem;
             }
@@ -1206,46 +1979,9 @@
                 width: 100%;
                 justify-content: center;
             }
-
-            .whatsapp-button {
-                bottom: 5rem;
-                right: 1rem;
-                width: 50px;
-                height: 50px;
-            }
-
-            .back-to-top {
-                bottom: 11rem;
-                right: 1rem;
-            }
         }
 
-        /* --- RESPONSIVE: Phones --- */
         @media (max-width: 480px) {
-            .header-container {
-                padding: 0.75rem 1rem;
-            }
-
-            .logo-text h1 {
-                font-size: 1.3rem;
-            }
-
-            .logo-text p {
-                font-size: 0.7rem;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
             .posts-grid {
                 grid-template-columns: 1fr;
             }
@@ -1256,668 +1992,5 @@
             }
         }
     </style>
-</head>
-<body>
-    <!-- Cookie Consent Banner -->
-    <div class="cookie-consent" id="cookieConsent">
-        <p>We use cookies to enhance your experience on our website. By continuing to browse, you agree to our use of cookies.</p>
-        <div class="cookie-consent-buttons">
-            <button class="cookie-btn accept" id="acceptCookies">Accept</button>
-            <button class="cookie-btn decline" id="declineCookies">Decline</button>
-        </div>
-    </div>
-
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/254791325409" class="whatsapp-button" aria-label="Chat with us on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <header>
-        <div class="header-container">
-            <!-- Logo Section -->
-            <div class="logo">
-                <img src="images/logo.jpg" alt="Diplomatic College of Kenyan Foreign Policy Logo">
-                <div class="logo-text">
-                    <h1>Diplomatic College</h1>
-                    <p>of Kenyan Foreign Policy</p>
-                </div>
-            </div>
-
-            <!-- Search and Dark Mode Toggle -->
-            <div class="header-actions">
-                <div class="search-container">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" class="search-input" placeholder="Search...">
-                </div>
-            </div>
-
-            <!-- Mobile Menu Button -->
-            <button id="menu-btn" class="mobile-menu-btn" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-
-        <div class="loading-screen" id="loadingScreen">
-         <div class="loading-bar">
-              <div class="loading-progress" id="loadingProgress"></div>
-         </div>
-       </div>
-
-    <!-- Page Transition Overlay -->
-    <div class="page-transition" id="pageTransition"></div>
-
-        <!-- Primary Navigation -->
-        <nav class="main-nav">
-            <div class="nav-container">
-                <ul class="primary-nav" id="primaryNav">
-                    <!-- Regions Mega Menu -->
-                    <li>
-                        <a href="#">Regions <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-menu mega-menu">
-                            <div class="mega-menu-column">
-                                <h4>Africa</h4>
-                                <ul>
-                                    <li><a href="#">East Africa</a></li>
-                                    <li><a href="#">West Africa</a></li>
-                                    <li><a href="#">Southern Africa</a></li>
-                                    <li><a href="#">North Africa</a></li>
-                                    <li><a href="#">Central Africa</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-menu-column">
-                                <h4>Europe</h4>
-                                <ul>
-                                    <li><a href="#">European Union</a></li>
-                                    <li><a href="#">United Kingdom</a></li>
-                                    <li><a href="#">Eastern Europe</a></li>
-                                    <li><a href="#">Nordic Countries</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-menu-column">
-                                <h4>Asia</h4>
-                                <ul>
-                                    <li><a href="#">China</a></li>
-                                    <li><a href="#">India</a></li>
-                                    <li><a href="#">Japan</a></li>
-                                    <li><a href="#">Southeast Asia</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-menu-column">
-                                <h4>Americas</h4>
-                                <ul>
-                                    <li><a href="#">United States</a></li>
-                                    <li><a href="#">Canada</a></li>
-                                    <li><a href="#">Latin America</a></li>
-                                    <li><a href="#">Caribbean</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-menu-column">
-                                <h4>Middle East</h4>
-                                <ul>
-                                    <li><a href="#">Gulf States</a></li>
-                                    <li><a href="#">Levant</a></li>
-                                    <li><a href="#">North Africa</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-
-                    <!-- Topics Dropdown -->
-                    <li>
-                        <a href="#">Topics <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Diplomacy & Foreign Policy</a></li>
-                            <li><a href="#">Global Security</a></li>
-                            <li><a href="#">Climate & Environment</a></li>
-                            <li><a href="#">Economy & Trade</a></li>
-                            <li><a href="#">Technology & Innovation</a></li>
-                            <li><a href="#">Human Rights</a></li>
-                            <li><a href="#">International Law</a></li>
-                        </ul>
-                    </li>
-
-                    <!-- Publications Dropdown -->
-                    <li>
-                        <a href="#">Publications <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Research Papers</a></li>
-                            <li><a href="#">Policy Briefs</a></li>
-                            <li><a href="#">Reports</a></li>
-                            <li><a href="#">Books</a></li>
-                            <li><a href="#">Commentary</a></li>
-                            <li><a href="#">Newsletters</a></li>
-                        </ul>
-                    </li>
-
-                    <!-- Events -->
-                    <li><a href="events.html">Events</a></li>
-
-                    <!-- Membership Dropdown -->
-                    <li>
-                        <a href="#">Membership <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Become a Member</a></li>
-                            <li><a href="#">Member Benefits</a></li>
-                            <li><a href="#">Corporate Membership</a></li>
-                            <li><a href="#">Student Membership</a></li>
-                            <li><a href="#">Member Events</a></li>
-                        </ul>
-                    </li>
-
-                    <!-- About Dropdown -->
-                    <li>
-                        <a href="#">About Us <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Our Mission</a></li>
-                            <li><a href="#">History</a></li>
-                            <li><a href="#">Leadership</a></li>
-                            <li><a href="#">Experts</a></li>
-                            <li><a href="#">Partners</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-
-    <div class="menu-overlay" id="menuOverlay"></div>
-
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content fade-in">
-                <h1>Advancing Kenya's Global Diplomatic Excellence</h1>
-                <p>Research, training, and policy engagement for a stronger Kenya in the international arena</p>
-                <div class="btn-group">
-                    <a href="about.html" class="btn">Learn More</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section class="section">
-            <div class="section-title fade-in">
-                <h2>Our Core Functions</h2>
-                <p>Driving Kenya's foreign policy through cutting-edge research and strategic engagement</p>
-            </div>
-
-            <div class="features">
-                <div class="feature-card fade-in delay-1">
-                    <div class="feature-icon">
-                        <i class="fas fa-globe-africa"></i>
-                    </div>
-                    <h3>Policy Research</h3>
-                    <p>Conducting in-depth analysis of global trends to inform Kenya's foreign policy decisions and international engagements.</p>
-                </div>
-                
-                <div class="feature-card fade-in delay-2">
-                    <div class="feature-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Diplomatic Training</h3>
-                    <p>Developing world-class training programs to enhance the skills of Kenyan diplomats and international relations professionals.</p>
-                </div>
-                
-                <div class="feature-card fade-in delay-3">
-                    <div class="feature-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>International Cooperation</h3>
-                    <p>Facilitating partnerships and collaborations with global institutions to advance Kenya's strategic interests.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Publications Section -->
-        <section class="section" style="background: var(--background-secondary);">
-            <div class="section-title fade-in">
-                <h2>Latest Publications</h2>
-                <p>Recent research and policy analysis from our experts</p>
-            </div>
-            
-            <div class="posts-grid">
-                <div class="post-card fade-in delay-1">
-                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80')"></div>
-                    <div class="post-content">
-                        <div class="post-meta">
-                            <span><i class="far fa-calendar-alt"></i> 10 May 2024</span>
-                            <span class="category">Research</span>
-                        </div>
-                        <h3>Climate Diplomacy Strategy</h3>
-                        <p class="post-excerpt">New research paper analyzing Kenya's leadership in regional climate initiatives and recommendations for future policy directions.</p>
-                        <a href="#" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="post-card fade-in delay-2">
-                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1364&q=80')"></div>
-                    <div class="post-content">
-                        <div class="post-meta">
-                            <span><i class="far fa-calendar-alt"></i> 5 May 2024</span>
-                            <span class="category">News</span>
-                        </div>
-                        <h3>AU Summit Address</h3>
-                        <p class="post-excerpt">Director General presents Kenya's vision for conflict resolution mechanisms in the Horn of Africa region.</p>
-                        <a href="#" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="post-card fade-in delay-3">
-                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80')"></div>
-                    <div class="post-content">
-                        <div class="post-meta">
-                            <span><i class="far fa-calendar-alt"></i> 28 April 2024</span>
-                            <span class="category">Publication</span>
-                        </div>
-                        <h3>EU Partnership Review</h3>
-                        <p class="post-excerpt">Examining implementation challenges of Kenya-EU EPA agreement and pathways for enhanced economic cooperation.</p>
-                        <a href="#" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center fade-in delay-4" style="margin-top: 3rem;">
-                <a href="research.html" class="btn">View All Publications</a>
-            </div>
-        </section>
-
-        <!-- Newsletter Section -->
-        <section class="newsletter-section fade-in delay-2">
-            <h3>Stay Updated with Daily Diplomatic Highlights</h3>
-            <p>Subscribe to our newsletter and receive daily updates on Kenya's diplomatic engagements, policy briefs, and event invitations directly to your inbox.</p>
-            
-            <form class="newsletter-form">
-                <input type="email" placeholder="Your email address" required>
-                <button type="submit">
-                    <i class="fas fa-paper-plane"></i> Subscribe
-                </button>
-            </form>
-            
-            <div class="newsletter-benefits">
-                <div class="newsletter-benefit">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Daily diplomatic briefs</span>
-                </div>
-                <div class="newsletter-benefit">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Event invitations</span>
-                </div>
-                <div class="newsletter-benefit">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Exclusive research previews</span>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-about">
-                <img src="images/logo.jpg" alt="Diplomatic College Logo" class="footer-logo">
-                <p>The Diplomatic College of Kenyan Foreign Policy is a premier institution dedicated to advancing Kenya's global diplomatic engagement through research, training, and policy analysis.</p>
-                <div class="social-links">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            
-            <div class="footer-links">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
-                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                    <li><a href="research.html"><i class="fas fa-chevron-right"></i> Research</a></li>
-                    <li><a href="news.html"><i class="fas fa-chevron-right"></i> News</a></li>
-                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-links">
-                <h3>Resources</h3>
-                <ul>
-                    <li><a href="https://www.un.org/sites/un2.un.org/files/our-common-agenda-summit-of-the-future-what-would-it-deliver.pdf"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li>
-                    <li><a href="program-schedule.html"><i class="fas fa-chevron-right"></i> Program Schedule</a></li>
-                    <li><a href="research.html"><i class="fas fa-chevron-right"></i> Publications</a></li>
-                    <li><a href="https://www.kenyaembassy.org.tr/uploads/Kenya_Foreign_Policy.pdf"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-links">
-                <h3>Contact Us</h3>
-                <ul class="contact-info">
-                    <li>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <p>Diplomatic College of Kenyan Foreign Policy</p>
-                            <p>Westlands Office Park, Nairobi, Kenya</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <p>+254 20 123 4567</p>
-                            <p>+254 712 345 678</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <p>info@dckfp.org</p>
-                            <p>research@dckfp.org</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="copyright">
-        <p>&copy; 2025 Diplomatic College of Kenyan Foreign Policy. All rights reserved.
-        </p>
-            <a href="privacy-policy.html">Privacy Policy</a> | 
-            <a href="terms.html">Terms & Conditions</a> | 
-            <a href="cookie-policy.html">Cookie Policy</a>
-        <p class="compliance">
-            Compliant with the <strong>Kenya Data Protection Act, 2019 (enforced 2021)</strong>.
-        </p>
-        </div>
-    </footer>
-
-    <!-- Dark Mode Toggle -->
-    <div class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-        <i class="fas fa-moon"></i>
-    </div>
-
-    <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <script>
-    // Header scroll behavior: hide on scroll down, show on scroll up
-    let lastScroll = 0;
-    const header = document.querySelector('header');
-    const mainNav = document.querySelector('.main-nav');
-    let isHovering = false;
-
-    // Show/hide main nav on hover near top of page
-    document.addEventListener('mousemove', (e) => {
-        if (e.clientY < 100) { // If mouse is near top of screen
-            if (!isHovering) {
-                mainNav.classList.add('visible');
-                isHovering = true;
-            }
-        } else {
-            if (isHovering) {
-                mainNav.classList.remove('visible');
-                isHovering = false;
-            }
-        }
-    });
-
-    // Keep nav visible when hovering over it
-    mainNav.addEventListener('mouseenter', () => {
-        isHovering = true;
-        mainNav.classList.add('visible');
-    });
-
-    mainNav.addEventListener('mouseleave', () => {
-        isHovering = false;
-        mainNav.classList.remove('visible');
-    });
-
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        // Header hide/show on scroll
-        if (currentScroll > lastScroll && currentScroll > 100) {
-            header.classList.add('header-hidden');
-            mainNav.classList.remove('visible');
-        } else {
-            header.classList.remove('header-hidden');
-        }
-        lastScroll = currentScroll;
-        
-        // Back to top button visibility
-        const backToTop = document.getElementById('backToTop');
-        if (currentScroll > 300) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
-        }
-    });
-
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('menu-btn');
-    const overlay = document.getElementById('menuOverlay');
-
-    menuBtn.addEventListener('click', () => {
-        mainNav.classList.toggle('active');
-        overlay.classList.toggle('active');
-        document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
-    });
-
-    overlay.addEventListener('click', () => {
-        mainNav.classList.remove('active');
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-
-    // Close menu when a nav link is clicked
-    document.querySelectorAll('.primary-nav a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-                if (link.parentElement.querySelector('.dropdown-menu')) {
-                    return; // Don't close if clicking a dropdown parent on mobile
-                }
-                mainNav.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-    });
-
-    // Handle dropdowns on mobile
-    if (window.innerWidth <= 768) {
-        document.querySelectorAll('.primary-nav > li > a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                if (this.parentElement.querySelector('.dropdown-menu')) {
-                    e.preventDefault();
-                    const dropdown = this.parentElement.querySelector('.dropdown-menu');
-                    const isOpen = dropdown.style.display === 'block';
-                    
-                    // Close all other dropdowns
-                    document.querySelectorAll('.dropdown-menu').forEach(d => {
-                        if (d !== dropdown) d.style.display = 'none';
-                    });
-                    
-                    // Toggle current dropdown
-                    dropdown.style.display = isOpen ? 'none' : 'block';
-                }
-            });
-        });
-    }
-
-    // Theme Toggle (Dark / Light Mode Persistence)
-    const themeToggle = document.getElementById('darkModeToggle');
-    const body = document.body;
-
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    body.setAttribute('data-theme', savedTheme);
-    updateToggleIcon(savedTheme);
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateToggleIcon(newTheme);
-        });
-    }
-
-    function updateToggleIcon(theme) {
-        const icon = themeToggle.querySelector('i');
-        if (theme === 'dark') {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        } else {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-        }
-    }
-
-    // Back to top functionality
-    const backToTop = document.getElementById('backToTop');
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-
-    // Intersection Observer for animations
-    const fadeElements = document.querySelectorAll('.fade-in');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = 1;
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-
-    fadeElements.forEach(element => {
-        element.style.opacity = 0;
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(element);
-    });
-
-    // Form submission handling
-    const newsletterForm = document.querySelector('.newsletter-form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = newsletterForm.querySelector('input').value;
-            // Here you would typically send the email to your server
-            alert(`Thank you for subscribing with ${email}!`);
-            newsletterForm.reset();
-        });
-    }
-
-    // Cookie Consent
-    const cookieConsent = document.getElementById('cookieConsent');
-    const acceptCookies = document.getElementById('acceptCookies');
-    const declineCookies = document.getElementById('declineCookies');
-
-    // Check if user has already made a choice
-    if (!localStorage.getItem('cookieConsent')) {
-        setTimeout(() => {
-            cookieConsent.classList.add('active');
-        }, 1000);
-    }
-
-    acceptCookies.addEventListener('click', () => {
-        localStorage.setItem('cookieConsent', 'accepted');
-        cookieConsent.classList.remove('active');
-    });
-
-    declineCookies.addEventListener('click', () => {
-        localStorage.setItem('cookieConsent', 'declined');
-        cookieConsent.classList.remove('active');
-    });
-
-    // Enhanced Loading System
-    document.addEventListener('DOMContentLoaded', function() {
-        const loadingScreen = document.getElementById('loadingScreen');
-        const loadingProgress = document.getElementById('loadingProgress');
-        const pageTransition = document.getElementById('pageTransition');
-        
-        // Simulate loading progress (in a real site, you'd track actual resources)
-        let progress = 0;
-        const interval = setInterval(() => {
-            progress += Math.random() * 10;
-            if (progress > 100) progress = 100;
-            loadingProgress.style.width = progress + '%';
-            
-            if (progress >= 100) {
-                clearInterval(interval);
-                setTimeout(() => {
-                    loadingScreen.classList.add('hidden');
-                    
-                    // Enable smooth page transitions after initial load
-                    setTimeout(() => {
-                        setupPageTransitions();
-                    }, 500);
-                }, 500);
-            }
-        }, 200);
-        
-        // Setup smooth page transitions for navigation
-        function setupPageTransitions() {
-            // Get all links that should trigger page transitions
-            const links = document.querySelectorAll('a[href]:not([href^="#"]):not([target="_blank"]):not([href^="mailto:"]):not([href^="tel:"])');
-            
-            links.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    // Don't intercept if it's a hash link or external
-                    if (this.href.indexOf(window.location.host) === -1) return;
-                    if (this.href === window.location.href) return;
-                    
-                    e.preventDefault();
-                    const href = this.href;
-                    
-                    // Start transition out
-                    pageTransition.style.transform = 'scaleY(1)';
-                    pageTransition.style.transformOrigin = 'top';
-                    
-                    // After transition completes, navigate
-                    setTimeout(() => {
-                        window.location.href = href;
-                    }, 600);
-                });
-            });
-            
-            // When page loads, transition in
-            pageTransition.style.transform = 'scaleY(1)';
-            pageTransition.style.transformOrigin = 'top';
-            setTimeout(() => {
-                pageTransition.style.transform = 'scaleY(0)';
-                pageTransition.style.transformOrigin = 'bottom';
-            }, 50);
-        }
-        
-        // Preload important images
-        function preloadImages() {
-            const images = [
-                'images/logo.jpg',
-                'https://images.pexels.com/photos/15483543/pexels-photo-15483543.jpeg',
-                'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80',
-                'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1364&q=80',
-                'https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80'
-            ];
-            
-            images.forEach(img => {
-                new Image().src = img;
-            });
-        }
-        
-        preloadImages();
-    });
-    </script>
 </body>
 </html>
