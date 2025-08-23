@@ -12,7 +12,6 @@
     
     <!-- Inline critical CSS -->
     <style>
-        /* Critical CSS - Above the fold styles */
         :root {
             --primary: #1a4b8c;
             --primary-light: #3a6cb0;
@@ -46,7 +45,6 @@
         }
 
         * {
-            transition: var(--transition);
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -65,9 +63,10 @@
             background-color: var(--background);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            transition: var(--transition);
         }
 
-        /* Header Styles - Critical for initial render */
+        /* Header Styles */
         header {
             background: var(--background);
             box-shadow: var(--box-shadow);
@@ -75,7 +74,7 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            transition: transform 0.9s ease;
+            transition: transform 0.3s ease;
         }
 
         .header-hidden {
@@ -101,7 +100,6 @@
         .logo img {
             height: 60px;
             max-width: 100%;
-            transition: filter 0.3s ease;
         }
 
         .logo-text h1 {
@@ -119,80 +117,22 @@
             font-weight: 400;
         }
 
-        /* Main Navigation - Improved visibility */
-        .main-nav {
-            background: var(--primary);
-            color: white;
-            position: fixed;
-            top: 80px;
-            width: 100%;
-            transform: translateY(-100%);
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 999;
-        }
-
-        .main-nav.visible {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .primary-nav {
+        /* Header Actions - Search and Menu */
+        .header-actions {
             display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
+            align-items: center;
+            gap: 1.5rem;
         }
 
-        .primary-nav > li {
-            position: relative;
-        }
-
-        .primary-nav > li > a {
-            color: white;
-            text-decoration: none;
-            padding: 1rem 1.5rem;
-            display: block;
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .primary-nav > li > a:hover {
-            background: rgba(255,255,255,0.1);
-        }
-
-        .primary-nav > li > a:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 3px;
-            background: var(--secondary);
-            transition: var(--transition);
-        }
-
-        .primary-nav > li:hover > a:after {
-            width: 100%;
-        }
-
-        /* Search Bar */
-        .search-container {
+        /* Search Bar in Header */
+        .header-search {
             position: relative;
             display: flex;
             align-items: center;
         }
 
-        .search-input {
-            padding: 0.5rem 1rem 0.5rem 2.5rem;
+        .header-search input {
+            padding: 0.7rem 1rem 0.7rem 2.5rem;
             border-radius: 20px;
             border: 1px solid var(--border-color);
             background: var(--card-bg);
@@ -202,13 +142,14 @@
             transition: var(--transition);
         }
 
-        .search-input:focus {
+        .header-search input:focus {
             outline: none;
             border-color: var(--secondary);
             width: 250px;
+            box-shadow: 0 0 0 2px rgba(240, 183, 47, 0.2);
         }
 
-        .search-icon {
+        .header-search i {
             position: absolute;
             left: 1rem;
             color: var(--text-secondary);
@@ -216,290 +157,439 @@
 
         /* Mobile Menu Button */
         .mobile-menu-btn {
-            display: none;
+            display: block;
             background: none;
             border: none;
             color: var(--primary);
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
-            padding: 1rem;
+            z-index: 1101;
+            position: relative;
+            padding: 0.4rem;
+            transition: var(--transition);
         }
 
-        .menu-overlay {
+        .mobile-menu-btn:hover {
+            color: var(--secondary);
+        }
+
+        /* Full Screen Navigation Container */
+        .nav-fullscreen-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-            background: rgba(0,0,0,0.5);
-            z-index: 999;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
+            background: var(--primary);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(-100%);
+            transition: transform 0.5s ease;
+            overflow-y: auto;
+            padding: 6rem 2rem 2rem;
         }
 
-        .menu-overlay.active {
-            opacity: 1;
-            pointer-events: all;
+        .nav-fullscreen-container.active {
+            transform: translateY(0);
         }
 
-        /* WhatsApp Button */
-        .whatsapp-button {
-            position: fixed;
-            bottom: 6rem;
-            right: 2rem;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            color: white;
-            border-radius: 50%;
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-logo {
             display: flex;
             align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            z-index: 99;
-            transition: var(--transition);
-            text-decoration: none;
+            gap: 1rem;
         }
 
-        .whatsapp-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-        }
-
-        .whatsapp-button i {
-            font-size: 1.8rem;
-        }
-
-        /* Dark Mode Toggle */
-        .dark-mode-toggle {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
+        .nav-logo img {
             height: 50px;
-            background: var(--card-bg);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        }
+
+        .nav-logo-text h2 {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .nav-logo-text p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .close-nav-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
             cursor: pointer;
-            box-shadow: var(--box-shadow);
-            border: 2px solid var(--secondary);
-            z-index: 99;
             transition: var(--transition);
         }
 
-        .dark-mode-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: var(--box-shadow-hover);
-        }
-
-        .dark-mode-toggle i {
-            font-size: 1.3rem;
+        .close-nav-btn:hover {
             color: var(--secondary);
         }
 
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 9rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
+        /* Navigation Content */
+        .nav-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 992px) {
+            .nav-content {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        .nav-main {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .nav-main {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-section h3 {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .nav-links a {
             color: white;
-            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+            transform: translateX(10px);
+        }
+
+        .nav-links a.active {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .nav-links a.active:after {
+            content: '•';
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* Mega menu sections */
+        .mega-menu-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .mega-menu-section h4 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .mega-menu-links {
+            list-style: none;
+        }
+
+        .mega-menu-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .mega-menu-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            display: block;
+            padding: 0.3rem 0;
+        }
+
+        .mega-menu-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Nav sidebar */
+        .nav-sidebar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .nav-sidebar h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .contact-info i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .social-links-nav {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links-nav a {
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--box-shadow);
-            z-index: 99;
-            opacity: 0;
-            visibility: hidden;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
             transition: var(--transition);
         }
 
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
+        .social-links-nav a:hover {
+            background: var(--secondary);
+            color: var(--text);
+            transform: translateY(-3px);
         }
 
-        .back-to-top:hover {
-            background: var(--primary-light);
+        /* Search in nav */
+        .nav-search {
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .nav-search input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border-radius: 30px;
+            border: none;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .nav-search input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .nav-search i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%), url('https://images.pexels.com/photos/27719497/pexels-photo-27719497.jpeg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.2;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: #333;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            min-width: 160px;
+            text-align: center;
+            border: 2px solid transparent;
+            box-shadow: var(--box-shadow);
+        }
+
+        .btn:hover {
+            background: var(--secondary-light);
             transform: translateY(-3px);
             box-shadow: var(--box-shadow-hover);
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.6s ease forwards;
-        }
-
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
-
-        /* --- RESPONSIVE: Medium Screens --- */
-        @media (max-width: 1024px) {
-            .contact-container {
-                gap: 2rem;
-            }
-
-            .contact-info, .contact-form {
-                padding: 2rem;
-            }
-        }
-
-        /* --- RESPONSIVE: Tablets & Mobiles --- */
+        /* Responsive */
         @media (max-width: 768px) {
             .header-container {
                 padding: 1rem;
             }
-            
-            .mobile-menu-btn {
-                display: block;
+
+            .logo-text h1 {
+                font-size: 1.4rem;
             }
 
-            .main-nav {
-                position: fixed;
-                top: 0;
-                right: 0;
-                width: 80%;
-                max-width: 320px;
-                height: 100vh;
-                background: var(--primary);
-                padding: 5rem 2rem 2rem;
-                transform: translateX(100%);
-                transition: transform 0.4s ease;
-                z-index: 1100;
-                overflow-y: auto;
-            }
-
-            .main-nav.active {
-                transform: translateX(0%);
-            }
-
-            .primary-nav {
-                flex-direction: column;
-                gap: 0;
-            }
-
-            .primary-nav > li {
-                width: 100%;
-            }
-
-            .primary-nav > li > a {
-                padding: 1rem 0;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-
-            .search-container {
+            .header-search {
                 display: none;
             }
 
-            .whatsapp-button {
-                bottom: 5rem;
-                right: 1rem;
-                width: 50px;
-                height: 50px;
+            .hero {
+                min-height: 70vh;
+                padding: 3rem 1.5rem;
+                margin-top: 60px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
             }
 
-            .back-to-top {
-                bottom: 11rem;
-                right: 1rem;
+            .nav-fullscreen-container {
+                padding: 5rem 1.5rem 1.5rem;
+            }
+
+            .nav-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .close-nav-btn {
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
             }
         }
 
-        /* --- RESPONSIVE: Phones --- */
         @media (max-width: 480px) {
             .header-container {
                 padding: 0.75rem 1rem;
             }
 
             .logo-text h1 {
-                font-size: 1.3rem;
-            }
-
-            .logo-text p {
-                font-size: 0.7rem;
+                font-size: 1.2rem;
             }
             
-            .page-header h2 {
-                font-size: 1.8rem;
-                line-height: 1.3;
+            .hero h1 {
+                font-size: 2rem;
             }
-
-            .page-header p {
-                font-size: 0.95rem;
-                line-height: 1.5;
-                padding: 0 0.5rem;
-            }
-
-            .contact-info,
-            .contact-form {
-                padding: 1.5rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .info-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.6rem;
-            }
-
-            .info-icon {
-                margin-top: 0;
+            
+            .hero p {
                 font-size: 1rem;
             }
+        }
 
-            .map-container iframe {
-                height: 260px;
-            }
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
 
-            .hours-table {
-                display: block;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
 
-            .hours-table th,
-            .hours-table td {
-                padding: 0.6rem 0.75rem;
-                font-size: 0.85rem;
-                white-space: nowrap;
-            }
-
-            .submit-btn {
-                font-size: 0.95rem;
-                padding: 0.8rem 1rem;
-            }
-
-            .mobile-menu-btn {
-                font-size: 1.8rem;
-                padding: 0.4rem;
-            }
+        .whatsapp-button i {
+            font-size: 28px;
         }
     </style>
-    
-    <!-- Defer non-critical CSS -->
-    <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    </noscript>
 </head>
 <body>
-    <!-- WhatsApp Button -->
     <a href="https://wa.me/254791325409" class="whatsapp-button" aria-label="Chat with us on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
-
+    
     <header>
         <div class="header-container">
             <!-- Logo Section -->
@@ -511,138 +601,166 @@
                 </div>
             </div>
 
-            <!-- Search and Dark Mode Toggle -->
+            <!-- Header Actions - Search and Menu -->
             <div class="header-actions">
-                <div class="search-container">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" class="search-input" placeholder="Search...">
+                <!-- Search Bar -->
+                <div class="header-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-btn" class="mobile-menu-btn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Full Screen Navigation Container -->
+    <div class="nav-fullscreen-container" id="navContainer">
+        <div class="nav-header">
+            <div class="nav-logo">
+                <img src="images/logo.jpg" alt="Diplomatic College Logo" width="50" height="50">
+                <div class="nav-logo-text">
+                    <h2>Diplomatic College</h2>
+                    <p>of Kenyan Foreign Policy</p>
                 </div>
             </div>
-
-            <!-- Mobile Menu Button -->
-            <button id="menu-btn" class="mobile-menu-btn" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
+            <button class="close-nav-btn" id="closeNavBtn" aria-label="Close navigation">
+                <i class="fas fa-times"></i>
             </button>
         </div>
 
-        <!-- Primary Navigation -->
-        <nav class="main-nav">
-            <div class="nav-container">
-                <ul class="primary-nav" id="primaryNav">
-                    <!-- Regions Mega Menu -->
+        <div class="nav-content">
+            <div class="nav-main">
+                <!-- Main Navigation -->
+                <div class="nav-section">
+                    <h3>Main Menu</h3>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html" class="active">About Us</a></li>
+                        <li><a href="research.html">Research & Publications</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Regions Section -->
+                <div class="nav-section">
+                    <h3>Regions</h3>
+                    <div class="mega-menu-section">
+                        <h4>Africa</h4>
+                        <ul class="mega-menu-links">
+                            <li><a href="#">East Africa</a></li>
+                            <li><a href="#">West Africa</a></li>
+                            <li><a href="#">Southern Africa</a></li>
+                            <li><a href="#">North Africa</a></li>
+                            <li><a href="#">Central Africa</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mega-menu-section">
+                        <h4>Europe</h4>
+                        <ul class="mega-menu-links">
+                            <li><a href="#">European Union</a></li>
+                            <li><a href="#">United Kingdom</a></li>
+                            <li><a href="#">Eastern Europe</a></li>
+                            <li><a href="#">Nordic Countries</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mega-menu-section">
+                        <h4>Asia</h4>
+                        <ul class="mega-menu-links">
+                            <li><a href="#">China</a></li>
+                            <li><a href="#">India</a></li>
+                            <li><a href="#">Japan</a></li>
+                            <li><a href="#">Southeast Asia</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mega-menu-section">
+                        <h4>Americas</h4>
+                        <ul class="mega-menu-links">
+                            <li><a href="#">United States</a></li>
+                            <li><a href="#">Canada</a></li>
+                            <li><a href="#">Latin America</a></li>
+                            <li><a href="#">Caribbean</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Topics Section -->
+                <div class="nav-section">
+                    <h3>Topics</h3>
+                    <ul class="nav-links">
+                        <li><a href="#">Diplomacy & Foreign Policy</a></li>
+                        <li><a href="#">Global Security</a></li>
+                        <li><a href="#">Climate & Environment</a></li>
+                        <li><a href="#">Economy & Trade</a></li>
+                        <li><a href="#">Technology & Innovation</a></li>
+                        <li><a href="#">Human Rights</a></li>
+                        <li><a href="#">International Law</a></li>
+                    </ul>
+                </div>
+
+                <!-- Publications Section -->
+                <div class="nav-section">
+                    <h3>Publications</h3>
+                    <ul class="nav-links">
+                        <li><a href="#">Research Papers</a></li>
+                        <li><a href="#">Policy Briefs</a></li>
+                        <li><a href="#">Reports</a></li>
+                        <li><a href="#">Books</a></li>
+                        <li><a href="#">Commentary</a></li>
+                        <li><a href="#">Newsletters</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sidebar with contact info -->
+            <div class="nav-sidebar">
+                <h3>Contact Info</h3>
+                <ul class="contact-info">
                     <li>
-                        <a href="#">Regions <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-menu mega-menu">
-                            <div class="mega-menu-column">
-                                <h4>Africa</h4>
-                                <ul>
-                                    <li><a href="#">East Africa</a></li>
-                                    <li><a href="#">West Africa</a></li>
-                                    <li><a href="#">Southern Africa</a></li>
-                                    <li><a href="#">North Africa</a></li>
-                                    <li><a href="#">Central Africa</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-menu-column">
-                                <h4>Europe</h4>
-                                <ul>
-                                    <li><a href="#">European Union</a></li>
-                                    <li><a href="#">United Kingdom</a></li>
-                                    <li><a href="#">Eastern Europe</a></li>
-                                    <li><a href="#">Nordic Countries</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-menu-column">
-                                <h4>Asia</h4>
-                                <ul>
-                                    <li><a href="#">China</a></li>
-                                    <li><a href="#">India</a></li>
-                                    <li><a href="#">Japan</a></li>
-                                    <li><a href="#">Southeast Asia</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-menu-column">
-                                <h4>Americas</h4>
-                                <ul>
-                                    <li><a href="#">United States</a></li>
-                                    <li><a href="#">Canada</a></li>
-                                    <li><a href="#">Latin America</a></li>
-                                    <li><a href="#">Caribbean</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-menu-column">
-                                <h4>Middle East</h4>
-                                <ul>
-                                    <li><a href="#">Gulf States</a></li>
-                                    <li><a href="#">Levant</a></li>
-                                    <li><a href="#">North Africa</a></li>
-                                </ul>
-                            </div>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p>Diplomatic College of Kenyan Foreign Policy</p>
+                            <p>Westlands Office Park, Nairobi, Kenya</p>
                         </div>
                     </li>
-
-                    <!-- Topics Dropdown -->
                     <li>
-                        <a href="#">Topics <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Diplomacy & Foreign Policy</a></li>
-                            <li><a href="#">Global Security</a></li>
-                            <li><a href="#">Climate & Environment</a></li>
-                            <li><a href="#">Economy & Trade</a></li>
-                            <li><a href="#">Technology & Innovation</a></li>
-                            <li><a href="#">Human Rights</a></li>
-                            <li><a href="#">International Law</a></li>
-                        </ul>
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <p>+254 20 123 4567</p>
+                            <p>+254 712 345 678</p>
+                        </div>
                     </li>
-
-                    <!-- Publications Dropdown -->
                     <li>
-                        <a href="#">Publications <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Research Papers</a></li>
-                            <li><a href="#">Policy Briefs</a></li>
-                            <li><a href="#">Reports</a></li>
-                            <li><a href="#">Books</a></li>
-                            <li><a href="#">Commentary</a></li>
-                            <li><a href="#">Newsletters</a></li>
-                        </ul>
-                    </li>
-
-                    <!-- Events -->
-                    <li><a href="events.html">Events</a></li>
-
-                    <!-- Membership Dropdown -->
-                    <li>
-                        <a href="#">Membership <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Become a Member</a></li>
-                            <li><a href="#">Member Benefits</a></li>
-                            <li><a href="#">Corporate Membership</a></li>
-                            <li><a href="#">Student Membership</a></li>
-                            <li><a href="#">Member Events</a></li>
-                        </ul>
-                    </li>
-
-                    <!-- About Dropdown -->
-                    <li>
-                        <a href="#">About Us <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="about.html">Our Mission</a></li>
-                            <li><a href="#">History</a></li>
-                            <li><a href="#">Leadership</a></li>
-                            <li><a href="#">Experts</a></li>
-                            <li><a href="#">Partners</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="contact.html" class="active">Contact Us</a></li>
-                        </ul>
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p>info@dckfp.org</p>
+                            <p>research@dckfp.org</p>
+                        </div>
                     </li>
                 </ul>
+
+                <div class="social-links-nav">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+
+                <div class="nav-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
             </div>
-        </nav>
-    </header>
-
-    <div class="menu-overlay" id="menuOverlay"></div>
-
+        </div>
+    </div>
     <main>
         <div class="page-header fade-in">
             <h2>Contact Us</h2>
@@ -795,37 +913,9 @@
             <div class="footer-links">
                 <h3>Resources</h3>
                 <ul>
-                    <li><a href="https://www.un.org/sites/un2.un.org/files/our-common-agenda-summapolicy-briefs.html"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li>
+                    <li><a href="https://www.un.org/sites/un2.un.org/files/our-common-agenda-summit-of-the-future-what-would-it-deliver.pdf"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li>
                     <li><a href="program-schedule.html"><i class="fas fa-chevron-right"></i> Program Schedule</a></li>
-                    <li><a href="research.html"><i class="fas fa-chevron-right"></i> Publications</a></li>
                     <li><a href="https://www.kenyaembassy.org.tr/uploads/Kenya_Foreign_Policy.pdf"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-links">
-                <h3>Contact Us</h3>
-                <ul class="contact-info">
-                    <li>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <p>Diplomatic College of Kenyan Foreign Policy</p>
-                            <p>Westlands Office Park, Nairobi, Kenya</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <p>+254 20 123 4567</p>
-                            <p>+254 712 345 678</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <p>info@dckfp.org</p>
-                            <p>research@dckfp.org</p>
-                        </div>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -841,49 +931,50 @@
         </div>
     </footer>
 
-    <!-- Dark Mode Toggle -->
-    <div class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-        <i class="fas fa-moon"></i>
-    </div>
-
-    <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <!-- Defer non-critical JavaScript -->
     <script>
-    // Header scroll behavior: hide on scroll down, show on scroll up
-    let lastScroll = 0;
-    const header = document.querySelector('header');
-    const mainNav = document.querySelector('.main-nav');
-    let isHovering = false;
+    // Navigation functionality
+    const menuBtn = document.getElementById('menu-btn');
+    const closeNavBtn = document.getElementById('closeNavBtn');
+    const navContainer = document.getElementById('navContainer');
+    const body = document.body;
 
-    // Show/hide main nav on hover near top of page
-    document.addEventListener('mousemove', (e) => {
-        if (e.clientY < 100) { // If mouse is near top of screen
-            if (!isHovering) {
-                mainNav.classList.add('visible');
-                isHovering = true;
-            }
-        } else {
-            if (isHovering) {
-                mainNav.classList.remove('visible');
-                isHovering = false;
-            }
+    // Open navigation
+    menuBtn.addEventListener('click', () => {
+        navContainer.classList.add('active');
+        body.style.overflow = 'hidden';
+        // Change icon to close when nav is open
+        menuBtn.innerHTML = '<i class="fas fa-times"></i>';
+    });
+
+    // Close navigation
+    closeNavBtn.addEventListener('click', () => {
+        navContainer.classList.remove('active');
+        body.style.overflow = 'auto';
+        // Change icon back to menu when nav is closed
+        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    });
+
+    // Close nav when clicking outside content
+    navContainer.addEventListener('click', (e) => {
+        if (e.target === navContainer) {
+            navContainer.classList.remove('active');
+            body.style.overflow = 'auto';
+            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
         }
     });
 
-    // Keep nav visible when hovering over it
-    mainNav.addEventListener('mouseenter', () => {
-        isHovering = true;
-        mainNav.classList.add('visible');
+    // Close nav when pressing Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navContainer.classList.contains('active')) {
+            navContainer.classList.remove('active');
+            body.style.overflow = 'auto';
+            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        }
     });
 
-    mainNav.addEventListener('mouseleave', () => {
-        isHovering = false;
-        mainNav.classList.remove('visible');
-    });
+    // Header scroll behavior: hide on scroll down, show on scroll up
+    let lastScroll = 0;
+    const header = document.querySelector('header');
 
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
@@ -891,109 +982,41 @@
         // Header hide/show on scroll
         if (currentScroll > lastScroll && currentScroll > 100) {
             header.classList.add('header-hidden');
-            mainNav.classList.remove('visible');
         } else {
             header.classList.remove('header-hidden');
         }
         lastScroll = currentScroll;
-        
-        // Back to top button visibility
-        const backToTop = document.getElementById('backToTop');
-        if (currentScroll > 300) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
+    });
+
+    // Search functionality
+    const headerSearch = document.querySelector('.header-search input');
+    const navSearch = document.querySelector('.nav-search input');
+    
+    // Header search functionality
+    headerSearch.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            performSearch(headerSearch.value);
         }
     });
-
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('menu-btn');
-    const overlay = document.getElementById('menuOverlay');
-
-    menuBtn.addEventListener('click', () => {
-        mainNav.classList.toggle('active');
-        overlay.classList.toggle('active');
-        document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+    
+    // Nav search functionality
+    navSearch.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            performSearch(navSearch.value);
+            // Close nav after search
+            navContainer.classList.remove('active');
+            body.style.overflow = 'auto';
+            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        }
     });
-
-    overlay.addEventListener('click', () => {
-        mainNav.classList.remove('active');
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-
-    // Close menu when a nav link is clicked
-    document.querySelectorAll('.primary-nav a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-                if (link.parentElement.querySelector('.dropdown-menu')) {
-                    return; // Don't close if clicking a dropdown parent on mobile
-                }
-                mainNav.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-    });
-
-    // Handle dropdowns on mobile
-    if (window.innerWidth <= 768) {
-        document.querySelectorAll('.primary-nav > li > a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                if (this.parentElement.querySelector('.dropdown-menu')) {
-                    e.preventDefault();
-                    const dropdown = this.parentElement.querySelector('.dropdown-menu');
-                    const isOpen = dropdown.style.display === 'block';
-                    
-                    // Close all other dropdowns
-                    document.querySelectorAll('.dropdown-menu').forEach(d => {
-                        if (d !== dropdown) d.style.display = 'none';
-                    });
-                    
-                    // Toggle current dropdown
-                    dropdown.style.display = isOpen ? 'none' : 'block';
-                }
-            });
-        });
-    }
-
-    // Theme Toggle (Dark / Light Mode Persistence)
-    const themeToggle = document.getElementById('darkModeToggle');
-    const body = document.body;
-
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    body.setAttribute('data-theme', savedTheme);
-    updateToggleIcon(savedTheme);
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateToggleIcon(newTheme);
-        });
-    }
-
-    function updateToggleIcon(theme) {
-        const icon = themeToggle.querySelector('i');
-        if (theme === 'dark') {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        } else {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
+    
+    function performSearch(query) {
+        if (query.trim() !== '') {
+            alert(`Searching for: ${query}`);
+            // In a real implementation, you would redirect to search results page
+            // or filter content based on the search query
         }
     }
-
-    // Back to top functionality
-    const backToTop = document.getElementById('backToTop');
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
 
     // Intersection Observer for animations
     const fadeElements = document.querySelectorAll('.fade-in');
@@ -1015,32 +1038,6 @@
         element.style.transform = 'translateY(20px)';
         element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(element);
-    });
-
-    // Form submission handling
-    const contactForm = document.querySelector('.contact-form form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Here you would typically send the form data to your server
-            alert('Thank you for your message! We will get back to you soon.');
-            contactForm.reset();
-        });
-    }
-
-    // Preload important images
-    function preloadImages() {
-        const images = [
-            'images/logo.jpg'
-        ];
-        
-        images.forEach(img => {
-            new Image().src = img;
-        });
-    }
-    
-    document.addEventListener('DOMContentLoaded', function() {
-        preloadImages();
     });
     </script>
 
@@ -1101,7 +1098,6 @@
         }
         
         .contact-info, .contact-form {
-            background: var(--card-bg);
             padding: 2.5rem;
             border-radius: 8px;
             border: 1px solid var(--border-color);
@@ -1111,7 +1107,6 @@
         
         .contact-info:hover, .contact-form:hover {
             transform: translateY(-5px);
-            box-shadow: var(--box-shadow-hover);
         }
         
         .contact-info h3, .contact-form h3 {
@@ -1469,8 +1464,6 @@
 
         .contact-info i {
             font-size: 1.2rem;
-            color: var(--secondary);
-            margin-top: 2px;
         }
 
         .contact-info div {
@@ -1479,7 +1472,6 @@
 
         .contact-info p {
             margin: 0;
-            color: var(--text-secondary);
             line-height: 1.6;
         }
         
@@ -1500,11 +1492,6 @@
             
             .page-header h2 {
                 font-size: 2rem;
-            }
-
-            .contact-container {
-                grid-template-columns: 1fr;
-                padding: 0;
             }
 
             .info-item {

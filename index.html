@@ -4,21 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diplomatic College of Kenyan Foreign Policy</title>
-    
-    <!-- Preload critical resources -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Load Font Awesome with performance optimization -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
-    
-    <!-- Load Google Fonts with performance optimization -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    
-    <!-- Inline critical CSS -->
     <style>
-        /* Critical CSS - Above the fold styles */
         :root {
             --primary: #1a4b8c;
             --primary-light: #3a6cb0;
@@ -52,7 +44,6 @@
         }
 
         * {
-            transition: var(--transition);
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -71,9 +62,10 @@
             background-color: var(--background);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            transition: var(--transition);
         }
 
-        /* Header Styles - Critical for initial render */
+        /* Header Styles */
         header {
             background: var(--background);
             box-shadow: var(--box-shadow);
@@ -81,7 +73,7 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            transition: transform 0.9s ease;
+            transition: transform 0.3s ease;
         }
 
         .header-hidden {
@@ -107,7 +99,6 @@
         .logo img {
             height: 60px;
             max-width: 100%;
-            transition: filter 0.3s ease;
         }
 
         .logo-text h1 {
@@ -125,155 +116,22 @@
             font-weight: 400;
         }
 
-        /* Main Navigation - Improved visibility */
-        .main-nav {
-            background: var(--primary);
-            color: white;
-            position: fixed;
-            top: 80px;
-            width: 100%;
-            transform: translateY(-100%);
-            opacity: 0;
-            transition: all 0.5s ease;
-            z-index: 999;
-        }
-
-        .main-nav.visible {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .primary-nav {
+        /* Header Actions - Search and Menu */
+        .header-actions {
             display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
+            align-items: center;
+            gap: 1.5rem;
         }
 
-        .primary-nav > li {
-            position: relative;
-        }
-
-        .primary-nav > li > a {
-            color: white;
-            text-decoration: none;
-            padding: 1rem 1.5rem;
-            display: block;
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .primary-nav > li > a:hover {
-            background: rgba(255,255,255,0.1);
-        }
-
-        .primary-nav > li > a:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 3px;
-            background: var(--secondary);
-            transition: var(--transition);
-        }
-
-        .primary-nav > li:hover > a:after {
-            width: 100%;
-        }
-
-        /* Dropdown Menus - Improved contrast */
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: white;
-            min-width: 250px;
-            box-shadow: var(--box-shadow);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: var(--transition);
-            z-index: 1000;
-            border-top: 3px solid var(--secondary);
-        }
-
-        .primary-nav > li:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-menu li a {
-            color: var(--text);
-            padding: 0.8rem 1.5rem;
-            display: block;
-            text-decoration: none;
-            border-bottom: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-
-        .dropdown-menu li a:hover {
-            background: var(--background-secondary);
-            color: var(--primary);
-            padding-left: 2rem;
-        }
-
-        .dropdown-menu li:last-child a {
-            border-bottom: none;
-        }
-
-        /* Mega Menu for Regions */
-        .mega-menu {
-            left: 50%;
-            transform: translateX(-50%) translateY(10px);
-            width: 100vw;
-            max-width: 1200px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 2rem;
-            padding: 2rem;
-        }
-
-        .mega-menu:hover {
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .mega-menu-column h4 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .mega-menu-column ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .mega-menu-column li a {
-            border-bottom: none;
-            padding: 0.5rem 0;
-        }
-
-        /* Search Bar */
-        .search-container {
+        /* Search Bar in Header */
+        .header-search {
             position: relative;
             display: flex;
             align-items: center;
         }
 
-        .search-input {
-            padding: 0.5rem 1rem 0.5rem 2.5rem;
+        .header-search input {
+            padding: 0.7rem 1rem 0.7rem 2.5rem;
             border-radius: 20px;
             border: 1px solid var(--border-color);
             background: var(--card-bg);
@@ -283,13 +141,14 @@
             transition: var(--transition);
         }
 
-        .search-input:focus {
+        .header-search input:focus {
             outline: none;
             border-color: var(--secondary);
             width: 250px;
+            box-shadow: 0 0 0 2px rgba(240, 183, 47, 0.2);
         }
 
-        .search-icon {
+        .header-search i {
             position: absolute;
             left: 1rem;
             color: var(--text-secondary);
@@ -297,80 +156,284 @@
 
         /* Mobile Menu Button */
         .mobile-menu-btn {
-            display: none;
+            display: block;
             background: none;
             border: none;
             color: var(--primary);
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
-            padding: 1rem;
+            z-index: 1101;
+            position: relative;
+            padding: 0.4rem;
+            transition: var(--transition);
         }
 
-        .menu-overlay {
+        .mobile-menu-btn:hover {
+            color: var(--secondary);
+        }
+
+        /* Full Screen Navigation Container */
+        .nav-fullscreen-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-            background: rgba(0,0,0,0.5);
-            z-index: 999;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
+            background: var(--primary);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(-100%);
+            transition: transform 0.5s ease;
+            overflow-y: auto;
+            padding: 6rem 2rem 2rem;
         }
 
-        .menu-overlay.active {
-            opacity: 1;
-            pointer-events: all;
+        .nav-fullscreen-container.active {
+            transform: translateY(0);
         }
 
-        /* Loading Screen */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--background);
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-logo img {
+            height: 50px;
+        }
+
+        .nav-logo-text h2 {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .nav-logo-text p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .close-nav-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-nav-btn:hover {
+            color: var(--secondary);
+        }
+
+        /* Navigation Content */
+        .nav-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 992px) {
+            .nav-content {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        .nav-main {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .nav-main {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-section h3 {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+            transform: translateX(10px);
+        }
+
+        .nav-links a.active {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .nav-links a.active:after {
+            content: '•';
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* Mega menu sections */
+        .mega-menu-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .mega-menu-section h4 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .mega-menu-links {
+            list-style: none;
+        }
+
+        .mega-menu-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .mega-menu-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            display: block;
+            padding: 0.3rem 0;
+        }
+
+        .mega-menu-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Nav sidebar */
+        .nav-sidebar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .nav-sidebar h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .contact-info i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+}
+
+        .social-links-nav {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links-nav a {
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.2s ease;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
         }
 
-        .loading-bar {
-            width: 80%;
-            max-width: 300px;
-            height: 4px;
-            background: var(--border-color);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .loading-progress {
-            height: 100%;
-            width: 0%;
+        .social-links-nav a:hover {
             background: var(--secondary);
-            transition: width 0.2s ease;
+            color: var(--text);
+            transform: translateY(-3px);
         }
 
-        .page-transition {
-            position: fixed;
-            top: 0;
-            left: 0;
+        /* Search in nav */
+        .nav-search {
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .nav-search input {
             width: 100%;
-            height: 100%;
-            background: var(--primary);
-            z-index: 9998;
-            transform: scaleY(0);
-            transform-origin: top;
-            transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+            padding: 1rem 1rem 1rem 3rem;
+            border-radius: 30px;
+            border: none;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-family: 'Inter', sans-serif;
         }
 
-        /* Hero Section - Critical for initial view */
+        .nav-search input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .nav-search i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             position: relative;
@@ -406,15 +469,6 @@
             max-width: 700px;
             margin: 0 auto 3rem;
             color: rgba(255,255,255,0.9);
-            position: relative;
-            z-index: 2;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
         }
 
         .btn {
@@ -426,8 +480,6 @@
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
-            position: relative;
-            z-index: 2;
             min-width: 160px;
             text-align: center;
             border: 2px solid transparent;
@@ -440,266 +492,17 @@
             box-shadow: var(--box-shadow-hover);
         }
 
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid white;
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: var(--secondary);
-            color: var(--secondary);
-        }
-
-        /* Cookie Consent Banner */
-        .cookie-consent {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #f8f9fa;
-            color: #333;
-            padding: 1.5rem;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-            z-index: 9999;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-            display: none;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            border-top: 3px solid var(--secondary);
-        }
-
-        .cookie-consent.active {
-            transform: translateY(0);
-        }
-
-        .cookie-consent p {
-            margin: 0;
-            flex: 1;
-            min-width: 250px;
-            color: #333;
-        }
-
-        .cookie-consent-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .cookie-btn {
-            padding: 0.5rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: 0.3s ease;
-        }
-
-        .cookie-btn.accept {
-            background: var(--secondary);
-            color: #333;
-            border: none;
-        }
-
-        .cookie-btn.decline {
-            background: transparent;
-            border: 1px solid var(--border-color);
-            color: #333;
-        }
-
-        .cookie-btn:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-
-        /* WhatsApp Button */
-        .whatsapp-button {
-            position: fixed;
-            bottom: 6rem;
-            right: 2rem;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            z-index: 99;
-            transition: var(--transition);
-            text-decoration: none;
-        }
-
-        .whatsapp-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-        }
-
-        .whatsapp-button i {
-            font-size: 1.8rem;
-        }
-
-        /* Dark Mode Toggle */
-        .dark-mode-toggle {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--card-bg);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--box-shadow);
-            border: 2px solid var(--secondary);
-            z-index: 99;
-            transition: var(--transition);
-        }
-
-        .dark-mode-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: var(--box-shadow-hover);
-        }
-
-        .dark-mode-toggle i {
-            font-size: 1.3rem;
-            color: var(--secondary);
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 9rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--box-shadow);
-            z-index: 99;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            background: var(--primary-light);
-            transform: translateY(-3px);
-            box-shadow: var(--box-shadow-hover);
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.6s ease forwards;
-        }
-
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
-
-        /* --- RESPONSIVE: Medium Screens --- */
-        @media (max-width: 1024px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-        }
-
-        /* --- RESPONSIVE: Tablets & Mobiles --- */
+        /* Responsive */
         @media (max-width: 768px) {
             .header-container {
                 padding: 1rem;
             }
-            
-            .mobile-menu-btn {
-                display: block;
+
+            .logo-text h1 {
+                font-size: 1.4rem;
             }
 
-            .main-nav {
-                position: fixed;
-                top: 0;
-                right: 0;
-                width: 80%;
-                max-width: 320px;
-                height: 100vh;
-                background: var(--primary);
-                padding: 5rem 2rem 2rem;
-                transform: translateX(100%);
-                transition: transform 0.4s ease;
-                z-index: 1100;
-                overflow-y: auto;
-            }
-
-            .main-nav.active {
-                transform: translateX(0%);
-            }
-
-            .primary-nav {
-                flex-direction: column;
-                gap: 0;
-            }
-
-            .primary-nav > li {
-                width: 100%;
-            }
-
-            .primary-nav > li > a {
-                padding: 1rem 0;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-
-            .dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                background: rgba(0,0,0,0.1);
-                display: none;
-                margin-left: 1rem;
-                border-top: none;
-                width: calc(100% - 2rem);
-            }
-
-            .primary-nav > li:hover .dropdown-menu {
-                display: block;
-            }
-
-            .mega-menu {
-                width: 100%;
-                max-width: 100%;
-                position: static;
-                transform: none;
-                display: none;
-                padding: 1rem;
-            }
-
-            .search-container {
+            .header-search {
                 display: none;
             }
 
@@ -711,48 +514,36 @@
             
             .hero h1 {
                 font-size: 2.5rem;
-                margin-bottom: 1.5rem;
             }
             
             .hero p {
                 font-size: 1.1rem;
-                margin-bottom: 2rem;
             }
-            
-            .btn-group {
+
+            .nav-fullscreen-container {
+                padding: 5rem 1.5rem 1.5rem;
+            }
+
+            .nav-header {
                 flex-direction: column;
+                text-align: center;
                 gap: 1rem;
             }
-            
-            .btn {
-                width: 100%;
-            }
 
-            .whatsapp-button {
-                bottom: 5rem;
-                right: 1rem;
-                width: 50px;
-                height: 50px;
-            }
-
-            .back-to-top {
-                bottom: 11rem;
-                right: 1rem;
+            .close-nav-btn {
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
             }
         }
 
-        /* --- RESPONSIVE: Phones --- */
         @media (max-width: 480px) {
             .header-container {
                 padding: 0.75rem 1rem;
             }
 
             .logo-text h1 {
-                font-size: 1.3rem;
-            }
-
-            .logo-text p {
-                font-size: 0.7rem;
+                font-size: 1.2rem;
             }
             
             .hero h1 {
@@ -762,29 +553,41 @@
             .hero p {
                 font-size: 1rem;
             }
+
+            /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp-button i {
+            font-size: 28px;
+        }
         }
     </style>
-    
-    <!-- Defer non-critical CSS -->
-    <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    </noscript>
 </head>
 <body>
-    <!-- Cookie Consent Banner -->
-    <div class="cookie-consent" id="cookieConsent">
-        <p>We use cookies to enhance your experience on our website. By continuing to browse, you agree to our use of cookies.</p>
-        <div class="cookie-consent-buttons">
-            <button class="cookie-btn accept" id="acceptCookies">Accept</button>
-            <button class="cookie-btn decline" id="declineCookies">Decline</button>
-        </div>
-    </div>
-
-    <!-- WhatsApp Button -->
     <a href="https://wa.me/254791325409" class="whatsapp-button" aria-label="Chat with us on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
-
     <header>
         <div class="header-container">
             <!-- Logo Section -->
@@ -796,146 +599,166 @@
                 </div>
             </div>
 
-            <!-- Search and Dark Mode Toggle -->
+            <!-- Header Actions - Search and Menu -->
             <div class="header-actions">
-                <div class="search-container">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" class="search-input" placeholder="Search...">
+                <!-- Search Bar -->
+                <div class="header-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-btn" class="mobile-menu-btn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Full Screen Navigation Container -->
+    <div class="nav-fullscreen-container" id="navContainer">
+        <div class="nav-header">
+            <div class="nav-logo">
+                <img src="images/logo.jpg" alt="Diplomatic College Logo" width="50" height="50">
+                <div class="nav-logo-text">
+                    <h2>Diplomatic College</h2>
+                    <p>of Kenyan Foreign Policy</p>
                 </div>
             </div>
-
-            <!-- Mobile Menu Button -->
-            <button id="menu-btn" class="mobile-menu-btn" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
+            <button class="close-nav-btn" id="closeNavBtn" aria-label="Close navigation">
+                <i class="fas fa-times"></i>
             </button>
         </div>
 
-        <div class="loading-screen" id="loadingScreen">
-            <div class="loading-bar">
-                <div class="loading-progress" id="loadingProgress"></div>
+        <div class="nav-content">
+            <div class="nav-main">
+                <!-- Main Navigation -->
+                <div class="nav-section">
+                    <h3>Main Menu</h3>
+                    <ul class="nav-links">
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="research.html">Research & Publications</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Regions Section -->
+                <div class="nav-section">
+                    <h3>Regions</h3>
+                    <div class="mega-menu-section">
+                        <h4>Africa</h4>
+                        <ul class="mega-menu-links">
+                            <li><a href="#">East Africa</a></li>
+                            <li><a href="#">West Africa</a></li>
+                            <li><a href="#">Southern Africa</a></li>
+                            <li><a href="#">North Africa</a></li>
+                            <li><a href="#">Central Africa</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mega-menu-section">
+                        <h4>Europe</h4>
+                        <ul class="mega-menu-links">
+                            <li><a href="#">European Union</a></li>
+                            <li><a href="#">United Kingdom</a></li>
+                            <li><a href="#">Eastern Europe</a></li>
+                            <li><a href="#">Nordic Countries</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mega-menu-section">
+                        <h4>Asia</h4>
+                        <ul class="mega-menu-links">
+                            <li><a href="#">China</a></li>
+                            <li><a href="#">India</a></li>
+                            <li><a href="#">Japan</a></li>
+                            <li><a href="#">Southeast Asia</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mega-menu-section">
+                        <h4>Americas</h4>
+                        <ul class="mega-menu-links">
+                            <li><a href="#">United States</a></li>
+                            <li><a href="#">Canada</a></li>
+                            <li><a href="#">Latin America</a></li>
+                            <li><a href="#">Caribbean</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Topics Section -->
+                <div class="nav-section">
+                    <h3>Topics</h3>
+                    <ul class="nav-links">
+                        <li><a href="#">Diplomacy & Foreign Policy</a></li>
+                        <li><a href="#">Global Security</a></li>
+                        <li><a href="#">Climate & Environment</a></li>
+                        <li><a href="#">Economy & Trade</a></li>
+                        <li><a href="#">Technology & Innovation</a></li>
+                        <li><a href="#">Human Rights</a></li>
+                        <li><a href="#">International Law</a></li>
+                    </ul>
+                </div>
+
+                <!-- Publications Section -->
+                <div class="nav-section">
+                    <h3>Publications</h3>
+                    <ul class="nav-links">
+                        <li><a href="#">Research Papers</a></li>
+                        <li><a href="#">Policy Briefs</a></li>
+                        <li><a href="#">Reports</a></li>
+                        <li><a href="#">Books</a></li>
+                        <li><a href="#">Commentary</a></li>
+                        <li><a href="#">Newsletters</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
 
-        <!-- Page Transition Overlay -->
-        <div class="page-transition" id="pageTransition"></div>
-
-        <!-- Primary Navigation -->
-        <nav class="main-nav">
-            <div class="nav-container">
-                <ul class="primary-nav" id="primaryNav">
-                    <!-- Regions Mega Menu -->
+            <!-- Sidebar with contact info -->
+            <div class="nav-sidebar">
+                <h3>Contact Info</h3>
+                <ul class="contact-info">
                     <li>
-                        <a href="#">Regions <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-menu mega-menu">
-                            <div class="mega-menu-column">
-                                <h4>Africa</h4>
-                                <ul>
-                                    <li><a href="#">East Africa</a></li>
-                                    <li><a href="#">West Africa</a></li>
-                                    <li><a href="#">Southern Africa</a></li>
-                                    <li><a href="#">North Africa</a></li>
-                                    <li><a href="#">Central Africa</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-menu-column">
-                                <h4>Europe</h4>
-                                <ul>
-                                    <li><a href="#">European Union</a></li>
-                                    <li><a href="#">United Kingdom</a></li>
-                                    <li><a href="#">Eastern Europe</a></li>
-                                    <li><a href="#">Nordic Countries</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-menu-column">
-                                <h4>Asia</h4>
-                                <ul>
-                                    <li><a href="#">China</a></li>
-                                    <li><a href="#">India</a></li>
-                                    <li><a href="#">Japan</a></li>
-                                    <li><a href="#">Southeast Asia</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-menu-column">
-                                <h4>Americas</h4>
-                                <ul>
-                                    <li><a href="#">United States</a></li>
-                                    <li><a href="#">Canada</a></li>
-                                    <li><a href="#">Latin America</a></li>
-                                    <li><a href="#">Caribbean</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-menu-column">
-                                <h4>Middle East</h4>
-                                <ul>
-                                    <li><a href="#">Gulf States</a></li>
-                                    <li><a href="#">Levant</a></li>
-                                    <li><a href="#">North Africa</a></li>
-                                </ul>
-                            </div>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p>Diplomatic College of Kenyan Foreign Policy</p>
+                            <p>Westlands Office Park, Nairobi, Kenya</p>
                         </div>
                     </li>
-
-                    <!-- Topics Dropdown -->
                     <li>
-                        <a href="#">Topics <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Diplomacy & Foreign Policy</a></li>
-                            <li><a href="#">Global Security</a></li>
-                            <li><a href="#">Climate & Environment</a></li>
-                            <li><a href="#">Economy & Trade</a></li>
-                            <li><a href="#">Technology & Innovation</a></li>
-                            <li><a href="#">Human Rights</a></li>
-                            <li><a href="#">International Law</a></li>
-                        </ul>
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <p>+254 20 123 4567</p>
+                            <p>+254 712 345 678</p>
+                        </div>
                     </li>
-
-                    <!-- Publications Dropdown -->
                     <li>
-                        <a href="#">Publications <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Research Papers</a></li>
-                            <li><a href="#">Policy Briefs</a></li>
-                            <li><a href="#">Reports</a></li>
-                            <li><a href="#">Books</a></li>
-                            <li><a href="#">Commentary</a></li>
-                            <li><a href="#">Newsletters</a></li>
-                        </ul>
-                    </li>
-
-                    <!-- Events -->
-                    <li><a href="events.html">Events</a></li>
-
-                    <!-- Membership Dropdown -->
-                    <li>
-                        <a href="#">Membership <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Become a Member</a></li>
-                            <li><a href="#">Member Benefits</a></li>
-                            <li><a href="#">Corporate Membership</a></li>
-                            <li><a href="#">Student Membership</a></li>
-                            <li><a href="#">Member Events</a></li>
-                        </ul>
-                    </li>
-
-                    <!-- About Dropdown -->
-                    <li>
-                        <a href="#">About Us <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Our Mission</a></li>
-                            <li><a href="#">History</a></li>
-                            <li><a href="#">Leadership</a></li>
-                            <li><a href="#">Experts</a></li>
-                            <li><a href="#">Partners</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                        </ul>
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p>info@dckfp.org</p>
+                            <p>research@dckfp.org</p>
+                        </div>
                     </li>
                 </ul>
-            </div>
-        </nav>
-    </header>
 
-    <div class="menu-overlay" id="menuOverlay"></div>
+                <div class="social-links-nav">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+
+                <div class="nav-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <main>
         <!-- Hero Section -->
@@ -1100,35 +923,7 @@
                 <ul>
                     <li><a href="https://www.un.org/sites/un2.un.org/files/our-common-agenda-summit-of-the-future-what-would-it-deliver.pdf"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li>
                     <li><a href="program-schedule.html"><i class="fas fa-chevron-right"></i> Program Schedule</a></li>
-                    <li><a href="research.html"><i class="fas fa-chevron-right"></i> Publications</a></li>
                     <li><a href="https://www.kenyaembassy.org.tr/uploads/Kenya_Foreign_Policy.pdf"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-links">
-                <h3>Contact Us</h3>
-                <ul class="contact-info">
-                    <li>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <p>Diplomatic College of Kenyan Foreign Policy</p>
-                            <p>Westlands Office Park, Nairobi, Kenya</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <p>+254 20 123 4567</p>
-                            <p>+254 712 345 678</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <p>info@dckfp.org</p>
-                            <p>research@dckfp.org</p>
-                        </div>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -1144,49 +939,50 @@
         </div>
     </footer>
 
-    <!-- Dark Mode Toggle -->
-    <div class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-        <i class="fas fa-moon"></i>
-    </div>
-
-    <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <!-- Defer non-critical JavaScript -->
     <script>
-    // Header scroll behavior: hide on scroll down, show on scroll up
-    let lastScroll = 0;
-    const header = document.querySelector('header');
-    const mainNav = document.querySelector('.main-nav');
-    let isHovering = false;
+    // Navigation functionality
+    const menuBtn = document.getElementById('menu-btn');
+    const closeNavBtn = document.getElementById('closeNavBtn');
+    const navContainer = document.getElementById('navContainer');
+    const body = document.body;
 
-    // Show/hide main nav on hover near top of page
-    document.addEventListener('mousemove', (e) => {
-        if (e.clientY < 100) { // If mouse is near top of screen
-            if (!isHovering) {
-                mainNav.classList.add('visible');
-                isHovering = true;
-            }
-        } else {
-            if (isHovering) {
-                mainNav.classList.remove('visible');
-                isHovering = false;
-            }
+    // Open navigation
+    menuBtn.addEventListener('click', () => {
+        navContainer.classList.add('active');
+        body.style.overflow = 'hidden';
+        // Change icon to close when nav is open
+        menuBtn.innerHTML = '<i class="fas fa-times"></i>';
+    });
+
+    // Close navigation
+    closeNavBtn.addEventListener('click', () => {
+        navContainer.classList.remove('active');
+        body.style.overflow = 'auto';
+        // Change icon back to menu when nav is closed
+        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    });
+
+    // Close nav when clicking outside content
+    navContainer.addEventListener('click', (e) => {
+        if (e.target === navContainer) {
+            navContainer.classList.remove('active');
+            body.style.overflow = 'auto';
+            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
         }
     });
 
-    // Keep nav visible when hovering over it
-    mainNav.addEventListener('mouseenter', () => {
-        isHovering = true;
-        mainNav.classList.add('visible');
+    // Close nav when pressing Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navContainer.classList.contains('active')) {
+            navContainer.classList.remove('active');
+            body.style.overflow = 'auto';
+            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        }
     });
 
-    mainNav.addEventListener('mouseleave', () => {
-        isHovering = false;
-        mainNav.classList.remove('visible');
-    });
+    // Header scroll behavior: hide on scroll down, show on scroll up
+    let lastScroll = 0;
+    const header = document.querySelector('header');
 
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
@@ -1194,256 +990,43 @@
         // Header hide/show on scroll
         if (currentScroll > lastScroll && currentScroll > 100) {
             header.classList.add('header-hidden');
-            mainNav.classList.remove('visible');
         } else {
             header.classList.remove('header-hidden');
         }
         lastScroll = currentScroll;
-        
-        // Back to top button visibility
-        const backToTop = document.getElementById('backToTop');
-        if (currentScroll > 300) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
-        }
     });
 
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('menu-btn');
-    const overlay = document.getElementById('menuOverlay');
-
-    menuBtn.addEventListener('click', () => {
-        mainNav.classList.toggle('active');
-        overlay.classList.toggle('active');
-        document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
-    });
-
-    overlay.addEventListener('click', () => {
-        mainNav.classList.remove('active');
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-
-    // Close menu when a nav link is clicked
-    document.querySelectorAll('.primary-nav a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-                if (link.parentElement.querySelector('.dropdown-menu')) {
-                    return; // Don't close if clicking a dropdown parent on mobile
-                }
-                mainNav.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-    });
-
-    // Handle dropdowns on mobile
-    if (window.innerWidth <= 768) {
-        document.querySelectorAll('.primary-nav > li > a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                if (this.parentElement.querySelector('.dropdown-menu')) {
-                    e.preventDefault();
-                    const dropdown = this.parentElement.querySelector('.dropdown-menu');
-                    const isOpen = dropdown.style.display === 'block';
-                    
-                    // Close all other dropdowns
-                    document.querySelectorAll('.dropdown-menu').forEach(d => {
-                        if (d !== dropdown) d.style.display = 'none';
-                    });
-                    
-                    // Toggle current dropdown
-                    dropdown.style.display = isOpen ? 'none' : 'block';
-                }
-            });
-        });
-    }
-
-    // Theme Toggle (Dark / Light Mode Persistence)
-    const themeToggle = document.getElementById('darkModeToggle');
-    const body = document.body;
-
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    body.setAttribute('data-theme', savedTheme);
-    updateToggleIcon(savedTheme);
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateToggleIcon(newTheme);
-        });
-    }
-
-    function updateToggleIcon(theme) {
-        const icon = themeToggle.querySelector('i');
-        if (theme === 'dark') {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        } else {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-        }
-    }
-
-    // Back to top functionality
-    const backToTop = document.getElementById('backToTop');
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-
-    // Intersection Observer for animations
-    const fadeElements = document.querySelectorAll('.fade-in');
+    // Search functionality
+    const headerSearch = document.querySelector('.header-search input');
+    const navSearch = document.querySelector('.nav-search input');
     
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = 1;
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-
-    fadeElements.forEach(element => {
-        element.style.opacity = 0;
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(element);
-    });
-
-    // Form submission handling
-    const newsletterForm = document.querySelector('.newsletter-form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = newsletterForm.querySelector('input').value;
-            // Here you would typically send the email to your server
-            alert(`Thank you for subscribing with ${email}!`);
-            newsletterForm.reset();
-        });
-    }
-
-    // Cookie Consent
-    const cookieConsent = document.getElementById('cookieConsent');
-    const acceptCookies = document.getElementById('acceptCookies');
-    const declineCookies = document.getElementById('declineCookies');
-
-    // Check if user has already made a choice
-    if (!localStorage.getItem('cookieConsent')) {
-        setTimeout(() => {
-            cookieConsent.style.display = 'flex';
-            setTimeout(() => {
-                cookieConsent.classList.add('active');
-            }, 10);
-        }, 1000);
-    }
-
-    acceptCookies.addEventListener('click', () => {
-        localStorage.setItem('cookieConsent', 'accepted');
-        cookieConsent.classList.remove('active');
-        setTimeout(() => {
-            cookieConsent.style.display = 'none';
-        }, 300);
-    });
-
-    declineCookies.addEventListener('click', () => {
-        localStorage.setItem('cookieConsent', 'declined');
-        cookieConsent.classList.remove('active');
-        setTimeout(() => {
-            cookieConsent.style.display = 'none';
-        }, 300);
-    });
-
-    // Enhanced Loading System
-    document.addEventListener('DOMContentLoaded', function() {
-        const loadingScreen = document.getElementById('loadingScreen');
-        const loadingProgress = document.getElementById('loadingProgress');
-        const pageTransition = document.getElementById('pageTransition');
-        
-        // Simulate loading progress (in a real site, you'd track actual resources)
-        let progress = 0;
-        const interval = setInterval(() => {
-            progress += Math.random() * 10;
-            if (progress > 100) progress = 100;
-            loadingProgress.style.width = progress + '%';
-            
-            if (progress >= 100) {
-                clearInterval(interval);
-                setTimeout(() => {
-                    loadingScreen.style.opacity = '0';
-                    
-                    // Enable smooth page transitions after initial load
-                    setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                        setupPageTransitions();
-                    }, 500);
-                }, 500);
-            }
-        }, 200);
-        
-        // Setup smooth page transitions for navigation
-        function setupPageTransitions() {
-            // Get all links that should trigger page transitions
-            const links = document.querySelectorAll('a[href]:not([href^="#"]):not([target="_blank"]):not([href^="mailto:"]):not([href^="tel:"])');
-            
-            links.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    // Don't intercept if it's a hash link or external
-                    if (this.href.indexOf(window.location.host) === -1) return;
-                    if (this.href === window.location.href) return;
-                    
-                    e.preventDefault();
-                    const href = this.href;
-                    
-                    // Start transition out
-                    pageTransition.style.transform = 'scaleY(1)';
-                    pageTransition.style.transformOrigin = 'top';
-                    
-                    // After transition completes, navigate
-                    setTimeout(() => {
-                        window.location.href = href;
-                    }, 600);
-                });
-            });
-            
-            // When page loads, transition in
-            pageTransition.style.transform = 'scaleY(1)';
-            pageTransition.style.transformOrigin = 'top';
-            setTimeout(() => {
-                pageTransition.style.transform = 'scaleY(0)';
-                pageTransition.style.transformOrigin = 'bottom';
-            }, 50);
+    // Header search functionality
+    headerSearch.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            performSearch(headerSearch.value);
         }
-        
-        // Preload important images
-        function preloadImages() {
-            const images = [
-                'images/logo.jpg',
-                'https://images.pexels.com/photos/15483543/pexels-photo-15483543.jpeg',
-                'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80',
-                'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1364&q=80',
-                'https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80'
-            ];
-            
-            images.forEach(img => {
-                new Image().src = img;
-            });
-        }
-        
-        preloadImages();
     });
+    
+    // Nav search functionality
+    navSearch.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            performSearch(navSearch.value);
+            // Close nav after search
+            navContainer.classList.remove('active');
+            body.style.overflow = 'auto';
+            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+    });
+    
+    function performSearch(query) {
+        if (query.trim() !== '') {
+            alert(`Searching for: ${query}`);
+            // In a real implementation, you would redirect to search results page
+            // or filter content based on the search query
+        }
+    }
     </script>
 
-    <!-- Non-critical CSS (loaded after page content) -->
     <style>
         /* Non-critical CSS (loaded after page content) */
         h1, h2, h3, h4 {
@@ -1915,7 +1498,6 @@
 
         .contact-info p {
             margin: 0;
-            color: var(--text-secondary);
             line-height: 1.6;
         }
         
@@ -1991,6 +1573,6 @@
                 gap: 2rem;
             }
         }
-    </style>
+    </style> 
 </body>
 </html>
