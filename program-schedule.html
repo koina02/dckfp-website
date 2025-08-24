@@ -72,8 +72,9 @@
         header {
             background: var(--background);
             box-shadow: var(--box-shadow);
-            position: sticky;
+            position: fixed;
             top: 0;
+            width: 100%;
             z-index: 1000;
             transition: transform 0.3s ease;
         }
@@ -100,8 +101,6 @@
 
         .logo img {
             height: 60px;
-            filter: var(--logo-filter);
-            transition: filter 0.3s ease;
             max-width: 100%;
         }
 
@@ -120,82 +119,354 @@
             font-weight: 400;
         }
 
-        /* Navigation */
-        nav ul {
+        /* Header Actions - Search and Menu */
+        .header-actions {
             display: flex;
-            list-style: none;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        /* Search Bar in Header */
+        .header-search {
+            position: relative;
+            display: flex;
             align-items: center;
         }
 
-        nav a {
-            text-decoration: none;
+        .header-search input {
+            padding: 0.7rem 1rem 0.7rem 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
             color: var(--text);
-            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            width: 200px;
             transition: var(--transition);
-            position: relative;
-            padding: 0.5rem 0;
-            font-size: 1.05rem;
         }
-        
-        nav a:hover {
+
+        .header-search input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            width: 250px;
+            box-shadow: 0 0 0 2px rgba(240, 183, 47, 0.2);
+        }
+
+        .header-search i {
+            position: absolute;
+            left: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 1101;
+            position: relative;
+            padding: 0.4rem;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
             color: var(--secondary);
         }
-        
-        nav a.active {
+
+        /* Full Screen Navigation Container */
+        .nav-fullscreen-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--primary);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(-100%);
+            transition: transform 0.5s ease;
+            overflow-y: auto;
+            padding: 6rem 2rem 2rem;
+        }
+
+        .nav-fullscreen-container.active {
+            transform: translateY(0);
+        }
+
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-logo img {
+            height: 50px;
+        }
+
+        .nav-logo-text h2 {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .nav-logo-text p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .close-nav-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-nav-btn:hover {
+            color: var(--secondary);
+        }
+
+        /* Navigation Content */
+        .nav-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 992px) {
+            .nav-content {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        .nav-main {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .nav-main {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-section h3 {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+            transform: translateX(10px);
+        }
+
+        .nav-links a.active {
             color: var(--secondary);
             font-weight: 600;
         }
-        
-        nav a.active:after {
-            content: '';
+
+        .nav-links a.active:after {
+            content: '•';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* Mega menu sections */
+        .mega-menu-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .mega-menu-section h4 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .mega-menu-links {
+            list-style: none;
+        }
+
+        .mega-menu-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .mega-menu-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            display: block;
+            padding: 0.3rem 0;
+        }
+
+        .mega-menu-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Nav sidebar */
+        .nav-sidebar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .nav-sidebar h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .contact-info i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .social-links-nav {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links-nav a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links-nav a:hover {
             background: var(--secondary);
+            color: var(--text);
+            transform: translateY(-3px);
+        }
+
+        /* Search in nav */
+        .nav-search {
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .nav-search input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border-radius: 30px;
+            border: none;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .nav-search input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .nav-search i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
         }
 
         /* Main Content */
         main {
-            max-width: 1400px;
-            margin: 0 auto;
+            margin-top: 140px;
             padding: 2rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
+        /* Page header */
         .page-header {
             text-align: center;
             margin-bottom: 3rem;
             padding: 3rem 0;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            border-radius: 8px;
         }
 
         .page-header h2 {
-            font-size: 2.5rem;
-            color: var(--secondary);
+            font-size: 2.8rem;
+            color: white;
             margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .page-header h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--secondary);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         .page-header p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             max-width: 700px;
             margin: 0 auto;
-            color: var(--text-secondary);
+            color: rgba(255,255,255,0.9);
         }
 
         /* Program Schedule Styles */
@@ -232,6 +503,12 @@
             border-radius: 6px;
             border-left: 4px solid var(--secondary);
             box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-hover);
         }
 
         .highlight-card h4 {
@@ -254,6 +531,7 @@
             border-radius: 6px;
             overflow: hidden;
             background: var(--background);
+            box-shadow: var(--box-shadow);
         }
 
         .accordion-header {
@@ -266,6 +544,24 @@
             padding: 1.25rem 1.5rem;
             background: var(--card-bg);
             box-shadow: none;
+            width: 100%;
+            text-align: left;
+            border: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .accordion-button:after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-button.collapsed:after {
+            transform: rotate(-90deg);
         }
 
         .accordion-button:not(.collapsed) {
@@ -273,21 +569,13 @@
             background: var(--card-bg);
         }
 
-        .accordion-button:focus {
-            box-shadow: none;
-            border-color: var(--secondary);
-        }
-
-        .accordion-button:after {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%231a4b8c'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-        }
-
-        .accordion-button:not(.collapsed):after {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%231a4b8c'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-        }
-
         .accordion-body {
             padding: 1.5rem;
+            display: none;
+        }
+
+        .accordion-body.show {
+            display: block;
         }
 
         .month-schedule {
@@ -310,12 +598,37 @@
             margin-bottom: 1.5rem;
             padding-bottom: 1.5rem;
             border-bottom: 1px dashed var(--border-color);
+            display: flex;
+            gap: 1.5rem;
         }
 
         .event-item:last-child {
             margin-bottom: 0;
             padding-bottom: 0;
             border-bottom: none;
+        }
+
+        .event-image {
+            width: 120px;
+            height: 90px;
+            border-radius: 4px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .event-item:hover .event-image img {
+            transform: scale(1.05);
+        }
+
+        .event-content {
+            flex: 1;
         }
 
         .event-date {
@@ -335,6 +648,7 @@
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: var(--text);
+            font-size: 1.1rem;
         }
 
         .event-details {
@@ -407,6 +721,105 @@
             margin-top: 2rem;
         }
 
+        /* Featured Articles */
+        .featured-articles {
+            margin: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .article-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .article-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .article-card:hover .article-image img {
+            transform: scale(1.05);
+        }
+
+        .article-content {
+            padding: 1.5rem;
+        }
+
+        .article-date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .article-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .article-excerpt {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .read-more:hover {
+            color: var(--primary);
+        }
+
         /* Newsletter Section */
         .newsletter-section {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
@@ -477,6 +890,7 @@
             flex-wrap: wrap;
             gap: 1.5rem;
             margin-top: 2rem;
+            color: rgba(255,255,255,0.9);
         }
 
         .newsletter-benefit {
@@ -484,7 +898,6 @@
             align-items: center;
             gap: 0.5rem;
             font-size: 0.9rem;
-            color: rgba(255,255,255,0.9);
         }
 
         .newsletter-benefit i {
@@ -517,8 +930,6 @@
 
         .footer-logo {
             max-width: 200px;
-            filter: var(--logo-filter);
-            transition: filter 0.3s ease;
         }
 
         .footer-about p {
@@ -619,7 +1030,6 @@
 
         .contact-info p {
             margin: 0;
-            color: var(--text-secondary);
             line-height: 1.6;
         }
         
@@ -694,35 +1104,32 @@
             box-shadow: var(--box-shadow-hover);
         }
 
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text);
-            font-size: 1.8rem;
-            cursor: pointer;
-            z-index: 1101; 
-            position: relative;
-            padding: 0.4rem;
-        }
-
-        .menu-overlay {
+        /* WhatsApp Button */
+        .whatsapp-button {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0,0,0,0.5);
-            z-index: 1099;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
+            bottom: 12rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 99;
+            transition: var(--transition);
+            text-decoration: none;
         }
 
-        .menu-overlay.active {
-            opacity: 1;
-            pointer-events: all;
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        .whatsapp-button i {
+            font-size: 1.8rem;
         }
 
         /* Animations */
@@ -740,7 +1147,7 @@
         .delay-3 { animation-delay: 0.3s; }
         .delay-4 { animation-delay: 0.4s; }
 
-        /* --- RESPONSIVE: Medium Screens --- */
+        /* Responsive */
         @media (max-width: 1024px) {
             .program-container {
                 padding: 2rem;
@@ -751,51 +1158,42 @@
             }
         }
 
-        /* --- RESPONSIVE: Tablets & Mobiles --- */
         @media (max-width: 768px) {
             .header-container {
                 padding: 1rem;
             }
-            
-            .mobile-menu-btn {
-                display: block;
+
+            .logo-text h1 {
+                font-size: 1.4rem;
             }
 
-            nav {
-                position: fixed;
-                top: 0;
-                right: 0;
-                width: 80%;
-                max-width: 320px;
-                height: 100vh;
-                background: var(--background);
-                padding: 5rem 2rem 2rem;
-                transform: translateX(100%);
-                transition: transform 0.4s ease;
-                z-index: 1100;
-                overflow-y: auto;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            .header-search {
+                display: none;
             }
 
-            nav.active {
-                transform: translateX(0%);
+            .nav-fullscreen-container {
+                padding: 5rem 1.5rem 1.5rem;
             }
 
-            nav ul {
+            .nav-header {
                 flex-direction: column;
-                gap: 1.5rem;
+                text-align: center;
+                gap: 1rem;
             }
 
-            nav a {
-                font-size: 1.1rem;
-                padding: 0.5rem 0;
-                display: block;
-                border-bottom: 1px solid var(--border-color);
-                color: var(--text);
+            .close-nav-btn {
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+            }
+
+            main {
+                margin-top: 100px;
+                padding: 1rem;
             }
 
             .page-header {
-                padding: 2rem 0;
+                padding: 2rem 1rem;
             }
             
             .page-header h2 {
@@ -807,6 +1205,19 @@
             }
             
             .program-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .event-item {
+                flex-direction: column;
+            }
+
+            .event-image {
+                width: 100%;
+                height: 160px;
+            }
+
+            .articles-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -830,20 +1241,39 @@
                 justify-content: center;
                 padding: 1rem;
             }
+
+            .whatsapp-button {
+                bottom: 5rem;
+                right: 1rem;
+                width: 50px;
+                height: 50px;
+            }
+
+            .back-to-top {
+                bottom: 11rem;
+                right: 1rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                padding: 3rem 1.5rem 1.5rem;
+            }
+            
+            .copyright {
+                padding: 1.5rem 0;
+            }
         }
 
-        /* --- RESPONSIVE: Phones --- */
         @media (max-width: 480px) {
             .header-container {
                 padding: 0.75rem 1rem;
             }
 
             .logo-text h1 {
-                font-size: 1.3rem;
-            }
-
-            .logo-text p {
-                font-size: 0.7rem;
+                font-size: 1.2rem;
             }
             
             .page-header h2 {
@@ -863,38 +1293,213 @@
 </head>
 <body>
 
-    <div class="menu-overlay" id="menuOverlay"></div>
+    <a href="https://wa.me/254791325409" class="whatsapp-button" aria-label="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header>
+        <div class="header-container">
+            <!-- Logo Section -->
+            <div class="logo">
+                <img src="images/logo.jpg" alt="Diplomatic College of Kenyan Foreign Policy Logo" width="60" height="60">
+                <div class="logo-text">
+                    <h1>Diplomatic College</h1>
+                    <p>of Kenyan Foreign Policy</p>
+                </div>
+            </div>
+
+            <!-- Header Actions - Search and Menu -->
+            <div class="header-actions">
+                <!-- Search Bar -->
+                <div class="header-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-btn" class="mobile-menu-btn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Full Screen Navigation Container -->
+    <div class="nav-fullscreen-container" id="navContainer">
+        <div class="nav-header">
+            <div class="nav-logo">
+                <img src="images/logo.jpg" alt="Diplomatic College Logo" width="50" height="50">
+                <div class="nav-logo-text">
+                    <h2>Diplomatic College</h2>
+                    <p>of Kenyan Foreign Policy</p>
+                </div>
+            </div>
+            <button class="close-nav-btn" id="closeNavBtn" aria-label="Close navigation">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="nav-content">
+            <div class="nav-main">
+                <!-- Main Navigation -->
+                <div class="nav-section">
+                    <h3>Main Menu</h3>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="research.html">Research & Publications</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="program-schedule.html" class="active">Program Schedule</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Regions Section -->
+                <div class="nav-section">
+                    <h3>Regions</h3>
+                    <div class="mega-menu-section">
+                        <h4>Africa</h4>
+                        <ul class="mega-menu-links">
+                            <li><a href="#">East Africa</a></li>
+                            <li><a href="#">West Africa</a></li>
+                            <li><a href="#">Southern Africa</a></li>
+                            <li><a href="#">North Africa</a></li>
+                            <li><a href="#">Central Africa</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mega-menu-section">
+                        <h4>Europe</h4>
+                        <ul class="mega-menu-links">
+                            <li><a href="#">European Union</a></li>
+                            <li><a href="#">United Kingdom</a></li>
+                            <li><a href="#">Eastern Europe</a></li>
+                            <li><a href="#">Nordic Countries</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mega-menu-section">
+                        <h4>Asia</h4>
+                        <ul class="mega-menu-links">
+                            <li><a href="#">China</a></li>
+                            <li><a href="#">India</a></li>
+                            <li><a href="#">Japan</a></li>
+                            <li><a href="#">Southeast Asia</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mega-menu-section">
+                        <h4>Americas</h4>
+                        <ul class="mega-menu-links">
+                            <li><a href="#">United States</a></li>
+                            <li><a href="#">Canada</a></li>
+                            <li><a href="#">Latin America</a></li>
+                            <li><a href="#">Caribbean</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Topics Section -->
+                <div class="nav-section">
+                    <h3>Topics</h3>
+                    <ul class="nav-links">
+                        <li><a href="#">Diplomacy & Foreign Policy</a></li>
+                        <li><a href="#">Global Security</a></li>
+                        <li><a href="#">Climate & Environment</a></li>
+                        <li><a href="#">Economy & Trade</a></li>
+                        <li><a href="#">Technology & Innovation</a></li>
+                        <li><a href="#">Human Rights</a></li>
+                        <li><a href="#">International Law</a></li>
+                    </ul>
+                </div>
+
+                <!-- Publications Section -->
+                <div class="nav-section">
+                    <h3>Publications</h3>
+                    <ul class="nav-links">
+                        <li><a href="#">Research Papers</a></li>
+                        <li><a href="#">Policy Briefs</a></li>
+                        <li><a href="#">Reports</a></li>
+                        <li><a href="#">Books</a></li>
+                        <li><a href="#">Commentary</a></li>
+                        <li><a href="#">Newsletters</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sidebar with contact info -->
+            <div class="nav-sidebar">
+                <h3>Contact Info</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p>Diplomatic College of Kenyan Foreign Policy</p>
+                            <p>Westlands Office Park, Nairobi, Kenya</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <p>+254 20 123 4567</p>
+                            <p>+254 712 345 678</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p>info@dckfp.org</p>
+                            <p>research@dckfp.org</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="social-links-nav">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+
+                <div class="nav-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <main>
         <!-- Page Header -->
         <div class="page-header fade-in">
-            <h2>2025 Program Schedule</h2>
-            <p>Our comprehensive annual program designed to advance Kenya's diplomatic engagement</p>
+            <h2>2025 Diplomatic Program Schedule</h2>
+            <p>Comprehensive training and engagement programs advancing Kenya's foreign policy objectives</p>
         </div>
 
         <!-- Program Container -->
         <div class="program-container fade-in delay-1" id="schedule">
             <div class="program-intro">
-                <h3>About Our Annual Program</h3>
-                <p>The Diplomatic College of Kenyan Foreign Policy's annual program is carefully structured to provide comprehensive training, research opportunities, and policy engagement activities that align with Kenya's strategic foreign policy objectives. Our 2025 program builds on our successful initiatives while introducing new elements to address emerging global challenges.</p>
-                <p>This year's program emphasizes practical diplomacy skills, regional cooperation, and multilateral engagement, with special focus areas including climate diplomacy, digital governance, and economic partnerships.</p>
+                <h3>About Our Annual Diplomatic Program</h3>
+                <p>The Diplomatic College of Kenyan Foreign Policy's 2025 program represents our most ambitious initiative to date, designed to equip Kenyan diplomats and international relations professionals with the skills, knowledge, and networks needed to advance Kenya's interests on the global stage.</p>
+                <p>This year's program emphasizes practical diplomacy skills, regional cooperation, and multilateral engagement, with special focus areas including climate diplomacy, digital governance, economic partnerships, and peacebuilding.</p>
                 
                 <div class="program-highlights">
                     <div class="highlight-card">
-                        <h4>Core Focus Areas</h4>
-                        <p>Regional diplomacy, multilateral engagement, economic partnerships, and emerging global challenges</p>
+                        <h4><i class="fas fa-globe-africa"></i> Regional Focus</h4>
+                        <p>Deep engagement with East African Community, African Union, and other regional bodies</p>
                     </div>
                     <div class="highlight-card">
-                        <h4>Program Duration</h4>
-                        <p>January - December 2025, with intensive modules and ongoing research projects</p>
+                        <h4><i class="fas fa-chalkboard-teacher"></i> Expert Faculty</h4>
+                        <p>Learn from seasoned diplomats, academics, and policy experts with real-world experience</p>
                     </div>
                     <div class="highlight-card">
-                        <h4>Target Participants</h4>
-                        <p>Diplomats, foreign service officers, policy analysts, and international relations professionals</p>
+                        <h4><i class="fas fa-hands-helping"></i> Practical Training</h4>
+                        <p>Simulations, negotiation exercises, and field visits to diplomatic missions</p>
                     </div>
                     <div class="highlight-card">
-                        <h4>Certification</h4>
-                        <p>Participants receive certification upon completion of each module and the full program</p>
+                        <h4><i class="fas fa-network-wired"></i> Networking</h4>
+                        <p>Connect with fellow diplomats, government officials, and international partners</p>
                     </div>
                 </div>
             </div>
@@ -907,37 +1512,51 @@
                     <!-- January -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="janHeading">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#janCollapse" aria-expanded="true" aria-controls="janCollapse">
+                            <button class="accordion-button" type="button">
                                 January - Orientation & Policy Foundations
                             </button>
                         </h2>
-                        <div id="janCollapse" class="accordion-collapse collapse show" aria-labelledby="janHeading" data-bs-parent="#programAccordion">
-                            <div class="accordion-body">
-                                <div class="month-schedule">
-                                    <h4 class="month-title">January Schedule</h4>
-                                    <ul class="event-list">
-                                        <li class="event-item">
+                        <div class="accordion-body show">
+                            <div class="month-schedule">
+                                <h4 class="month-title">January Schedule</h4>
+                                <ul class="event-list">
+                                    <li class="event-item">
+                                        <div class="event-image">
+                                            <img src="https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Orientation Ceremony">
+                                        </div>
+                                        <div class="event-content">
                                             <div class="event-date"><i class="far fa-calendar-alt"></i> January 10-12, 2025</div>
                                             <h5 class="event-title">Orientation & Welcome Ceremony</h5>
                                             <p class="event-details">Official opening of the 2025 program with keynote address by the Principal Secretary for Foreign Affairs. Overview of program objectives and expectations.</p>
                                             <div class="event-location"><i class="fas fa-map-marker-alt"></i> Main Auditorium, DCKFP Campus</div>
                                             <div class="event-speakers"><strong>Featured Speakers:</strong> Dr. Amina Mohamed, Prof. Patrick Lumumba</div>
-                                        </li>
-                                        <li class="event-item">
+                                        </div>
+                                    </li>
+                                    <li class="event-item">
+                                        <div class="event-image">
+                                            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Policy Foundations">
+                                        </div>
+                                        <div class="event-content">
                                             <div class="event-date"><i class="far fa-calendar-alt"></i> January 15-19, 2025</div>
                                             <h5 class="event-title">Foundations of Kenyan Foreign Policy</h5>
                                             <p class="event-details">Comprehensive review of Kenya's foreign policy evolution, constitutional framework, and current strategic priorities.</p>
                                             <div class="event-location"><i class="fas fa-map-marker-alt"></i> Seminar Room A</div>
                                             <div class="event-speakers"><strong>Instructors:</strong> Amb. Monica Juma, Dr. Macharia Munene</div>
-                                        </li>
-                                        <li class="event-item">
+                                        </div>
+                                    </li>
+                                    <li class="event-item">
+                                        <div class="event-image">
+                                            <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Diplomatic Protocol">
+                                        </div>
+                                        <div class="event-content">
                                             <div class="event-date"><i class="far fa-calendar-alt"></i> January 22-26, 2025</div>
                                             <h5 class="event-title">Diplomatic Protocol & Statecraft</h5>
                                             <p class="event-details">Practical training in diplomatic protocol, negotiation techniques, and crisis management simulations.</p>
                                             <div class="event-location"><i class="fas fa-map-marker-alt"></i> Diplomacy Lab</div>
-                                        </li>
-                                    </ul>
-                                </div>
+                                            <div class="event-speakers"><strong>Instructor:</strong> Amb. Kiplagat</div>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -945,194 +1564,55 @@
                     <!-- February -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="febHeading">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#febCollapse" aria-expanded="false" aria-controls="febCollapse">
+                            <button class="accordion-button collapsed" type="button">
                                 February - Regional Diplomacy & EAC Integration
                             </button>
                         </h2>
-                        <div id="febCollapse" class="accordion-collapse collapse" aria-labelledby="febHeading" data-bs-parent="#programAccordion">
-                            <div class="accordion-body">
-                                <div class="month-schedule">
-                                    <h4 class="month-title">February Schedule</h4>
-                                    <ul class="event-list">
-                                        <li class="event-item">
+                        <div class="accordion-body">
+                            <div class="month-schedule">
+                                <h4 class="month-title">February Schedule</h4>
+                                <ul class="event-list">
+                                    <li class="event-item">
+                                        <div class="event-image">
+                                            <img src="https://images.unsplash.com/photo-1516559828984-fb3b99548b21?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="EAC Workshop">
+                                        </div>
+                                        <div class="event-content">
                                             <div class="event-date"><i class="far fa-calendar-alt"></i> February 3-7, 2025</div>
                                             <h5 class="event-title">East African Community Policy Workshop</h5>
                                             <p class="event-details">Deep dive into EAC structures, policies, and Kenya's role in regional integration. Includes simulation of EAC Council of Ministers meeting.</p>
                                             <div class="event-location"><i class="fas fa-map-marker-alt"></i> EAC Hall</div>
-                                        </li>
-                                        <li class="event-item">
+                                            <div class="event-speakers"><strong>Facilitator:</strong> Dr. Richard Sezibera</div>
+                                        </div>
+                                    </li>
+                                    <li class="event-item">
+                                        <div class="event-image">
+                                            <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Trade Negotiations">
+                                        </div>
+                                        <div class="event-content">
                                             <div class="event-date"><i class="far fa-calendar-alt"></i> February 10-14, 2025</div>
                                             <h5 class="event-title">Trade Negotiations Simulation</h5>
                                             <p class="event-details">Practical exercise in regional trade negotiations, covering tariff policies, non-tariff barriers, and dispute resolution mechanisms.</p>
                                             <div class="event-location"><i class="fas fa-map-marker-alt"></i> Negotiation Lab</div>
-                                        </li>
-                                        <li class="event-item">
+                                        </div>
+                                    </li>
+                                    <li class="event-item">
+                                        <div class="event-image">
+                                            <img src="https://images.unsplash.com/photo-1546199675-9a9a2837dae3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Field Study">
+                                        </div>
+                                        <div class="event-content">
                                             <div class="event-date"><i class="far fa-calendar-alt"></i> February 18-21, 2025</div>
                                             <h5 class="event-title">Field Study: Border Communities</h5>
                                             <p class="event-details">Field visit to Kenya-Uganda border to study cross-border trade dynamics and community relations.</p>
                                             <div class="event-location"><i class="fas fa-map-marker-alt"></i> Busia Border</div>
-                                        </li>
-                                        <li class="event-item">
-                                            <div class="event-date"><i class="far fa-calendar-alt"></i> February 24-28, 2025</div>
-                                            <h5 class="event-title">Regional Peacebuilding Seminar</h5>
-                                            <p class="event-details">Examining Kenya's role in regional conflict resolution with case studies from South Sudan and Somalia peace processes.</p>
-                                            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Seminar Room B</div>
-                                        </li>
-                                    </ul>
-                                </div>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
 
-                    <!-- March -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="marHeading">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#marCollapse" aria-expanded="false" aria-controls="marCollapse">
-                                March - International Law & Multilateralism
-                            </button>
-                        </h2>
-                        <div id="marCollapse" class="accordion-collapse collapse" aria-labelledby="marHeading" data-bs-parent="#programAccordion">
-                            <div class="accordion-body">
-                                <div class="month-schedule">
-                                    <h4 class="month-title">March Schedule</h4>
-                                    <ul class="event-list">
-                                        <li class="event-item">
-                                            <div class="event-date"><i class="far fa-calendar-alt"></i> March 3-7, 2025</div>
-                                            <h5 class="event-title">UN System & Kenya's Engagement</h5>
-                                            <p class="event-details">Comprehensive overview of UN structures and Kenya's strategic priorities within the multilateral system.</p>
-                                            <div class="event-location"><i class="fas fa-map-marker-alt"></i> UN Simulation Room</div>
-                                        </li>
-                                        <li class="event-item">
-                                            <div class="event-date"><i class="far fa-calendar-alt"></i> March 10-14, 2025</div>
-                                            <h5 class="event-title">International Law Intensive</h5>
-                                            <p class="event-details">Focus on treaty law, diplomatic immunity, and maritime boundary disputes with practical case studies.</p>
-                                            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Legal Studies Center</div>
-                                        </li>
-                                        <li class="event-item">
-                                            <div class="event-date"><i class="far fa-calendar-alt"></i> March 17-21, 2025</div>
-                                            <h5 class="event-title">Model UN Security Council</h5>
-                                            <p class="event-details">Simulation of UNSC proceedings focusing on current global security challenges.</p>
-                                            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Diplomacy Lab</div>
-                                        </li>
-                                        <li class="event-item">
-                                            <div class="event-date"><i class="far fa-calendar-alt"></i> March 24-28, 2025</div>
-                                            <h5 class="event-title">AU Legal Frameworks Workshop</h5>
-                                            <p class="event-details">Examination of African Union legal instruments and their implementation in Kenya.</p>
-                                            <div class="event-location"><i class="fas fa-map-marker-alt"></i> AU Hall</div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Additional months would follow the same pattern -->
 
-                    <!-- April -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="aprHeading">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#aprCollapse" aria-expanded="false" aria-controls="aprCollapse">
-                                April - Economic Diplomacy & Trade
-                            </button>
-                        </h2>
-                        <div id="aprCollapse" class="accordion-collapse collapse" aria-labelledby="aprHeading" data-bs-parent="#programAccordion">
-                            <div class="accordion-body">
-                                <div class="month-schedule">
-                                    <h4 class="month-title">April Schedule</h4>
-                                    <ul class="event-list">
-                                        <li class="event-item">
-                                            <div class="event-date"><i class="far fa-calendar-alt"></i> April 7-11, 2025</div>
-                                            <h5 class="event-title">Trade Policy & Negotiations</h5>
-                                            <p class="event-details">Analysis of Kenya's trade policy framework and practical negotiation skills development.</p>
-                                            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Trade Policy Center</div>
-                                        </li>
-                                        <li class="event-item">
-                                            <div class="event-date"><i class="far fa-calendar-alt"></i> April 14-18, 2025</div>
-                                            <h5 class="event-title">Investment Promotion Strategies</h5>
-                                            <p class="event-details">Case studies of successful investment attraction campaigns and Kenya's comparative advantages.</p>
-                                            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Seminar Room C</div>
-                                        </li>
-                                        <li class="event-item">
-                                            <div class="event-date"><i class="far fa-calendar-alt"></i> April 21-25, 2025</div>
-                                            <h5 class="event-title">Field Study: Export Processing Zones</h5>
-                                            <p class="event-details">Visit to Athi River EPZ to study practical aspects of trade and investment facilitation.</p>
-                                            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Athi River EPZ</div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- May -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="mayHeading">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mayCollapse" aria-expanded="false" aria-controls="mayCollapse">
-                                May - Climate Diplomacy & Sustainable Development
-                            </button>
-                        </h2>
-                        <div id="mayCollapse" class="accordion-collapse collapse" aria-labelledby="mayHeading" data-bs-parent="#programAccordion">
-                            <div class="accordion-body">
-                                <div class="month-schedule">
-                                    <h4 class="month-title">May Schedule</h4>
-                                    <ul class="event-list">
-                                        <li class="event-item">
-                                            <div class="event-date"><i class="far fa-calendar-alt"></i> May 5-9, 2025</div>
-                                            <h5 class="event-title">Global Climate Governance</h5>
-                                            <p class="event-details">Analysis of UNFCCC processes and Kenya's leadership in climate negotiations.</p>
-                                            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Environmental Studies Center</div>
-                                        </li>
-                                        <li class="event-item">
-                                            <div class="event-date"><i class="far fa-calendar-alt"></i> May 12-16, 2025</div>
-                                            <h5 class="event-title">Green Economy Strategies</h5>
-                                            <p class="event-details">Exploring opportunities in renewable energy, carbon markets, and sustainable infrastructure.</p>
-                                            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Innovation Hub</div>
-                                        </li>
-                                        <li class="event-item">
-                                            <div class="event-date"><i class="far fa-calendar-alt"></i> May 19-23, 2025</div>
-                                            <h5 class="event-title">Field Study: Climate Projects</h5>
-                                            <p class="event-details">Visit to geothermal and wind power projects to study Kenya's renewable energy diplomacy.</p>
-                                            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Olkaria & Lake Turkana</div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- June -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="junHeading">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#junCollapse" aria-expanded="false" aria-controls="junCollapse">
-                                June - Digital Diplomacy & Emerging Technologies
-                            </button>
-                        </h2>
-                        <div id="junCollapse" class="accordion-collapse collapse" aria-labelledby="junHeading" data-bs-parent="#programAccordion">
-                            <div class="accordion-body">
-                                <div class="month-schedule">
-                                    <h4 class="month-title">June Schedule</h4>
-                                    <ul class="event-list">
-                                        <li class="event-item">
-                                            <div class="event-date"><i class="far fa-calendar-alt"></i> June 2-6, 2025</div>
-                                            <h5 class="event-title">Digital Governance & Cyber Diplomacy</h5>
-                                            <p class="event-details">Examining Kenya's digital foreign policy and engagement in global internet governance forums.</p>
-                                            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Digital Lab</div>
-                                        </li>
-                                        <li class="event-item">
-                                            <div class="event-date"><i class="far fa-calendar-alt"></i> June 9-13, 2025</div>
-                                            <h5 class="event-title">Emerging Technologies Workshop</h5>
-                                            <p class="event-details">Exploring diplomatic implications of AI, blockchain, and other disruptive technologies.</p>
-                                            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Tech Innovation Center</div>
-                                        </li>
-                                        <li class="event-item">
-                                            <div class="event-date"><i class="far fa-calendar-alt"></i> June 16-20, 2025</div>
-                                            <h5 class="event-title">Social Media for Diplomacy</h5>
-                                            <p class="event-details">Practical training in digital communication strategies for diplomatic engagement.</p>
-                                            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Media Studio</div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             
@@ -1148,10 +1628,56 @@
             </div>
         </div>
 
+        <!-- Featured Articles -->
+        <section class="featured-articles fade-in delay-2">
+            <div class="section-title">
+                <h3>Featured Diplomatic Insights</h3>
+                <p>Recent analysis and commentary from our experts</p>
+            </div>
+            
+            <div class="articles-grid">
+                <div class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Climate Diplomacy">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-date">March 15, 2025</div>
+                        <h4 class="article-title">Kenya's Climate Diplomacy Strategy</h4>
+                        <p class="article-excerpt">Analysis of Kenya's leadership in regional climate initiatives and recommendations for future policy directions in international environmental negotiations.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Digital Diplomacy">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-date">February 28, 2025</div>
+                        <h4 class="article-title">Digital Transformation in Diplomacy</h4>
+                        <p class="article-excerpt">Exploring how digital tools are reshaping diplomatic practices and Kenya's positioning in the global digital governance landscape.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Economic Partnerships">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-date">February 10, 2025</div>
+                        <h4 class="article-title">Economic Partnerships in East Africa</h4>
+                        <p class="article-excerpt">Examining the implementation challenges of regional trade agreements and pathways for enhanced economic cooperation.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Newsletter Section -->
-        <section class="newsletter-section fade-in delay-2">
-            <h3>Stay Updated with Daily Diplomatic Highlights</h3>
-            <p>Subscribe to our newsletter and receive daily updates on Kenya's diplomatic engagements, policy briefs, and event invitations directly to your inbox.</p>
+        <section class="newsletter-section fade-in delay-3">
+            <h3>Stay Updated with Diplomatic Insights</h3>
+            <p>Subscribe to our newsletter and receive updates on Kenya's diplomatic engagements, policy briefs, and event invitations directly to your inbox.</p>
             
             <form class="newsletter-form">
                 <input type="email" placeholder="Your email address" required>
@@ -1163,7 +1689,7 @@
             <div class="newsletter-benefits">
                 <div class="newsletter-benefit">
                     <i class="fas fa-check-circle"></i>
-                    <span>Daily diplomatic briefs</span>
+                    <span>Exclusive program updates</span>
                 </div>
                 <div class="newsletter-benefit">
                     <i class="fas fa-check-circle"></i>
@@ -1171,7 +1697,7 @@
                 </div>
                 <div class="newsletter-benefit">
                     <i class="fas fa-check-circle"></i>
-                    <span>Exclusive research previews</span>
+                    <span>Research previews</span>
                 </div>
             </div>
         </section>
@@ -1180,7 +1706,7 @@
     <footer>
         <div class="footer-container">
             <div class="footer-about">
-                <img src="images/logo.jpg" alt="Diplomatic College Logo" class="footer-logo">
+                <img src="images/logo.jpg" alt="Diplomatic College Logo" class="footer-logo" width="150" height="150">
                 <p>The Diplomatic College of Kenyan Foreign Policy is a premier institution dedicated to advancing Kenya's global diplomatic engagement through research, training, and policy analysis.</p>
                 <div class="social-links">
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1209,37 +1735,16 @@
                     <li><a href="https://www.kenyaembassy.org.tr/uploads/Kenya_Foreign_Policy.pdf"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li>
                 </ul>
             </div>
-            
-            <div class="footer-links">
-                <h3>Contact Us</h3>
-                <ul class="contact-info">
-                    <li>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <p>Diplomatic College of Kenyan Foreign Policy</p>
-                            <p>Westlands Office Park, Nairobi, Kenya</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <p>+254 20 123 4567</p>
-                            <p>+254 712 345 678</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <p>info@dckfp.org</p>
-                            <p>research@dckfp.org</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
         </div>
         
         <div class="copyright">
             <p>&copy; 2025 Diplomatic College of Kenyan Foreign Policy. All rights reserved.</p>
+            <a href="privacy-policy.html">Privacy Policy</a> | 
+            <a href="terms.html">Terms & Conditions</a> | 
+            <a href="cookie-policy.html">Cookie Policy</a>
+            <p class="compliance">
+                Compliant with the <strong>Kenya Data Protection Act, 2019 (enforced 2021)</strong>.
+            </p>
         </div>
     </footer>
 
@@ -1254,6 +1759,46 @@
     </div>
 
     <script>
+    // Navigation functionality
+    const menuBtn = document.getElementById('menu-btn');
+    const closeNavBtn = document.getElementById('closeNavBtn');
+    const navContainer = document.getElementById('navContainer');
+    const body = document.body;
+
+    // Open navigation
+    menuBtn.addEventListener('click', () => {
+        navContainer.classList.add('active');
+        body.style.overflow = 'hidden';
+        // Change icon to close when nav is open
+        menuBtn.innerHTML = '<i class="fas fa-times"></i>';
+    });
+
+    // Close navigation
+    closeNavBtn.addEventListener('click', () => {
+        navContainer.classList.remove('active');
+        body.style.overflow = 'auto';
+        // Change icon back to menu when nav is closed
+        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    });
+
+    // Close nav when clicking outside content
+    navContainer.addEventListener('click', (e) => {
+        if (e.target === navContainer) {
+            navContainer.classList.remove('active');
+            body.style.overflow = 'auto';
+            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+    });
+
+    // Close nav when pressing Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navContainer.classList.contains('active')) {
+            navContainer.classList.remove('active');
+            body.style.overflow = 'auto';
+            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+    });
+
     // Header scroll behavior: hide on scroll down, show on scroll up
     let lastScroll = 0;
     const header = document.querySelector('header');
@@ -1278,48 +1823,30 @@
         }
     });
 
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('menu-btn');
-    const nav = document.querySelector('nav');
-    const overlay = document.querySelector('.menu-overlay');
-
-    menuBtn.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        overlay.classList.toggle('active');
-        document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
-    });
-
-    overlay.addEventListener('click', () => {
-        nav.classList.remove('active');
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-
-    // Close menu when a nav link is clicked
-    nav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            nav.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
+    // Accordion functionality
+    document.querySelectorAll('.accordion-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const accordionBody = button.nextElementSibling;
+            const isExpanded = button.classList.contains('collapsed');
+            
+            // Close all accordion items
+            document.querySelectorAll('.accordion-body').forEach(body => {
+                body.classList.remove('show');
+            });
+            document.querySelectorAll('.accordion-button').forEach(btn => {
+                btn.classList.add('collapsed');
+            });
+            
+            // Toggle current item
+            if (isExpanded) {
+                button.classList.remove('collapsed');
+                accordionBody.classList.add('show');
+            }
         });
-    });
-
-    // Close menu when clicking outside of nav or menu button
-    document.addEventListener('click', (e) => {
-        if (
-            nav.classList.contains('active') &&
-            !e.target.closest('nav') &&
-            !e.target.closest('#menu-btn')
-        ) {
-            nav.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
     });
 
     // Theme Toggle (Dark / Light Mode Persistence)
     const themeToggle = document.getElementById('darkModeToggle');
-    const body = document.body;
 
     const savedTheme = localStorage.getItem('theme') || 'light';
     body.setAttribute('data-theme', savedTheme);
@@ -1384,8 +1911,18 @@
             e.preventDefault();
             const email = newsletterForm.querySelector('input').value;
             // Here you would typically send the email to your server
-            alert(`Thank you for subscribing with ${email}!`);
+            alert(`Thank you for subscribing with ${email}! You'll receive program updates shortly.`);
             newsletterForm.reset();
+        });
+    }
+
+    // Download button functionality
+    const downloadBtn = document.getElementById('downloadBtn');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Downloading the full program schedule...');
+            // In a real implementation, this would trigger a file download
         });
     }
     </script>
