@@ -1910,7 +1910,6 @@
         newsletterForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const email = newsletterForm.querySelector('input').value;
-            // Here you would typically send the email to your server
             alert(`Thank you for subscribing with ${email}! You'll receive program updates shortly.`);
             newsletterForm.reset();
         });
@@ -1922,7 +1921,6 @@
         downloadBtn.addEventListener('click', (e) => {
             e.preventDefault();
             alert('Downloading the full program schedule...');
-            // In a real implementation, this would trigger a file download
         });
     }
     </script>
