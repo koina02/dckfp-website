@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program Schedule | Diplomatic College of Kenyan Foreign Policy</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Our Experts - Diplomatic College of Kenyan Foreign Policy</title>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --primary: #1a4b8c;
@@ -42,7 +44,6 @@
         }
 
         * {
-            transition: var(--transition);
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -61,11 +62,7 @@
             background-color: var(--background);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
+            transition: var(--transition);
         }
 
         /* Header Styles */
@@ -379,7 +376,7 @@
             color: var(--secondary);
             font-size: 1.2rem;
             margin-top: 0.2rem;
-        }
+}
 
         .social-links-nav {
             display: flex;
@@ -434,265 +431,59 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* Main Content */
-        main {
-            margin-top: 140px;
-            padding: 2rem;
-            max-width: 1400px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Page header */
-        .page-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding: 3rem 0;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
-            color: white;
-            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-top: 80px;
         }
 
-        .page-header h2 {
-            font-size: 2.8rem;
-            color: white;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .page-header p {
-            font-size: 1.2rem;
-            max-width: 700px;
+        .hero-content {
+            max-width: 900px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.2;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
             color: rgba(255,255,255,0.9);
-        }
-
-        /* Program Schedule Styles */
-        .program-container {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 3rem;
-            margin-bottom: 4rem;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--box-shadow);
-        }
-
-        .program-intro {
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .program-intro p {
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .program-highlights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .highlight-card {
-            background: var(--background);
-            padding: 1.5rem;
-            border-radius: 6px;
-            border-left: 4px solid var(--secondary);
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-
-        .highlight-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--box-shadow-hover);
-        }
-
-        .highlight-card h4 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .highlight-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .program-accordion {
-            margin-top: 3rem;
-        }
-
-        .accordion-item {
-            margin-bottom: 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            overflow: hidden;
-            background: var(--background);
-            box-shadow: var(--box-shadow);
-        }
-
-        .accordion-header {
-            background: var(--card-bg);
-        }
-
-        .accordion-button {
-            font-weight: 600;
-            color: var(--primary);
-            padding: 1.25rem 1.5rem;
-            background: var(--card-bg);
-            box-shadow: none;
-            width: 100%;
-            text-align: left;
-            border: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .accordion-button:after {
-            content: '\f078';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            transition: transform 0.3s ease;
-        }
-
-        .accordion-button.collapsed:after {
-            transform: rotate(-90deg);
-        }
-
-        .accordion-button:not(.collapsed) {
-            color: var(--primary);
-            background: var(--card-bg);
-        }
-
-        .accordion-body {
-            padding: 1.5rem;
-            display: none;
-        }
-
-        .accordion-body.show {
-            display: block;
-        }
-
-        .month-schedule {
-            margin-bottom: 2rem;
-        }
-
-        .month-title {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .event-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .event-item {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px dashed var(--border-color);
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .event-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .event-image {
-            width: 120px;
-            height: 90px;
-            border-radius: 4px;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-
-        .event-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .event-item:hover .event-image img {
-            transform: scale(1.05);
-        }
-
-        .event-content {
-            flex: 1;
-        }
-
-        .event-date {
-            font-weight: 600;
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .event-date i {
-            font-size: 1.1rem;
-        }
-
-        .event-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text);
-            font-size: 1.1rem;
-        }
-
-        .event-details {
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-            line-height: 1.6;
-        }
-
-        .event-location {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .event-location i {
-            color: var(--accent);
-        }
-
-        .event-speakers {
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        .event-speakers strong {
-            color: var(--text);
         }
 
         .btn {
             display: inline-block;
             background: var(--secondary);
-            color: var(--text);
-            padding: 0.8rem 1.5rem;
+            color: #333;
+            padding: 1rem 2rem;
             border-radius: 4px;
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
+            min-width: 160px;
+            text-align: center;
             border: 2px solid transparent;
             box-shadow: var(--box-shadow);
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            cursor: pointer;
         }
 
         .btn:hover {
@@ -701,45 +492,27 @@
             box-shadow: var(--box-shadow-hover);
         }
 
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(26, 75, 140, 0.1);
-            border-color: var(--secondary);
-            color: var(--secondary);
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .mt-4 {
-            margin-top: 2rem;
-        }
-
-        /* Featured Articles */
-        .featured-articles {
-            margin: 4rem 0;
+        /* Section Styling */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
-        .section-title h3 {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
             position: relative;
             display: inline-block;
         }
 
-        .section-title h3:after {
+        .section-title h2:after {
             content: '';
             position: absolute;
             bottom: -10px;
@@ -750,74 +523,173 @@
             background: var(--secondary);
         }
 
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+        .section-title p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
         }
 
-        .article-card {
+        /* Experts Filter */
+        .experts-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            color: var(--text);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--secondary);
+            color: var(--text);
+            border-color: var(--secondary);
+        }
+
+        /* Experts Grid */
+        .experts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .expert-card {
             background: var(--card-bg);
             border-radius: 8px;
             overflow: hidden;
             box-shadow: var(--box-shadow);
+            border: 1px solid var(--border-color);
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
 
-        .article-card:hover {
-            transform: translateY(-5px);
+        .expert-card:hover {
+            transform: translateY(-10px);
             box-shadow: var(--box-shadow-hover);
         }
 
-        .article-image {
-            height: 200px;
+        .expert-image {
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
             overflow: hidden;
         }
 
-        .article-image img {
+        .expert-image:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+            opacity: 0;
+            transition: var(--transition);
         }
 
-        .article-card:hover .article-image img {
-            transform: scale(1.05);
+        .expert-card:hover .expert-image:after {
+            opacity: 1;
         }
 
-        .article-content {
-            padding: 1.5rem;
+        .expert-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
-        .article-date {
-            font-size: 0.85rem;
+        .expert-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        .article-title {
-            font-size: 1.2rem;
+            font-size: 0.9rem;
             margin-bottom: 1rem;
+        }
+
+        .expert-meta .expert-region {
+            background: var(--accent);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .expert-content h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.5rem;
+            color: var(--text);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        .expert-title {
             color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-size: 1rem;
         }
-
-        .article-excerpt {
+        
+        .expert-bio {
+            margin-bottom: 2rem;
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            font-weight: 400;
             line-height: 1.6;
+            flex-grow: 1;
         }
 
-        .read-more {
+        .expert-specialties {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .specialty-tag {
+            background: rgba(240, 183, 47, 0.15);
+            color: var(--text);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .expert-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .expert-link {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            color: var(--secondary);
+            color: var(--primary);
             font-weight: 600;
             text-decoration: none;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
         }
-
-        .read-more:hover {
-            color: var(--primary);
+        
+        .expert-link:hover {
+            color: var(--accent);
+            transform: translateX(5px);
         }
 
         /* Newsletter Section */
@@ -890,7 +762,6 @@
             flex-wrap: wrap;
             gap: 1.5rem;
             margin-top: 2rem;
-            color: rgba(255,255,255,0.9);
         }
 
         .newsletter-benefit {
@@ -898,6 +769,7 @@
             align-items: center;
             gap: 0.5rem;
             font-size: 0.9rem;
+            color: rgba(255,255,255,0.9);
         }
 
         .newsletter-benefit i {
@@ -930,6 +802,7 @@
 
         .footer-logo {
             max-width: 200px;
+            transition: filter 0.3s ease;
         }
 
         .footer-about p {
@@ -1011,28 +884,6 @@
             color: var(--secondary);
         }
 
-        .contact-info li {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-info i {
-            font-size: 1.2rem;
-            color: var(--secondary);
-            margin-top: 2px;
-        }
-
-        .contact-info div {
-            flex: 1;
-        }
-
-        .contact-info p {
-            margin: 0;
-            line-height: 1.6;
-        }
-        
         .copyright {
             text-align: center;
             padding: 2rem 0;
@@ -1043,121 +894,35 @@
             font-weight: 300;
         }
 
-        /* Dark Mode Toggle */
-        .dark-mode-toggle {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--card-bg);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--box-shadow);
-            border: 2px solid var(--secondary);
-            z-index: 99;
-            transition: var(--transition);
-        }
-
-        .dark-mode-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: var(--box-shadow-hover);
-        }
-
-        .dark-mode-toggle i {
-            font-size: 1.3rem;
-            color: var(--secondary);
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 7rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--box-shadow);
-            z-index: 99;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            background: var(--primary-light);
-            transform: translateY(-3px);
-            box-shadow: var(--box-shadow-hover);
-        }
-
         /* WhatsApp Button */
         .whatsapp-button {
             position: fixed;
-            bottom: 12rem;
-            right: 2rem;
+            bottom: 20px;
+            right: 20px;
             width: 60px;
             height: 60px;
-            background: #25D366;
+            background-color: #25D366;
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            z-index: 99;
-            transition: var(--transition);
             text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
         }
 
         .whatsapp-button:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
 
         .whatsapp-button i {
-            font-size: 1.8rem;
+            font-size: 28px;
         }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.6s ease forwards;
-        }
-
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .program-container {
-                padding: 2rem;
-            }
-            
-            .program-highlights {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
         @media (max-width: 768px) {
             .header-container {
                 padding: 1rem;
@@ -1169,6 +934,20 @@
 
             .header-search {
                 display: none;
+            }
+
+            .hero {
+                min-height: 50vh;
+                padding: 3rem 1.5rem;
+                margin-top: 60px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
             }
 
             .nav-fullscreen-container {
@@ -1187,83 +966,35 @@
                 right: 1.5rem;
             }
 
-            main {
-                margin-top: 100px;
-                padding: 1rem;
-            }
-
-            .page-header {
-                padding: 2rem 1rem;
+            .section {
+                padding: 4rem 1.5rem;
             }
             
-            .page-header h2 {
+            .section-title h2 {
                 font-size: 2rem;
             }
             
-            .program-container {
-                padding: 1.5rem;
-            }
-            
-            .program-highlights {
-                grid-template-columns: 1fr;
-            }
-
-            .event-item {
-                flex-direction: column;
-            }
-
-            .event-image {
-                width: 100%;
-                height: 160px;
-            }
-
-            .articles-grid {
-                grid-template-columns: 1fr;
-            }
-
             .newsletter-section {
                 padding: 3rem 1.5rem;
             }
-
+            
             .newsletter-form {
                 flex-direction: column;
-                border-radius: 4px;
             }
-
+            
             .newsletter-form input,
             .newsletter-form button {
                 width: 100%;
                 padding: 1rem;
-                border-radius: 0;
-            }
-
-            .newsletter-form button {
-                justify-content: center;
-                padding: 1rem;
-            }
-
-            .whatsapp-button {
-                bottom: 5rem;
-                right: 1rem;
-                width: 50px;
-                height: 50px;
-            }
-
-            .back-to-top {
-                bottom: 11rem;
-                right: 1rem;
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
-
-            footer {
-                padding: 3rem 1.5rem 1.5rem;
             }
             
-            .copyright {
-                padding: 1.5rem 0;
+            .newsletter-form button {
+                margin-top: 0.5rem;
+                border-radius: 4px;
+            }
+
+            .experts-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -1276,27 +1007,25 @@
                 font-size: 1.2rem;
             }
             
-            .page-header h2 {
-                font-size: 1.8rem;
+            .hero h1 {
+                font-size: 2rem;
             }
             
+            .hero p {
+                font-size: 1rem;
+            }
+
             .footer-container {
                 grid-template-columns: 1fr;
                 gap: 2rem;
-            }
-
-            .newsletter-section h3 {
-                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-
     <a href="https://wa.me/254791325409" class="whatsapp-button" aria-label="Chat with us on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
-
     <header>
         <div class="header-container">
             <!-- Logo Section -->
@@ -1347,9 +1076,10 @@
                     <ul class="nav-links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="research.html">Research & Publications</a></li>
-                        <li><a href="program-schedule.html" class="active">Program Schedule</a></li>
+                        <li><a href="program-schedule.html">Program Schedule</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="about.html">About Us</a></li>
+                        <li><a href="experts.html" class="active">Our Experts</a></li>
                     </ul>
                 </div>
 
@@ -1469,213 +1199,209 @@
     </div>
 
     <main>
-        <!-- Page Header -->
-        <div class="page-header fade-in">
-            <h2>2025 Diplomatic Program Schedule</h2>
-            <p>Comprehensive training and engagement programs advancing Kenya's foreign policy objectives</p>
-        </div>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content fade-in">
+                <h1>Meet Our Experts</h1>
+                <p>Leading scholars and practitioners shaping Kenya's foreign policy discourse</p>
+            </div>
+        </section>
 
-        <!-- Program Container -->
-        <div class="program-container fade-in delay-1" id="schedule">
-            <div class="program-intro">
-                <h3>About Our Annual Diplomatic Program</h3>
-                <p>The Diplomatic College of Kenyan Foreign Policy's 2025 program represents our most ambitious initiative to date, designed to equip Kenyan diplomats and international relations professionals with the skills, knowledge, and networks needed to advance Kenya's interests on the global stage.</p>
-                <p>This year's program emphasizes practical diplomacy skills, regional cooperation, and multilateral engagement, with special focus areas including climate diplomacy, digital governance, economic partnerships, and peacebuilding.</p>
-                
-                <div class="program-highlights">
-                    <div class="highlight-card">
-                        <h4><i class="fas fa-globe-africa"></i> Regional Focus</h4>
-                        <p>Deep engagement with East African Community, African Union, and other regional bodies</p>
-                    </div>
-                    <div class="highlight-card">
-                        <h4><i class="fas fa-chalkboard-teacher"></i> Expert Faculty</h4>
-                        <p>Learn from seasoned diplomats, academics, and policy experts with real-world experience</p>
-                    </div>
-                    <div class="highlight-card">
-                        <h4><i class="fas fa-hands-helping"></i> Practical Training</h4>
-                        <p>Simulations, negotiation exercises, and field visits to diplomatic missions</p>
-                    </div>
-                    <div class="highlight-card">
-                        <h4><i class="fas fa-network-wired"></i> Networking</h4>
-                        <p>Connect with fellow diplomats, government officials, and international partners</p>
-                    </div>
-                </div>
+        <!-- Experts Section -->
+        <section class="section">
+            <div class="section-title fade-in">
+                <h2>Our Distinguished Experts</h2>
+                <p>Renowned specialists in international relations, diplomacy, and foreign policy analysis</p>
             </div>
 
-            <div class="program-accordion">
-                <h3>Monthly Program Breakdown</h3>
-                <p>Explore our detailed monthly schedule below. Each month focuses on specific thematic areas while building cumulative knowledge and skills.</p>
-                
-                <div class="accordion" id="programAccordion">
-                    <!-- January -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="janHeading">
-                            <button class="accordion-button" type="button">
-                                January - Orientation & Policy Foundations
-                            </button>
-                        </h2>
-                        <div class="accordion-body show">
-                            <div class="month-schedule">
-                                <h4 class="month-title">January Schedule</h4>
-                                <ul class="event-list">
-                                    <li class="event-item">
-                                        <div class="event-image">
-                                            <img src="https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Orientation Ceremony">
-                                        </div>
-                                        <div class="event-content">
-                                            <div class="event-date"><i class="far fa-calendar-alt"></i> January 10-12, 2025</div>
-                                            <h5 class="event-title">Orientation & Welcome Ceremony</h5>
-                                            <p class="event-details">Official opening of the 2025 program with keynote address by the Principal Secretary for Foreign Affairs. Overview of program objectives and expectations.</p>
-                                            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Main Auditorium, DCKFP Campus</div>
-                                            <div class="event-speakers"><strong>Featured Speakers:</strong> Dr. Amina Mohamed, Prof. Patrick Lumumba</div>
-                                        </div>
-                                    </li>
-                                    <li class="event-item">
-                                        <div class="event-image">
-                                            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Policy Foundations">
-                                        </div>
-                                        <div class="event-content">
-                                            <div class="event-date"><i class="far fa-calendar-alt"></i> January 15-19, 2025</div>
-                                            <h5 class="event-title">Foundations of Kenyan Foreign Policy</h5>
-                                            <p class="event-details">Comprehensive review of Kenya's foreign policy evolution, constitutional framework, and current strategic priorities.</p>
-                                            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Seminar Room A</div>
-                                            <div class="event-speakers"><strong>Instructors:</strong> Amb. Monica Juma, Dr. Macharia Munene</div>
-                                        </div>
-                                    </li>
-                                    <li class="event-item">
-                                        <div class="event-image">
-                                            <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Diplomatic Protocol">
-                                        </div>
-                                        <div class="event-content">
-                                            <div class="event-date"><i class="far fa-calendar-alt"></i> January 22-26, 2025</div>
-                                            <h5 class="event-title">Diplomatic Protocol & Statecraft</h5>
-                                            <p class="event-details">Practical training in diplomatic protocol, negotiation techniques, and crisis management simulations.</p>
-                                            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Diplomacy Lab</div>
-                                            <div class="event-speakers"><strong>Instructor:</strong> Amb. Kiplagat</div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+            <!-- Filter Options -->
+            <div class="experts-filter fade-in">
+                <button class="filter-btn active" data-filter="all">All Experts</button>
+                <button class="filter-btn" data-filter="africa">Africa Specialists</button>
+                <button class="filter-btn" data-filter="europe">Europe Specialists</button>
+                <button class="filter-btn" data-filter="asia">Asia Specialists</button>
+                <button class="filter-btn" data-filter="americas">Americas Specialists</button>
+                <button class="filter-btn" data-filter="security">Security & Defense</button>
+                <button class="filter-btn" data-filter="economics">Economics & Trade</button>
+            </div>
+
+            <!-- Experts Grid -->
+            <div class="experts-grid">
+                <!-- Expert 1 -->
+                <div class="expert-card fade-in delay-1" data-categories="africa security">
+                    <div class="expert-image" style="background-image: url('https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')"></div>
+                    <div class="expert-content">
+                        <div class="expert-meta">
+                            <span class="expert-region">Africa</span>
+                        </div>
+                        <h3>Dr. Amina Wanjiku</h3>
+                        <p class="expert-title">Director of African Affairs</p>
+                        <p class="expert-bio">Former ambassador with 20+ years experience in conflict resolution and peacebuilding across the Horn of Africa region. PhD in International Relations from University of Nairobi.</p>
+                        <div class="expert-specialties">
+                            <span class="specialty-tag">Conflict Resolution</span>
+                            <span class="specialty-tag">Peacebuilding</span>
+                            <span class="specialty-tag">IGAD Affairs</span>
+                        </div>
+                        <div class="expert-links">
+                            <a href="#" class="expert-link"><i class="fas fa-file-pdf"></i> Publications</a>
+                            <a href="#" class="expert-link"><i class="fas fa-envelope"></i> Contact</a>
                         </div>
                     </div>
-
-                    <!-- February -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="febHeading">
-                            <button class="accordion-button collapsed" type="button">
-                                February - Regional Diplomacy & EAC Integration
-                            </button>
-                        </h2>
-                        <div class="accordion-body">
-                            <div class="month-schedule">
-                                <h4 class="month-title">February Schedule</h4>
-                                <ul class="event-list">
-                                    <li class="event-item">
-                                        <div class="event-image">
-                                            <img src="https://images.unsplash.com/photo-1516559828984-fb3b99548b21?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="EAC Workshop">
-                                        </div>
-                                        <div class="event-content">
-                                            <div class="event-date"><i class="far fa-calendar-alt"></i> February 3-7, 2025</div>
-                                            <h5 class="event-title">East African Community Policy Workshop</h5>
-                                            <p class="event-details">Deep dive into EAC structures, policies, and Kenya's role in regional integration. Includes simulation of EAC Council of Ministers meeting.</p>
-                                            <div class="event-location"><i class="fas fa-map-marker-alt"></i> EAC Hall</div>
-                                            <div class="event-speakers"><strong>Facilitator:</strong> Dr. Richard Sezibera</div>
-                                        </div>
-                                    </li>
-                                    <li class="event-item">
-                                        <div class="event-image">
-                                            <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Trade Negotiations">
-                                        </div>
-                                        <div class="event-content">
-                                            <div class="event-date"><i class="far fa-calendar-alt"></i> February 10-14, 2025</div>
-                                            <h5 class="event-title">Trade Negotiations Simulation</h5>
-                                            <p class="event-details">Practical exercise in regional trade negotiations, covering tariff policies, non-tariff barriers, and dispute resolution mechanisms.</p>
-                                            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Negotiation Lab</div>
-                                        </div>
-                                    </li>
-                                    <li class="event-item">
-                                        <div class="event-image">
-                                            <img src="https://images.unsplash.com/photo-1546199675-9a9a2837dae3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Field Study">
-                                        </div>
-                                        <div class="event-content">
-                                            <div class="event-date"><i class="far fa-calendar-alt"></i> February 18-21, 2025</div>
-                                            <h5 class="event-title">Field Study: Border Communities</h5>
-                                            <p class="event-details">Field visit to Kenya-Uganda border to study cross-border trade dynamics and community relations.</p>
-                                            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Busia Border</div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+                </div>
+                
+                <!-- Expert 2 -->
+                <div class="expert-card fade-in delay-2" data-categories="europe economics">
+                    <div class="expert-image" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')"></div>
+                    <div class="expert-content">
+                        <div class="expert-meta">
+                            <span class="expert-region">Europe</span>
+                        </div>
+                        <h3>Prof. James Mwangi</h3>
+                        <p class="expert-title">Head of EU-Kenya Relations</p>
+                        <p class="expert-bio">Expert on European Union affairs with focus on trade agreements and development partnerships. Former economic counselor at Kenya's Mission to the EU in Brussels.</p>
+                        <div class="expert-specialties">
+                            <span class="specialty-tag">Trade Policy</span>
+                            <span class="specialty-tag">EU Relations</span>
+                            <span class="specialty-tag">Economic Diplomacy</span>
+                        </div>
+                        <div class="expert-links">
+                            <a href="#" class="expert-link"><i class="fas fa-file-pdf"></i> Publications</a>
+                            <a href="#" class="expert-link"><i class="fas fa-envelope"></i> Contact</a>
                         </div>
                     </div>
-
-                    <!-- Additional months would follow the same pattern -->
-
                 </div>
-            </div>
-            
-            <div class="program-registration mt-4">
-                <h3>Registration Information</h3>
-                <p>The 2025 program is open to Kenyan diplomats, foreign service officers, and international relations professionals. Limited spaces are available for qualified applicants from partner institutions.</p>
-                <div class="text-center mt-4">
-                    <a href="contact.html" class="btn">Apply Now</a>
-                    <a href="#" id="downloadBtn" class="btn btn-secondary">
-                        <i class="fas fa-download"></i> Download Full Program
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Featured Articles -->
-        <section class="featured-articles fade-in delay-2">
-            <div class="section-title">
-                <h3>Featured Diplomatic Insights</h3>
-                <p>Recent analysis and commentary from our experts</p>
-            </div>
-            
-            <div class="articles-grid">
-                <div class="article-card">
-                    <div class="article-image">
-                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Climate Diplomacy">
-                    </div>
-                    <div class="article-content">
-                        <div class="article-date">March 15, 2025</div>
-                        <h4 class="article-title">Kenya's Climate Diplomacy Strategy</h4>
-                        <p class="article-excerpt">Analysis of Kenya's leadership in regional climate initiatives and recommendations for future policy directions in international environmental negotiations.</p>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                
+                <!-- Expert 3 -->
+                <div class="expert-card fade-in delay-3" data-categories="asia economics">
+                    <div class="expert-image" style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')"></div>
+                    <div class="expert-content">
+                        <div class="expert-meta">
+                            <span class="expert-region">Asia</span>
+                        </div>
+                        <h3>Dr. Li Wei Chen</h3>
+                        <p class="expert-title">China-Africa Relations Specialist</p>
+                        <p class="expert-bio">Leading authority on China-Kenya relations with expertise in Belt and Road Initiative projects. Fluent in Mandarin with extensive fieldwork across East Asia.</p>
+                        <div class="expert-specialties">
+                            <span class="specialty-tag">China-Africa</span>
+                            <span class="specialty-tag">BRI Projects</span>
+                            <span class="specialty-tag">Development Finance</span>
+                        </div>
+                        <div class="expert-links">
+                            <a href="#" class="expert-link"><i class="fas fa-file-pdf"></i> Publications</a>
+                            <a href="#" class="expert-link"><i class="fas fa-envelope"></i> Contact</a>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="article-card">
-                    <div class="article-image">
-                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Digital Diplomacy">
-                    </div>
-                    <div class="article-content">
-                        <div class="article-date">February 28, 2025</div>
-                        <h4 class="article-title">Digital Transformation in Diplomacy</h4>
-                        <p class="article-excerpt">Exploring how digital tools are reshaping diplomatic practices and Kenya's positioning in the global digital governance landscape.</p>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                <!-- Expert 4 -->
+                <div class="expert-card fade-in delay-4" data-categories="americas security">
+                    <div class="expert-image" style="background-image: url('https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')"></div>
+                    <div class="expert-content">
+                        <div class="expert-meta">
+                            <span class="expert-region">Americas</span>
+                        </div>
+                        <h3>Amb. Michael Otieno</h3>
+                        <p class="expert-title">Senior Fellow for US Affairs</p>
+                        <p class="expert-bio">Former Kenyan Ambassador to the United States with deep understanding of US foreign policy and congressional relations. Specialist in security cooperation and counterterrorism.</p>
+                        <div class="expert-specialties">
+                            <span class="specialty-tag">US Policy</span>
+                            <span class="specialty-tag">Security Cooperation</span>
+                            <span class="specialty-tag">Counterterrorism</span>
+                        </div>
+                        <div class="expert-links">
+                            <a href="#" class="expert-link"><i class="fas fa-file-pdf"></i> Publications</a>
+                            <a href="#" class="expert-link"><i class="fas fa-envelope"></i> Contact</a>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="article-card">
-                    <div class="article-image">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Economic Partnerships">
+                <!-- Expert 5 -->
+                <div class="expert-card fade-in delay-5" data-categories="africa economics">
+                    <div class="expert-image" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')"></div>
+                    <div class="expert-content">
+                        <div class="expert-meta">
+                            <span class="expert-region">Africa</span>
+                        </div>
+                        <h3>Dr. Sarah Kamau</h3>
+                        <p class="expert-title">Economic Integration Expert</p>
+                        <p class="expert-bio">Specialist in regional economic communities with focus on AfCFTA implementation. Advises government and private sector on trade facilitation and market access.</p>
+                        <div class="expert-specialties">
+                            <span class="specialty-tag">AfCFTA</span>
+                            <span class="specialty-tag">Trade Policy</span>
+                            <span class="specialty-tag">Regional Integration</span>
+                        </div>
+                        <div class="expert-links">
+                            <a href="#" class="expert-link"><i class="fas fa-file-pdf"></i> Publications</a>
+                            <a href="#" class="expert-link"><i class="fas fa-envelope"></i> Contact</a>
+                        </div>
                     </div>
-                    <div class="article-content">
-                        <div class="article-date">February 10, 2025</div>
-                        <h4 class="article-title">Economic Partnerships in East Africa</h4>
-                        <p class="article-excerpt">Examining the implementation challenges of regional trade agreements and pathways for enhanced economic cooperation.</p>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <!-- Expert 6 -->
+                <div class="expert-card fade-in delay-6" data-categories="security">
+                    <div class="expert-image" style="background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')"></div>
+                    <div class="expert-content">
+                        <div class="expert-meta">
+                            <span class="expert-region">Global</span>
+                        </div>
+                        <h3>Maj. Gen. (Rtd) Joseph Kipchumba</h3>
+                        <p class="expert-title">Security & Defense Analyst</p>
+                        <p class="expert-bio">Retired military officer with expertise in regional security architecture, peacekeeping operations, and defense policy. Served with AMISOM and UN peacekeeping missions.</p>
+                        <div class="expert-specialties">
+                            <span class="specialty-tag">Defense Policy</span>
+                            <span class="specialty-tag">Peacekeeping</span>
+                            <span class="specialty-tag">Maritime Security</span>
+                        </div>
+                        <div class="expert-links">
+                            <a href="#" class="expert-link"><i class="fas fa-file-pdf"></i> Publications</a>
+                            <a href="#" class="expert-link"><i class="fas fa-envelope"></i> Contact</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Become an Expert Section -->
+        <section class="section" style="background: var(--background-secondary);">
+            <div class="section-title fade-in">
+                <h2>Join Our Network of Experts</h2>
+                <p>Contribute to Kenya's foreign policy discourse through research, analysis, and engagement</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card fade-in delay-1">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h3>Research Fellows Program</h3>
+                    <p>Join our visiting fellows program to conduct cutting-edge research on Kenya's foreign policy priorities and international relations.</p>
+                    <a href="#" class="btn" style="margin-top: 1rem;">Apply Now</a>
+                </div>
+                
+                <div class="feature-card fade-in delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <h3>Speaking Opportunities</h3>
+                    <p>Share your expertise at our diplomatic briefings, policy forums, and international conferences throughout the year.</p>
+                    <a href="#" class="btn" style="margin-top: 1rem;">Submit Proposal</a>
+                </div>
+                
+                <div class="feature-card fade-in delay-3">
+                    <div class="feature-icon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <h3>Contribute Publications</h3>
+                    <p>Publish policy briefs, research papers, and commentary through our respected publications platform.</p>
+                    <a href="#" class="btn" style="margin-top: 1rem;">Submission Guidelines</a>
+                </div>
+            </div>
+        </section>
+
         <!-- Newsletter Section -->
-        <section class="newsletter-section fade-in delay-3">
-            <h3>Stay Updated with Diplomatic Insights</h3>
-            <p>Subscribe to our newsletter and receive updates on Kenya's diplomatic engagements, policy briefs, and event invitations directly to your inbox.</p>
+        <section class="newsletter-section fade-in delay-2">
+            <h3>Stay Updated with Our Experts' Insights</h3>
+            <p>Subscribe to our newsletter and receive updates on latest research, policy briefs, and event invitations from our experts.</p>
             
             <form class="newsletter-form">
                 <input type="email" placeholder="Your email address" required>
@@ -1687,7 +1413,7 @@
             <div class="newsletter-benefits">
                 <div class="newsletter-benefit">
                     <i class="fas fa-check-circle"></i>
-                    <span>Exclusive program updates</span>
+                    <span>Expert analysis briefs</span>
                 </div>
                 <div class="newsletter-benefit">
                     <i class="fas fa-check-circle"></i>
@@ -1695,7 +1421,7 @@
                 </div>
                 <div class="newsletter-benefit">
                     <i class="fas fa-check-circle"></i>
-                    <span>Research previews</span>
+                    <span>Exclusive research previews</span>
                 </div>
             </div>
         </section>
@@ -1728,9 +1454,10 @@
             <div class="footer-links">
                 <h3>Resources</h3>
                 <ul>
-                    <li><a href="https://www.un.org/sites/un2.un.org/files/our-common-agenda-summit-of-the-future-what-would-it-deliver.pdf"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li>
                     <li><a href="program-schedule.html"><i class="fas fa-chevron-right"></i> Program Schedule</a></li>
-                    <li><a href="https://www.kenyaembassy.org.tr/uploads/Kenya_Foreign_Policy.pdf"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Expert Directory</a></li>
                 </ul>
             </div>
         </div>
@@ -1745,16 +1472,6 @@
             </p>
         </div>
     </footer>
-
-    <!-- Dark Mode Toggle -->
-    <div class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-        <i class="fas fa-moon"></i>
-    </div>
-
-    <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </div>
 
     <script>
     // Navigation functionality
@@ -1811,116 +1528,93 @@
             header.classList.remove('header-hidden');
         }
         lastScroll = currentScroll;
-        
-        // Back to top button visibility
-        const backToTop = document.getElementById('backToTop');
-        if (currentScroll > 300) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
-        }
     });
 
-    // Accordion functionality
-    document.querySelectorAll('.accordion-button').forEach(button => {
-        button.addEventListener('click', () => {
-            const accordionBody = button.nextElementSibling;
-            const isExpanded = button.classList.contains('collapsed');
-            
-            // Close all accordion items
-            document.querySelectorAll('.accordion-body').forEach(body => {
-                body.classList.remove('show');
-            });
-            document.querySelectorAll('.accordion-button').forEach(btn => {
-                btn.classList.add('collapsed');
-            });
-            
-            // Toggle current item
-            if (isExpanded) {
-                button.classList.remove('collapsed');
-                accordionBody.classList.add('show');
-            }
-        });
-    });
-
-    // Theme Toggle (Dark / Light Mode Persistence)
-    const themeToggle = document.getElementById('darkModeToggle');
-
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    body.setAttribute('data-theme', savedTheme);
-    updateToggleIcon(savedTheme);
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateToggleIcon(newTheme);
-        });
-    }
-
-    function updateToggleIcon(theme) {
-        const icon = themeToggle.querySelector('i');
-        if (theme === 'dark') {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        } else {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-        }
-    }
-
-    // Back to top functionality
-    const backToTop = document.getElementById('backToTop');
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-
-    // Intersection Observer for animations
-    const fadeElements = document.querySelectorAll('.fade-in');
+    // Search functionality
+    const headerSearch = document.querySelector('.header-search input');
+    const navSearch = document.querySelector('.nav-search input');
     
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = 1;
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
-            }
+    // Header search functionality
+    headerSearch.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            performSearch(headerSearch.value);
+        }
+    });
+    
+    // Nav search functionality
+    navSearch.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            performSearch(navSearch.value);
+            // Close nav after search
+            navContainer.classList.remove('active');
+            body.style.overflow = 'auto';
+            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+    });
+    
+    function performSearch(query) {
+        if (query.trim() !== '') {
+            alert(`Searching for: ${query}`);
+            // In a real implementation, you would redirect to search results page
+            // or filter content based on the search query
+        }
+    }
+
+    // Expert filtering functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const expertCards = document.querySelectorAll('.expert-card');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            // Get filter value
+            const filterValue = button.getAttribute('data-filter');
+            
+            // Filter experts
+            expertCards.forEach(card => {
+                if (filterValue === 'all') {
+                    card.style.display = 'flex';
+                } else {
+                    const categories = card.getAttribute('data-categories').split(' ');
+                    if (categories.includes(filterValue)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
         });
-    }, {
-        threshold: 0.1
     });
 
-    fadeElements.forEach(element => {
-        element.style.opacity = 0;
+    // Animation on scroll
+    function checkScroll() {
+        const elements = document.querySelectorAll('.fade-in');
+        
+        elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+            
+            if (elementPosition < screenPosition) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    }
+
+    // Initialize elements for animation
+    document.querySelectorAll('.fade-in').forEach(element => {
+        element.style.opacity = '0';
         element.style.transform = 'translateY(20px)';
         element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(element);
     });
 
-    // Form submission handling
-    const newsletterForm = document.querySelector('.newsletter-form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = newsletterForm.querySelector('input').value;
-            alert(`Thank you for subscribing with ${email}! You'll receive program updates shortly.`);
-            newsletterForm.reset();
-        });
-    }
-
-    // Download button functionality
-    const downloadBtn = document.getElementById('downloadBtn');
-    if (downloadBtn) {
-        downloadBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('Downloading the full program schedule...');
-        });
-    }
+    window.addEventListener('scroll', checkScroll);
+    window.addEventListener('load', checkScroll);
     </script>
 </body>
 </html>
