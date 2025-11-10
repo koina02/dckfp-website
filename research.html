@@ -62,12 +62,12 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             margin: 0;
             padding: 0;
             color: var(--text);
             background-color: var(--background);
-            line-height: 1.6;
+            line-height: 1.7;
             -webkit-font-smoothing: antialiased;
             transition: var(--transition);
         }
@@ -76,7 +76,7 @@
         header {
             background: var(--background);
             box-shadow: var(--box-shadow);
-            position: fixed;
+            position: sticky; /* Changed to sticky for better mobile experience */
             top: 0;
             width: 100%;
             z-index: 1000;
@@ -106,6 +106,7 @@
         .logo img {
             height: 60px;
             max-width: 100%;
+            width: auto; /* Ensure proper aspect ratio */
         }
 
         .logo-text h1 {
@@ -150,7 +151,7 @@
 
         .header-search input:focus {
             outline: none;
-            border-color: var(--secondary);
+            border-color: var(--accent); /* Updated to accent color */
             width: 250px;
             box-shadow: 0 0 0 2px rgba(240, 183, 47, 0.2);
         }
@@ -176,7 +177,7 @@
         }
 
         .mobile-menu-btn:hover {
-            color: var(--secondary);
+            color: var(--accent); /* Updated to accent color */
         }
 
         /* Full Screen Navigation Container */
@@ -217,6 +218,7 @@
 
         .nav-logo img {
             height: 50px;
+            width: auto; /* Ensure proper aspect ratio */
         }
 
         .nav-logo-text h2 {
@@ -612,9 +614,9 @@
                 <div class="nav-section">
                     <h3>Main Menu</h3>
                     <ul class="nav-links">
-                        <li><a href="index.html" class="active">Home</a></li>
-                        <li><a href="research.html">Research & Publications</a></li>
-                        <li><a href="program-schedule.html" class="active">Program Schedule</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="research.html" class="active">Research & Publications</a></li>
+                        <li><a href="program-schedule.html">Program Schedule</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="about.html">About Us</a></li>
                     </ul>
@@ -625,43 +627,18 @@
                     <h3>Regions</h3>
                     <div class="mega-menu-section">
                         <h4>Africa</h4>
-                        <ul class="mega-menu-links">
-                            <li><a href="#">East Africa</a></li>
-                            <li><a href="#">West Africa</a></li>
-                            <li><a href="#">Southern Africa</a></li>
-                            <li><a href="#">North Africa</a></li>
-                            <li><a href="#">Central Africa</a></li>
-                        </ul>
                     </div>
                     
                     <div class="mega-menu-section">
                         <h4>Europe</h4>
-                        <ul class="mega-menu-links">
-                            <li><a href="#">European Union</a></li>
-                            <li><a href="#">United Kingdom</a></li>
-                            <li><a href="#">Eastern Europe</a></li>
-                            <li><a href="#">Nordic Countries</a></li>
-                        </ul>
                     </div>
 
                     <div class="mega-menu-section">
                         <h4>Asia</h4>
-                        <ul class="mega-menu-links">
-                            <li><a href="#">China</a></li>
-                            <li><a href="#">India</a></li>
-                            <li><a href="#">Japan</a></li>
-                            <li><a href="#">Southeast Asia</a></li>
-                        </ul>
                     </div>
 
                     <div class="mega-menu-section">
                         <h4>Americas</h4>
-                        <ul class="mega-menu-links">
-                            <li><a href="#">United States</a></li>
-                            <li><a href="#">Canada</a></li>
-                            <li><a href="#">Latin America</a></li>
-                            <li><a href="#">Caribbean</a></li>
-                        </ul>
                     </div>
                 </div>
 
@@ -671,10 +648,8 @@
                     <ul class="nav-links">
                         <li><a href="#">Diplomacy & Foreign Policy</a></li>
                         <li><a href="#">Global Security</a></li>
-                        <li><a href="#">Climate & Environment</a></li>
                         <li><a href="#">Economy & Trade</a></li>
                         <li><a href="#">Technology & Innovation</a></li>
-                        <li><a href="#">Human Rights</a></li>
                         <li><a href="#">International Law</a></li>
                     </ul>
                 </div>
@@ -684,10 +659,7 @@
                     <h3>Publications</h3>
                     <ul class="nav-links">
                         <li><a href="#">Research Papers</a></li>
-                        <li><a href="#">Policy Briefs</a></li>
                         <li><a href="#">Reports</a></li>
-                        <li><a href="#">Books</a></li>
-                        <li><a href="#">Commentary</a></li>
                         <li><a href="#">Newsletters</a></li>
                     </ul>
                 </div>
@@ -719,13 +691,6 @@
                         </div>
                     </li>
                 </ul>
-
-                <div class="social-links-nav">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
 
                 <div class="nav-search">
                     <i class="fas fa-search"></i>
