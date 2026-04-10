@@ -175,243 +175,47 @@
             color: var(--secondary);
         }
 
-        /* Full Screen Navigation Container */
+        /* Fullscreen nav */
         .nav-fullscreen-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: var(--primary);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            transform: translateY(-100%);
-            transition: transform 0.5s ease;
-            overflow-y: auto;
-            padding: 6rem 2rem 2rem;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: var(--primary); z-index: 1100; transform: translateY(-100%);
+            transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            overflow-y: auto; padding: 5rem 2rem 2rem;
         }
-
-        .nav-fullscreen-container.active {
-            transform: translateY(0);
-        }
-
-        .nav-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 3rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .nav-logo img {
-            height: 50px;
-        }
-
-        .nav-logo-text h2 {
-            color: white;
-            font-size: 1.5rem;
-            margin: 0;
-        }
-
+        .nav-fullscreen-container.active { transform: translateY(0); }
+        .nav-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 1rem; flex-wrap: wrap; }
+        .nav-logo { display: flex; align-items: center; gap: 1rem; }
+        .nav-logo img { height: 50px; }
+        .nav-logo-text h2 { color: white; font-size: 1.5rem; margin: 0; }
         .nav-logo-text p {
             color: rgba(255, 255, 255, 0.8);
             font-size: 0.9rem;
             margin: 0;
         }
-
-        .close-nav-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .close-nav-btn:hover {
-            color: var(--secondary);
-        }
-
-        /* Navigation Content */
-        .nav-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        @media (min-width: 992px) {
-            .nav-content {
-                grid-template-columns: 2fr 1fr;
-            }
-        }
-
-        .nav-main {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .nav-main {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .nav-section {
-            margin-bottom: 2rem;
-        }
-
-        .nav-section h3 {
-            color: var(--secondary);
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--secondary);
-        }
-
-        .nav-links {
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-            display: block;
-            padding: 0.5rem 0;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--secondary);
-            transform: translateX(10px);
-        }
-
-        .nav-links a.active {
-            color: var(--secondary);
-            font-weight: 600;
-        }
-
-        .nav-links a.active:after {
-            content: '•';
-            position: absolute;
-            left: -15px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        /* Mega menu sections */
-        .mega-menu-section {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .mega-menu-section h4 {
-            color: var(--secondary);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .mega-menu-links {
-            list-style: none;
-        }
-
-        .mega-menu-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .mega-menu-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            display: block;
-            padding: 0.3rem 0;
-        }
-
-        .mega-menu-links a:hover {
-            color: var(--secondary);
-        }
-
-        /* Nav sidebar */
-        .nav-sidebar {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 2rem;
-        }
-
+        .close-nav-btn { background: none; border: none; color: white; font-size: 2rem; cursor: pointer; }
+        .nav-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 2rem; }
+        @media (min-width: 992px) { .nav-content { grid-template-columns: 2fr 1fr; } }
+        .nav-main { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 2rem; }
+        .nav-section h3, .nav-sidebar h3 { color: var(--secondary); margin-bottom: 1.2rem; font-size: 1.2rem; }
+        .nav-links, .mega-menu-links { list-style: none; }
+        .nav-links li, .mega-menu-links li { margin-bottom: 0.7rem; }
+        .nav-links a, .mega-menu-links a { color: white; text-decoration: none; transition: var(--transition); display: inline-block; }
+        .nav-links a:hover { color: var(--secondary); transform: translateX(6px); }
+        .nav-sidebar { background: rgba(255,255,255,0.1); border-radius: 20px; padding: 1.8rem; }
         .nav-sidebar h3 {
             color: var(--secondary);
             margin-bottom: 1.5rem;
         }
-
         .contact-info {
             list-style: none;
             margin-bottom: 2rem;
         }
-
-        .contact-info li {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .contact-info i {
-            color: var(--secondary);
-            font-size: 1.2rem;
-            margin-top: 0.2rem;
-        }
-
-        .social-links-nav {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-links-nav a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border-radius: 50%;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .social-links-nav a:hover {
-            background: var(--secondary);
-            color: var(--text);
-            transform: translateY(-3px);
-        }
-
-        /* Search in nav */
+        .contact-info li { display: flex; gap: 1rem; margin-bottom: 1rem; color: white; }
+        .contact-info i { color: var(--secondary); font-size: 1.2rem; margin-top: 0.2rem; }
         .nav-search {
             margin-top: 2rem;
             position: relative;
         }
-
         .nav-search input {
             width: 100%;
             padding: 1rem 1rem 1rem 3rem;
@@ -421,7 +225,11 @@
             color: white;
             font-family: 'Inter', sans-serif;
         }
-
+        .whatsapp-button {
+            position: fixed; bottom: 24px; right: 24px; background: #25D366; width: 56px; height: 56px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;
+            font-size: 28px; box-shadow: var(--shadow-md); z-index: 1050; transition: transform 0.2s;
+        }
         .nav-search input::placeholder {
             color: rgba(255, 255, 255, 0.7);
         }
@@ -1323,150 +1131,7 @@
             </div>
         </div>
     </header>
-
-    <!-- Full Screen Navigation Container -->
-    <div class="nav-fullscreen-container" id="navContainer">
-        <div class="nav-header">
-            <div class="nav-logo">
-                <img src="images/logo.jpg" alt="Diplomatic College Logo" width="50" height="50">
-                <div class="nav-logo-text">
-                    <h2>Diplomatic College</h2>
-                    <p>of Kenyan Foreign Policy</p>
-                </div>
-            </div>
-            <button class="close-nav-btn" id="closeNavBtn" aria-label="Close navigation">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-
-        <div class="nav-content">
-            <div class="nav-main">
-                <!-- Main Navigation -->
-                <div class="nav-section">
-                    <h3>Main Menu</h3>
-                    <ul class="nav-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="research.html">Research & Publications</a></li>
-                        <li><a href="program-schedule.html" class="active">Program Schedule</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                    </ul>
-                </div>
-
-                <!-- Regions Section -->
-                <div class="nav-section">
-                    <h3>Regions</h3>
-                    <div class="mega-menu-section">
-                        <h4>Africa</h4>
-                        <ul class="mega-menu-links">
-                            <li><a href="#">East Africa</a></li>
-                            <li><a href="#">West Africa</a></li>
-                            <li><a href="#">Southern Africa</a></li>
-                            <li><a href="#">North Africa</a></li>
-                            <li><a href="#">Central Africa</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="mega-menu-section">
-                        <h4>Europe</h4>
-                        <ul class="mega-menu-links">
-                            <li><a href="#">European Union</a></li>
-                            <li><a href="#">United Kingdom</a></li>
-                            <li><a href="#">Eastern Europe</a></li>
-                            <li><a href="#">Nordic Countries</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="mega-menu-section">
-                        <h4>Asia</h4>
-                        <ul class="mega-menu-links">
-                            <li><a href="#">China</a></li>
-                            <li><a href="#">India</a></li>
-                            <li><a href="#">Japan</a></li>
-                            <li><a href="#">Southeast Asia</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="mega-menu-section">
-                        <h4>Americas</h4>
-                        <ul class="mega-menu-links">
-                            <li><a href="#">United States</a></li>
-                            <li><a href="#">Canada</a></li>
-                            <li><a href="#">Latin America</a></li>
-                            <li><a href="#">Caribbean</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Topics Section -->
-                <div class="nav-section">
-                    <h3>Topics</h3>
-                    <ul class="nav-links">
-                        <li><a href="#">Diplomacy & Foreign Policy</a></li>
-                        <li><a href="#">Global Security</a></li>
-                        <li><a href="#">Climate & Environment</a></li>
-                        <li><a href="#">Economy & Trade</a></li>
-                        <li><a href="#">Technology & Innovation</a></li>
-                        <li><a href="#">Human Rights</a></li>
-                        <li><a href="#">International Law</a></li>
-                    </ul>
-                </div>
-
-                <!-- Publications Section -->
-                <div class="nav-section">
-                    <h3>Publications</h3>
-                    <ul class="nav-links">
-                        <li><a href="#">Research Papers</a></li>
-                        <li><a href="#">Policy Briefs</a></li>
-                        <li><a href="#">Reports</a></li>
-                        <li><a href="#">Books</a></li>
-                        <li><a href="#">Commentary</a></li>
-                        <li><a href="#">Newsletters</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Sidebar with contact info -->
-            <div class="nav-sidebar">
-                <h3>Contact Info</h3>
-                <ul class="contact-info">
-                    <li>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <p>Diplomatic College of Kenyan Foreign Policy</p>
-                            <p>Westlands Office Park, Nairobi, Kenya</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <p>+254 20 123 4567</p>
-                            <p>+254 712 345 678</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <p>info@dckfp.org</p>
-                            <p>research@dckfp.org</p>
-                        </div>
-                    </li>
-                </ul>
-
-                <div class="social-links-nav">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
-
-                <div class="nav-search">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search...">
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="nav-fullscreen-container" id="navContainer"><div class="nav-header"><div class="nav-logo"><img src="images/logo.jpg" alt="logo"><div class="nav-logo-text"><h2>Diplomatic College</h2><p>of Kenyan Foreign Policy</p></div></div><button class="close-nav-btn" id="closeNavBtn"><i class="fas fa-times"></i></button></div><div class="nav-content"><div class="nav-main"><div class="nav-section"><h3>Main</h3><ul class="nav-links"><li><a href="#" class="active">Home</a></li><li><a href="index.html">Research</a></li><li><a href="research.html">Program Schedule</a></li><li><a href="program-schedule.html">Contact</a></li><li><a href="contact.html">About Us</a></li></ul></div><div class="nav-section"><h3>Regions</h3><ul class="nav-links"><li><a href="#">Africa</a></li><li><a href="#">Europe</a></li><li><a href="#">Asia</a></li><li><a href="#">Americas</a></li></ul></div><div class="nav-section"><h3>Topics</h3><ul class="nav-links"><li><a href="#">Diplomacy</a></li><li><a href="#">Global Security</a></li><li><a href="#">Trade & Economy</a></li></ul></div></div><div class="nav-sidebar"><h3>Contact</h3><ul class="contact-info"><li><i class="fas fa-map-marker-alt"></i> Westlands, Nairobi, Kenya</li><li><i class="fas fa-phone"></i> +254 20 1234567</li><li><i class="fas fa-envelope"></i> info@dckfp.org</li></ul><div class="nav-search"><i class="fas fa-search"></i><input type="text" id="navSearchInput" placeholder="Search..."></div></div></div></div>
 
     <main>
         <!-- Page Header -->
