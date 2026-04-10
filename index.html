@@ -186,42 +186,38 @@
         .post-content { padding: 1.5rem; }
         .category { background: var(--accent); color: white; padding: 0.2rem 1rem; border-radius: 30px; font-size: 0.7rem; font-weight: 600; display: inline-block; margin-bottom: 0.8rem; }
         .read-more { color: var(--accent); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-top: 1rem; }
-        /* Membership card as featured inside About area */
-        .about-membership-grid {
-            display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;
-            margin-top: 2.5rem;
-        }
-        .membership-card-compact {
-            background: var(--card-bg); border-radius: 28px; padding: 1.8rem;
-            flex: 1; min-width: 250px; border: 1px solid var(--border);
-            transition: var(--transition); box-shadow: var(--shadow-sm);
+        /* Membership Benefits teaser */
+        .membership-teaser {
+            background: linear-gradient(135deg, var(--background-secondary) 0%, var(--background) 100%);
+            border-radius: 48px;
+            padding: 2.5rem;
+            margin-top: 2rem;
             text-align: center;
-        }
-        .membership-card-compact:hover { transform: translateY(-5px); border-color: var(--secondary); }
-        .plan-price { font-size: 1.8rem; font-weight: 800; color: var(--accent); margin: 0.8rem 0; }
-        .membership-cta-small {
-            background: var(--secondary); color: var(--primary); border: none;
-            padding: 0.6rem 1.2rem; border-radius: 40px; font-weight: bold; cursor: pointer;
-            transition: 0.2s; margin-top: 1rem;
-        }
-        .membership-cta-small:hover { background: #d4a017; transform: scale(0.97); }
-        /* Detailed membership section inside "About Us" */
-        .membership-full-section {
-            background: linear-gradient(120deg, var(--background-secondary) 0%, var(--background) 100%);
-            border-radius: 48px; padding: 2.5rem; margin-top: 3rem;
             border: 1px solid var(--border);
         }
-        .membership-plans-detailed {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(270px,1fr)); gap: 2rem; margin: 2rem 0;
+        .benefits-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
         }
-        .membership-card-detailed {
-            background: var(--card-bg); border-radius: 32px; padding: 1.8rem;
-            box-shadow: var(--shadow-sm); transition: 0.2s; cursor: pointer;
-            border: 1px solid transparent;
+        .benefit-item {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 28px;
+            width: 220px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
         }
-        .membership-card-detailed.selected { border-color: var(--secondary); background: rgba(230,180,34,0.05); }
-        .btn-membership-select { background: var(--accent); border: none; width: 100%; margin-top: 1.5rem; }
-        .subscription-form-modal { margin-top: 2rem; background: var(--background); border-radius: 32px; padding: 2rem; display: none; box-shadow: var(--shadow-md); }
+        .benefit-item i { font-size: 2.2rem; color: var(--accent); margin-bottom: 1rem; }
+        .benefit-item h4 { margin-bottom: 0.5rem; color: var(--primary); }
+        .btn-outline { background: transparent; border: 2px solid var(--accent); color: var(--accent); }
+        .btn-outline:hover { background: var(--accent); color: white; }
+        .newsletter-section { background: var(--primary); border-radius: 32px; padding: 3rem 2rem; text-align: center; color: white; margin: 3rem auto; }
+        .newsletter-form { display: flex; max-width: 550px; margin: 2rem auto 0; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
+        .newsletter-form input { flex: 1; padding: 0.9rem 1.5rem; border-radius: 60px; border: none; min-width: 200px; }
+        .newsletter-form button { background: var(--secondary); border: none; padding: 0 1.8rem; border-radius: 60px; font-weight: bold; cursor: pointer; }        .subscription-form-modal { margin-top: 2rem; background: var(--background); border-radius: 32px; padding: 2rem; display: none; box-shadow: var(--shadow-md); }
         .subscription-form-modal.active { display: block; animation: fadeSlide 0.3s ease; }
         @keyframes fadeSlide { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
         .form-group { margin-bottom: 1rem; }
@@ -473,44 +469,24 @@
 
     <!-- Core functions -->
     <section class="section"><div class="section-title"><h2>Our Core Functions</h2><p>Driving policy innovation & diplomatic excellence</p></div><div class="features"><div class="feature-card"><div class="feature-icon"><i class="fas fa-globe-africa"></i></div><h3>Policy Research</h3><p>In-depth analysis on climate diplomacy, peacekeeping, and regional integration.</p></div><div class="feature-card"><div class="feature-icon"><i class="fas fa-graduation-cap"></i></div><h3>Diplomatic Training</h3><p>Tailored programs for ambassadors, foreign service officers, and envoys.</p></div><div class="feature-card"><div class="feature-icon"><i class="fas fa-handshake"></i></div><h3>International Cooperation</h3><p>Strengthening Kenya’s bilateral and multilateral engagements.</p></div></div></section>
-
-    <!-- Latest Publications -->
-    <section class="section" style="background: var(--background-secondary);"><div class="section-title"><h2>Latest Publications</h2><p>Recent insights from our experts</p></div><div class="posts-grid"><div class="post-card"><div class="post-image" style="background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80')"></div><div class="post-content"><span class="category">Research</span><h3>Climate Diplomacy Strategy 2025</h3><p>Kenya's leadership in green diplomacy and regional climate resilience frameworks.</p><a href="#" class="read-more">Read more →</a></div></div><div class="post-card"><div class="post-image" style="background-image:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80')"></div><div class="post-content"><span class="category">Policy Brief</span><h3>Horn of Africa Peace Architecture</h3><p>Analysis of conflict prevention and economic integration opportunities.</p><a href="#" class="read-more">Read more →</a></div></div><div class="post-card"><div class="post-image" style="background-image:url('https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=600&q=80')"></div><div class="post-content"><span class="category">Report</span><h3>EU-Kenya EPA Implementation</h3><p>Trade impact assessment and roadmap for enhanced cooperation.</p><a href="#" class="read-more">Read more →</a></div></div></div><div class="text-center" style="margin-top: 2rem;"><a href="#" class="btn">All Publications →</a></div></section>
-
-    <!-- ABOUT US SECTION with full membership details (comprehensive) -->
-    <section id="about-membership" class="section">
-        <!-- Comprehensive membership plans inside About Us -->
-        <div class="membership-full-section">
-            <div style="text-align:center;"><span style="background: var(--secondary); padding:0.3rem 1.2rem; border-radius:60px; font-weight:bold;">Membership & Subscription</span><h3 style="margin-top: 1rem; font-size: 1.8rem;">Become a Member</h3><p>Join our community of policy-makers, researchers, and diplomatic professionals.</p></div>
-            <div class="membership-plans-detailed" id="detailedPlansContainer">
-                <div class="membership-card-detailed" data-plan="Basic"><i class="fas fa-leaf" style="font-size: 2rem; color: var(--accent);"></i><h3 style="margin:0.8rem 0">Basic Member</h3><div class="plan-price">Free</div><ul style="list-style:none; margin:1rem 0"><li><i class="fas fa-check-circle"></i> Monthly newsletter</li><li><i class="fas fa-check-circle"></i> Public event invites</li><li><i class="fas fa-check-circle"></i> Research digests</li></ul><button class="btn-membership-select select-plan-btn-detailed btn">Select Basic</button></div>
-                <div class="membership-card-detailed" data-plan="Professional"><i class="fas fa-chalkboard-user" style="font-size: 2rem; color: var(--accent);"></i><h3>Professional</h3><div class="plan-price">KSh 2,500 <span style="font-size:0.9rem;">/ year</span></div><ul><li><i class="fas fa-check-circle"></i> All Basic features</li><li><i class="fas fa-check-circle"></i> Full research papers</li><li><i class="fas fa-check-circle"></i> Policy dialogues</li><li><i class="fas fa-check-circle"></i> Membership certificate</li></ul><button class="btn-membership-select select-plan-btn-detailed btn">Select Professional</button></div>
-                <div class="membership-card-detailed" data-plan="Corporate"><i class="fas fa-building" style="font-size: 2rem; color: var(--accent);"></i><h3>Corporate / Institutional</h3><div class="plan-price">KSh 15,000 <span>/ year</span></div><ul><li><i class="fas fa-check-circle"></i> All Professional benefits</li><li><i class="fas fa-check-circle"></i> Custom policy briefings</li><li><i class="fas fa-check-circle"></i> Sponsorship visibility</li><li><i class="fas fa-check-circle"></i> Dedicated liaison officer</li></ul><button class="btn-membership-select select-plan-btn-detailed btn">Select Corporate</button></div>
+    
+    <!-- MEMBERSHIP BENEFITS TEASER (brief details with link) -->
+    <section class="section">
+        <div class="membership-teaser fade-in">
+            <span style="background: var(--secondary); padding:0.3rem 1.2rem; border-radius:60px; font-weight:bold; display:inline-block; margin-bottom:1rem;">Join the Community</span>
+            <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Become a Member</h3>
+            <p style="max-width: 700px; margin: 0 auto;">Access exclusive diplomatic insights, policy briefs, professional networking, and training opportunities.</p>
+            <div class="benefits-grid">
+                <div class="benefit-item"><i class="fas fa-newspaper"></i><h4>Policy Briefs</h4><p>Monthly research digests & full papers</p></div>
+                <div class="benefit-item"><i class="fas fa-chalkboard-user"></i><h4>Training Access</h4><p>Discounts on diplomatic courses & seminars</p></div>
+                <div class="benefit-item"><i class="fas fa-users"></i><h4>Networking</h4><p>Exclusive roundtables & global events</p></div>
+                <div class="benefit-item"><i class="fas fa-certificate"></i><h4>Recognition</h4><p>Membership certificate & visibility</p></div>
             </div>
-            <!-- Dynamic subscription form (replaces previous floating style) -->
-            <div id="membershipFormDetailed" class="subscription-form-modal">
-                <button id="closeDetailedForm" style="float:right; background:none; border:none; font-size:1.6rem; cursor:pointer;">&times;</button>
-                <h3 id="formPlanTitleDetailed">Subscribe to <span id="selectedPlanSpan">Basic</span> Plan</h3>
-                <form id="detailedSubscribeForm">
-                    <div class="form-group"><input type="text" id="fullNameDet" placeholder="Full Name *" required></div>
-                    <div class="form-group"><input type="email" id="emailDet" placeholder="Email Address *" required></div>
-                    <div class="form-group"><input type="text" id="orgDet" placeholder="Organization (Optional)"></div>
-                    <div class="form-group"><input type="tel" id="phoneDet" placeholder="Phone Number"></div>
-                    <input type="hidden" id="planTypeDet" value="Basic">
-                    <button type="submit" class="submit-membership"><i class="fas fa-lock"></i> Subscribe Now</button>
-                    <p style="font-size:0.75rem; text-align:center; margin-top:0.7rem;">By subscribing you agree to our data privacy policy (Kenya Data Protection Act).</p>
-                </form>
-                <div id="formFeedbackDet"></div>
-            </div>
-        </div>
-
-        <!-- Additional "Become a Member" small feature with link (floating style but integrated) -->
-        <div style="margin-top: 2rem; text-align: center; background: var(--card-bg); padding: 1.2rem; border-radius: 60px; box-shadow: var(--shadow-sm); display: inline-block; width: auto; margin-left: auto; margin-right: auto;">
-            <i class="fas fa-id-card" style="color: var(--secondary); margin-right: 0.6rem;"></i> 
-            <strong>Want to join?</strong> 
-            <button id="floatingMembershipBtn" style="background: var(--accent); border:none; padding:0.4rem 1.2rem; border-radius:40px; color:white; margin-left:0.8rem; cursor:pointer;">Become a Member →</button>
+            <a href="membership.html" class="btn btn-outline" style="margin-top: 0.5rem;">View Membership Plans →</a>
         </div>
     </section>
+    <!-- Latest Publications -->
+    <section class="section" style="background: var(--background-secondary);"><div class="section-title"><h2>Latest Publications</h2><p>Recent insights from our experts</p></div><div class="posts-grid"><div class="post-card"><div class="post-image" style="background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80')"></div><div class="post-content"><span class="category">Research</span><h3>Climate Diplomacy Strategy 2025</h3><p>Kenya's leadership in green diplomacy and regional climate resilience frameworks.</p><a href="#" class="read-more">Read more →</a></div></div><div class="post-card"><div class="post-image" style="background-image:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80')"></div><div class="post-content"><span class="category">Policy Brief</span><h3>Horn of Africa Peace Architecture</h3><p>Analysis of conflict prevention and economic integration opportunities.</p><a href="#" class="read-more">Read more →</a></div></div><div class="post-card"><div class="post-image" style="background-image:url('https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=600&q=80')"></div><div class="post-content"><span class="category">Report</span><h3>EU-Kenya EPA Implementation</h3><p>Trade impact assessment and roadmap for enhanced cooperation.</p><a href="#" class="read-more">Read more →</a></div></div></div><div class="text-center" style="margin-top: 2rem;"><a href="#" class="btn">All Publications →</a></div></section>
 
     <!-- Newsletter -->
     <section class="newsletter-section"><h3>Stay Updated with Diplomatic Highlights</h3><p>Daily briefs, event invites, and exclusive analysis.</p><form class="newsletter-form" id="newsletterForm"><input type="email" id="newsEmail" placeholder="Your email address" required><button type="submit"><i class="fas fa-paper-plane"></i> Subscribe</button></form><div class="newsletter-benefits" style="display:flex; justify-content:center; gap:1.5rem; margin-top:1.5rem;"><span><i class="fas fa-check-circle"></i> Daily briefs</span><span><i class="fas fa-check-circle"></i> Event invites</span><span><i class="fas fa-check-circle"></i> Research previews</span></div></section>
