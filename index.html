@@ -2,416 +2,139 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diplomatic College of Kenyan Foreign Policy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Diplomatic College of Kenyan Foreign Policy | Advancing Global Excellence</title>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #1a4b8c;
-            --primary-light: #3a6cb0;
-            --secondary: #f0b72f;
-            --secondary-light: #f8d67a;
-            --accent: #2e7dcc;
-            --background: #ffffff;
-            --text: #333333;
-            --text-secondary: #666666;
-            --card-bg: #f8f9fa;
-            --border-color: rgba(0,0,0,0.1);
-            --background-secondary: #f5f7fa;
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --box-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.15);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        /* Dark Mode Variables */
-        [data-theme="dark"] {
-            --primary: #3a6cb0;
-            --secondary: #f8d67a;
-            --accent: #4a90e2;
-            --background: #121212;
-            --text: #f5f5f5;
-            --text-secondary: #b0b0b0;
-            --card-bg: #1e1e1e;
-            --border-color: rgba(255,255,255,0.1);
-            --background-secondary: #2d2d2d;
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            --box-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.4);
-        }
-
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
         }
 
-        html {
-            font-size: 16px;
-            scroll-behavior: smooth;
+        :root {
+            --primary: #0a2f44;
+            --primary-dark: #06212e;
+            --secondary: #e6b422;
+            --secondary-light: #f5cd5f;
+            --accent: #1f7a8c;
+            --accent-hover: #155f6e;
+            --background: #ffffff;
+            --background-secondary: #f4f7fc;
+            --text: #1e2a36;
+            --text-secondary: #4a5b6e;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 32px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
         }
 
-        /* Updated body font to modern Inter with increased line-height */
+        [data-theme="dark"] {
+            --primary: #1c4e6e;
+            --primary-dark: #0a2a3b;
+            --secondary: #f0b72f;
+            --accent: #3c9daf;
+            --background: #121212;
+            --background-secondary: #1e2a32;
+            --text: #edf2f7;
+            --text-secondary: #cbd5e1;
+            --card-bg: #1e2a32;
+            --border: #2d3a44;
+        }
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            margin: 0;
-            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
             color: var(--text);
-            background-color: var(--background);
-            line-height: 1.7; /* Increased line-height for better readability */
-            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
             transition: var(--transition);
         }
 
-        /* Header Styles - Made sticky */
+        /* Header */
         header {
             background: var(--background);
-            box-shadow: var(--box-shadow);
-            position: sticky; /* Changed to sticky for better mobile experience */
+            backdrop-filter: blur(0px);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
             top: 0;
-            width: 100%;
             z-index: 1000;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, background 0.2s;
         }
-
-        .header-hidden {
-            transform: translateY(-100%);
-        }
-
+        .header-hidden { transform: translateY(-100%); }
         .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.9rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
         }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            z-index: 1001;
-        }
-
-        .logo img {
-            height: 60px;
-            max-width: 100%;
-            width: auto; /* Ensure proper aspect ratio */
-        }
-
-        .logo-text h1 {
-            font-size: 1.7rem;
-            margin: 0;
-            color: var(--primary);
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .logo-text p {
-            font-size: 0.9rem;
-            margin: 0;
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
-
-        /* Header Actions - Search and Menu */
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        /* Search Bar in Header */
-        .header-search {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
+        .logo { display: flex; align-items: center; gap: 1rem; }
+        .logo img { height: 55px; width: auto; object-fit: contain; }
+        .logo-text h1 { font-size: 1.5rem; color: var(--primary); font-weight: 700; }
+        .logo-text p { font-size: 0.8rem; color: var(--text-secondary); }
+        .header-actions { display: flex; align-items: center; gap: 1.5rem; }
+        .header-search { position: relative; display: flex; align-items: center; }
         .header-search input {
             padding: 0.7rem 1rem 0.7rem 2.5rem;
             border-radius: 20px;
             border: 1px solid var(--border-color);
-            background: var(--card-bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
+            background: var(--background-secondary);
             width: 200px;
             transition: var(--transition);
         }
-
-        .header-search input:focus {
-            outline: none;
-            border-color: var(--secondary);
-            width: 250px;
-            box-shadow: 0 0 0 2px rgba(0, 128, 128, 0.2); /* Updated to accent color */
-        }
-
-        .header-search i {
-            position: absolute;
-            left: 1rem;
-            color: var(--text-secondary);
-        }
-
-        /* Mobile Menu Button */
+        .header-search i { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary); }
         .mobile-menu-btn {
-            display: block;
-            background: none;
-            border: none;
-            color: var(--primary);
-            font-size: 1.8rem;
-            cursor: pointer;
-            z-index: 1101;
-            position: relative;
-            padding: 0.4rem;
-            transition: var(--transition);
+            background: none; border: none; font-size: 1.8rem; color: var(--primary);
+            cursor: pointer; z-index: 1101; min-width: 48px; min-height: 48px;
         }
-
-        .mobile-menu-btn:hover {
-            color: var(--secondary);
-        }
-
-        /* Full Screen Navigation Container */
+        /* Fullscreen nav */
         .nav-fullscreen-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: var(--primary);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            transform: translateY(-100%);
-            transition: transform 0.5s ease;
-            overflow-y: auto;
-            padding: 6rem 2rem 2rem;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: var(--primary); z-index: 1100; transform: translateY(-100%);
+            transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            overflow-y: auto; padding: 5rem 2rem 2rem;
         }
-
-        .nav-fullscreen-container.active {
-            transform: translateY(0);
-        }
-
-        .nav-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 3rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .nav-logo img {
-            height: 50px;
-            width: auto; /* Ensure proper aspect ratio */
-        }
-
-        .nav-logo-text h2 {
-            color: white;
-            font-size: 1.5rem;
-            margin: 0;
-        }
-
+        .nav-fullscreen-container.active { transform: translateY(0); }
+        .nav-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 1rem; flex-wrap: wrap; }
+        .nav-logo { display: flex; align-items: center; gap: 1rem; }
+        .nav-logo img { height: 50px; }
+        .nav-logo-text h2 { color: white; font-size: 1.5rem; margin: 0; }
         .nav-logo-text p {
             color: rgba(255, 255, 255, 0.8);
             font-size: 0.9rem;
             margin: 0;
         }
-
-        .close-nav-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .close-nav-btn:hover {
-            color: var(--secondary);
-        }
-
-        /* Navigation Content */
-        .nav-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        @media (min-width: 992px) {
-            .nav-content {
-                grid-template-columns: 2fr 1fr;
-            }
-        }
-
-        .nav-main {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .nav-main {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .nav-section {
-            margin-bottom: 2rem;
-        }
-
-        .nav-section h3 {
-            color: var(--secondary);
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--accent); /* Updated to accent color */
-        }
-
-        .nav-links {
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-            display: block;
-            padding: 0.5rem 0;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--secondary);
-            transform: translateX(10px);
-        }
-
-        .nav-links a.active {
-            color: var(--secondary);
-            font-weight: 600;
-        }
-
-        .nav-links a.active:after {
-            content: '•';
-            position: absolute;
-            left: -15px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        /* Mega menu sections */
-        .mega-menu-section {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .mega-menu-section h4 {
-            color: var(--secondary);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .mega-menu-links {
-            list-style: none;
-        }
-
-        .mega-menu-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .mega-menu-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            display: block;
-            padding: 0.3rem 0;
-        }
-
-        .mega-menu-links a:hover {
-            color: var(--secondary);
-        }
-
-        /* Nav sidebar */
-        .nav-sidebar {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 2rem;
-        }
-
+        .close-nav-btn { background: none; border: none; color: white; font-size: 2rem; cursor: pointer; }
+        .nav-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 2rem; }
+        @media (min-width: 992px) { .nav-content { grid-template-columns: 2fr 1fr; } }
+        .nav-main { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 2rem; }
+        .nav-section h3, .nav-sidebar h3 { color: var(--secondary); margin-bottom: 1.2rem; font-size: 1.2rem; }
+        .nav-links, .mega-menu-links { list-style: none; }
+        .nav-links li, .mega-menu-links li { margin-bottom: 0.7rem; }
+        .nav-links a, .mega-menu-links a { color: white; text-decoration: none; transition: var(--transition); display: inline-block; }
+        .nav-links a:hover { color: var(--secondary); transform: translateX(6px); }
+        .nav-sidebar { background: rgba(255,255,255,0.1); border-radius: 20px; padding: 1.8rem; }
         .nav-sidebar h3 {
             color: var(--secondary);
             margin-bottom: 1.5rem;
         }
-
         .contact-info {
             list-style: none;
             margin-bottom: 2rem;
         }
-
-        .contact-info li {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .contact-info i {
-            color: var(--secondary);
-            font-size: 1.2rem;
-            margin-top: 0.2rem;
-        }
-
-        .social-links-nav {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-links-nav a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border-radius: 50%;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .social-links-nav a:hover {
-            color: var(--secondary);
-            color: var(--text);
-            transform: translateY(-3px);
-        }
-
-        /* Search in nav */
+        .contact-info li { display: flex; gap: 1rem; margin-bottom: 1rem; color: white; }
+        .contact-info i { color: var(--secondary); font-size: 1.2rem; margin-top: 0.2rem; }
         .nav-search {
             margin-top: 2rem;
             position: relative;
         }
-
         .nav-search input {
             width: 100%;
             padding: 1rem 1rem 1rem 3rem;
@@ -421,7 +144,11 @@
             color: white;
             font-family: 'Inter', sans-serif;
         }
-
+        .whatsapp-button {
+            position: fixed; bottom: 24px; right: 24px; background: #25D366; width: 56px; height: 56px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;
+            font-size: 28px; box-shadow: var(--shadow-md); z-index: 1050; transition: transform 0.2s;
+        }
         .nav-search input::placeholder {
             color: rgba(255, 255, 255, 0.7);
         }
@@ -433,733 +160,77 @@
             transform: translateY(-50%);
             color: rgba(255, 255, 255, 0.7);
         }
-
-        /* Hero Section with overlay */
+        /* Hero */
         .hero {
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 128, 128, 0.4) 100%), 
-                        url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 4rem 2rem;
-            margin-top: 80px;
+            background: linear-gradient(115deg, rgba(10,47,68,0.85) 0%, rgba(31,122,140,0.7) 100%),
+                        url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1600&q=80');
+            background-size: cover; background-position: center; min-height: 80vh;
+            display: flex; align-items: center; text-align: center; padding: 5rem 2rem;
         }
-
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: white;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            line-height: 1.2;
-            font-weight: 600;
-        }
-
-        .hero p {
-            font-size: 1.4rem;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            color: rgba(255,255,255,0.9);
-            line-height: 1.6; /* Increased line-height */
-        }
-
-        /* Updated buttons with accent color */
-        .btn {
-            display: inline-block;
-            background: var(--accent); /* Updated to accent color */
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            min-width: 160px;
-            text-align: center;
-            border: 2px solid transparent;
-            box-shadow: var(--box-shadow);
-        }
-
-        .btn:hover {
-            background: var(--accent-hover); /* Updated to accent hover color */
-            transform: translateY(-3px);
-            box-shadow: var(--box-shadow-hover);
-        }
-
-        /* Updated links with accent color */
-        a {
-            color: var(--accent); /* Updated to accent color */
-            transition: var(--transition);
-        }
-
-        a:hover {
-            color: var(--accent-hover); /* Updated to accent hover color */
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-container {
-                padding: 1rem;
-            }
-
-            .logo-text h1 {
-                font-size: 1.4rem;
-            }
-
-            .header-search {
-                display: none;
-            }
-
-            .hero {
-                min-height: 70vh;
-                padding: 3rem 1.5rem;
-                margin-top: 60px;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .nav-fullscreen-container {
-                padding: 5rem 1.5rem 1.5rem;
-            }
-
-            .nav-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-
-            .close-nav-btn {
-                position: absolute;
-                top: 1.5rem;
-                right: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header-container {
-                padding: 0.75rem 1rem;
-            }
-
-            .logo-text h1 {
-                font-size: 1.2rem;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-        }
-
-        /* WhatsApp Button */
-        .whatsapp-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .whatsapp-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .whatsapp-button i {
-            font-size: 28px;
-        }
-
-        /* Additional spacing improvements */
-        .section {
-            padding: 5rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--secondary);
-        }
-
-        .section-title p {
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            line-height: 1.7; /* Increased line-height */
-        }
-
-        /* Cards Grid */
-        .posts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 4rem;
-        }
-
-        .post-card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .post-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--box-shadow-hover);
-        }
-
-        .post-image {
-            height: 220px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .post-image:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .post-card:hover .post-image:after {
-            opacity: 1;
-        }
-
-        .post-content {
-            padding: 2rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .post-meta {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .post-meta .category {
-            background: var(--accent); /* Updated to accent color */
-            color: white;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .post-content h3 {
-            margin: 0 0 1.5rem 0;
-            font-size: 1.5rem;
-            color: var(--text);
-            font-weight: 600;
-            line-height: 1.4; /* Increased line-height */
-        }
-        
-        .post-excerpt {
-            margin-bottom: 2rem;
-            color: var(--text-secondary);
-            font-weight: 400;
-            line-height: 1.7; /* Increased line-height */
-            flex-grow: 1;
-        }
-
-        .read-more {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent); /* Updated to accent color */
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            padding: 0.5rem 0;
-            align-self: flex-start;
-        }
-        
-        .read-more:hover {
-            color: var(--accent-hover); /* Updated to accent hover color */
-            transform: translateX(5px);
-        }
-
-        /* Features Section */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-bottom: 4rem;
-        }
-        
-        .feature-card {
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 8px;
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid var(--border-color);
-            box-shadow: var(--box-shadow);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--box-shadow-hover);
-            border-color: var(--accent); /* Updated to accent color */
-        }
-        
-        .feature-icon {
-            font-size: 3rem;
-            color: var(--accent); /* Updated to accent color */
-            margin-bottom: 2rem;
-        }
-        
-        .feature-card h3 {
-            margin: 0 0 1.5rem 0;
-            color: var(--text);
-            font-weight: 600;
-            font-size: 1.4rem;
-            line-height: 1.4; /* Increased line-height */
-        }
-        
-        .feature-card p {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            line-height: 1.7; /* Increased line-height */
-        }
-
-        /* ========= MEMBERSHIP SUBSCRIPTION SECTION ========= */
-        .membership-section {
-            background: linear-gradient(125deg, var(--primary) 0%, #0f2c4a 100%);
-            border-radius: 24px;
-            margin: 2rem auto 3rem;
-            padding: 3rem 2rem;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-        }
-
-        .membership-section::before {
-            content: '';
-            position: absolute;
-            top: -30%;
-            right: -10%;
-            width: 300px;
-            height: 300px;
-            background: rgba(240, 183, 47, 0.08);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .membership-section::after {
-            content: '';
-            position: absolute;
-            bottom: -20%;
-            left: -5%;
-            width: 250px;
-            height: 250px;
-            background: rgba(46, 125, 204, 0.1);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .membership-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .membership-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .membership-header h2 {
-            font-size: 2.4rem;
-            color: white;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .membership-header p {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .membership-badge {
-            display: inline-block;
-            background: var(--secondary);
-            color: var(--primary);
-            font-size: 0.8rem;
-            font-weight: bold;
-            padding: 0.3rem 1rem;
-            border-radius: 40px;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .membership-plans {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .membership-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
-            border-radius: 20px;
-            padding: 2rem 1.8rem;
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-        }
-
-        .membership-card:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.18);
-            border-color: var(--secondary);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .membership-card.selected {
-            border: 2px solid var(--secondary);
-            background: rgba(240, 183, 47, 0.15);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .plan-icon {
-            font-size: 2.8rem;
-            color: var(--secondary);
-            margin-bottom: 1.2rem;
-        }
-
-        .plan-name {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 0.75rem;
-        }
-
-        .plan-price {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--secondary);
-            margin: 1rem 0;
-        }
-
-        .plan-price span {
-            font-size: 1rem;
-            font-weight: 400;
-            color: rgba(255,255,255,0.7);
-        }
-
-        .plan-features {
-            list-style: none;
-            margin: 1.5rem 0;
-            padding: 0;
-        }
-
-        .plan-features li {
-            margin: 0.8rem 0;
-            color: rgba(255,255,255,0.9);
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-        }
-
-        .plan-features i {
-            color: var(--secondary);
-            font-size: 0.9rem;
-        }
-
-        .membership-btn {
-            background: white;
-            color: var(--primary);
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 40px;
-            font-weight: 700;
-            width: 100%;
-            margin-top: 1rem;
-            transition: var(--transition);
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .membership-btn:hover {
-            background: var(--secondary);
-            color: var(--primary);
-            transform: scale(0.98);
-        }
-
-        .membership-form-wrapper {
-            background: white;
-            border-radius: 24px;
-            padding: 2rem;
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: white; max-width: 800px; margin: 0 auto 1rem; }
+        .hero p { font-size: 1.2rem; color: rgba(255,255,255,0.9); max-width: 650px; margin: 0 auto 2rem; }
+        .btn { background: var(--accent); color: white; padding: 0.8rem 2rem; border-radius: 40px; font-weight: 600; text-decoration: none; display: inline-block; transition: var(--transition); border: none; cursor: pointer; }
+        .btn:hover { background: var(--accent-hover); transform: translateY(-3px); }
+        .section { max-width: 1400px; margin: 0 auto; padding: 4rem 2rem; }
+        .section-title { text-align: center; margin-bottom: 3rem; }
+        .section-title h2 { font-size: 2.3rem; color: var(--primary); position: relative; display: inline-block; }
+        .section-title h2:after { content: ''; position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%); width: 70px; height: 3px; background: var(--secondary); }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 2rem; }
+        .feature-card { background: var(--card-bg); padding: 2rem; border-radius: 24px; box-shadow: var(--shadow-sm); transition: var(--transition); border: 1px solid var(--border); text-align: center; }
+        .feature-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); border-color: var(--accent); }
+        .feature-icon { font-size: 2.8rem; color: var(--accent); margin-bottom: 1.5rem; }
+        .posts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 2rem; margin-top: 2rem; }
+        .post-card { background: var(--card-bg); border-radius: 24px; overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); }
+        .post-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+        .post-image { height: 200px; background-size: cover; background-position: center; }
+        .post-content { padding: 1.5rem; }
+        .category { background: var(--accent); color: white; padding: 0.2rem 1rem; border-radius: 30px; font-size: 0.7rem; font-weight: 600; display: inline-block; margin-bottom: 0.8rem; }
+        .read-more { color: var(--accent); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-top: 1rem; }
+        /* Membership card as featured inside About area */
+        .about-membership-grid {
+            display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;
             margin-top: 2.5rem;
-            display: none;
-            animation: slideUp 0.4s ease;
-            box-shadow: 0 20px 35px rgba(0,0,0,0.2);
         }
-
-        .membership-form-wrapper.active {
-            display: block;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .form-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
+        .membership-card-compact {
+            background: var(--card-bg); border-radius: 28px; padding: 1.8rem;
+            flex: 1; min-width: 250px; border: 1px solid var(--border);
+            transition: var(--transition); box-shadow: var(--shadow-sm);
             text-align: center;
         }
-
-        .subscription-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            max-width: 500px;
-            margin: 0 auto;
+        .membership-card-compact:hover { transform: translateY(-5px); border-color: var(--secondary); }
+        .plan-price { font-size: 1.8rem; font-weight: 800; color: var(--accent); margin: 0.8rem 0; }
+        .membership-cta-small {
+            background: var(--secondary); color: var(--primary); border: none;
+            padding: 0.6rem 1.2rem; border-radius: 40px; font-weight: bold; cursor: pointer;
+            transition: 0.2s; margin-top: 1rem;
         }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+        .membership-cta-small:hover { background: #d4a017; transform: scale(0.97); }
+        /* Detailed membership section inside "About Us" */
+        .membership-full-section {
+            background: linear-gradient(120deg, var(--background-secondary) 0%, var(--background) 100%);
+            border-radius: 48px; padding: 2.5rem; margin-top: 3rem;
+            border: 1px solid var(--border);
         }
-
-        .form-group label {
-            font-weight: 600;
-            color: var(--text);
-            font-size: 0.9rem;
+        .membership-plans-detailed {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(270px,1fr)); gap: 2rem; margin: 2rem 0;
         }
-
-        .form-group input, .form-group select {
-            padding: 0.8rem 1rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            font-family: 'Inter', sans-serif;
-            background: var(--background);
-            color: var(--text);
-            transition: var(--transition);
+        .membership-card-detailed {
+            background: var(--card-bg); border-radius: 32px; padding: 1.8rem;
+            box-shadow: var(--shadow-sm); transition: 0.2s; cursor: pointer;
+            border: 1px solid transparent;
         }
-
-        .form-group input:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 2px rgba(46,125,204,0.2);
-        }
-
-        .submit-membership {
-            background: var(--accent);
-            color: white;
-            padding: 0.9rem;
-            border: none;
-            border-radius: 40px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 0.5rem;
-        }
-
-        .submit-membership:hover {
-            background: var(--accent-hover);
-            transform: translateY(-2px);
-        }
-
-        .close-form {
-            background: none;
-            border: none;
-            float: right;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-secondary);
-            margin-top: -0.5rem;
-        }
-
-        .close-form:hover {
-            color: var(--accent);
-        }
-
-        .success-message {
-            background: #e8f5e9;
-            color: #2e7d32;
-            padding: 1rem;
-            border-radius: 12px;
-            text-align: center;
-            margin-top: 1rem;
-            font-weight: 500;
-        }
-
-        /* Newsletter Section */
-        .newsletter-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            padding: 4rem 2rem;
-            border-radius: 8px;
-            margin: 4rem 0;
-            color: white;
-            text-align: center;
-        }
-
-        .newsletter-section h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: white;
-            line-height: 1.4; /* Increased line-height */
-        }
-
-        .newsletter-section p {
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            color: rgba(255,255,255,0.9);
-            line-height: 1.7; /* Increased line-height */
-        }
-
-        .newsletter-form {
-            display: flex;
-            max-width: 600px;
-            margin: 0 auto;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            border-radius: 50px;
-            overflow: hidden;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 1rem 1.5rem;
-            border: none;
-            background: white;
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-        }
-
-        .newsletter-form input::placeholder {
-            color: var(--text-secondary);
-        }
-
-        .newsletter-form button {
-            background: var(--accent); /* Updated to accent color */
-            color: white;
-            border: none;
-            padding: 0 2.5rem;
-            cursor: pointer;
-            transition: var(--transition);
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .newsletter-form button:hover {
-            background: var(--accent-hover); /* Updated to accent hover color */
-        }
-
-        .newsletter-benefits {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .newsletter-benefit {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.9);
-        }
-
-        .newsletter-benefit i {
-            color: var(--accent); /* Updated to accent color */
-        }
-
+        .membership-card-detailed.selected { border-color: var(--secondary); background: rgba(230,180,34,0.05); }
+        .btn-membership-select { background: var(--accent); border: none; width: 100%; margin-top: 1.5rem; }
+        .subscription-form-modal { margin-top: 2rem; background: var(--background); border-radius: 32px; padding: 2rem; display: none; box-shadow: var(--shadow-md); }
+        .subscription-form-modal.active { display: block; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        .form-group { margin-bottom: 1rem; }
+        .form-group input, .form-group select { width: 100%; padding: 0.8rem 1rem; border-radius: 60px; border: 1px solid var(--border); background: var(--background); }
+        .submit-membership { background: var(--secondary); color: var(--primary); font-weight: bold; border: none; padding: 0.9rem; border-radius: 60px; width: 100%; cursor: pointer; margin-top: 0.8rem; }
+        .newsletter-section { background: var(--primary); border-radius: 32px; padding: 3rem 2rem; text-align: center; color: white; margin: 3rem auto; }
+        .newsletter-form { display: flex; max-width: 550px; margin: 2rem auto 0; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
+        .newsletter-form input { flex: 1; padding: 0.9rem 1.5rem; border-radius: 60px; border: none; min-width: 200px; font-family: 'Inter', sans-serif }
+        .newsletter-form button { background: var(--secondary); border: none; padding: 0 1.8rem; border-radius: 60px; font-weight: bold; cursor: pointer; font-family: 'Inter', sans-serif }
         /* Footer */
         footer {
             background: var(--background-secondary);
@@ -1388,348 +459,64 @@
     </style>
 </head>
 <body>
-    <a href="https://wa.me/254791325409" class="whatsapp-button" aria-label="Chat with us on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    <header>
-        <div class="header-container">
-            <!-- Logo Section -->
-            <div class="logo">
-                <img src="images/logo.jpg" alt="Diplomatic College of Kenyan Foreign Policy Logo" width="60" height="60">
-                <div class="logo-text">
-                    <h1>Diplomatic College</h1>
-                    <p>of Kenyan Foreign Policy</p>
-                </div>
-            </div>
-
-            <!-- Header Actions - Search and Menu -->
-            <div class="header-actions">
-                <!-- Search Bar -->
-                <div class="header-search">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search...">
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <button id="menu-btn" class="mobile-menu-btn" aria-label="Toggle menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Full Screen Navigation Container -->
-    <div class="nav-fullscreen-container" id="navContainer">
-        <div class="nav-header">
-            <div class="nav-logo">
-                <img src="images/logo.jpg" alt="Diplomatic College Logo" width="50" height="50">
-                <div class="nav-logo-text">
-                    <h2>Diplomatic College</h2>
-                    <p>of Kenyan Foreign Policy</p>
-                </div>
-            </div>
-            <button class="close-nav-btn" id="closeNavBtn" aria-label="Close navigation">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-
-        <div class="nav-content">
-            <div class="nav-main">
-                <!-- Main Navigation -->
-                <div class="nav-section">
-                    <h3>Main Menu</h3>
-                    <ul class="nav-links">
-                        <li><a href="index.html" class="active">Home</a></li>
-                        <li><a href="research.html">Research & Publications</a></li>
-                        <li><a href="program-schedule.html">Program Schedule</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                    </ul>
-                </div>
-
-                <!-- Regions Section -->
-                <div class="nav-section">
-                    <h3>Regions</h3>
-                    <div class="mega-menu-section">
-                        <h4>Africa</h4>
-                    </div>
-                    
-                    <div class="mega-menu-section">
-                        <h4>Europe</h4>
-                    </div>
-
-                    <div class="mega-menu-section">
-                        <h4>Asia</h4>
-                    </div>
-
-                    <div class="mega-menu-section">
-                        <h4>Americas</h4>
-                    </div>
-                </div>
-
-                <!-- Topics Section -->
-                <div class="nav-section">
-                    <h3>Topics</h3>
-                    <ul class="nav-links">
-                        <li><a href="#">Diplomacy & Foreign Policy</a></li>
-                        <li><a href="#">Global Security</a></li>
-                        <li><a href="#">Economy & Trade</a></li>
-                        <li><a href="#">Technology & Innovation</a></li>
-                        <li><a href="#">International Law</a></li>
-                    </ul>
-                </div>
-
-                <!-- Publications Section -->
-                <div class="nav-section">
-                    <h3>Publications</h3>
-                    <ul class="nav-links">
-                        <li><a href="#">Research Papers</a></li>
-                        <li><a href="#">Reports</a></li>
-                        <li><a href="#">Newsletters</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Sidebar with contact info -->
-            <div class="nav-sidebar">
-                <h3>Contact Info</h3>
-                <ul class="contact-info">
-                    <li>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <p>Diplomatic College of Kenyan Foreign Policy</p>
-                            <p>Westlands Office Park, Nairobi, Kenya</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <p>+254 20 123 4567</p>
-                            <p>+254 712 345 678</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <p>info@dckfp.org</p>
-                            <p>research@dckfp.org</p>
-                        </div>
-                    </li>
-                </ul>
-
-                <div class="nav-search">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search...">
-                </div>
-            </div>
-        </div>
+<a href="https://wa.me/254791325409" class="whatsapp-button" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<header>
+    <div class="header-container">
+        <div class="logo"><img src="images/logo.jpg" alt="Logo" onerror="this.src='https://placehold.co/60x60?text=DCKFP'"><div class="logo-text"><h1>Diplomatic College</h1><p>of Kenyan Foreign Policy</p></div></div>
+        <div class="header-actions"><div class="header-search"><i class="fas fa-search"></i><input type="text" id="globalSearch" placeholder="Search..."></div><button id="menu-btn" class="mobile-menu-btn"><i class="fas fa-bars"></i></button></div>
     </div>
+</header>
+<div class="nav-fullscreen-container" id="navContainer"><div class="nav-header"><div class="nav-logo"><img src="images/logo.jpg" alt="logo"><div class="nav-logo-text"><h2>Diplomatic College</h2><p>of Kenyan Foreign Policy</p></div></div><button class="close-nav-btn" id="closeNavBtn"><i class="fas fa-times"></i></button></div><div class="nav-content"><div class="nav-main"><div class="nav-section"><h3>Main</h3><ul class="nav-links"><li><a href="#" class="active">Home</a></li><li><a href="#">Research</a></li><li><a href="#">Program Schedule</a></li><li><a href="#">Contact</a></li><li><a href="#">About Us</a></li></ul></div><div class="nav-section"><h3>Regions</h3><ul class="nav-links"><li><a href="#">Africa</a></li><li><a href="#">Europe</a></li><li><a href="#">Asia</a></li><li><a href="#">Americas</a></li></ul></div><div class="nav-section"><h3>Topics</h3><ul class="nav-links"><li><a href="#">Diplomacy</a></li><li><a href="#">Global Security</a></li><li><a href="#">Trade & Economy</a></li></ul></div></div><div class="nav-sidebar"><h3>Contact</h3><ul class="contact-info"><li><i class="fas fa-map-marker-alt"></i> Westlands, Nairobi, Kenya</li><li><i class="fas fa-phone"></i> +254 20 1234567</li><li><i class="fas fa-envelope"></i> info@dckfp.org</li></ul><div class="nav-search"><i class="fas fa-search"></i><input type="text" id="navSearchInput" placeholder="Search..."></div></div></div></div>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content fade-in">
-                <h1>Advancing Kenya's Global Diplomatic Excellence</h1>
-                <p>Research, training, and policy engagement for a stronger Kenya in the international arena</p>
-                <div class="btn-group">
-                    <a href="about.html" class="btn">Learn More</a>
-                </div>
-            </div>
-        </section>
+<main>
+    <section class="hero"><div class="hero-content"><h1>Kenya's Voice, Global Impact</h1><p>Shaping foreign policy through research, training, and strategic diplomacy</p><a href="#about-membership" class="btn">Discover Membership <i class="fas fa-arrow-right"></i></a></div></section>
 
-        <!-- About Section -->
-        <section class="section">
-            <div class="section-title fade-in">
-                <h2>Our Core Functions</h2>
-                <p>Driving Kenya's foreign policy through cutting-edge research and strategic engagement</p>
-            </div>
+    <!-- Core functions -->
+    <section class="section"><div class="section-title"><h2>Our Core Functions</h2><p>Driving policy innovation & diplomatic excellence</p></div><div class="features"><div class="feature-card"><div class="feature-icon"><i class="fas fa-globe-africa"></i></div><h3>Policy Research</h3><p>In-depth analysis on climate diplomacy, peacekeeping, and regional integration.</p></div><div class="feature-card"><div class="feature-icon"><i class="fas fa-graduation-cap"></i></div><h3>Diplomatic Training</h3><p>Tailored programs for ambassadors, foreign service officers, and envoys.</p></div><div class="feature-card"><div class="feature-icon"><i class="fas fa-handshake"></i></div><h3>International Cooperation</h3><p>Strengthening Kenya’s bilateral and multilateral engagements.</p></div></div></section>
 
-            <div class="features">
-                <div class="feature-card fade-in delay-1">
-                    <div class="feature-icon">
-                        <i class="fas fa-globe-africa"></i>
-                    </div>
-                    <h3>Policy Research</h3>
-                    <p>Conducting in-depth analysis of global trends to inform Kenya's foreign policy decisions and international engagements.</p>
-                </div>
-                
-                <div class="feature-card fade-in delay-2">
-                    <div class="feature-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Diplomatic Training</h3>
-                    <p>Developing world-class training programs to enhance the skills of Kenyan diplomats and international relations professionals.</p>
-                </div>
-                
-                <div class="feature-card fade-in delay-3">
-                    <div class="feature-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>International Cooperation</h3>
-                    <p>Facilitating partnerships and collaborations with global institutions to advance Kenya's strategic interests.</p>
-                </div>
-            </div>
-        </section>
+    <!-- Latest Publications -->
+    <section class="section" style="background: var(--background-secondary);"><div class="section-title"><h2>Latest Publications</h2><p>Recent insights from our experts</p></div><div class="posts-grid"><div class="post-card"><div class="post-image" style="background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80')"></div><div class="post-content"><span class="category">Research</span><h3>Climate Diplomacy Strategy 2025</h3><p>Kenya's leadership in green diplomacy and regional climate resilience frameworks.</p><a href="#" class="read-more">Read more →</a></div></div><div class="post-card"><div class="post-image" style="background-image:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80')"></div><div class="post-content"><span class="category">Policy Brief</span><h3>Horn of Africa Peace Architecture</h3><p>Analysis of conflict prevention and economic integration opportunities.</p><a href="#" class="read-more">Read more →</a></div></div><div class="post-card"><div class="post-image" style="background-image:url('https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=600&q=80')"></div><div class="post-content"><span class="category">Report</span><h3>EU-Kenya EPA Implementation</h3><p>Trade impact assessment and roadmap for enhanced cooperation.</p><a href="#" class="read-more">Read more →</a></div></div></div><div class="text-center" style="margin-top: 2rem;"><a href="#" class="btn">All Publications →</a></div></section>
 
-        <!-- Publications Section -->
-        <section class="section" style="background: var(--background-secondary);">
-            <div class="section-title fade-in">
-                <h2>Latest Publications</h2>
-                <p>Recent research and policy analysis from our experts</p>
+    <!-- ABOUT US SECTION with full membership details (comprehensive) -->
+    <section id="about-membership" class="section">
+        <!-- Comprehensive membership plans inside About Us -->
+        <div class="membership-full-section">
+            <div style="text-align:center;"><span style="background: var(--secondary); padding:0.3rem 1.2rem; border-radius:60px; font-weight:bold;">Membership & Subscription</span><h3 style="margin-top: 1rem; font-size: 1.8rem;">Become a Member</h3><p>Join our community of policy-makers, researchers, and diplomatic professionals.</p></div>
+            <div class="membership-plans-detailed" id="detailedPlansContainer">
+                <div class="membership-card-detailed" data-plan="Basic"><i class="fas fa-leaf" style="font-size: 2rem; color: var(--accent);"></i><h3 style="margin:0.8rem 0">Basic Member</h3><div class="plan-price">Free</div><ul style="list-style:none; margin:1rem 0"><li><i class="fas fa-check-circle"></i> Monthly newsletter</li><li><i class="fas fa-check-circle"></i> Public event invites</li><li><i class="fas fa-check-circle"></i> Research digests</li></ul><button class="btn-membership-select select-plan-btn-detailed btn">Select Basic</button></div>
+                <div class="membership-card-detailed" data-plan="Professional"><i class="fas fa-chalkboard-user" style="font-size: 2rem; color: var(--accent);"></i><h3>Professional</h3><div class="plan-price">KSh 2,500 <span style="font-size:0.9rem;">/ year</span></div><ul><li><i class="fas fa-check-circle"></i> All Basic features</li><li><i class="fas fa-check-circle"></i> Full research papers</li><li><i class="fas fa-check-circle"></i> Policy dialogues</li><li><i class="fas fa-check-circle"></i> Membership certificate</li></ul><button class="btn-membership-select select-plan-btn-detailed btn">Select Professional</button></div>
+                <div class="membership-card-detailed" data-plan="Corporate"><i class="fas fa-building" style="font-size: 2rem; color: var(--accent);"></i><h3>Corporate / Institutional</h3><div class="plan-price">KSh 15,000 <span>/ year</span></div><ul><li><i class="fas fa-check-circle"></i> All Professional benefits</li><li><i class="fas fa-check-circle"></i> Custom policy briefings</li><li><i class="fas fa-check-circle"></i> Sponsorship visibility</li><li><i class="fas fa-check-circle"></i> Dedicated liaison officer</li></ul><button class="btn-membership-select select-plan-btn-detailed btn">Select Corporate</button></div>
             </div>
-            
-            <div class="posts-grid">
-                <div class="post-card fade-in delay-1">
-                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80')" 
-                         alt="Climate change visualization showing global warming effects"></div>
-                    <div class="post-content">
-                        <div class="post-meta">
-                            <span><i class="far fa-calendar-alt"></i> 10 May 2024</span>
-                            <span class="category">Research</span>
-                        </div>
-                        <h3>Climate Diplomacy Strategy</h3>
-                        <p class="post-excerpt">New research paper analyzing Kenya's leadership in regional climate initiatives and recommendations for future policy directions.</p>
-                        <a href="#" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="post-card fade-in delay-2">
-                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1364&q=80')" 
-                         alt="African Union conference hall with delegates"></div>
-                    <div class="post-content">
-                        <div class="post-meta">
-                            <span><i class="far fa-calendar-alt"></i> 5 May 2024</span>
-                            <span class="category">News</span>
-                        </div>
-                        <h3>AU Summit Address</h3>
-                        <p class="post-excerpt">Director General presents Kenya's vision for conflict resolution mechanisms in the Horn of Africa region.</p>
-                        <a href="#" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="post-card fade-in delay-3">
-                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80')" 
-                         alt="European Union and Kenyan flags side by side"></div>
-                    <div class="post-content">
-                        <div class="post-meta">
-                            <span><i class="far fa-calendar-alt"></i> 28 April 2024</span>
-                            <span class="category">Publication</span>
-                        </div>
-                        <h3>EU Partnership Review</h3>
-                        <p class="post-excerpt">Examining implementation challenges of Kenya-EU EPA agreement and pathways for enhanced economic cooperation.</p>
-                        <a href="#" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
+            <!-- Dynamic subscription form (replaces previous floating style) -->
+            <div id="membershipFormDetailed" class="subscription-form-modal">
+                <button id="closeDetailedForm" style="float:right; background:none; border:none; font-size:1.6rem; cursor:pointer;">&times;</button>
+                <h3 id="formPlanTitleDetailed">Subscribe to <span id="selectedPlanSpan">Basic</span> Plan</h3>
+                <form id="detailedSubscribeForm">
+                    <div class="form-group"><input type="text" id="fullNameDet" placeholder="Full Name *" required></div>
+                    <div class="form-group"><input type="email" id="emailDet" placeholder="Email Address *" required></div>
+                    <div class="form-group"><input type="text" id="orgDet" placeholder="Organization (Optional)"></div>
+                    <div class="form-group"><input type="tel" id="phoneDet" placeholder="Phone Number"></div>
+                    <input type="hidden" id="planTypeDet" value="Basic">
+                    <button type="submit" class="submit-membership"><i class="fas fa-lock"></i> Subscribe Now</button>
+                    <p style="font-size:0.75rem; text-align:center; margin-top:0.7rem;">By subscribing you agree to our data privacy policy (Kenya Data Protection Act).</p>
+                </form>
+                <div id="formFeedbackDet"></div>
             </div>
-            
-            <div class="text-center fade-in delay-4" style="margin-top: 3rem;">
-                <a href="research.html" class="btn">View All Publications</a>
-            </div>
-        </section>
+        </div>
 
-        <!-- MEMBERSHIP SUBSCRIPTION SECTION (Simple & Elegant) -->
-        <section class="section" style="padding-top: 0;">
-            <div class="membership-section fade-in">
-                <div class="membership-container">
-                    <div class="membership-header">
-                        <span class="membership-badge"><i class="fas fa-user-plus"></i> Join the Community</span>
-                        <h2>Become a Member</h2>
-                        <p>Subscribe to exclusive diplomatic insights, policy briefs, and professional networking opportunities. Choose a plan that fits your engagement level.</p>
-                    </div>
-                    
-                    <div class="membership-plans" id="plansContainer">
-                        <div class="membership-card" data-plan="Basic">
-                            <div class="plan-icon"><i class="fas fa-leaf"></i></div>
-                            <div class="plan-name">Basic Member</div>
-                            <div class="plan-price">Free <span>/ lifetime</span></div>
-                            <ul class="plan-features">
-                                <li><i class="fas fa-check-circle"></i> Monthly Newsletter</li>
-                                <li><i class="fas fa-check-circle"></i> Public Event Invitations</li>
-                                <li><i class="fas fa-check-circle"></i> Research Summaries</li>
-                            </ul>
-                            <button class="membership-btn select-plan-btn">Select Basic</button>
-                        </div>
-                        <div class="membership-card" data-plan="Professional">
-                            <div class="plan-icon"><i class="fas fa-chalkboard-user"></i></div>
-                            <div class="plan-name">Professional</div>
-                            <div class="plan-price">KSh 2,500 <span>/ year</span></div>
-                            <ul class="plan-features">
-                                <li><i class="fas fa-check-circle"></i> All Basic features</li>
-                                <li><i class="fas fa-check-circle"></i> Full research papers access</li>
-                                <li><i class="fas fa-check-circle"></i> Quarterly policy dialogues</li>
-                                <li><i class="fas fa-check-circle"></i> Certificate of membership</li>
-                            </ul>
-                            <button class="membership-btn select-plan-btn">Select Professional</button>
-                        </div>
-                        <div class="membership-card" data-plan="Corporate">
-                            <div class="plan-icon"><i class="fas fa-building"></i></div>
-                            <div class="plan-name">Corporate / Institutional</div>
-                            <div class="plan-price">KSh 15,000 <span>/ year</span></div>
-                            <ul class="plan-features">
-                                <li><i class="fas fa-check-circle"></i> All Professional benefits</li>
-                                <li><i class="fas fa-check-circle"></i> Custom policy briefings</li>
-                                <li><i class="fas fa-check-circle"></i> Sponsorship visibility</li>
-                                <li><i class="fas fa-check-circle"></i> Dedicated liaison officer</li>
-                            </ul>
-                            <button class="membership-btn select-plan-btn">Select Corporate</button>
-                        </div>
-                    </div>
+        <!-- Additional "Become a Member" small feature with link (floating style but integrated) -->
+        <div style="margin-top: 2rem; text-align: center; background: var(--card-bg); padding: 1.2rem; border-radius: 60px; box-shadow: var(--shadow-sm); display: inline-block; width: auto; margin-left: auto; margin-right: auto;">
+            <i class="fas fa-id-card" style="color: var(--secondary); margin-right: 0.6rem;"></i> 
+            <strong>Want to join?</strong> 
+            <button id="floatingMembershipBtn" style="background: var(--accent); border:none; padding:0.4rem 1.2rem; border-radius:40px; color:white; margin-left:0.8rem; cursor:pointer;">Become a Member →</button>
+        </div>
+    </section>
 
-                    <!-- Subscription Form (hidden initially) -->
-                    <div class="membership-form-wrapper" id="membershipFormWrapper">
-                        <button class="close-form" id="closeFormBtn">&times;</button>
-                        <div class="form-title" id="formPlanTitle">Subscribe to <span id="selectedPlanName">Basic</span> Plan</div>
-                        <form id="subscriptionForm" class="subscription-form">
-                            <div class="form-group"><label>Full Name *</label><input type="text" id="fullName" placeholder="e.g., John M. Kamau" required></div>
-                            <div class="form-group"><label>Email Address *</label><input type="email" id="email" placeholder="you@example.com" required></div>
-                            <div class="form-group"><label>Organization / Institution (Optional)</label><input type="text" id="organization" placeholder="Your organization"></div>
-                            <div class="form-group"><label>Phone Number</label><input type="tel" id="phone" placeholder="+254 XXX XXX XXX"></div>
-                            <input type="hidden" id="planType" value="Basic">
-                            <button type="submit" class="submit-membership"><i class="fas fa-lock"></i> Subscribe Now</button>
-                            <p style="font-size: 0.8rem; text-align:center; margin-top:0.5rem;">We respect your privacy. No spam, ever.</p>
-                        </form>
-                        <div id="formFeedback"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- Newsletter -->
+    <section class="newsletter-section"><h3>Stay Updated with Diplomatic Highlights</h3><p>Daily briefs, event invites, and exclusive analysis.</p><form class="newsletter-form" id="newsletterForm"><input type="email" id="newsEmail" placeholder="Your email address" required><button type="submit"><i class="fas fa-paper-plane"></i> Subscribe</button></form><div class="newsletter-benefits" style="display:flex; justify-content:center; gap:1.5rem; margin-top:1.5rem;"><span><i class="fas fa-check-circle"></i> Daily briefs</span><span><i class="fas fa-check-circle"></i> Event invites</span><span><i class="fas fa-check-circle"></i> Research previews</span></div></section>
+</main>
 
-        <!-- Newsletter Section -->
-        <section class="newsletter-section fade-in delay-2">
-            <h3>Stay Updated with Daily Diplomatic Highlights</h3>
-            <p>Subscribe to our newsletter and receive daily updates on Kenya's diplomatic engagements, policy briefs, and event invitations directly to your inbox.</p>
-            
-            <form class="newsletter-form">
-                <input type="email" placeholder="Your email address" required>
-                <button type="submit">
-                    <i class="fas fa-paper-plane"></i> Subscribe
-                </button>
-            </form>
-            
-            <div class="newsletter-benefits">
-                <div class="newsletter-benefit">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Daily diplomatic briefs</span>
-                </div>
-                <div class="newsletter-benefit">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Event invitations</span>
-                </div>
-                <div class="newsletter-benefit">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Exclusive research previews</span>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
+<footer>
         <div class="footer-container">
             <div class="footer-about">
                 <img src="images/logo.jpg" alt="Diplomatic College Logo" class="footer-logo" width="150" height="150">
