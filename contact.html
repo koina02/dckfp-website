@@ -2,178 +2,116 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Contact - Diplomatic College of Kenyan Foreign Policy</title>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    
-    <!-- Inline critical CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #1a4b8c;
-            --primary-light: #3a6cb0;
-            --secondary: #f0b72f;
-            --secondary-light: #f8d67a;
-            --accent: #2e7dcc;
-            --background: #ffffff;
-            --text: #333333;
-            --text-secondary: #666666;
-            --card-bg: #f8f9fa;
-            --border-color: rgba(0,0,0,0.1);
-            --background-secondary: #f5f7fa;
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --box-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.15);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        /* Dark Mode Variables */
-        [data-theme="dark"] {
-            --primary: #3a6cb0;
-            --secondary: #f8d67a;
-            --accent: #4a90e2;
-            --background: #121212;
-            --text: #f5f5f5;
-            --text-secondary: #b0b0b0;
-            --card-bg: #1e1e1e;
-            --border-color: rgba(255,255,255,0.1);
-            --background-secondary: #2d2d2d;
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            --box-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.4);
-        }
-
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
-        html {
-            font-size: 16px;
-            scroll-behavior: smooth;
+        :root {
+            --primary: #0a2f44;
+            --primary-dark: #06212e;
+            --secondary: #e6b422;
+            --secondary-light: #f5cd5f;
+            --accent: #1f7a8c;
+            --accent-hover: #155f6e;
+            --background: #ffffff;
+            --background-secondary: #f4f7fc;
+            --text: #1e2a36;
+            --text-secondary: #4a5b6e;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --border-color: rgba(0,0,0,0.1);
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 32px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --box-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        [data-theme="dark"] {
+            --primary: #1c4e6e;
+            --primary-dark: #0a2a3b;
+            --secondary: #f0b72f;
+            --accent: #3c9daf;
+            --background: #121212;
+            --background-secondary: #1e2a32;
+            --text: #edf2f7;
+            --text-secondary: #cbd5e1;
+            --card-bg: #1e2a32;
+            --border: #2d3a44;
+            --border-color: rgba(255,255,255,0.1);
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
+            background: var(--background);
             color: var(--text);
-            background-color: var(--background);
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
             transition: var(--transition);
         }
 
-        /* Header Styles */
+        /* Header - consistent with main page */
         header {
             background: var(--background);
-            box-shadow: var(--box-shadow);
-            position: fixed;
+            backdrop-filter: blur(0px);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
             top: 0;
-            width: 100%;
             z-index: 1000;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, background 0.2s;
         }
-
-        .header-hidden {
-            transform: translateY(-100%);
-        }
-
+        .header-hidden { transform: translateY(-100%); }
         .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.9rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
         }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            z-index: 1001;
+        @media (max-width: 768px) {
+            .header-container { padding: 0.75rem 1rem; }
         }
-
-        .logo img {
-            height: 60px;
-            max-width: 100%;
+        .logo { display: flex; align-items: center; gap: 1rem; cursor: pointer; }
+        .logo img { height: 55px; width: auto; object-fit: contain; }
+        .logo-text h1 { font-size: 1.5rem; color: var(--primary); font-weight: 700; line-height: 1.2; }
+        .logo-text p { font-size: 0.8rem; color: var(--text-secondary); }
+        @media (max-width: 480px) {
+            .logo-text h1 { font-size: 1.2rem; }
         }
-
-        .logo-text h1 {
-            font-size: 1.7rem;
-            margin: 0;
-            color: var(--primary);
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .logo-text p {
-            font-size: 0.9rem;
-            margin: 0;
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
-
-        /* Header Actions - Search and Menu */
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        /* Search Bar in Header */
-        .header-search {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
+        .header-actions { display: flex; align-items: center; gap: 1.5rem; }
+        .header-search { position: relative; display: flex; align-items: center; }
         .header-search input {
             padding: 0.7rem 1rem 0.7rem 2.5rem;
             border-radius: 20px;
-            border: 1px solid var(--border-color);
-            background: var(--card-bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
+            border: 1px solid var(--border);
+            background: var(--background-secondary);
             width: 200px;
             transition: var(--transition);
+            font-family: 'Inter', sans-serif;
         }
-
-        .header-search input:focus {
-            outline: none;
-            border-color: var(--secondary);
-            width: 250px;
-            box-shadow: 0 0 0 2px rgba(240, 183, 47, 0.2);
-        }
-
-        .header-search i {
-            position: absolute;
-            left: 1rem;
-            color: var(--text-secondary);
-        }
-
-        /* Mobile Menu Button */
+        .header-search input:focus { outline: none; border-color: var(--secondary); width: 250px; }
+        .header-search i { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary); }
+        @media (max-width: 768px) { .header-search { display: none; } }
+        
         .mobile-menu-btn {
-            display: block;
-            background: none;
-            border: none;
-            color: var(--primary);
-            font-size: 1.8rem;
-            cursor: pointer;
-            z-index: 1101;
-            position: relative;
-            padding: 0.4rem;
+            background: none; border: none; font-size: 1.8rem; color: var(--primary);
+            cursor: pointer; z-index: 1101; min-width: 48px; min-height: 48px;
             transition: var(--transition);
         }
+        .mobile-menu-btn:hover { color: var(--secondary); }
 
-        .mobile-menu-btn:hover {
-            color: var(--secondary);
-        }
-
-        /* Fullscreen nav */
+        /* Fullscreen nav - consistent */
         .nav-fullscreen-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
             background: var(--primary); z-index: 1100; transform: translateY(-100%);
@@ -182,845 +120,215 @@
         }
         .nav-fullscreen-container.active { transform: translateY(0); }
         .nav-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 1rem; flex-wrap: wrap; }
-        .nav-logo { display: flex; align-items: center; gap: 1rem; }
-        .nav-logo img { height: 50px; }
-        .nav-logo-text h2 { color: white; font-size: 1.5rem; margin: 0; }
-        .nav-logo-text p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.9rem;
-            margin: 0;
+        @media (max-width: 768px) {
+            .nav-header { flex-direction: column; text-align: center; gap: 1rem; }
+            .close-nav-btn { position: absolute; top: 1.5rem; right: 1.5rem; }
         }
-        .close-nav-btn { background: none; border: none; color: white; font-size: 2rem; cursor: pointer; }
+        .nav-logo { display: flex; align-items: center; gap: 1rem; }
+        .nav-logo img { height: 50px; width: auto; }
+        .nav-logo-text h2 { color: white; font-size: 1.5rem; margin: 0; }
+        .nav-logo-text p { color: rgba(255, 255, 255, 0.8); font-size: 0.9rem; margin: 0; }
+        .close-nav-btn { background: none; border: none; color: white; font-size: 2rem; cursor: pointer; transition: var(--transition); }
+        .close-nav-btn:hover { color: var(--secondary); }
         .nav-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 2rem; }
         @media (min-width: 992px) { .nav-content { grid-template-columns: 2fr 1fr; } }
         .nav-main { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 2rem; }
         .nav-section h3, .nav-sidebar h3 { color: var(--secondary); margin-bottom: 1.2rem; font-size: 1.2rem; }
         .nav-links, .mega-menu-links { list-style: none; }
         .nav-links li, .mega-menu-links li { margin-bottom: 0.7rem; }
-        .nav-links a, .mega-menu-links a { color: white; text-decoration: none; transition: var(--transition); display: inline-block; }
+        .nav-links a, .mega-menu-links a { color: white; text-decoration: none; transition: var(--transition); display: inline-block; font-size: 1rem; }
         .nav-links a:hover { color: var(--secondary); transform: translateX(6px); }
+        .nav-links a.active { color: var(--secondary); font-weight: 600; }
         .nav-sidebar { background: rgba(255,255,255,0.1); border-radius: 20px; padding: 1.8rem; }
-        .nav-sidebar h3 {
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-        }
-        .contact-info {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-        .contact-info li { display: flex; gap: 1rem; margin-bottom: 1rem; color: white; }
-        .contact-info i { color: var(--secondary); font-size: 1.2rem; margin-top: 0.2rem; }
-        .nav-search {
-            margin-top: 2rem;
-            position: relative;
-        }
-        .nav-search input {
-            width: 100%;
-            padding: 1rem 1rem 1rem 3rem;
-            border-radius: 30px;
-            border: none;
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            font-family: 'Inter', sans-serif;
-        }
+        .contact-info-nav { list-style: none; margin-bottom: 2rem; }
+        .contact-info-nav li { display: flex; gap: 1rem; margin-bottom: 1rem; color: white; align-items: flex-start; }
+        .contact-info-nav i { color: var(--secondary); font-size: 1.2rem; margin-top: 0.2rem; }
+        .nav-search { margin-top: 2rem; position: relative; }
+        .nav-search input { width: 100%; padding: 1rem 1rem 1rem 3rem; border-radius: 30px; border: none; background: rgba(255, 255, 255, 0.15); color: white; font-family: 'Inter', sans-serif; }
+        .nav-search input::placeholder { color: rgba(255, 255, 255, 0.7); }
+        .nav-search i { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: rgba(255, 255, 255, 0.7); }
+
+        /* WhatsApp Button */
         .whatsapp-button {
             position: fixed; bottom: 24px; right: 24px; background: #25D366; width: 56px; height: 56px;
             border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;
             font-size: 28px; box-shadow: var(--shadow-md); z-index: 1050; transition: transform 0.2s;
-        }
-        .nav-search input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .nav-search i {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%), url('https://images.pexels.com/photos/27719497/pexels-photo-27719497.jpeg');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 4rem 2rem;
-            margin-top: 80px;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: white;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            line-height: 1.2;
-            font-weight: 600;
-        }
-
-        .hero p {
-            font-size: 1.4rem;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            color: rgba(255,255,255,0.9);
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--secondary);
-            color: #333;
-            padding: 1rem 2rem;
-            border-radius: 4px;
             text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            min-width: 160px;
-            text-align: center;
-            border: 2px solid transparent;
-            box-shadow: var(--box-shadow);
         }
+        .whatsapp-button:hover { transform: scale(1.1); }
 
-        .btn:hover {
-            background: var(--secondary-light);
-            transform: translateY(-3px);
-            box-shadow: var(--box-shadow-hover);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-container {
-                padding: 1rem;
-            }
-
-            .logo-text h1 {
-                font-size: 1.4rem;
-            }
-
-            .header-search {
-                display: none;
-            }
-
-            .hero {
-                min-height: 70vh;
-                padding: 3rem 1.5rem;
-                margin-top: 60px;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .nav-fullscreen-container {
-                padding: 5rem 1.5rem 1.5rem;
-            }
-
-            .nav-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-
-            .close-nav-btn {
-                position: absolute;
-                top: 1.5rem;
-                right: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header-container {
-                padding: 0.75rem 1rem;
-            }
-
-            .logo-text h1 {
-                font-size: 1.2rem;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-        }
-
-        /* WhatsApp Button */
-        .whatsapp-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .whatsapp-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .whatsapp-button i {
-            font-size: 28px;
-        }
-    </style>
-</head>
-<body>
-    <a href="https://wa.me/254791325409" class="whatsapp-button" aria-label="Chat with us on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    
-    <header>
-        <div class="header-container">
-            <!-- Logo Section -->
-            <div class="logo" onclick="window.location.href='index.html'">
-               <img src="images/logo.jpg" alt="Logo" onerror="this.src='https://placehold.co/60x60?text=DCKFP'">
-               <div class="logo-text">
-                 <h1>Diplomatic College</h1>
-                  <p>of Kenyan Foreign Policy</p>
-            </div>
-        </div>
-
-            <!-- Header Actions - Search and Menu -->
-            <div class="header-actions">
-                <!-- Search Bar -->
-                <div class="header-search">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search...">
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <button id="menu-btn" class="mobile-menu-btn" aria-label="Toggle menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </header>
-    <div class="nav-fullscreen-container" id="navContainer"><div class="nav-header"><div class="nav-logo"><img src="images/logo.jpg" alt="logo"><div class="nav-logo-text"><h2>Diplomatic College</h2><p>of Kenyan Foreign Policy</p></div></div><button class="close-nav-btn" id="closeNavBtn"><i class="fas fa-times"></i></button></div><div class="nav-content"><div class="nav-main"><div class="nav-section"><h3>Main</h3><ul class="nav-links"><li><a href="#" class="active">Home</a></li><li><a href="index.html">Research</a></li><li><a href="research.html">Program Schedule</a></li><li><a href="program-schedule.html">Contact</a></li><li><a href="contact.html">About Us</a></li></ul></div><div class="nav-section"><h3>Regions</h3><ul class="nav-links"><li><a href="#">Africa</a></li><li><a href="#">Europe</a></li><li><a href="#">Asia</a></li><li><a href="#">Americas</a></li></ul></div><div class="nav-section"><h3>Topics</h3><ul class="nav-links"><li><a href="#">Diplomacy</a></li><li><a href="#">Global Security</a></li><li><a href="#">Trade & Economy</a></li></ul></div></div><div class="nav-sidebar"><h3>Contact</h3><ul class="contact-info"><li><i class="fas fa-map-marker-alt"></i> Westlands, Nairobi, Kenya</li><li><i class="fas fa-phone"></i> +254 20 1234567</li><li><i class="fas fa-envelope"></i> info@dckfp.org</li></ul><div class="nav-search"><i class="fas fa-search"></i><input type="text" id="navSearchInput" placeholder="Search..."></div></div></div></div>
-
-    <main>
-        <div class="page-header fade-in">
-            <h2>Contact Us</h2>
-            <p>Get in touch with the Diplomatic College of Kenyan Foreign Policy for inquiries, partnerships, or media requests</p>
-        </div>
-        
-        <div class="contact-container">
-            <div class="contact-info fade-in delay-1">
-                <h3>Contact Information</h3>
-                
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="info-content">
-                        <h4>Headquarters</h4>
-                        <p>Diplomatic College of Kenyan Foreign Policy<br>
-                        Westlands Office Park, 2nd Floor<br>
-                        Nairobi, Kenya</p>
-                    </div>
-                </div>
-                
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <div class="info-content">
-                        <h4>Phone</h4>
-                        <p>+254 20 123 4567 (Main)<br>
-                        +254 711 123 456 (Mobile)</p>
-                    </div>
-                </div>
-                
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="info-content">
-                        <h4>Email</h4>
-                        <p>info@dckfp.org (General Inquiries)<br>
-                        research@dckfp.org (Research Department)<br>
-                        training@dckfp.org (Training Programs)</p>
-                    </div>
-                </div>
-                
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="info-content">
-                        <h4>Working Hours</h4>
-                        <p>Monday - Friday: 8:00 AM - 5:00 PM<br>
-                        Saturday - Sunday: Closed</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="contact-form fade-in delay-2">
-                <h3>Send Us a Message</h3>
-                <form>
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <select id="subject" name="subject" required>
-                            <option value="">Select a subject</option>
-                            <option value="general">General Inquiry</option>
-                            <option value="research">Research Collaboration</option>
-                            <option value="training">Training Programs</option>
-                            <option value="media">Media Inquiry</option>
-                            <option value="partnership">Partnership Opportunity</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Your Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
-            </div>
-            
-            <div class="map-container fade-in delay-3">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8085599999996!2d36.805215!3d-1.2659!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f173c0a1f9e7f%3A0x1b3e48b1d5e0d5a5!2sWestlands%20Office%20Park!5e0!3m2!1sen!2ske!4v1620000000000!5m2!1sen!2ske" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-            
-            <div class="office-hours fade-in delay-4">
-                <h3>Office Hours & Departments</h3>
-                <table class="hours-table">
-                    <tr>
-                        <th>Main Office</th>
-                        <td>Monday - Friday: 8:00 AM - 5:00 PM</td>
-                    </tr>
-                    <tr>
-                        <th>Research Department</th>
-                        <td>Monday - Friday: 9:00 AM - 4:00 PM</td>
-                    </tr>
-                    <tr>
-                        <th>Training Center</th>
-                        <td>Monday - Friday: 8:30 AM - 5:30 PM</td>
-                    </tr>
-                    <tr>
-                        <th>Library</th>
-                        <td>Monday - Friday: 8:00 AM - 6:00 PM<br>
-                        Saturday: 9:00 AM - 1:00 PM</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-about">
-                <img src="images/logo.jpg" alt="Diplomatic College Logo" class="footer-logo" width="150" height="150">
-                <p>The Diplomatic College of Kenyan Foreign Policy is a premier institution dedicated to advancing Kenya's global diplomatic engagement through research, training, and policy analysis.</p>
-                <div class="social-links">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            
-            <div class="footer-links">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
-                    <li><a href="research.html"><i class="fas fa-chevron-right"></i> Research</a></li>
-                    <li><a href="experts.html"><i class="fas fa-chevron-right"></i> Our Experts</a></li>
-                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
-                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-links">
-                <h3>Resources</h3>
-                <ul>
-                    <li><a href="https://www.un.org/sites/un2.un.org/files/our-common-agenda-summit-of-the-future-what-would-it-deliver.pdf"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li>
-                    <li><a href="program-schedule.html"><i class="fas fa-chevron-right"></i> Program Schedule</a></li>
-                    <li><a href="https://www.kenyaembassy.org.tr/uploads/Kenya_Foreign_Policy.pdf"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="copyright">
-            <p>&copy; 2025 Diplomatic College of Kenyan Foreign Policy. All rights reserved.</p>
-            <a href="privacy-policy.html">Privacy Policy</a> | 
-            <a href="terms.html">Terms & Conditions</a> | 
-            <a href="cookie-policy.html">Cookie Policy</a>
-            <p class="compliance">
-                Compliant with the <strong>Kenya Data Protection Act, 2019 (enforced 2021)</strong>.
-            </p>
-        </div>
-    </footer>
-
-    <script>
-    // Navigation functionality
-    const menuBtn = document.getElementById('menu-btn');
-    const closeNavBtn = document.getElementById('closeNavBtn');
-    const navContainer = document.getElementById('navContainer');
-    const body = document.body;
-
-    // Open navigation
-    menuBtn.addEventListener('click', () => {
-        navContainer.classList.add('active');
-        body.style.overflow = 'hidden';
-        // Change icon to close when nav is open
-        menuBtn.innerHTML = '<i class="fas fa-times"></i>';
-    });
-
-    // Close navigation
-    closeNavBtn.addEventListener('click', () => {
-        navContainer.classList.remove('active');
-        body.style.overflow = 'auto';
-        // Change icon back to menu when nav is closed
-        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-    });
-
-    // Close nav when clicking outside content
-    navContainer.addEventListener('click', (e) => {
-        if (e.target === navContainer) {
-            navContainer.classList.remove('active');
-            body.style.overflow = 'auto';
-            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-        }
-    });
-
-    // Close nav when pressing Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navContainer.classList.contains('active')) {
-            navContainer.classList.remove('active');
-            body.style.overflow = 'auto';
-            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-        }
-    });
-
-    // Header scroll behavior: hide on scroll down, show on scroll up
-    let lastScroll = 0;
-    const header = document.querySelector('header');
-
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        // Header hide/show on scroll
-        if (currentScroll > lastScroll && currentScroll > 100) {
-            header.classList.add('header-hidden');
-        } else {
-            header.classList.remove('header-hidden');
-        }
-        lastScroll = currentScroll;
-    });
-
-    // Search functionality
-    const headerSearch = document.querySelector('.header-search input');
-    const navSearch = document.querySelector('.nav-search input');
-    
-    // Header search functionality
-    headerSearch.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            performSearch(headerSearch.value);
-        }
-    });
-    
-    // Nav search functionality
-    navSearch.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            performSearch(navSearch.value);
-            // Close nav after search
-            navContainer.classList.remove('active');
-            body.style.overflow = 'auto';
-            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-        }
-    });
-    
-    function performSearch(query) {
-        if (query.trim() !== '') {
-            alert(`Searching for: ${query}`);
-            // In a real implementation, you would redirect to search results page
-            // or filter content based on the search query
-        }
-    }
-
-    // Intersection Observer for animations
-    const fadeElements = document.querySelectorAll('.fade-in');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = 1;
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-
-    fadeElements.forEach(element => {
-        element.style.opacity = 0;
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(element);
-    });
-    </script>
-
-    <!-- Non-critical CSS (loaded after page content) -->
-    <style>
-        /* Non-critical CSS (loaded after page content) */
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-        }
-        
-        /* Main Content */
+        /* Main Content - Contact Page */
         main {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 6rem 2rem 4rem;
+            padding: 4rem 2rem;
         }
+        @media (max-width: 768px) { main { padding: 3rem 1.5rem; } }
         
         .page-header {
             text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
+            margin-bottom: 3rem;
         }
-        
         .page-header h2 {
+            font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
             position: relative;
             display: inline-block;
         }
-        
         .page-header h2:after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -12px;
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
             background: var(--secondary);
         }
-        
         .page-header p {
             font-size: 1.1rem;
             max-width: 700px;
-            margin: 0 auto;
+            margin: 1.5rem auto 0;
             color: var(--text-secondary);
-            font-weight: 400;
+        }
+        @media (max-width: 768px) {
+            .page-header h2 { font-size: 2rem; }
+            .page-header p { font-size: 1rem; }
         }
 
-        /* Contact Container Styles */
-        .contact-container {
+        /* Contact Grid - Responsive */
+        .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
         }
-        
-        .contact-info, .contact-form {
-            padding: 2.5rem;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--box-shadow);
+        @media (max-width: 992px) { .contact-grid { gap: 1.5rem; } }
+        @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+        .contact-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
             transition: var(--transition);
         }
-        
-        .contact-info:hover, .contact-form:hover {
-            transform: translateY(-5px);
-        }
-        
-        .contact-info h3, .contact-form h3 {
-            color: var(--secondary);
+        .contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+        .contact-card h3 {
+            font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
+            color: var(--secondary);
             margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border);
         }
-        
         .info-item {
             display: flex;
             align-items: flex-start;
-            gap: 1.5rem;
+            gap: 1rem;
             margin-bottom: 1.5rem;
         }
-        
-        .info-icon {
+        .info-item .icon {
+            width: 40px;
+            height: 40px;
+            background: var(--background-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
             font-size: 1.2rem;
-            color: var(--secondary);
-            min-width: 24px;
-            text-align: center;
-            margin-top: 0.2rem;
+            flex-shrink: 0;
         }
+        .info-item .content h4 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.3rem; }
+        .info-item .content p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5; margin: 0; }
         
-        .info-content h4 {
-            margin: 0 0 0.3rem 0;
-            color: var(--text);
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-        
-        .info-content p {
-            margin: 0;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
         /* Form Styles */
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text);
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text); font-size: 0.9rem; }
+        .form-group input, .form-group textarea, .form-group select {
             width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
+            padding: 0.85rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
             background: var(--background);
             color: var(--text);
             font-family: 'Inter', sans-serif;
             transition: var(--transition);
+            font-size: 0.95rem;
         }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
             outline: none;
             border-color: var(--accent);
-            box-shadow: var(--box-shadow);
+            box-shadow: 0 0 0 3px rgba(31,122,140,0.1);
         }
-        
+        .form-group textarea { min-height: 120px; resize: vertical; }
         .submit-btn {
-            background: var(--primary);
+            background: var(--accent);
             color: white;
             border: none;
             padding: 1rem 2rem;
-            border-radius: 4px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
             cursor: pointer;
             transition: var(--transition);
+            width: 100%;
             font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            width: 100%;
-            box-shadow: var(--box-shadow);
         }
-        
-        .submit-btn:hover {
-            background: var(--primary-light);
-            transform: translateY(-3px);
-            box-shadow: var(--box-shadow-hover);
-        }
+        .submit-btn:hover { background: var(--accent-hover); transform: translateY(-2px); }
 
-        /* Map and Office Hours */
+        /* Map and Hours - Full width sections */
         .map-container {
-            margin-top: 3rem;
-            border-radius: 8px;
+            margin: 2rem 0;
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: var(--box-shadow-hover);
-            border: 1px solid var(--border-color);
-            grid-column: 1 / -1;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
         }
-        
-        .map-container iframe {
-            width: 100%;
-            height: 400px;
-            border: none;
-        }
-        
-        .office-hours {
+        .map-container iframe { width: 100%; height: 350px; border: none; display: block; }
+        @media (max-width: 768px) { .map-container iframe { height: 280px; } }
+
+        .hours-section {
             background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 8px;
-            margin-top: 3rem;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--box-shadow);
-            grid-column: 1 / -1;
-            transition: var(--transition);
-        }
-        
-        .office-hours:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--box-shadow-hover);
-        }
-        
-        .office-hours h3 {
-            color: var(--secondary);
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .hours-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .hours-table tr {
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .hours-table tr:last-child {
-            border-bottom: none;
-        }
-        
-        .hours-table th,
-        .hours-table td {
-            padding: 1rem;
-            text-align: left;
-        }
-        
-        .hours-table th {
-            color: var(--text);
-            font-weight: 600;
-            width: 40%;
-        }
-        
-        .hours-table td {
-            color: var(--text-secondary);
-        }
-
-        /* Dropdown Menus - Improved contrast */
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: white;
-            min-width: 250px;
-            box-shadow: var(--box-shadow);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: var(--transition);
-            z-index: 1000;
-            border-top: 3px solid var(--secondary);
-        }
-
-        .primary-nav > li:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-menu li a {
-            color: var(--text);
-            padding: 0.8rem 1.5rem;
-            display: block;
-            text-decoration: none;
-            border-bottom: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-
-        .dropdown-menu li a:hover {
-            background: var(--background-secondary);
-            color: var(--primary);
-            padding-left: 2rem;
-        }
-
-        .dropdown-menu li:last-child a {
-            border-bottom: none;
-        }
-
-        /* Mega Menu for Regions */
-        .mega-menu {
-            left: 50%;
-            transform: translateX(-50%) translateY(10px);
-            width: 100vw;
-            max-width: 1200px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 2rem;
+            border-radius: 24px;
             padding: 2rem;
+            margin-top: 1rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+        .hours-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .hours-table { width: 100%; border-collapse: collapse; }
+        .hours-table tr { border-bottom: 1px solid var(--border); }
+        .hours-table tr:last-child { border-bottom: none; }
+        .hours-table th, .hours-table td { padding: 1rem; text-align: left; }
+        .hours-table th { width: 40%; font-weight: 600; color: var(--text); }
+        .hours-table td { color: var(--text-secondary); }
+        @media (max-width: 480px) {
+            .hours-table th, .hours-table td { padding: 0.75rem; font-size: 0.9rem; display: block; width: 100%; }
+            .hours-table tr { display: block; margin-bottom: 1rem; border-bottom: none; }
+            .hours-table th { padding-bottom: 0.25rem; }
+            .hours-table td { padding-top: 0; }
         }
 
-        .mega-menu:hover {
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .mega-menu-column h4 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .mega-menu-column ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .mega-menu-column li a {
-            border-bottom: none;
-            padding: 0.5rem 0;
-        }
-
-        /* Footer */
+        /* Footer - consistent with main page */
         footer {
             background: var(--background-secondary);
             color: var(--text);
             padding: 5rem 0 0;
-            margin-top: 3rem;
-            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+            border-top: 1px solid var(--border);
         }
-        
         .footer-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -1029,150 +337,225 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
         }
-
-        .footer-about {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .footer-logo {
-            max-width: 200px;
-            transition: filter 0.3s ease;
-        }
-
-        .footer-about p {
-            color: var(--text-secondary);
-            font-weight: 300;
-            line-height: 1.6;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
+        .footer-about { display: flex; flex-direction: column; gap: 1.5rem; }
+        .footer-logo { max-width: 180px; width: auto; height: auto; }
+        .footer-about p { color: var(--text-secondary); line-height: 1.7; }
+        .social-links { display: flex; gap: 1rem; flex-wrap: wrap; }
         .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--card-bg);
-            color: var(--text);
-            transition: var(--transition);
+            display: flex; align-items: center; justify-content: center; width: 40px; height: 40px;
+            border-radius: 50%; background: var(--card-bg); color: var(--text);
+            transition: var(--transition); text-decoration: none;
         }
-
-        .social-links a:hover {
-            background: var(--secondary);
-            color: var(--text);
-            transform: translateY(-3px);
-        }
+        .social-links a:hover { background: var(--accent); color: white; transform: translateY(-3px); }
+        .footer-links h3 { color: var(--accent); margin-bottom: 1.5rem; font-size: 1.3rem; font-weight: 600; position: relative; padding-bottom: 0.5rem; }
+        .footer-links h3:after { content: ''; position: absolute; bottom: 0; left: 0; width: 50px; height: 2px; background: var(--accent); }
+        .footer-links ul { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: 0.8rem; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; transition: var(--transition); display: flex; align-items: center; gap: 0.5rem; }
+        .footer-links a:hover { color: var(--accent); transform: translateX(5px); }
+        .footer-links i { width: 16px; text-align: center; color: var(--accent); }
+        .copyright { text-align: center; padding: 2rem; margin-top: 3rem; border-top: 1px solid var(--border); font-size: 0.9rem; color: var(--text-secondary); }
+        .copyright a { color: var(--accent); text-decoration: none; }
         
-        .footer-links h3 {
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-            font-weight: 600;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-
-        .footer-links h3:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--secondary);
-        }
-        
-        .footer-links ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: var(--transition);
-            font-weight: 400;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .footer-links a:hover {
-            color: var(--secondary);
-            transform: translateX(5px);
-        }
-        
-        .footer-links i {
-            width: 16px;
-            text-align: center;
-            color: var(--secondary);
-        }
-
-        .contact-info li {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-info i {
-            font-size: 1.2rem;
-        }
-
-        .contact-info div {
-            flex: 1;
-        }
-
-        .contact-info p {
-            margin: 0;
-            line-height: 1.6;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
-            border-top: 1px solid var(--border-color);
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            font-weight: 300;
-        }
-
-        @media (max-width: 768px) {
-            main {
-                padding: 5rem 1.5rem 3rem;
-            }
-            
-            .page-header h2 {
-                font-size: 2rem;
-            }
-
-            .info-item {
-                gap: 1rem;
-            }
-
-            .map-container iframe {
-                height: 300px;
-            }
-
-            .hours-table th,
-            .hours-table td {
-                padding: 0.75rem;
-                font-size: 0.9rem;
-            }
-        }
+        /* Animations */
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
     </style>
+</head>
+<body>
+<a href="https://wa.me/254791325409" class="whatsapp-button" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+<header>
+    <div class="header-container">
+        <div class="logo" onclick="window.location.href='index.html'">
+            <img src="images/logo.jpg" alt="Logo" onerror="this.src='https://placehold.co/60x60?text=DCKFP'">
+            <div class="logo-text">
+                <h1>Diplomatic College</h1>
+                <p>of Kenyan Foreign Policy</p>
+            </div>
+        </div>
+        <div class="header-actions">
+            <div class="header-search"><i class="fas fa-search"></i><input type="text" id="globalSearch" placeholder="Search..."></div>
+            <button id="menu-btn" class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </div>
+</header>
+
+<div class="nav-fullscreen-container" id="navContainer">
+    <div class="nav-header">
+        <div class="nav-logo">
+            <img src="images/logo.jpg" alt="logo" onerror="this.src='https://placehold.co/50x50?text=DCKFP'">
+            <div class="nav-logo-text"><h2>Diplomatic College</h2><p>of Kenyan Foreign Policy</p></div>
+        </div>
+        <button class="close-nav-btn" id="closeNavBtn"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="nav-content">
+        <div class="nav-main">
+            <div class="nav-section"><h3>Main Menu</h3><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="research.html">Research & Publications</a></li><li><a href="program-schedule.html">Program Schedule</a></li><li><a href="contact.html" class="active">Contact</a></li><li><a href="about.html">About Us</a></li></ul></div>
+            <div class="nav-section"><h3>Regions</h3><ul class="nav-links"><li><a href="#">Africa</a></li><li><a href="#">Europe</a></li><li><a href="#">Asia</a></li><li><a href="#">Americas</a></li></ul></div>
+            <div class="nav-section"><h3>Topics</h3><ul class="nav-links"><li><a href="#">Diplomacy & Foreign Policy</a></li><li><a href="#">Global Security</a></li><li><a href="#">Economy & Trade</a></li><li><a href="#">International Law</a></li></ul></div>
+        </div>
+        <div class="nav-sidebar">
+            <h3>Contact Info</h3>
+            <ul class="contact-info-nav">
+                <li><i class="fas fa-map-marker-alt"></i><div>Westlands Office Park, Nairobi, Kenya</div></li>
+                <li><i class="fas fa-phone"></i><div>+254 20 123 4567</div></li>
+                <li><i class="fas fa-envelope"></i><div>info@dckfp.org</div></li>
+            </ul>
+            <div class="nav-search"><i class="fas fa-search"></i><input type="text" id="navSearchInput" placeholder="Search..."></div>
+        </div>
+    </div>
+</div>
+
+<main>
+    <div class="page-header fade-in" id="headerFade">
+        <h2>Contact Us</h2>
+        <p>Get in touch with the Diplomatic College of Kenyan Foreign Policy for inquiries, partnerships, or media requests</p>
+    </div>
+
+    <div class="contact-grid">
+        <!-- Contact Information Card -->
+        <div class="contact-card fade-in delay-1" id="infoCard">
+            <h3><i class="fas fa-address-card" style="margin-right: 10px;"></i> Contact Information</h3>
+            <div class="info-item">
+                <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="content"><h4>Headquarters</h4><p>Diplomatic College of Kenyan Foreign Policy<br>Westlands Office Park, 2nd Floor<br>Nairobi, Kenya</p></div>
+            </div>
+            <div class="info-item">
+                <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                <div class="content"><h4>Phone</h4><p>+254 20 123 4567 (Main)<br>+254 711 123 456 (Mobile)</p></div>
+            </div>
+            <div class="info-item">
+                <div class="icon"><i class="fas fa-envelope"></i></div>
+                <div class="content"><h4>Email</h4><p>info@dckfp.org (General Inquiries)<br>research@dckfp.org (Research)<br>training@dckfp.org (Training)</p></div>
+            </div>
+            <div class="info-item">
+                <div class="icon"><i class="fas fa-clock"></i></div>
+                <div class="content"><h4>Working Hours</h4><p>Monday - Friday: 8:00 AM - 5:00 PM<br>Saturday - Sunday: Closed</p></div>
+            </div>
+        </div>
+
+        <!-- Contact Form Card -->
+        <div class="contact-card fade-in delay-2" id="formCard">
+            <h3><i class="fas fa-paper-plane" style="margin-right: 10px;"></i> Send Us a Message</h3>
+            <form id="contactForm">
+                <div class="form-group"><label for="name">Full Name *</label><input type="text" id="name" name="name" required></div>
+                <div class="form-group"><label for="email">Email Address *</label><input type="email" id="email" name="email" required></div>
+                <div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" name="phone"></div>
+                <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Select a subject</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="research">Research Collaboration</option>
+                        <option value="training">Training Programs</option>
+                        <option value="media">Media Inquiry</option>
+                        <option value="partnership">Partnership Opportunity</option>
+                    </select>
+                </div>
+                <div class="form-group"><label for="message">Your Message *</label><textarea id="message" name="message" required></textarea></div>
+                <button type="submit" class="submit-btn">Send Message <i class="fas fa-arrow-right"></i></button>
+                <div id="formFeedback" style="margin-top: 1rem; text-align: center; font-size: 0.9rem;"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Map Section -->
+    <div class="map-container fade-in delay-3">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8085599999996!2d36.805215!3d-1.2659!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f173c0a1f9e7f%3A0x1b3e48b1d5e0d5a5!2sWestlands%20Office%20Park!5e0!3m2!1sen!2ske!4v1620000000000!5m2!1sen!2ske" allowfullscreen="" loading="lazy" title="Office Location Map"></iframe>
+    </div>
+
+    <!-- Office Hours Section -->
+    <div class="hours-section fade-in delay-4">
+        <h3><i class="fas fa-building" style="margin-right: 10px;"></i> Office Hours & Departments</h3>
+        <table class="hours-table">
+            <tr><th>Main Office</th><td>Monday - Friday: 8:00 AM - 5:00 PM</td></tr>
+            <tr><th>Research Department</th><td>Monday - Friday: 9:00 AM - 4:00 PM</td></tr>
+            <tr><th>Training Center</th><td>Monday - Friday: 8:30 AM - 5:30 PM</td></tr>
+            <tr><th>Library</th><td>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 1:00 PM</td></tr>
+        </table>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-about">
+            <img src="images/logo.jpg" alt="Diplomatic College Logo" class="footer-logo" onerror="this.src='https://placehold.co/180x180?text=DCKFP'">
+            <p>The Diplomatic College of Kenyan Foreign Policy is a premier institution dedicated to advancing Kenya's global diplomatic engagement through research, training, and policy analysis.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-links"><h3>Quick Links</h3><ul><li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li><li><a href="research.html"><i class="fas fa-chevron-right"></i> Research</a></li><li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li><li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li></ul></div>
+        <div class="footer-links"><h3>Resources</h3><ul><li><a href="#"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li><li><a href="program-schedule.html"><i class="fas fa-chevron-right"></i> Program Schedule</a></li><li><a href="#"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li></ul></div>
+    </div>
+    <div class="copyright"><p>&copy; 2025 Diplomatic College of Kenyan Foreign Policy. All rights reserved.</p><a href="privacy-policy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a><p class="compliance">Compliant with the <strong>Kenya Data Protection Act, 2019</strong>.</p></div>
+</footer>
+
+<script>
+    // Navigation functionality
+    const menuBtn = document.getElementById('menu-btn');
+    const closeNavBtn = document.getElementById('closeNavBtn');
+    const navContainer = document.getElementById('navContainer');
+    const body = document.body;
+
+    function openNav() { navContainer.classList.add('active'); body.style.overflow = 'hidden'; menuBtn.innerHTML = '<i class="fas fa-times"></i>'; }
+    function closeNav() { navContainer.classList.remove('active'); body.style.overflow = 'auto'; menuBtn.innerHTML = '<i class="fas fa-bars"></i>'; }
+    
+    menuBtn.addEventListener('click', openNav);
+    closeNavBtn.addEventListener('click', closeNav);
+    navContainer.addEventListener('click', (e) => { if (e.target === navContainer) closeNav(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && navContainer.classList.contains('active')) closeNav(); });
+
+    // Header scroll hide/show
+    let lastScroll = 0;
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll > lastScroll && currentScroll > 100) header.classList.add('header-hidden');
+        else header.classList.remove('header-hidden');
+        lastScroll = currentScroll;
+    });
+
+    // Search functionality
+    function performSearch(query) { if (query.trim() !== '') alert(`Searching for: ${query}`); }
+    const headerSearch = document.querySelector('.header-search input');
+    const navSearch = document.querySelector('.nav-search input');
+    headerSearch?.addEventListener('keypress', (e) => { if (e.key === 'Enter') performSearch(headerSearch.value); });
+    navSearch?.addEventListener('keypress', (e) => { if (e.key === 'Enter') { performSearch(navSearch.value); closeNav(); } });
+
+    // Form submission handler
+    const contactForm = document.getElementById('contactForm');
+    const formFeedback = document.getElementById('formFeedback');
+    contactForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name')?.value.trim();
+        const email = document.getElementById('email')?.value.trim();
+        if (!name || !email) {
+            formFeedback.innerHTML = '<span style="color:#c62828;">❌ Please fill in name and email.</span>';
+            setTimeout(() => { formFeedback.innerHTML = ''; }, 3000);
+            return;
+        }
+        formFeedback.innerHTML = '<span style="color:#2e7d32;">✓ Thank you! Your message has been sent. We will respond within 24 hours.</span>';
+        contactForm.reset();
+        setTimeout(() => { formFeedback.innerHTML = ''; }, 5000);
+    });
+
+    // Intersection Observer for fade-in animations
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+        });
+    }, { threshold: 0.1 });
+    fadeElements.forEach(el => observer.observe(el));
+</script>
 </body>
 </html>

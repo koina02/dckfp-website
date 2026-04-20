@@ -2,177 +2,116 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>About - Diplomatic College of Kenyan Foreign Policy</title>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #1a4b8c;
-            --primary-light: #3a6cb0;
-            --secondary: #f0b72f;
-            --secondary-light: #f8d67a;
-            --accent: #2e7dcc;
-            --background: #ffffff;
-            --text: #333333;
-            --text-secondary: #666666;
-            --card-bg: #f8f9fa;
-            --border-color: rgba(0,0,0,0.1);
-            --background-secondary: #f5f7fa;
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --box-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.15);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        /* Dark Mode Variables */
-        [data-theme="dark"] {
-            --primary: #3a6cb0;
-            --secondary: #f8d67a;
-            --accent: #4a90e2;
-            --background: #121212;
-            --text: #f5f5f5;
-            --text-secondary: #b0b0b0;
-            --card-bg: #1e1e1e;
-            --border-color: rgba(255,255,255,0.1);
-            --background-secondary: #2d2d2d;
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            --box-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.4);
-        }
-
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
-        html {
-            font-size: 16px;
-            scroll-behavior: smooth;
+        :root {
+            --primary: #0a2f44;
+            --primary-dark: #06212e;
+            --secondary: #e6b422;
+            --secondary-light: #f5cd5f;
+            --accent: #1f7a8c;
+            --accent-hover: #155f6e;
+            --background: #ffffff;
+            --background-secondary: #f4f7fc;
+            --text: #1e2a36;
+            --text-secondary: #4a5b6e;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --border-color: rgba(0,0,0,0.1);
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 32px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --box-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        [data-theme="dark"] {
+            --primary: #1c4e6e;
+            --primary-dark: #0a2a3b;
+            --secondary: #f0b72f;
+            --accent: #3c9daf;
+            --background: #121212;
+            --background-secondary: #1e2a32;
+            --text: #edf2f7;
+            --text-secondary: #cbd5e1;
+            --card-bg: #1e2a32;
+            --border: #2d3a44;
+            --border-color: rgba(255,255,255,0.1);
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
+            background: var(--background);
             color: var(--text);
-            background-color: var(--background);
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
             transition: var(--transition);
         }
 
-        /* Header Styles */
+        /* Header - consistent with main page */
         header {
             background: var(--background);
-            box-shadow: var(--box-shadow);
-            position: fixed;
+            backdrop-filter: blur(0px);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
             top: 0;
-            width: 100%;
             z-index: 1000;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, background 0.2s;
         }
-
-        .header-hidden {
-            transform: translateY(-100%);
-        }
-
+        .header-hidden { transform: translateY(-100%); }
         .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.9rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
         }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            z-index: 1001;
+        @media (max-width: 768px) {
+            .header-container { padding: 0.75rem 1rem; }
         }
-
-        .logo img {
-            height: 60px;
-            max-width: 100%;
+        .logo { display: flex; align-items: center; gap: 1rem; cursor: pointer; }
+        .logo img { height: 55px; width: auto; object-fit: contain; }
+        .logo-text h1 { font-size: 1.5rem; color: var(--primary); font-weight: 700; line-height: 1.2; }
+        .logo-text p { font-size: 0.8rem; color: var(--text-secondary); }
+        @media (max-width: 480px) {
+            .logo-text h1 { font-size: 1.2rem; }
         }
-
-        .logo-text h1 {
-            font-size: 1.7rem;
-            margin: 0;
-            color: var(--primary);
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .logo-text p {
-            font-size: 0.9rem;
-            margin: 0;
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
-
-        /* Header Actions - Search and Menu */
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        /* Search Bar in Header */
-        .header-search {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
+        .header-actions { display: flex; align-items: center; gap: 1.5rem; }
+        .header-search { position: relative; display: flex; align-items: center; }
         .header-search input {
             padding: 0.7rem 1rem 0.7rem 2.5rem;
             border-radius: 20px;
-            border: 1px solid var(--border-color);
-            background: var(--card-bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
+            border: 1px solid var(--border);
+            background: var(--background-secondary);
             width: 200px;
             transition: var(--transition);
+            font-family: 'Inter', sans-serif;
         }
-
-        .header-search input:focus {
-            outline: none;
-            border-color: var(--secondary);
-            width: 250px;
-            box-shadow: 0 0 0 2px rgba(240, 183, 47, 0.2);
-        }
-
-        .header-search i {
-            position: absolute;
-            left: 1rem;
-            color: var(--text-secondary);
-        }
-
-        /* Mobile Menu Button */
+        .header-search input:focus { outline: none; border-color: var(--secondary); width: 250px; }
+        .header-search i { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary); }
+        @media (max-width: 768px) { .header-search { display: none; } }
+        
         .mobile-menu-btn {
-            display: block;
-            background: none;
-            border: none;
-            color: var(--primary);
-            font-size: 1.8rem;
-            cursor: pointer;
-            z-index: 1101;
-            position: relative;
-            padding: 0.4rem;
+            background: none; border: none; font-size: 1.8rem; color: var(--primary);
+            cursor: pointer; z-index: 1101; min-width: 48px; min-height: 48px;
             transition: var(--transition);
         }
+        .mobile-menu-btn:hover { color: var(--secondary); }
 
-        .mobile-menu-btn:hover {
-            color: var(--secondary);
-        }
-
-        /* Fullscreen nav */
+        /* Fullscreen nav - consistent */
         .nav-fullscreen-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
             background: var(--primary); z-index: 1100; transform: translateY(-100%);
@@ -181,718 +120,207 @@
         }
         .nav-fullscreen-container.active { transform: translateY(0); }
         .nav-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 1rem; flex-wrap: wrap; }
-        .nav-logo { display: flex; align-items: center; gap: 1rem; }
-        .nav-logo img { height: 50px; }
-        .nav-logo-text h2 { color: white; font-size: 1.5rem; margin: 0; }
-        .nav-logo-text p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.9rem;
-            margin: 0;
+        @media (max-width: 768px) {
+            .nav-header { flex-direction: column; text-align: center; gap: 1rem; }
+            .close-nav-btn { position: absolute; top: 1.5rem; right: 1.5rem; }
         }
-        .close-nav-btn { background: none; border: none; color: white; font-size: 2rem; cursor: pointer; }
+        .nav-logo { display: flex; align-items: center; gap: 1rem; }
+        .nav-logo img { height: 50px; width: auto; }
+        .nav-logo-text h2 { color: white; font-size: 1.5rem; margin: 0; }
+        .nav-logo-text p { color: rgba(255, 255, 255, 0.8); font-size: 0.9rem; margin: 0; }
+        .close-nav-btn { background: none; border: none; color: white; font-size: 2rem; cursor: pointer; transition: var(--transition); }
+        .close-nav-btn:hover { color: var(--secondary); }
         .nav-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 2rem; }
         @media (min-width: 992px) { .nav-content { grid-template-columns: 2fr 1fr; } }
         .nav-main { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 2rem; }
         .nav-section h3, .nav-sidebar h3 { color: var(--secondary); margin-bottom: 1.2rem; font-size: 1.2rem; }
         .nav-links, .mega-menu-links { list-style: none; }
         .nav-links li, .mega-menu-links li { margin-bottom: 0.7rem; }
-        .nav-links a, .mega-menu-links a { color: white; text-decoration: none; transition: var(--transition); display: inline-block; }
+        .nav-links a, .mega-menu-links a { color: white; text-decoration: none; transition: var(--transition); display: inline-block; font-size: 1rem; }
         .nav-links a:hover { color: var(--secondary); transform: translateX(6px); }
+        .nav-links a.active { color: var(--secondary); font-weight: 600; }
         .nav-sidebar { background: rgba(255,255,255,0.1); border-radius: 20px; padding: 1.8rem; }
-        .nav-sidebar h3 {
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-        }
-        .contact-info {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-        .contact-info li { display: flex; gap: 1rem; margin-bottom: 1rem; color: white; }
-        .contact-info i { color: var(--secondary); font-size: 1.2rem; margin-top: 0.2rem; }
-        .nav-search {
-            margin-top: 2rem;
-            position: relative;
-        }
-        .nav-search input {
-            width: 100%;
-            padding: 1rem 1rem 1rem 3rem;
-            border-radius: 30px;
-            border: none;
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            font-family: 'Inter', sans-serif;
-        }
+        .contact-info-nav { list-style: none; margin-bottom: 2rem; }
+        .contact-info-nav li { display: flex; gap: 1rem; margin-bottom: 1rem; color: white; align-items: flex-start; }
+        .contact-info-nav i { color: var(--secondary); font-size: 1.2rem; margin-top: 0.2rem; }
+        .nav-search { margin-top: 2rem; position: relative; }
+        .nav-search input { width: 100%; padding: 1rem 1rem 1rem 3rem; border-radius: 30px; border: none; background: rgba(255, 255, 255, 0.15); color: white; font-family: 'Inter', sans-serif; }
+        .nav-search input::placeholder { color: rgba(255, 255, 255, 0.7); }
+        .nav-search i { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: rgba(255, 255, 255, 0.7); }
+
+        /* WhatsApp Button */
         .whatsapp-button {
             position: fixed; bottom: 24px; right: 24px; background: #25D366; width: 56px; height: 56px;
             border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;
             font-size: 28px; box-shadow: var(--shadow-md); z-index: 1050; transition: transform 0.2s;
+            text-decoration: none;
         }
-        .nav-search input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .nav-search i {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: rgba(255, 255, 255, 0.7);
-        }
+        .whatsapp-button:hover { transform: scale(1.1); }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%), url('https://images.pexels.com/photos/27719497/pexels-photo-27719497.jpeg');
+            background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.55) 100%), url('https://images.pexels.com/photos/27719497/pexels-photo-27719497.jpeg');
             background-size: cover;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-            min-height: 80vh;
+            background-position: center 30%;
+            min-height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 4rem 2rem;
-            margin-top: 80px;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
             position: relative;
-            z-index: 2;
         }
-
+        .hero-content { max-width: 800px; margin: 0 auto; position: relative; z-index: 2; }
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             color: white;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            line-height: 1.2;
-            font-weight: 600;
         }
-
         .hero p {
-            font-size: 1.4rem;
-            max-width: 700px;
-            margin: 0 auto 3rem;
+            font-size: 1.2rem;
             color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin: 0 auto;
         }
-
-        .btn {
-            display: inline-block;
-            background: var(--secondary);
-            color: #333;
-            padding: 1rem 2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            min-width: 160px;
-            text-align: center;
-            border: 2px solid transparent;
-            box-shadow: var(--box-shadow);
-        }
-
-        .btn:hover {
-            background: var(--secondary-light);
-            transform: translateY(-3px);
-            box-shadow: var(--box-shadow-hover);
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .header-container {
-                padding: 1rem;
-            }
-
-            .logo-text h1 {
-                font-size: 1.4rem;
-            }
-
-            .header-search {
-                display: none;
-            }
-
-            .hero {
-                min-height: 70vh;
-                padding: 3rem 1.5rem;
-                margin-top: 60px;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .nav-fullscreen-container {
-                padding: 5rem 1.5rem 1.5rem;
-            }
-
-            .nav-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-
-            .close-nav-btn {
-                position: absolute;
-                top: 1.5rem;
-                right: 1.5rem;
-            }
+            .hero { min-height: 50vh; padding: 3rem 1.5rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
         }
-
         @media (max-width: 480px) {
-            .header-container {
-                padding: 0.75rem 1rem;
-            }
-
-            .logo-text h1 {
-                font-size: 1.2rem;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
+            .hero h1 { font-size: 1.8rem; }
         }
 
-        /* WhatsApp Button */
-        .whatsapp-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
+        /* Main Content */
+        main { max-width: 1400px; margin: 0 auto; }
+        .section { padding: 4rem 2rem; }
+        @media (max-width: 768px) { .section { padding: 3rem 1.5rem; } }
 
-        .whatsapp-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .whatsapp-button i {
-            font-size: 28px;
-        }
-    </style>
-</head>
-<body>
-    <a href="https://wa.me/254791325409" class="whatsapp-button" aria-label="Chat with us on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    
-    <header>
-        <div class="header-container">
-            <!-- Logo Section -->
-            <div class="logo" onclick="window.location.href='index.html'">
-              <img src="images/logo.jpg" alt="Logo" onerror="this.src='https://placehold.co/60x60?text=DCKFP'">
-               <div class="logo-text">
-                 <h1>Diplomatic College</h1>
-                  <p>of Kenyan Foreign Policy</p>
-               </div>
-            </div>
-
-            <!-- Header Actions - Search and Menu -->
-            <div class="header-actions">
-                <!-- Search Bar -->
-                <div class="header-search">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search...">
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <button id="menu-btn" class="mobile-menu-btn" aria-label="Toggle menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </header>
-    <div class="nav-fullscreen-container" id="navContainer"><div class="nav-header"><div class="nav-logo"><img src="images/logo.jpg" alt="logo"><div class="nav-logo-text"><h2>Diplomatic College</h2><p>of Kenyan Foreign Policy</p></div></div><button class="close-nav-btn" id="closeNavBtn"><i class="fas fa-times"></i></button></div><div class="nav-content"><div class="nav-main"><div class="nav-section"><h3>Main</h3><ul class="nav-links"><li><a href="#" class="active">Home</a></li><li><a href="index.html">Research</a></li><li><a href="research.html">Program Schedule</a></li><li><a href="program-schedule.html">Contact</a></li><li><a href="contact.html">About Us</a></li></ul></div><div class="nav-section"><h3>Regions</h3><ul class="nav-links"><li><a href="#">Africa</a></li><li><a href="#">Europe</a></li><li><a href="#">Asia</a></li><li><a href="#">Americas</a></li></ul></div><div class="nav-section"><h3>Topics</h3><ul class="nav-links"><li><a href="#">Diplomacy</a></li><li><a href="#">Global Security</a></li><li><a href="#">Trade & Economy</a></li></ul></div></div><div class="nav-sidebar"><h3>Contact</h3><ul class="contact-info"><li><i class="fas fa-map-marker-alt"></i> Westlands, Nairobi, Kenya</li><li><i class="fas fa-phone"></i> +254 20 1234567</li><li><i class="fas fa-envelope"></i> info@dckfp.org</li></ul><div class="nav-search"><i class="fas fa-search"></i><input type="text" id="navSearchInput" placeholder="Search..."></div></div></div></div>
-
-    <main>
-        <section class="hero" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%), url('https://images.pexels.com/photos/27719497/pexels-photo-27719497.jpeg')">
-            <div class="hero-content fade-in">
-                <h1>About DCKFP</h1>
-                <p>Shaping Kenya's global diplomatic strategy through research, training, and policy engagement</p>
-            </div>
-        </section>
-
-        <!-- About Content Section -->
-        <section class="section">
-            <div class="about-content fade-in">
-                <div class="about-text">
-                    <div>
-                        <h3>Our Institution</h3>
-                        <p>The Diplomatic College of Kenyan Foreign Policy (DCKFP) is Nairobi's premier institution dedicated to advancing Kenya's global diplomatic strategy. Established in 2025, we serve as a bridge between academic research and practical foreign policy implementation.</p>
-                        <p>Our work focuses on strengthening Kenya's position in regional and international affairs while developing the next generation of diplomatic leaders through innovative training programs and strategic policy engagement.</p>
-                    </div>
-                    
-                    <div>
-                        <h3>Our History</h3>
-                        <p>Founded through a partnership between the Kenyan Ministry of Foreign Affairs and leading academic institutions, DCKFP builds on Kenya's rich diplomatic tradition dating back to the early years of independence.</p>
-                        <p>Over the years, we have grown to become a recognized center of excellence in African diplomacy and foreign policy analysis, contributing to Kenya's growing influence on the continental and global stage.</p>
-                    </div>
-                </div>
-                
-                <div class="about-image">
-                    <img src="https://images.pexels.com/photos/15496542/pexels-photo-15496542.jpeg" alt="Diplomatic College building">
-                </div>
-            </div>
-            
-            <div class="mission-vision fade-in delay-1">
-                <div class="mv-container">
-                    <div class="mv-item">
-                        <h3>Our Mission</h3>
-                        <p>To train Kenya's future diplomats and shape evidence-based foreign policy for Africa's geopolitical landscape through rigorous research, innovative training programs, and strategic policy engagement with government and international partners.</p>
-                    </div>
-                    
-                    <div class="mv-item">
-                        <h3>Our Vision</h3>
-                        <p>To be Africa's leading institution for diplomatic excellence, recognized for developing transformative foreign policy solutions and producing world-class diplomatic professionals who advance Kenya's interests and contribute to global peace and development.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Leadership Section -->
-        <section class="section" style="background: var(--background-secondary);">
-            <div class="leadership fade-in delay-2">
-                <h3>Our Leadership</h3>
-                <div class="team-grid">
-                    <div class="team-member">
-                        <div class="member-image" style="background-image: url('https://media.gettyimages.com/id/1157206619/photo/kenyas-elgeyo-marakwet-county-senator-kipchumba-murkomen-addresses-the-media-outside-the.jpg?s=612x612&w=0&k=20&c=HqttixNXP6IcymUjaSQp9WELK0SbCB1DPBx1kZHJbQA=')"></div>
-                        <div class="member-info">
-                            <h4>Benard Gichuru</h4>
-                            <p class="member-position">Chairperson</p>
-                            <p>Former Cabinet Secretary for Foreign Affairs with extensive experience in international diplomacy and trade negotiations.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="team-member">
-                        <div class="member-image" style="background-image: url('https://media.gettyimages.com/id/1227664687/photo/kenyas-former-wto-general-council-chair-amina-mohamed-attends-a-press-conference-following.jpg?s=612x612&w=0&k=20&c=m1g2KT0kfYr8DunaHVP0mxpa-MnH8R-SWTQdn3TAKpY=')"></div>
-                        <div class="member-info">
-                            <h4>Mercy Nyawira</h4>
-                            <p class="member-position">Treasurer</p>
-                            <p>Expert in African geopolitics with a PhD in International Relations from Oxford University.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="team-member">
-                        <div class="member-image" style="background-image: url('https://www.chr.up.ac.za/images/about/staff/nkatha-murungi-1.jpg')"></div>
-                        <div class="member-info">
-                            <h4>Esther Wambui</h4>
-                            <p class="member-position">Board Member</p>
-                            <p>International Relations scholar specializing in diplomatic protocol and conflict resolution.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="team-member">
-                        <div class="member-image" style="background-image: url('images/iankoina.jpg')"></div>
-                        <div class="member-info">
-                            <h4>Sir Ian Koina</h4>
-                            <p class="member-position">Secretary</p>
-                            <p>Experienced in shaping policy frameworks and guiding strategic initiatives in international relations. Acting Secretary of the Diplomatic College of Kenyan Foreign Policy, with a strong track record in research, diplomacy, and cross-border collaboration on issues impacting Africa's political and economic landscape.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-about">
-                <img src="images/logo.jpg" alt="Diplomatic College Logo" class="footer-logo" width="150" height="150">
-                <p>The Diplomatic College of Kenyan Foreign Policy is a premier institution dedicated to advancing Kenya's global diplomatic engagement through research, training, and policy analysis.</p>
-                <div class="social-links">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            
-            <div class="footer-links">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
-                    <li><a href="research.html"><i class="fas fa-chevron-right"></i> Research</a></li>
-                    <li><a href="experts.html"><i class="fas fa-chevron-right"></i> Our Experts</a></li>
-                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
-                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-links">
-                <h3>Resources</h3>
-                <ul>
-                    <li><a href="https://www.un.org/sites/un2.un.org/files/our-common-agenda-summit-of-the-future-what-would-it-deliver.pdf"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li>
-                    <li><a href="program-schedule.html"><i class="fas fa-chevron-right"></i> Program Schedule</a></li>
-                    <li><a href="https://www.kenyaembassy.org.tr/uploads/Kenya_Foreign_Policy.pdf"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="copyright">
-            <p>&copy; 2025 Diplomatic College of Kenyan Foreign Policy. All rights reserved.</p>
-            <a href="privacy-policy.html">Privacy Policy</a> | 
-            <a href="terms.html">Terms & Conditions</a> | 
-            <a href="cookie-policy.html">Cookie Policy</a>
-            <p class="compliance">
-                Compliant with the <strong>Kenya Data Protection Act, 2019 (enforced 2021)</strong>.
-            </p>
-        </div>
-    </footer>
-
-    <script>
-    // Navigation functionality
-    const menuBtn = document.getElementById('menu-btn');
-    const closeNavBtn = document.getElementById('closeNavBtn');
-    const navContainer = document.getElementById('navContainer');
-    const body = document.body;
-
-    // Open navigation
-    menuBtn.addEventListener('click', () => {
-        navContainer.classList.add('active');
-        body.style.overflow = 'hidden';
-        // Change icon to close when nav is open
-        menuBtn.innerHTML = '<i class="fas fa-times"></i>';
-    });
-
-    // Close navigation
-    closeNavBtn.addEventListener('click', () => {
-        navContainer.classList.remove('active');
-        body.style.overflow = 'auto';
-        // Change icon back to menu when nav is closed
-        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-    });
-
-    // Close nav when clicking outside content
-    navContainer.addEventListener('click', (e) => {
-        if (e.target === navContainer) {
-            navContainer.classList.remove('active');
-            body.style.overflow = 'auto';
-            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-        }
-    });
-
-    // Close nav when pressing Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navContainer.classList.contains('active')) {
-            navContainer.classList.remove('active');
-            body.style.overflow = 'auto';
-            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-        }
-    });
-
-    // Header scroll behavior: hide on scroll down, show on scroll up
-    let lastScroll = 0;
-    const header = document.querySelector('header');
-
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        // Header hide/show on scroll
-        if (currentScroll > lastScroll && currentScroll > 100) {
-            header.classList.add('header-hidden');
-        } else {
-            header.classList.remove('header-hidden');
-        }
-        lastScroll = currentScroll;
-    });
-
-    // Search functionality
-    const headerSearch = document.querySelector('.header-search input');
-    const navSearch = document.querySelector('.nav-search input');
-    
-    // Header search functionality
-    headerSearch.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            performSearch(headerSearch.value);
-        }
-    });
-    
-    // Nav search functionality
-    navSearch.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            performSearch(navSearch.value);
-            // Close nav after search
-            navContainer.classList.remove('active');
-            body.style.overflow = 'auto';
-            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-        }
-    });
-    
-    function performSearch(query) {
-        if (query.trim() !== '') {
-            alert(`Searching for: ${query}`);
-            // In a real implementation, you would redirect to search results page
-            // or filter content based on the search query
-        }
-    }
-
-    // Intersection Observer for animations
-    const fadeElements = document.querySelectorAll('.fade-in');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = 1;
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-
-    fadeElements.forEach(element => {
-        element.style.opacity = 0;
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(element);
-    });
-    </script>
-
-    <!-- Non-critical CSS (loaded after page content) -->
-    <style>
-        /* Non-critical CSS (loaded after page content) */
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-        }
-        
-        /* Section Styling */
-        .section {
-            padding: 5rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--secondary);
-        }
-
-        .section-title p {
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
-
-        /* About Content */
-        .about-content {
+        /* About Content Grid */
+        .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 4rem;
+            gap: 3rem;
+            align-items: start;
         }
-
-        .about-text {
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-        }
-
+        @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 2rem; } }
+        
         .about-text h3 {
+            font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
             color: var(--primary);
             margin-bottom: 1rem;
         }
-
         .about-text p {
             color: var(--text-secondary);
-            line-height: 1.8;
+            line-height: 1.7;
             margin-bottom: 1.5rem;
         }
-
         .about-image {
-            border-radius: 8px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: var(--box-shadow);
-            height: fit-content;
+            box-shadow: var(--shadow-md);
+            height: 100%;
+            min-height: 320px;
         }
-
         .about-image img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             display: block;
             transition: transform 0.5s ease;
         }
+        .about-image:hover img { transform: scale(1.03); }
 
-        .about-image:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Mission/Vision Section */
-        .mission-vision {
-            background: var(--card-bg);
-            padding: 4rem;
-            border-radius: 12px;
-            margin: 4rem 0;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--box-shadow);
-        }
-
-        .mv-container {
+        /* Mission Vision Cards */
+        .mv-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            max-width: 1000px;
-            margin: 0 auto;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
         }
-
-        .mv-item {
-            background: var(--background);
-            padding: 2.5rem;
-            border-radius: 8px;
+        @media (max-width: 768px) { .mv-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+        
+        .mv-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
             transition: var(--transition);
-            box-shadow: var(--box-shadow);
-            border: 1px solid var(--border-color);
         }
-
-        .mv-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--box-shadow-hover);
-            border-color: var(--accent);
-        }
-
-        .mv-item h3 {
+        .mv-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: var(--accent); }
+        .mv-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
             color: var(--secondary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             position: relative;
-            padding-bottom: 1rem;
-            font-size: 1.4rem;
+            display: inline-block;
         }
-
-        .mv-item h3::after {
+        .mv-card h3:after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -8px;
             left: 0;
             width: 50px;
             height: 3px;
             background: var(--secondary);
         }
-
-        .mv-item p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
+        .mv-card p { color: var(--text-secondary); line-height: 1.7; margin-top: 1rem; }
 
         /* Leadership Section */
-        .leadership {
-            margin-top: 5rem;
+        .leadership-section {
+            background: var(--background-secondary);
+            border-radius: 32px;
+            padding: 3rem 2rem;
+            margin-top: 2rem;
         }
-
-        .leadership h3 {
+        .leadership-section h3 {
             text-align: center;
+            font-family: 'Playfair Display', serif;
             font-size: 2rem;
-            color: var(--secondary);
-            margin-bottom: 3rem;
-            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 2.5rem;
         }
-
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
         }
-
-        .team-member {
+        @media (max-width: 640px) { .team-grid { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; } }
+        
+        .team-card {
             background: var(--card-bg);
-            border-radius: 12px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: var(--box-shadow);
+            box-shadow: var(--shadow-sm);
             transition: var(--transition);
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--border);
         }
-
-        .team-member:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--box-shadow-hover);
-            border-color: var(--accent);
-        }
-
-        .member-image {
-            height: 350px;
+        .team-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); }
+        .member-img {
+            height: 280px;
             background-size: cover;
             background-position: center;
-            transition: all 0.5s ease;
+            transition: transform 0.5s ease;
         }
+        .team-card:hover .member-img { transform: scale(1.02); }
+        .member-info { padding: 1.5rem; text-align: center; }
+        .member-info h4 { font-size: 1.3rem; color: var(--primary); margin-bottom: 0.3rem; }
+        .member-position { font-weight: 600; color: var(--accent); margin-bottom: 0.8rem; font-size: 0.9rem; }
+        .member-info p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; }
 
-        .team-member:hover .member-image {
-            transform: scale(1.05);
-        }
-
-        .member-info {
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .member-info h4 {
-            margin: 0 0 0.5rem 0;
-            color: var(--primary);
-            font-size: 1.3rem;
-        }
-
-        .member-info p {
-            color: var(--text-secondary);
-            margin: 0;
-            line-height: 1.6;
-        }
-
-        .member-position {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--accent);
-        }
-
-        /* Footer */
+        /* Footer - consistent with main */
         footer {
             background: var(--background-secondary);
             color: var(--text);
-            padding: 5rem 0 0;
+            padding: 4rem 0 0;
             margin-top: 3rem;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid var(--border);
         }
-        
         .footer-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -901,168 +329,201 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
         }
-
-        .footer-about {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .footer-logo {
-            max-width: 200px;
-            transition: filter 0.3s ease;
-        }
-
-        .footer-about p {
-            color: var(--text-secondary);
-            font-weight: 300;
-            line-height: 1.6;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
+        .footer-about { display: flex; flex-direction: column; gap: 1.5rem; }
+        .footer-logo { max-width: 160px; width: auto; height: auto; }
+        .footer-about p { color: var(--text-secondary); line-height: 1.7; font-size: 0.9rem; }
+        .social-links { display: flex; gap: 1rem; flex-wrap: wrap; }
         .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--card-bg);
-            color: var(--text);
-            transition: var(--transition);
+            display: flex; align-items: center; justify-content: center; width: 38px; height: 38px;
+            border-radius: 50%; background: var(--card-bg); color: var(--text);
+            transition: var(--transition); text-decoration: none;
         }
+        .social-links a:hover { background: var(--accent); color: white; transform: translateY(-3px); }
+        .footer-links h3 { color: var(--accent); margin-bottom: 1.2rem; font-size: 1.2rem; font-weight: 600; position: relative; padding-bottom: 0.5rem; }
+        .footer-links h3:after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 2px; background: var(--accent); }
+        .footer-links ul { list-style: none; padding: 0; }
+        .footer-links li { margin-bottom: 0.7rem; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; transition: var(--transition); display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
+        .footer-links a:hover { color: var(--accent); transform: translateX(5px); }
+        .footer-links i { width: 16px; color: var(--accent); }
+        .copyright { text-align: center; padding: 2rem; margin-top: 3rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-secondary); }
+        .copyright a { color: var(--accent); text-decoration: none; }
 
-        .social-links a:hover {
-            background: var(--secondary);
-            color: var(--text);
-            transform: translateY(-3px);
-        }
-        
-        .footer-links h3 {
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-            font-weight: 600;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-
-        .footer-links h3:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--secondary);
-        }
-        
-        .footer-links ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: var(--transition);
-            font-weight: 400;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .footer-links a:hover {
-            color: var(--secondary);
-            transform: translateX(5px);
-        }
-        
-        .footer-links i {
-            width: 16px;
-            text-align: center;
-            color: var(--secondary);
-        }
-
-        .contact-info li {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-info i {
-            font-size: 1.2rem;
-            color: var(--secondary);
-            margin-top: 2px;
-        }
-
-        .contact-info div {
-            flex: 1;
-        }
-
-        .contact-info p {
-            margin: 0;
-            line-height: 1.6;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
-            border-top: 1px solid var(--border-color);
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            font-weight: 300;
-        }
-
-        @media (max-width: 1024px) {
-            .about-content {
-                gap: 2rem;
-            }
-            
-            .team-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-        }
-
-        @media (max-width: 768px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .mv-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .mission-vision {
-                padding: 2rem;
-            }
-            
-            .mv-item {
-                padding: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
+        /* Animations */
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
     </style>
+</head>
+<body>
+<a href="https://wa.me/254791325409" class="whatsapp-button" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+<header>
+    <div class="header-container">
+        <div class="logo" onclick="window.location.href='index.html'">
+            <img src="images/logo.jpg" alt="Logo" onerror="this.src='https://placehold.co/60x60?text=DCKFP'">
+            <div class="logo-text">
+                <h1>Diplomatic College</h1>
+                <p>of Kenyan Foreign Policy</p>
+            </div>
+        </div>
+        <div class="header-actions">
+            <div class="header-search"><i class="fas fa-search"></i><input type="text" id="globalSearch" placeholder="Search..."></div>
+            <button id="menu-btn" class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </div>
+</header>
+
+<div class="nav-fullscreen-container" id="navContainer">
+    <div class="nav-header">
+        <div class="nav-logo">
+            <img src="images/logo.jpg" alt="logo" onerror="this.src='https://placehold.co/50x50?text=DCKFP'">
+            <div class="nav-logo-text"><h2>Diplomatic College</h2><p>of Kenyan Foreign Policy</p></div>
+        </div>
+        <button class="close-nav-btn" id="closeNavBtn"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="nav-content">
+        <div class="nav-main">
+            <div class="nav-section"><h3>Main Menu</h3><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="research.html">Research & Publications</a></li><li><a href="program-schedule.html">Program Schedule</a></li><li><a href="contact.html">Contact</a></li><li><a href="about.html" class="active">About Us</a></li></ul></div>
+            <div class="nav-section"><h3>Regions</h3><ul class="nav-links"><li><a href="#">Africa</a></li><li><a href="#">Europe</a></li><li><a href="#">Asia</a></li><li><a href="#">Americas</a></li></ul></div>
+            <div class="nav-section"><h3>Topics</h3><ul class="nav-links"><li><a href="#">Diplomacy & Foreign Policy</a></li><li><a href="#">Global Security</a></li><li><a href="#">Economy & Trade</a></li><li><a href="#">International Law</a></li></ul></div>
+        </div>
+        <div class="nav-sidebar">
+            <h3>Contact Info</h3>
+            <ul class="contact-info-nav">
+                <li><i class="fas fa-map-marker-alt"></i><div>Westlands Office Park, Nairobi, Kenya</div></li>
+                <li><i class="fas fa-phone"></i><div>+254 20 123 4567</div></li>
+                <li><i class="fas fa-envelope"></i><div>info@dckfp.org</div></li>
+            </ul>
+            <div class="nav-search"><i class="fas fa-search"></i><input type="text" id="navSearchInput" placeholder="Search..."></div>
+        </div>
+    </div>
+</div>
+
+<main>
+    <section class="hero">
+        <div class="hero-content fade-in" id="heroFade">
+            <h1>About DCKFP</h1>
+            <p>Shaping Kenya's global diplomatic strategy through research, training, and policy engagement</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="about-grid">
+            <div class="about-text fade-in delay-1" id="aboutText">
+                <div>
+                    <h3>Our Institution</h3>
+                    <p>The Diplomatic College of Kenyan Foreign Policy (DCKFP) is Nairobi's premier institution dedicated to advancing Kenya's global diplomatic strategy. Established in 2025, we serve as a bridge between academic research and practical foreign policy implementation.</p>
+                    <p>Our work focuses on strengthening Kenya's position in regional and international affairs while developing the next generation of diplomatic leaders through innovative training programs and strategic policy engagement.</p>
+                </div>
+                <div>
+                    <h3>Our History</h3>
+                    <p>Founded through a partnership between the Kenyan Ministry of Foreign Affairs and leading academic institutions, DCKFP builds on Kenya's rich diplomatic tradition dating back to the early years of independence.</p>
+                    <p>Over the years, we have grown to become a recognized center of excellence in African diplomacy and foreign policy analysis, contributing to Kenya's growing influence on the continental and global stage.</p>
+                </div>
+            </div>
+            <div class="about-image fade-in delay-2">
+                <img src="https://images.pexels.com/photos/15496542/pexels-photo-15496542.jpeg" alt="Diplomatic College building" onerror="this.src='https://placehold.co/600x400?text=DCKFP+Campus'">
+            </div>
+        </div>
+
+        <div class="mv-grid fade-in delay-2">
+            <div class="mv-card">
+                <h3>Our Mission</h3>
+                <p>To train Kenya's future diplomats and shape evidence-based foreign policy for Africa's geopolitical landscape through rigorous research, innovative training programs, and strategic policy engagement with government and international partners.</p>
+            </div>
+            <div class="mv-card">
+                <h3>Our Vision</h3>
+                <p>To be Africa's leading institution for diplomatic excellence, recognized for developing transformative foreign policy solutions and producing world-class diplomatic professionals who advance Kenya's interests and contribute to global peace and development.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--background-secondary); margin: 0 0 2rem 0; border-radius: 32px;">
+        <div class="leadership-section" style="background: transparent; padding: 0;">
+            <h3 class="fade-in delay-2">Our Leadership</h3>
+            <div class="team-grid">
+                <div class="team-card fade-in delay-1">
+                    <div class="member-img" style="background-image: url('https://media.gettyimages.com/id/1157206619/photo/kenyas-elgeyo-marakwet-county-senator-kipchumba-murkomen-addresses-the-media-outside-the.jpg?s=612x612&w=0&k=20&c=HqttixNXP6IcymUjaSQp9WELK0SbCB1DPBx1kZHJbQA=');"></div>
+                    <div class="member-info"><h4>Benard Gichuru</h4><p class="member-position">Chairperson</p><p>Former Cabinet Secretary for Foreign Affairs with extensive experience in international diplomacy and trade negotiations.</p></div>
+                </div>
+                <div class="team-card fade-in delay-2">
+                    <div class="member-img" style="background-image: url('https://media.gettyimages.com/id/1227664687/photo/kenyas-former-wto-general-council-chair-amina-mohamed-attends-a-press-conference-following.jpg?s=612x612&w=0&k=20&c=m1g2KT0kfYr8DunaHVP0mxpa-MnH8R-SWTQdn3TAKpY=');"></div>
+                    <div class="member-info"><h4>Mercy Nyawira</h4><p class="member-position">Treasurer</p><p>Expert in African geopolitics with a PhD in International Relations from Oxford University.</p></div>
+                </div>
+                <div class="team-card fade-in delay-3">
+                    <div class="member-img" style="background-image: url('https://www.chr.up.ac.za/images/about/staff/nkatha-murungi-1.jpg');"></div>
+                    <div class="member-info"><h4>Esther Wambui</h4><p class="member-position">Board Member</p><p>International Relations scholar specializing in diplomatic protocol and conflict resolution.</p></div>
+                </div>
+                <div class="team-card fade-in delay-3">
+                    <div class="member-img" style="background-image: url('https://placehold.co/400x300/1f7a8c/white?text=Sir+Ian+Koina');"></div>
+                    <div class="member-info"><h4>Sir Ian Koina</h4><p class="member-position">Secretary</p><p>Experienced in shaping policy frameworks and guiding strategic initiatives in international relations. Acting Secretary of DCKFP.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-about">
+            <img src="images/logo.jpg" alt="Logo" class="footer-logo" onerror="this.src='https://placehold.co/160x160?text=DCKFP'">
+            <p>The Diplomatic College of Kenyan Foreign Policy is a premier institution dedicated to advancing Kenya's global diplomatic engagement through research, training, and policy analysis.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-links"><h3>Quick Links</h3><ul><li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li><li><a href="research.html"><i class="fas fa-chevron-right"></i> Research</a></li><li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li><li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li></ul></div>
+        <div class="footer-links"><h3>Resources</h3><ul><li><a href="#"><i class="fas fa-chevron-right"></i> Policy Briefs</a></li><li><a href="program-schedule.html"><i class="fas fa-chevron-right"></i> Program Schedule</a></li><li><a href="#"><i class="fas fa-chevron-right"></i> Kenya Foreign Policy</a></li></ul></div>
+    </div>
+    <div class="copyright"><p>&copy; 2025 Diplomatic College of Kenyan Foreign Policy. All rights reserved.</p><a href="privacy-policy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a><p class="compliance">Compliant with the <strong>Kenya Data Protection Act, 2019</strong>.</p></div>
+</footer>
+
+<script>
+    // Navigation functionality
+    const menuBtn = document.getElementById('menu-btn');
+    const closeNavBtn = document.getElementById('closeNavBtn');
+    const navContainer = document.getElementById('navContainer');
+    const body = document.body;
+
+    function openNav() { navContainer.classList.add('active'); body.style.overflow = 'hidden'; menuBtn.innerHTML = '<i class="fas fa-times"></i>'; }
+    function closeNav() { navContainer.classList.remove('active'); body.style.overflow = 'auto'; menuBtn.innerHTML = '<i class="fas fa-bars"></i>'; }
+    
+    menuBtn.addEventListener('click', openNav);
+    closeNavBtn.addEventListener('click', closeNav);
+    navContainer.addEventListener('click', (e) => { if (e.target === navContainer) closeNav(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && navContainer.classList.contains('active')) closeNav(); });
+
+    // Header scroll hide/show
+    let lastScroll = 0;
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll > lastScroll && currentScroll > 100) header.classList.add('header-hidden');
+        else header.classList.remove('header-hidden');
+        lastScroll = currentScroll;
+    });
+
+    // Search functionality
+    function performSearch(query) { if (query.trim() !== '') alert(`Searching for: ${query}`); }
+    const headerSearch = document.querySelector('.header-search input');
+    const navSearch = document.querySelector('.nav-search input');
+    headerSearch?.addEventListener('keypress', (e) => { if (e.key === 'Enter') performSearch(headerSearch.value); });
+    navSearch?.addEventListener('keypress', (e) => { if (e.key === 'Enter') { performSearch(navSearch.value); closeNav(); } });
+
+    // Intersection Observer for fade-in animations
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+        });
+    }, { threshold: 0.1 });
+    fadeElements.forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
